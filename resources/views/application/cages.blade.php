@@ -52,6 +52,12 @@
             <button id="btn-show-add-item-form"></button>
         </div>
 
+        <ul>
+            @foreach($cages as $cage)
+                <li>{{ $cage->name }}</li>
+            @endforeach
+        </ul>
+
         <div class="items clearfix">
 
             <div class="item__wrapper">
