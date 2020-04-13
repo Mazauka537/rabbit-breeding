@@ -356,4 +356,8 @@ a {
   min-height: 100px;
   resize: none; }
 
+.errors {
+  font-size: 13px;
+  color: red; }
+
 /*# sourceMappingURL=main.css.map */

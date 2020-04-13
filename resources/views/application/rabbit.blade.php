@@ -3,7 +3,7 @@
 @section('title', 'rabbit')
 
 @section('main')
-    <main class="main scrollbar-macosx" id="main">
+    <div class="main__inner">
 
         <div class="rabbit-container">
             <div class="left">
@@ -71,5 +71,5 @@
             </div>
         </div>
 
-    </main>
+    </div>
 @endsection

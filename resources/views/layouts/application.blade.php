@@ -156,7 +156,9 @@
             </div>
         </aside>
 
-        @yield('main')
+        <main class="main scrollbar-macosx" id="main">
+            @yield('main')
+        </main>
 
     </div>
 
