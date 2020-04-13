@@ -1,4 +1,4 @@
-@extends('app.layout')
+@extends('layouts.application')
 
 @section('title', 'rabbit')
 
@@ -9,7 +9,7 @@
             <div class="left">
                 <div class="photo__wrapper wrapper">
                     <div class="photo">
-                        <img src="{{ asset('images/пожилой крол.jpg') }}" alt="Имя кроля">
+                        <img src="{{ asset('application/images/пожилой крол.jpg') }}" alt="Имя кроля">
                     </div>
                 </div>
                 <div class="some-info__wrapper wrapper">

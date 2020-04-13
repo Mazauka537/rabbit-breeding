@@ -110,6 +110,11 @@ a {
     width: 100%;
 }
 
+.main__inner {
+    position: relative;
+    min-height: 100%;
+}
+
 .ratio {
     position: relative;
     height: 0;
@@ -130,6 +135,7 @@ a {
 
 .items {
     padding: 10px;
+    padding-bottom: 30px;
     //display: flex;
     //flex-wrap: wrap;
     //justify-content: space-around;
@@ -145,7 +151,7 @@ a {
 
 .item {
     display: block;
-    box-shadow: 0 0 6px #777;
+    box-shadow: 0 0 6px -1px #888;
     position: relative;
     overflow: hidden;
 
@@ -250,28 +256,35 @@ a {
     padding: 5px 10px;
     background: #eff0f2;
     height: 100%;
+
     .left {
         max-width: 300px;
     }
+
     .right {
         width: 100%;
     }
+
     .head {
         display: flex;
         justify-content: space-between;
         font-size: 20px;
         border-bottom: 1px solid #EEE;
         padding-bottom: 5px;
+
         .status {
             font-size: 13px;
             color: #999;
         }
     }
+
     .body {
         padding-top: 5px;
     }
+
     .buttons {
         padding-left: 15px;
+
         button {
             cursor: pointer;
             padding: 3px 5px;
@@ -293,6 +306,7 @@ a {
 .photo img {
     width: 100%
 }
+
 .clearfix {
     &::after {
         content: ".";
@@ -304,17 +318,161 @@ a {
         visibility: hidden;
     }
 }
+
 .line {
     padding: 5px 0;
 }
+
 .label {
     float: left;
     width: 120px;
     font-size: 14px;
     color: #888;
 }
+
 .labeled {
     overflow: hidden;
     font-size: 14px;
     color: #555;
+}
+
+//add button
+.add-button {
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    z-index: 999;
+
+    button {
+        border: none;
+        background: $color3;
+        border-radius: 50%;
+        width: 55px;
+        height: 55px;
+        box-shadow: 0 0 6px -2px #333;
+        position: relative;
+        cursor: pointer;
+        &::after, &::before {
+            content: "";
+            display: block;
+            width: 30px;
+            height: 4px;
+            background: #fff;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) rotate(0deg);
+            border-radius: 40px;
+        }
+        &::before {
+            transform: translate(-50%, -50%) rotate(90deg);
+        }
+        &:hover {
+            background: $color4;
+            &::before, &::after {
+                background: #eee;
+            }
+        }
+    }
+}
+
+// modal-window
+.modal-window {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(#000, 0.4);
+    z-index: 1000;
+    padding: 10px;
+    display: none;
+}
+
+.close-button {
+    position: absolute;
+    top: 15px;
+    right: 12px;
+    cursor: pointer;
+    width: 30px;
+    height: 30px;
+    &::after, &::before {
+        content: "";
+        display: block;
+        width: 24px;
+        height: 2px;
+        background: #999;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%) rotate(-45deg);
+        border-radius: 40px;
+    }
+    &::before {
+        transform: translate(-50%, -50%) rotate(45deg) ;
+    }
+    &:hover {
+        &::after, &::before {
+            background: #444;
+        }
+    }
+}
+
+
+.form__wrapper {
+    background: #fff;
+    padding: 15px;
+    max-width: 540px;
+    margin: 40px auto;
+    border-radius: 3px;
+    position: relative;
+}
+
+.form {
+    .head {
+        font-size: 20px;
+        border-bottom: 1px solid #EEE;
+        padding: 5px 5px 15px;
+        background: #FAFBFC;
+    }
+
+    .body {
+        padding-top: 5px;
+        padding-bottom: 24px;
+    }
+
+    .label {
+        max-width: 160px;
+        width: 100%;
+        text-align: right;
+        padding: 5px 9px 5px;
+    }
+
+    .labeled {
+
+    }
+
+    input, select, textarea, option {
+        height: 30px;
+        padding: 5px 9px 5px;
+        border-radius: 3px;
+        border: 1px solid #d3d9de;
+        color: #000;
+        background: #fff;
+        font-size: 14px;
+        max-width: 300px;
+        width: 100%;
+
+        &[type="submit"] {
+            background: $color1;
+            border: none;
+            cursor: pointer;
+        }
+    }
+
+    textarea {
+        width: 100%;
+        min-height: 100px;
+        resize: none;
+    }
 }

@@ -22,4 +22,5 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::group(['middleware' => 'auth', 'namespace' => 'Application', 'prefix' => 'application'], function () {
     Route::get('rabbits', 'RabbitController@getRabbits');
     Route::get('rabbit/{id}', 'RabbitController@getRabbit')->where('id', '[0-9]+');
+    Route::post('rabbit/add', 'RabbitController@addRabbit')->name('addRabbit');
 });

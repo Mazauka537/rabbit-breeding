@@ -2,10 +2,10 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="{{ asset('fonts/style.css') }}">
+    <link rel="stylesheet" href="{{ asset('application/fonts/style.css') }}">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="{{ asset('css/jquery.scrollbar.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/jquery.scrollbar.css') }}">
+    <link rel="stylesheet" href="{{ asset('application/css/main.css') }}">
     <title>@yield('title')</title>
 </head>
 <body>
@@ -164,6 +164,6 @@
 
 <script src="{{ asset('assets/js/jquery-3.4.1.min.js') }}"></script>
 <script src="{{ asset('assets/js/jquery.scrollbar.min.js') }}"></script>
-<script src="{{ asset('js/main.js') }}"></script>
+<script src="{{ asset('application/js/main.js') }}"></script>
 </body>
 </html>
