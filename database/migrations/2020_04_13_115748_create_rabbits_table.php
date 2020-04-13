@@ -26,6 +26,11 @@ class CreateRabbitsTable extends Migration
             $table->unsignedBigInteger('mather_id')->nullable();
             $table->unsignedBigInteger('father_id')->nullable();
             $table->timestamps();
+
+            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('breed_id')->references('id')->on('breeds');
+            $table->foreign('cage_id')->references('id')->on('cages');
+
         });
     }
 

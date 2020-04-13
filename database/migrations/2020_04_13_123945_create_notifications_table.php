@@ -20,6 +20,8 @@ class CreateNotificationsTable extends Migration
             $table->string('text');
             $table->boolean('checked')->default(false);
             $table->timestamps();
+
+            $table->foreign('user_id')->references('id')->on('users');
         });
     }
 

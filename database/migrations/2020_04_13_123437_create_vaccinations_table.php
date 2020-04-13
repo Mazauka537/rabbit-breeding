@@ -21,6 +21,9 @@ class CreateVaccinationsTable extends Migration
             $table->string('desc')->nullable();
             $table->date('date')->nullable();
             $table->timestamps();
+
+            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('rabbit_id')->references('id')->on('rabbits');
         });
     }
 

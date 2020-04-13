@@ -19,6 +19,8 @@ class CreateCagesTable extends Migration
             $table->string('name',64);
             $table->string('desc')->nullable();
             $table->timestamps();
+
+            $table->foreign('user_id')->references('id')->on('users');
         });
     }
 
