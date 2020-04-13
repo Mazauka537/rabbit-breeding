@@ -1,0 +1,320 @@
+$color1: #A3F06C;
+$color2: #87F03C;
+$color3: #5DE100;
+$color4: #20cb00;
+
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    outline: none;
+}
+
+body {
+    position: relative;
+    height: 100vh;
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    overflow: hidden;
+}
+
+ul, ol {
+    list-style: none;
+}
+
+a {
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    text-decoration: none;
+    color: #000;
+}
+
+.app {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    height: 100%;
+}
+
+.header {
+    height: 50px;
+    background: $color3;
+    box-shadow: 0 0 8px #444;
+    flex-shrink: 0;
+    z-index: 1000;
+}
+
+.content {
+    height: 100%;
+    overflow: hidden;
+    display: flex;
+}
+
+.aside {
+    height: 100%;
+    width: 240px;
+    background: $color1;
+    position: absolute;
+    top: 0;
+    left: 0;
+    overflow-y: hidden;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+}
+
+.aside__header {
+    height: 50px;
+    background: $color3;
+    //box-shadow: 0 0 8px #444;
+    flex-shrink: 0;
+}
+
+.aside__inner {
+    height: 100%;
+
+    .nav {
+        padding: 10px 0 85px;
+
+        li {
+            a {
+                display: block;
+                padding: 10px 24px;
+                font-weight: 500;
+
+                &:hover {
+                    background: $color2;
+                }
+
+                span {
+                    vertical-align: middle;
+                }
+            }
+        }
+    }
+}
+
+.icon::before {
+    font-family: 'icomoon';
+    font-size: 24px;
+    padding-right: 24px;
+}
+
+.main {
+    margin-left: 240px;
+    height: 100%;
+    padding-bottom: 70px;
+    width: 100%;
+}
+
+.ratio {
+    position: relative;
+    height: 0;
+    border: none;
+}
+
+.ratio__inner {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+}
+
+.ratio-4-3 {
+    padding-top: 56%; /* 100% ширины делим на 4 и умножаем на 3 */
+}
+
+.items {
+    padding: 10px;
+    //display: flex;
+    //flex-wrap: wrap;
+    //justify-content: space-around;
+}
+
+.item__wrapper {
+    //flex-basis: 33%;
+    float: left;
+    width: 24.9%;
+    padding: 10px;
+    position: relative;
+}
+
+.item {
+    display: block;
+    box-shadow: 0 0 6px #777;
+    position: relative;
+    overflow: hidden;
+
+    &:hover .item-filter {
+        background: none;
+
+        .info {
+            color: rgba(#DDD, 0);
+        }
+    }
+}
+
+.item-desc {
+    transition: all 0.3s;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    overflow: hidden;
+    background: rgba(#000, 0.5);
+    color: #fff;
+    text-align: center;
+    width: 100%;
+    padding: 10px;
+    transform: translateX(-110%);
+}
+
+.item-desc-shown {
+    transform: translateX(0);
+}
+
+.ico-info {
+    cursor: pointer;
+
+    &::before {
+        content: "\ea0c";
+        font-family: icomoon;
+        color: rgba($color4, 0.8);
+        vertical-align: middle;
+        font-size: 18px;
+
+    }
+
+    &:hover {
+        &::before {
+            color: rgba($color4, 0.5);
+        }
+    }
+}
+
+.item__inner {
+    color: #000;
+    text-align: center;
+    background-image: url('../images/пожилой крол.jpg');
+    background-size: cover;
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+
+    .item-filter {
+        height: 100%;
+        background: rgba(#000, 0.3);
+        transition: background-color 0.3s;
+        position: relative;
+
+        .info {
+            color: #DDD;
+            transition: color 0.3s;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 20px;
+        }
+    }
+}
+
+.item__footer {
+    padding: 10px;
+    color: #EEE;
+    background: $color2;
+    font-weight: 700;
+    height: 40px;
+    font-size: 17px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header, .main {
+    &.full {
+        margin-left: 40px;
+    }
+}
+
+.header, .main, .aside {
+    transition: all 0.2s ease;
+}
+
+// rabbit/{id}
+.rabbit-container {
+    display: flex;
+    padding: 5px 10px;
+    background: #eff0f2;
+    height: 100%;
+    .left {
+        max-width: 300px;
+    }
+    .right {
+        width: 100%;
+    }
+    .head {
+        display: flex;
+        justify-content: space-between;
+        font-size: 20px;
+        border-bottom: 1px solid #EEE;
+        padding-bottom: 5px;
+        .status {
+            font-size: 13px;
+            color: #999;
+        }
+    }
+    .body {
+        padding-top: 5px;
+    }
+    .buttons {
+        padding-left: 15px;
+        button {
+            cursor: pointer;
+            padding: 3px 5px;
+            background: #eff0f2;
+            border: 1px solid #CCC;
+            vertical-align: middle;
+        }
+    }
+}
+
+.wrapper {
+    padding: 10px;
+    margin: 10px 5px;
+    border: 1px solid #EEE;
+    background: #FFF;
+    box-shadow: 0 0 5px -4px #000;
+}
+
+.photo img {
+    width: 100%
+}
+.clearfix {
+    &::after {
+        content: ".";
+        display: block;
+        height: 0;
+        font-size: 0;
+        line-height: 0;
+        clear: both;
+        visibility: hidden;
+    }
+}
+.line {
+    padding: 5px 0;
+}
+.label {
+    float: left;
+    width: 120px;
+    font-size: 14px;
+    color: #888;
+}
+.labeled {
+    overflow: hidden;
+    font-size: 14px;
+    color: #555;
+}
