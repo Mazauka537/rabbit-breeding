@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Application;
 
 use App\Rabbit;
+use App\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
@@ -16,21 +17,23 @@ class RabbitController extends Controller
         return view('application.rabbits', ['rabbits' => $rabbits, 'cages' => $cages, 'breeds' => $breeds]);
     }
 
-    function getRabbit() {
-        return view('application.rabbit');
+    function getRabbit($id) {
+        $rabbit = Auth::user()->rabbits()->findOrFail($id);
+
+        return view('application.rabbit', ['rabbit' => $rabbit]);
     }
 
     function addRabbit(Request $request) {
 
         $this->validate($request, [
-            'name' => 'required',
-            'gender' => 'required',
-            'breed' => 'numeric',
-            'cage' => 'numeric',
-            'birthday' => 'date',
-            'desc' => 'string|max:255',
-            'mother' => 'integer',
-            'father' => 'integer'
+            'name' => 'required|string|max:64',
+            'gender' => 'required|in:f,m',
+            'breed' => 'nullable|integer|exists:breeds,id,user_id,'.Auth::id(),
+            'cage' => 'nullable|integer|exists:cages,id,user_id,'.Auth::id(),
+            'birthday' => 'nullable|date',
+            'desc' => 'nullable|string|max:255',
+            'mother' => 'nullable|integer|exists:rabbits,id,user_id,'.Auth::id(),
+            'father' => 'nullable|integer|exists:rabbits,id,user_id,'.Auth::id(),
         ]);
 
         $rabbit = new Rabbit();

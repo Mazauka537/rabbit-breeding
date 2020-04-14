@@ -35,7 +35,7 @@
                             <div class="label">Порода:</div>
                             <div class="labeled">
                                 <select name="breed">
-                                    <option value="0"></option>
+                                    <option value=""></option>
                                     @foreach($breeds as $breed)
                                         <option value="{{ $breed->id }}" @if($breed->id == old('breed')) {{ 'selected' }} @endif>{{ $breed->name }}</option>
                                     @endforeach
@@ -46,7 +46,7 @@
                             <div class="label">Клетка:</div>
                             <div class="labeled">
                                 <select name="cage">
-                                    <option value="0"></option>
+                                    <option value=""></option>
                                     @foreach($cages as $cage)
                                         <option value="{{ $cage->id }}" @if($cage->id == old('cage')) {{ 'selected' }} @endif>{{ $cage->name }}</option>
                                     @endforeach
@@ -63,7 +63,7 @@
                             <div class="label">Мама:</div>
                             <div class="labeled">
                                 <select name="mother">
-                                    <option value="0"></option>
+                                    <option value=""></option>
                                     @foreach($rabbits as $rabbit)
                                         @if($rabbit->gender == 'f')
                                             <option value="{{ $rabbit->id }}" @if($rabbit->id == old('mother')) {{ 'selected' }} @endif>{{ $rabbit->name }}</option>
@@ -76,7 +76,7 @@
                             <div class="label">Папа:</div>
                             <div class="labeled">
                                 <select name="father">
-                                    <option value="0"></option>
+                                    <option value=""></option>
                                     @foreach($rabbits as $rabbit)
                                         @if($rabbit->gender == 'm')
                                             <option value="{{ $rabbit->id }}" @if($rabbit->id == old('father')) {{ 'selected' }} @endif>{{ $rabbit->name }}</option>
