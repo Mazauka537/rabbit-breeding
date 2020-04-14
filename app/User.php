@@ -40,4 +40,8 @@ class User extends Authenticatable
     public function cages() {
         return $this->hasMany('App\Cage');
     }
+
+    public function breeds() {
+        return $this->hasMany('App\Breed');
+    }
 }

@@ -26,5 +26,9 @@ Route::group(['middleware' => 'auth', 'namespace' => 'Application', 'prefix' => 
 
     Route::get('cages', 'CageController@getCages')->name('cages');
     Route::get('cage/{id}', 'CageController@getCage')->where('id', '[0-9]+')->name('cage');
-    Route::post('cage/add', 'CageController@addcage')->name('addCage');
+    Route::post('cage/add', 'CageController@addCage')->name('addCage');
+
+    Route::get('breeds', 'BreedController@getBreeds')->name('breeds');
+    Route::get('breed/{id}', 'BreedController@getBreed')->where('id', '[0-9]+')->name('breed');
+    Route::post('breed/add', 'BreedController@addBreed')->name('addBreed');
 });
