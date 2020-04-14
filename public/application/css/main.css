@@ -170,9 +170,9 @@ a {
       left: 50%;
       transform: translate(-50%, -50%);
       font-size: 18px; }
-    .item__inner .item-filter .breed-info {
+    .item__inner .item-filter .breed-info, .item__inner .item-filter .cage-info {
       font-size: 16px; }
-      .item__inner .item-filter .breed-info span {
+      .item__inner .item-filter .breed-info span, .item__inner .item-filter .cage-info span {
         letter-spacing: 0.1px; }
 
 .male {

@@ -9,8 +9,23 @@ use Illuminate\Support\Facades\Auth;
 
 class CageController extends Controller
 {
+    private function getItemsWithParam($array, $param, $value) {
+        $result = [];
+        foreach ($array as $item) {
+            if ($item[$param] == $value) {
+                $result[] = $item;
+            }
+        }
+        return $result;
+    }
+
     function getCages() {
         $cages = Auth::user()->cages;
+        $rabbits = Auth::user()->rabbits;
+        foreach ($cages as $cage) {
+            $cage->rabbits = $this->getItemsWithParam($rabbits, 'breed_id', $cage->id);
+        }
+
         return view('application.cages', ['cages' => $cages]);
     }
 

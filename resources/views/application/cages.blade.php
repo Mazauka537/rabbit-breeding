@@ -60,8 +60,21 @@
                     <div class="ratio ratio-4-3">
                         <div class="item__inner ratio__inner">
                             <div class="item-filter">
-                                <div class="info">
-                                    (Пусто)
+                                <div class="info cage-info">
+                                    @if ($cage->rabbits == null)
+                                        (пусто)
+                                    @else
+                                        @foreach($cage->rabbits as $key => $rabbit)
+                                            @if($rabbit->gender == 'f')
+                                                <span class="female">{{ $rabbit->name }}</span>
+                                            @else
+                                                <span class="male">{{ $rabbit->name }}</span>
+                                            @endif
+                                            @if($key != count($cage->rabbits) - 1)
+                                                ,
+                                            @endif
+                                        @endforeach
+                                    @endif
                                 </div>
                             </div>
                         </div>
@@ -73,7 +86,7 @@
                         </div>
                     </div>
                     <div class="item-desc">
-                        {{ $cage->desc }}
+                        {{ $cage->desc ?? "(нет описания)" }}
                     </div>
                 </a>
             </div>

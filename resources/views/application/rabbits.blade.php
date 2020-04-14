@@ -143,7 +143,7 @@
                             </div>
                         </div>
                         <div class="item-desc">
-                            {{ $rabbit->desc }}
+                            {{ $rabbit->desc ?? "(нет описания)" }}
                         </div>
                     </a>
                 </div>
