@@ -60,8 +60,21 @@
                     <div class="ratio ratio-4-3">
                         <div class="item__inner ratio__inner">
                             <div class="item-filter">
-                                <div class="info">
-                                    (Пусто)
+                                <div class="info breed-info">
+                                    @if ($breed->rabbits == null)
+                                        (пусто)
+                                    @else
+                                        @foreach($breed->rabbits as $key => $rabbit)
+                                            @if($rabbit->gender == 'f')
+                                                <span class="female">{{ $rabbit->name }}</span>
+                                            @else
+                                                <span class="male">{{ $rabbit->name }}</span>
+                                            @endif
+                                            @if($key != count($breed->rabbits) - 1)
+                                                ,
+                                            @endif
+                                        @endforeach
+                                    @endif
                                 </div>
                             </div>
                         </div>
@@ -73,7 +86,7 @@
                         </div>
                     </div>
                     <div class="item-desc">
-                        {{ $breed->desc }}
+                        {{ $breed->desc ?? "(нет описания)" }}
                     </div>
                 </a>
             </div>

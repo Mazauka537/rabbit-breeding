@@ -2,6 +2,8 @@ $color1: #A3F06C;
 $color2: #87F03C;
 $color3: #5DE100;
 $color4: #20cb00;
+$male-color: skyblue;
+$female-color: pink;
 
 
 * {
@@ -223,9 +225,25 @@ a {
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            font-size: 20px;
+            font-size: 18px;
+        }
+
+        .breed-info {
+            font-size: 16px;
+
+            span {
+                letter-spacing: 0.1px;
+
+            }
         }
     }
+}
+
+.male {
+    color: $male-color;
+}
+.female {
+    color: $female-color;
 }
 
 .item__footer {

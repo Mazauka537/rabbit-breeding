@@ -9,8 +9,22 @@ use Illuminate\Support\Facades\Auth;
 
 class BreedController extends Controller
 {
+    private function getItemsWithParam($array, $param, $value) {
+        $result = [];
+        foreach ($array as $item) {
+            if ($item[$param] == $value) {
+                $result[] = $item;
+            }
+        }
+        return $result;
+    }
+
     function getBreeds() {
         $breeds = Auth::user()->breeds;
+        $rabbits = Auth::user()->rabbits;
+        foreach ($breeds as $breed) {
+            $breed->rabbits = $this->getItemsWithParam($rabbits, 'breed_id', $breed->id);
+        }
         return view('application.breeds', ['breeds' => $breeds]);
     }
 
@@ -22,7 +36,7 @@ class BreedController extends Controller
 
         $this->validate($request, [
             'name' => 'required|string|max:64',
-            'desc' => 'max:255'
+            'desc' => 'nullable|string|max:255'
         ]);
 
         $breed = new Breed();

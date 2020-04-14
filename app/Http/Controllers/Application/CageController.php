@@ -21,7 +21,7 @@ class CageController extends Controller
     function addCage(Request $request) {
         $this->validate($request, [
             'name' => 'required|string|max:64',
-            'desc' => 'max:255'
+            'desc' => 'nullable|string|max:255'
         ]);
 
         $cage = new Cage();

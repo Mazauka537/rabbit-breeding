@@ -3,17 +3,34 @@
 namespace App\Http\Controllers\Application;
 
 use App\Rabbit;
-use App\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 
 class RabbitController extends Controller
 {
+    private function findNameById($arr, $id) {
+        $item_name = "";
+        foreach ($arr as $item) {
+            if ($id == $item->id) {
+                $item_name = $item->name;
+                break;
+            }
+        }
+        if ($item_name == "")
+            return false;
+        else
+            return $item_name;
+    }
+
     function getRabbits() {
         $cages = Auth::user()->cages;
         $breeds = Auth::user()->breeds;
         $rabbits = Auth::user()->rabbits;
+        foreach ($rabbits as $rabbit) {
+            $rabbit->cage_name = ($cage_name = $this->findNameById($cages, $rabbit->cage_id)) ? $cage_name : null;
+            $rabbit->breed_name = ($breed_name = $this->findNameById($breeds, $rabbit->breed_id)) ? $breed_name : null;
+        }
         return view('application.rabbits', ['rabbits' => $rabbits, 'cages' => $cages, 'breeds' => $breeds]);
     }
 

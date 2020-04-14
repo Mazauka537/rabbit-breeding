@@ -169,7 +169,17 @@ a {
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
-      font-size: 20px; }
+      font-size: 18px; }
+    .item__inner .item-filter .breed-info {
+      font-size: 16px; }
+      .item__inner .item-filter .breed-info span {
+        letter-spacing: 0.1px; }
+
+.male {
+  color: skyblue; }
+
+.female {
+  color: pink; }
 
 .item__footer {
   padding: 10px;
