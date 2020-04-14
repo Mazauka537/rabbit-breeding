@@ -23,7 +23,7 @@ class CreateRabbitsTable extends Migration
             $table->date('birthday')->nullable();
             $table->string('status', 32)->default('none');
             $table->string('desc')->nullable();
-            $table->unsignedBigInteger('mather_id')->nullable();
+            $table->unsignedBigInteger('mother_id')->nullable();
             $table->unsignedBigInteger('father_id')->nullable();
             $table->timestamps();
 

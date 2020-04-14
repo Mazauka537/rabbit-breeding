@@ -44,4 +44,8 @@ class User extends Authenticatable
     public function breeds() {
         return $this->hasMany('App\Breed');
     }
+
+    public function rabbits() {
+        return $this->hasMany('App\Rabbit');
+    }
 }
