@@ -8,7 +8,7 @@
         <div class="modal-window" id="modal-add-item-form">
             <div class="form__wrapper" id="add-item-form">
                 <div class="close-button" id="btn-close-add-item-form"></div>
-                <form action="{{ route('addRabbit') }}" class="form" method="post">
+                <form action="{{ route('addRabbit') }}" class="form" method="post" enctype="multipart/form-data">
                     @csrf
                     <div class="head">
                         Добавление нового кролика
@@ -29,6 +29,12 @@
                                     <option value="m" @if(old('gender') == 'm') {{ "selected" }} @endif>М</option>
                                     <option value="f" @if(old('gender') == 'f') {{ "selected" }} @endif>Ж</option>
                                 </select>
+                            </div>
+                        </div>
+                        <div class="line clearfix">
+                            <div class="label">Фото:</div>
+                            <div class="labeled">
+                                <input type="file" name="photo">
                             </div>
                         </div>
                         <div class="line clearfix">

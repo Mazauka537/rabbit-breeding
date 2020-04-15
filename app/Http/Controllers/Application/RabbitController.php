@@ -6,10 +6,12 @@ use App\Rabbit;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class RabbitController extends Controller
 {
-    private function findNameById($arr, $id) {
+    private function findNameById($arr, $id)
+    {
         $item_name = "";
         foreach ($arr as $item) {
             if ($id == $item->id) {
@@ -23,7 +25,14 @@ class RabbitController extends Controller
             return $item_name;
     }
 
-    function getRabbits() {
+    private function getRandomStr($length) {
+        $permitted_chars = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        $str = substr(str_shuffle(str_shuffle(str_shuffle($permitted_chars))), 0, $length);
+        return $str;
+    }
+
+    function getRabbits()
+    {
         $cages = Auth::user()->cages;
         $breeds = Auth::user()->breeds;
         $rabbits = Auth::user()->rabbits;
@@ -34,23 +43,26 @@ class RabbitController extends Controller
         return view('application.rabbits', ['rabbits' => $rabbits, 'cages' => $cages, 'breeds' => $breeds]);
     }
 
-    function getRabbit($id) {
+    function getRabbit($id)
+    {
         $rabbit = Auth::user()->rabbits()->findOrFail($id);
 
         return view('application.rabbit', ['rabbit' => $rabbit]);
     }
 
-    function addRabbit(Request $request) {
+    function addRabbit(Request $request)
+    {
 
         $this->validate($request, [
             'name' => 'required|string|max:64',
             'gender' => 'required|in:f,m',
-            'breed' => 'nullable|integer|exists:breeds,id,user_id,'.Auth::id(),
-            'cage' => 'nullable|integer|exists:cages,id,user_id,'.Auth::id(),
+            'photo' => 'nullable|image',
+            'breed' => 'nullable|integer|exists:breeds,id,user_id,' . Auth::id(),
+            'cage' => 'nullable|integer|exists:cages,id,user_id,' . Auth::id(),
             'birthday' => 'nullable|date',
             'desc' => 'nullable|string|max:255',
-            'mother' => 'nullable|integer|exists:rabbits,id,user_id,'.Auth::id(),
-            'father' => 'nullable|integer|exists:rabbits,id,user_id,'.Auth::id(),
+            'mother' => 'nullable|integer|exists:rabbits,id,user_id,' . Auth::id(),
+            'father' => 'nullable|integer|exists:rabbits,id,user_id,' . Auth::id(),
         ]);
 
         $rabbit = new Rabbit();
@@ -64,6 +76,16 @@ class RabbitController extends Controller
         $rabbit->desc = $request->desc;
         $rabbit->mother_id = $request->mother;
         $rabbit->father_id = $request->father;
+
+        if ($request->photo != null) {
+            $path = $request->file('photo')->store('\application\images\\' . Auth::id() . '\rabbits', 'public');
+
+            if (!$path) {
+                return response('', 422);
+            }
+
+            $rabbit->photo = $path;
+        }
 
         $rabbit->save();
 
