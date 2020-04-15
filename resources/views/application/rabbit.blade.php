@@ -5,6 +5,15 @@
 @section('main')
     <div class="main__inner">
 
+        <div class="modal-window">
+            <div class="form__wrapper" id="add-item-form">
+                <div class="close-button" id="btn-close-add-item-form"></div>
+                <form action="{{ route('addRabbit') }}" class="form" method="post" enctype="multipart/form-data">
+
+                </form>
+            </div>
+        </div>
+
         <div class="rabbit-container">
             <div class="left">
                 <div class="photo__wrapper wrapper">

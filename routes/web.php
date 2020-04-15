@@ -31,4 +31,17 @@ Route::group(['middleware' => 'auth', 'namespace' => 'Application', 'prefix' => 
     Route::get('breeds', 'BreedController@getBreeds')->name('breeds');
     Route::get('breed/{id}', 'BreedController@getBreed')->where('id', '[0-9]+')->name('breed');
     Route::post('breed/add', 'BreedController@addBreed')->name('addBreed');
+
+    Route::get('matings', 'MatingController@getMatings')->name('matings');
+    Route::get('mating/{id}', 'MatingController@getMating')->where('id', '[0-9]+')->name('mating');
+    Route::post('mating/add', 'MatingController@addMating')->name('addMating');
+
+    Route::get('vaccinations', 'VaccinationController@getVaccinations')->name('vaccinations');
+    Route::get('vaccination/{id}', 'VaccinationController@getVaccination')->where('id', '[0-9]+')->name('vaccination');
+    Route::post('vaccination/add', 'VaccinationController@addVaccination')->name('addVaccination');
+
+    Route::get('reports', 'ReportController@getReports')->name('reports');
+
+    Route::get('notifications', 'NotificationsController@getNotifications')->name('notifications');
+
 });

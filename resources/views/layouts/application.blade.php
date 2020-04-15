@@ -26,43 +26,43 @@
                 <nav class="nav">
                     <ul>
                         <li>
-                            <a href="#">
+                            <a href="{{ route('rabbits') }}">
                                 <span class="icon icon-rabbit"></span>
                                 <span>Кролики</span>
                             </a>
                         </li>
                         <li>
-                            <a href="#">
+                            <a href="{{ route('breeds') }}">
                                 <span class="icon icon-pawprint"></span>
                                 <span>Породы</span>
                             </a>
                         </li>
                         <li>
-                            <a href="#">
+                            <a href="{{ route('cages') }}">
                                 <span class="icon icon-bird-cage"></span>
                                 <span>Клетки</span>
                             </a>
                         </li>
                         <li>
-                            <a href="#">
+                            <a href="{{ route('matings') }}">
                                 <span class="icon icon-heart"></span>
                                 <span>Случки</span>
                             </a>
                         </li>
                         <li>
-                            <a href="#">
+                            <a href="{{ route('vaccinations') }}">
                                 <span class="icon icon-syringe"></span>
                                 <span>Вакцинации</span>
                             </a>
                         </li>
                         <li>
-                            <a href="#">
+                            <a href="{{ route('reports') }}">
                                 <span class="icon icon-statistics"></span>
                                 <span>Отчеты</span>
                             </a>
                         </li>
                         <li>
-                            <a href="#">
+                            <a href="{{ route('notifications') }}">
                                 <span class="icon icon-bell"></span>
                                 <span>Уведомления</span>
                             </a>
