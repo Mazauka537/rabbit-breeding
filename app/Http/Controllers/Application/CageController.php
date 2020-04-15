@@ -29,7 +29,7 @@ class CageController extends Controller
         return view('application.cages', ['cages' => $cages]);
     }
 
-    function getCage() {
+    function getCage($id) {
         return view('application.cage');
     }
 

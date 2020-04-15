@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers\Application;
 
+use App\Breed;
 use App\Rabbit;
+use App\Cage;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
@@ -25,7 +27,8 @@ class RabbitController extends Controller
             return $item_name;
     }
 
-    private function getRandomStr($length) {
+    private function getRandomStr($length)
+    {
         $permitted_chars = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
         $str = substr(str_shuffle(str_shuffle(str_shuffle($permitted_chars))), 0, $length);
         return $str;
@@ -47,6 +50,11 @@ class RabbitController extends Controller
     {
         $rabbit = Auth::user()->rabbits()->findOrFail($id);
 
+        $rabbit->breed_name = ($breed = Breed::find($rabbit->breed_id)) ? $breed->name : '(нет)';
+        $rabbit->cage_name = ($cage = Cage::find($rabbit->cage_id)) ? $cage->name : '(нет)';
+        $rabbit->mother_name = ($mother = Rabbit::find($rabbit->mother_id)) ? $mother->name : '(нет)';
+        $rabbit->father_name = ($father = Rabbit::find($rabbit->father_id)) ? $father->name : '(нет)';
+
         return view('application.rabbit', ['rabbit' => $rabbit]);
     }
 
@@ -61,8 +69,8 @@ class RabbitController extends Controller
             'cage' => 'nullable|integer|exists:cages,id,user_id,' . Auth::id(),
             'birthday' => 'nullable|date',
             'desc' => 'nullable|string|max:255',
-            'mother' => 'nullable|integer|exists:rabbits,id,user_id,' . Auth::id(),
-            'father' => 'nullable|integer|exists:rabbits,id,user_id,' . Auth::id(),
+            'mother' => 'nullable|integer|exists:rabbits,id,user_id,' . Auth::id() . '|exists:rabbits,id,gender,f',
+            'father' => 'nullable|integer|exists:rabbits,id,user_id,' . Auth::id() . '|exists:rabbits,id,gender,m',
         ]);
 
         $rabbit = new Rabbit();
