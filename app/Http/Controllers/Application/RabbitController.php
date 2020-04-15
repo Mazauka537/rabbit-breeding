@@ -78,7 +78,7 @@ class RabbitController extends Controller
         $rabbit->father_id = $request->father;
 
         if ($request->photo != null) {
-            $path = $request->file('photo')->store('\application\images\\' . Auth::id() . '\rabbits', 'public');
+            $path = $request->file('photo')->store('/application/images/' . Auth::id() . '/rabbits', 'public');
 
             if (!$path) {
                 return response('', 422);

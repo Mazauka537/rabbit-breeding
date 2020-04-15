@@ -132,7 +132,11 @@
                 <div class="item__wrapper">
                     <a href="{{ route('rabbit', $rabbit->id) }}" class="item">
                         <div class="ratio ratio-4-3">
-                            <div class="item__inner ratio__inner">
+                            <div class="item__inner ratio__inner"
+                                @if($rabbit->photo != null)
+                                    {{ 'style=background-image:url(' . asset('storage/' . $rabbit->photo) . ')' }}
+                                @endif
+                            >
                                 <div class="item-filter">
                                     <div class="info">
                                         <div class="cage">{{ $rabbit->cage_name }}</div>
