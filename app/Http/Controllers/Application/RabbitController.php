@@ -12,19 +12,17 @@ use Illuminate\Support\Facades\Storage;
 
 class RabbitController extends Controller
 {
-    private function findNameById($arr, $id)
+    private function findItemById($arr, $id)
     {
-        $item_name = "";
+        $result = false;
         foreach ($arr as $item) {
             if ($id == $item->id) {
-                $item_name = $item->name;
+                $result = $item;
                 break;
             }
         }
-        if ($item_name == "")
-            return false;
-        else
-            return $item_name;
+
+        return $result;
     }
 
     private function getRandomStr($length)
@@ -40,22 +38,28 @@ class RabbitController extends Controller
         $breeds = Auth::user()->breeds;
         $rabbits = Auth::user()->rabbits;
         foreach ($rabbits as $rabbit) {
-            $rabbit->cage_name = ($cage_name = $this->findNameById($cages, $rabbit->cage_id)) ? $cage_name : null;
-            $rabbit->breed_name = ($breed_name = $this->findNameById($breeds, $rabbit->breed_id)) ? $breed_name : null;
+            $rabbit->cage_name = ($cage = $this->findItemById($cages, $rabbit->cage_id)) ? $cage->name : null;
+            $rabbit->breed_name = ($breed = $this->findItemById($breeds, $rabbit->breed_id)) ? $breed->name : null;
         }
         return view('application.rabbits', ['rabbits' => $rabbits, 'cages' => $cages, 'breeds' => $breeds]);
     }
 
     function getRabbit($id)
     {
-        $rabbit = Auth::user()->rabbits()->findOrFail($id);
+        $cages = Auth::user()->cages;
+        $breeds = Auth::user()->breeds;
+        $rabbits = Auth::user()->rabbits;
+
+        $rabbit = ($r = $this->findItemById($rabbits, $id)) ? $r : null;
+        if ($rabbit == null || $rabbit->user_id != Auth::id())
+            return response(view('errors.404'), 404);
 
         $rabbit->breed_name = ($breed = Breed::find($rabbit->breed_id)) ? $breed->name : '(нет)';
         $rabbit->cage_name = ($cage = Cage::find($rabbit->cage_id)) ? $cage->name : '(нет)';
         $rabbit->mother_name = ($mother = Rabbit::find($rabbit->mother_id)) ? $mother->name : '(нет)';
         $rabbit->father_name = ($father = Rabbit::find($rabbit->father_id)) ? $father->name : '(нет)';
 
-        return view('application.rabbit', ['rabbit' => $rabbit]);
+        return view('application.rabbit', compact(['rabbit', 'rabbits', 'cages', 'breeds']));
     }
 
     function addRabbit(Request $request)

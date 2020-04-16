@@ -5,16 +5,8 @@
 @section('main')
     <div class="main__inner">
 
-        <div class="modal-window">
-            <div class="form__wrapper" id="add-item-form">
-                <div class="close-button" id="btn-close-add-item-form"></div>
-                <form action="{{ route('addRabbit') }}" class="form" method="post" enctype="multipart/form-data">
-
-                </form>
-            </div>
-        </div>
-
         <div class="rabbit-container">
+
             <div class="left">
                 <div class="photo__wrapper wrapper">
                     <div class="photo">
@@ -27,6 +19,7 @@
                     </div>
                 </div>
             </div>
+
             <div class="right">
 
                 <div class="info__wrapper wrapper">
@@ -38,13 +31,13 @@
                                 <div class="status">{{ $rabbit->status }}</div>
                             </div>
                             <div class="buttons">
-                                <button>Изменить</button>
-                                <button>Удалить</button>
+                                <button id="show-edit-fields-btn">Изменить</button>
+                                <button id="show-delete-modal-btn">Удалить</button>
                             </div>
                         </div>
 
                         <div class="body">
-                            <div class="line gender clearfix">
+                            <div class="line clearfix">
                                 <div class="label">Пол:</div>
                                 <div class="labeled">
                                     @if($rabbit->gender == 'f')
@@ -53,10 +46,20 @@
                                         {{ 'Мужской' }}
                                     @endif
                                 </div>
+                                <div class="labeled-edit">
+                                    <select name="gender">
+                                        <option value=""></option>
+                                        <option value="f" @if($rabbit->gender == 'f') {{ 'selected' }} @endif>Ж</option>
+                                        <option value="m" @if($rabbit->gender == 'm') {{ 'selected' }} @endif>М</option>
+                                    </select>
+                                </div>
                             </div>
                             <div class="line clearfix">
                                 <div class="label">Дата рождения:</div>
-                                <div class="labeled">{{ $rabbit->birthday }}</div>
+                                <div class="labeled">{{ $rabbit->birthday ?? '(нет)' }}</div>
+                                <div class="labeled-edit">
+                                    <input type="date" name="birthday" value="{{ $rabbit->birthday ?? '' }}">
+                                </div>
                             </div>
                             <div class="line clearfix">
                                 <div class="label">Порода:</div>
@@ -66,6 +69,15 @@
                                     @else
                                         {{ '(нет)' }}
                                     @endif
+                                </div>
+                                <div class="labeled-edit">
+                                    <select name="breed">
+                                        <option value=""></option>
+                                        @foreach($breeds as $breed)
+                                            <option
+                                                value="{{ $breed->id }}" @if($breed->id == $rabbit->breed_id) {{ 'selected' }} @endif>{{ $breed->name }}</option>
+                                        @endforeach
+                                    </select>
                                 </div>
                             </div>
                             <div class="line clearfix">
@@ -77,6 +89,15 @@
                                         {{ '(нет)' }}
                                     @endif
                                 </div>
+                                <div class="labeled-edit">
+                                    <select name="cage">
+                                        <option value=""></option>
+                                        @foreach($cages as $cage)
+                                            <option
+                                                value="{{ $cage->id }}" @if($cage->id == $rabbit->cage_id) {{ 'selected' }} @endif>{{ $cage->name }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
                             </div>
                             <div class="line clearfix">
                                 <div class="label">Мама:</div>
@@ -86,6 +107,16 @@
                                     @else
                                         {{ '(нет)' }}
                                     @endif
+                                </div>
+                                <div class="labeled-edit">
+                                    <select name="mother">
+                                        <option value=""></option>
+                                        @foreach($rabbits as $mother)
+                                            @if($mother->gender == 'f')
+                                                <option value="{{ $mother->id }}" @if($mother->id == $rabbit->mother_id) {{ 'selected' }} @endif>{{ $mother->name }}</option>
+                                            @endif
+                                        @endforeach
+                                    </select>
                                 </div>
                             </div>
                             <div class="line clearfix">
@@ -97,11 +128,24 @@
                                         {{ '(нет)' }}
                                     @endif
                                 </div>
+                                <div class="labeled-edit">
+                                    <select name="father">
+                                        <option value=""></option>
+                                        @foreach($rabbits as $father)
+                                            @if($father->gender == 'm')
+                                                <option value="{{ $father->id }}" @if($father->id == $rabbit->father_id) {{ 'selected' }} @endif>{{ $father->name }}</option>
+                                            @endif
+                                        @endforeach
+                                    </select>
+                                </div>
                             </div>
                             <div class="line clearfix">
                                 <div class="label">Описание:</div>
                                 <div class="labeled">
                                     {{ $rabbit->desc ?? '(нет)' }}
+                                </div>
+                                <div class="labeled-edit">
+                                    <textarea name="desc">{{ $rabbit->desc ?? '' }}</textarea>
                                 </div>
                             </div>
                         </div>
@@ -128,5 +172,6 @@
             </div>
         </div>
 
+        <script src="{{ asset('application/js/modal-edit-and-delete-item.js') }}"></script>
     </div>
 @endsection

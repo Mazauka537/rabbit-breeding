@@ -354,6 +354,10 @@ a {
     color: #555;
 }
 
+.labeled-edit {
+    display: none;
+}
+
 //add button
 .add-button {
     position: fixed;
@@ -470,29 +474,32 @@ a {
 
     }
 
-    input, select, textarea, option {
-        height: 30px;
-        padding: 5px 9px 5px;
-        border-radius: 3px;
-        border: 1px solid #d3d9de;
-        color: #000;
-        background: #fff;
-        font-size: 14px;
-        max-width: 300px;
-        width: 100%;
 
-        &[type="submit"] {
-            background: $color1;
-            border: none;
-            cursor: pointer;
-        }
-    }
+}
 
-    textarea {
-        width: 100%;
-        min-height: 100px;
-        resize: none;
+input, select, textarea, option {
+    height: 30px;
+    padding: 5px 9px 5px;
+    border-radius: 3px;
+    border: 1px solid #d3d9de;
+    color: #000;
+    background: #fff;
+    font-size: 14px;
+    max-width: 300px;
+    width: 100%;
+
+    &[type="submit"] {
+        background: $color1;
+        border: none;
+        cursor: pointer;
+        color: #EEE;
     }
+}
+
+textarea {
+    width: 100%;
+    min-height: 100px;
+    resize: none;
 }
 
 .errors {
