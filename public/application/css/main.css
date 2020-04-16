@@ -311,6 +311,15 @@ a {
   padding: 10px;
   display: none; }
 
+.delete-modal .form .body {
+  padding: 10px 0; }
+  .delete-modal .form .body .buttons {
+    padding-top: 10px; }
+    .delete-modal .form .body .buttons input {
+      max-width: 120px;
+      width: 100%;
+      margin-right: 3px; }
+
 .close-button {
   position: absolute;
   top: 15px;
@@ -366,7 +375,7 @@ input, select, textarea, option, button {
   font-size: 14px;
   max-width: 300px;
   width: 100%; }
-  input[type="submit"], select[type="submit"], textarea[type="submit"], option[type="submit"], button[type="submit"] {
+  input[type="submit"], input[type="button"], select[type="submit"], select[type="button"], textarea[type="submit"], textarea[type="button"], option[type="submit"], option[type="button"], button[type="submit"], button[type="button"] {
     background: #A3F06C;
     border: none;
     cursor: pointer;

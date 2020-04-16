@@ -242,6 +242,7 @@ a {
 .male {
     color: $male-color;
 }
+
 .female {
     color: $female-color;
 }
@@ -299,8 +300,10 @@ a {
     .body {
         padding-top: 5px;
     }
+
     .body-form {
         display: none;
+
         .label {
             padding: 11px 0 8px;
         }
@@ -311,6 +314,7 @@ a {
         white-space: nowrap;
         flex-grow: 1;
         text-align: right;
+
         button {
             cursor: pointer;
             padding: 3px 5px;
@@ -382,6 +386,7 @@ a {
         box-shadow: 0 0 6px -2px #333;
         position: relative;
         cursor: pointer;
+
         &::after, &::before {
             content: "";
             display: block;
@@ -394,11 +399,14 @@ a {
             transform: translate(-50%, -50%) rotate(0deg);
             border-radius: 40px;
         }
+
         &::before {
             transform: translate(-50%, -50%) rotate(90deg);
         }
+
         &:hover {
             background: $color4;
+
             &::before, &::after {
                 background: #eee;
             }
@@ -419,6 +427,25 @@ a {
     display: none;
 }
 
+.delete-modal {
+    .form {
+
+        .body {
+            padding: 10px 0;
+
+            .buttons {
+                padding-top: 10px;
+
+                input {
+                    max-width: 120px;
+                    width: 100%;
+                    margin-right: 3px;
+                }
+            }
+        }
+    }
+}
+
 .close-button {
     position: absolute;
     top: 15px;
@@ -426,6 +453,7 @@ a {
     cursor: pointer;
     width: 30px;
     height: 30px;
+
     &::after, &::before {
         content: "";
         display: block;
@@ -438,9 +466,11 @@ a {
         transform: translate(-50%, -50%) rotate(-45deg);
         border-radius: 40px;
     }
+
     &::before {
-        transform: translate(-50%, -50%) rotate(45deg) ;
+        transform: translate(-50%, -50%) rotate(45deg);
     }
+
     &:hover {
         &::after, &::before {
             background: #444;
@@ -496,7 +526,7 @@ input, select, textarea, option, button {
     max-width: 300px;
     width: 100%;
 
-    &[type="submit"] {
+    &[type="submit"], &[type="button"] {
         background: $color1;
         border: none;
         cursor: pointer;

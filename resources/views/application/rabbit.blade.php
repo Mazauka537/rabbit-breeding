@@ -5,6 +5,27 @@
 @section('main')
     <div class="main__inner">
 
+        <div class="modal-window delete-modal" id="modal-delete-item-form">
+            <div class="form__wrapper" id="delete-item-form">
+                <div class="close-button" id="close-delete-modal-btn"></div>
+                <form action="{{ route('deleteRabbit', $rabbit->id) }}" class="form" method="post">
+                    @csrf
+                    <div class="head">
+                        Удаление кролика
+                    </div>
+
+                    <div class="body">
+                        Вы действительно хотите удалить данного кролика? При нажатии на кнопку "Да" кролик и все данные
+                        связанные с ним будут навсегда удалены из системы.
+                        <div class="buttons">
+                            <input type="submit" value="Да">
+                            <input type="button" value="Отмена" id="canсel-delete-modal-btn">
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
         <div class="rabbit-container">
 
             <div class="left">
@@ -101,7 +122,8 @@
                             </div>
 
                             <div class="body-form" id="body-form">
-                                <form action="{{ route('editRabbit', $rabbit->id) }}" method="post" enctype="multipart/form-data">
+                                <form action="{{ route('editRabbit', $rabbit->id) }}" method="post"
+                                      enctype="multipart/form-data">
                                     @csrf
                                     <div class="line clearfix">
                                         <div class="label">Имя:</div>
@@ -114,8 +136,12 @@
                                         <div class="labeled">
                                             <select name="gender">
                                                 <option value=""></option>
-                                                <option value="f" @if($rabbit->gender == 'f') {{ 'selected' }} @endif>Ж</option>
-                                                <option value="m" @if($rabbit->gender == 'm') {{ 'selected' }} @endif>М</option>
+                                                <option value="f" @if($rabbit->gender == 'f') {{ 'selected' }} @endif>
+                                                    Ж
+                                                </option>
+                                                <option value="m" @if($rabbit->gender == 'm') {{ 'selected' }} @endif>
+                                                    М
+                                                </option>
                                             </select>
                                         </div>
                                     </div>
@@ -156,7 +182,8 @@
                                                 <option value=""></option>
                                                 @foreach($rabbits as $mother)
                                                     @if($mother->gender == 'f')
-                                                        <option value="{{ $mother->id }}" @if($mother->id == $rabbit->mother_id) {{ 'selected' }} @endif>{{ $mother->name }}</option>
+                                                        <option
+                                                            value="{{ $mother->id }}" @if($mother->id == $rabbit->mother_id) {{ 'selected' }} @endif>{{ $mother->name }}</option>
                                                     @endif
                                                 @endforeach
                                             </select>
@@ -169,7 +196,8 @@
                                                 <option value=""></option>
                                                 @foreach($rabbits as $father)
                                                     @if($father->gender == 'm')
-                                                        <option value="{{ $father->id }}" @if($father->id == $rabbit->father_id) {{ 'selected' }} @endif>{{ $father->name }}</option>
+                                                        <option
+                                                            value="{{ $father->id }}" @if($father->id == $rabbit->father_id) {{ 'selected' }} @endif>{{ $father->name }}</option>
                                                     @endif
                                                 @endforeach
                                             </select>

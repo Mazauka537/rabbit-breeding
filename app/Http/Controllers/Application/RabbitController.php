@@ -131,4 +131,10 @@ class RabbitController extends Controller
 
         return back();
     }
+
+    function deleteRabbit($id) {
+        $rabbit = Auth::user()->rabbits()->findOrFail($id);
+        $rabbit->delete();
+        return redirect(route('rabbits'));
+    }
 }
