@@ -29,7 +29,8 @@
         <div class="modal-window" id="edit-photo-modal">
             <div class="form__wrapper" id="edit-photo-form">
                 <div class="close-button" id="close-edit-photo-btn"></div>
-                <form action="{{ route('editPhoto', $rabbit->id) }}" class="form" method="post" enctype="multipart/form-data">
+                <form action="{{ route('editPhoto', $rabbit->id) }}" class="form" method="post"
+                      enctype="multipart/form-data">
                     @csrf
                     <div class="head">
                         Изменение фотографии
@@ -48,10 +49,10 @@
                 <div class="photo__wrapper wrapper">
                     <div class="photo">
                         <img src="@if($rabbit->photo != null)
-                            {{ asset('storage/' . $rabbit->photo) }}
-                            @else
-                            {{ asset('application/images/rabbit.svg') }}
-                            @endif" alt="Фото кролика">
+                        {{ asset('storage/' . $rabbit->photo) }}
+                        @else
+                        {{ asset('application/images/rabbit.svg') }}
+                        @endif" alt="Фото кролика">
                         <div class="side-panel">
                             <div id="btn-show-edit-photo">Изменить фотографию</div>
                             <div>Удалить фотографию</div>
@@ -86,61 +87,77 @@
                                 <div class="line clearfix">
                                     <div class="label">Пол:</div>
                                     <div class="labeled">
-                                        @if($rabbit->gender == 'f')
-                                            {{ 'Женский' }}
-                                        @else
-                                            {{ 'Мужской' }}
-                                        @endif
+                                        <div class="labeled__inner">
+                                            @if($rabbit->gender == 'f')
+                                                {{ 'Женский' }}
+                                            @else
+                                                {{ 'Мужской' }}
+                                            @endif
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="line clearfix">
                                     <div class="label">Дата рождения:</div>
-                                    <div class="labeled">{{ $rabbit->birthday ?? '(нет)' }}</div>
+                                    <div class="labeled">
+                                        <div class="labeled__inner">
+                                            {{ $rabbit->birthday ?? '(нет)' }}
+                                        </div>
+                                    </div>
                                 </div>
                                 <div class="line clearfix">
                                     <div class="label">Порода:</div>
                                     <div class="labeled">
-                                        @if($rabbit->breed_id)
-                                            <a href="{{ route('breed', $rabbit->breed_id) }}">{{ $rabbit->breed_name }}</a>
-                                        @else
-                                            {{ '(нет)' }}
-                                        @endif
+                                        <div class="labeled__inner">
+                                            @if($rabbit->breed_id)
+                                                <a href="{{ route('breed', $rabbit->breed_id) }}">{{ $rabbit->breed_name }}</a>
+                                            @else
+                                                {{ '(нет)' }}
+                                            @endif
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="line clearfix">
                                     <div class="label">Клетка:</div>
                                     <div class="labeled">
-                                        @if($rabbit->cage_id)
-                                            <a href="{{ route('cage', $rabbit->cage_id) }}">{{ $rabbit->cage_name }}</a>
-                                        @else
-                                            {{ '(нет)' }}
-                                        @endif
+                                        <div class="labeled__inner">
+                                            @if($rabbit->cage_id)
+                                                <a href="{{ route('cage', $rabbit->cage_id) }}">{{ $rabbit->cage_name }}</a>
+                                            @else
+                                                {{ '(нет)' }}
+                                            @endif
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="line clearfix">
                                     <div class="label">Мама:</div>
                                     <div class="labeled">
-                                        @if($rabbit->mother_id)
-                                            <a href="{{ route('rabbit', $rabbit->mother_id) }}">{{ $rabbit->mother_name }}</a>
-                                        @else
-                                            {{ '(нет)' }}
-                                        @endif
+                                        <div class="labeled__inner">
+                                            @if($rabbit->mother_id)
+                                                <a href="{{ route('rabbit', $rabbit->mother_id) }}">{{ $rabbit->mother_name }}</a>
+                                            @else
+                                                {{ '(нет)' }}
+                                            @endif
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="line clearfix">
                                     <div class="label">Папа:</div>
                                     <div class="labeled">
-                                        @if($rabbit->father_id)
-                                            <a href="{{ route('rabbit', $rabbit->father_id) }}">{{ $rabbit->father_name }}</a>
-                                        @else
-                                            {{ '(нет)' }}
-                                        @endif
+                                        <div class="labeled__inner">
+                                            @if($rabbit->father_id)
+                                                <a href="{{ route('rabbit', $rabbit->father_id) }}">{{ $rabbit->father_name }}</a>
+                                            @else
+                                                {{ '(нет)' }}
+                                            @endif
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="line clearfix">
                                     <div class="label">Описание:</div>
                                     <div class="labeled">
-                                        {{ $rabbit->desc ?? '(нет)' }}
+                                        <div class="labeled__inner">
+                                            {{ $rabbit->desc ?? '(нет)' }}
+                                        </div>
                                     </div>
                                 </div>
                             </div>

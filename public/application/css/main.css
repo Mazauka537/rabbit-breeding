@@ -225,7 +225,7 @@ a {
   .rabbit-container .body-form {
     display: none; }
     .rabbit-container .body-form .label {
-      padding: 11px 0 8px; }
+      padding: 5px 0; }
   .rabbit-container .buttons {
     padding-left: 15px;
     white-space: nowrap;
@@ -239,6 +239,8 @@ a {
       max-width: 110px;
       width: 100%;
       vertical-align: middle; }
+  .rabbit-container .body-info .line {
+    padding: 0; }
 
 .wrapper {
   padding: 10px;
@@ -283,6 +285,9 @@ a {
   clear: both;
   visibility: hidden; }
 
+.line {
+  padding: 5px 0; }
+
 .label {
   float: left;
   width: 120px;
@@ -291,10 +296,12 @@ a {
   padding: 5px 0; }
 
 .labeled {
-  padding: 5px 0;
   overflow: hidden;
   font-size: 14px;
   color: #555; }
+
+.labeled__inner {
+  padding: 5px 0; }
 
 .add-button {
   position: fixed;
@@ -394,7 +401,7 @@ a {
   text-align: right;
   padding: 5px 9px 5px; }
 
-input, select, textarea, option, button {
+input, select, textarea, option, button, .input-label {
   height: 30px;
   padding: 5px 9px 5px;
   border-radius: 3px;
@@ -404,11 +411,14 @@ input, select, textarea, option, button {
   font-size: 14px;
   max-width: 300px;
   width: 100%; }
-  input[type="submit"], input[type="button"], select[type="submit"], select[type="button"], textarea[type="submit"], textarea[type="button"], option[type="submit"], option[type="button"], button[type="submit"], button[type="button"] {
+  input[type="submit"], input[type="button"], select[type="submit"], select[type="button"], textarea[type="submit"], textarea[type="button"], option[type="submit"], option[type="button"], button[type="submit"], button[type="button"], .input-label[type="submit"], .input-label[type="button"] {
     background: #A3F06C;
     border: none;
     cursor: pointer;
     color: #FFF; }
+
+.input-label {
+  display: block; }
 
 button {
   background: #A3F06C;

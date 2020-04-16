@@ -34,7 +34,7 @@
                         <div class="line clearfix">
                             <div class="label">Фото:</div>
                             <div class="labeled">
-                                <input type="file" name="photo">
+                                <label class="input-label" for="photo-input"></label><input type="file" name="photo" id="photo-input" style="display: none">
                             </div>
                         </div>
                         <div class="line clearfix">
