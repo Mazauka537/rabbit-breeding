@@ -38,11 +38,11 @@
 
                     <div class="body edit-photo-body">
                         <div class="text-center">
-                            <label class="input-label" for="photo-input">
+                            <label class="input-label" for="photo-input-edit">
                                 Выберите файл
                             </label>
-                            <input type="file" name="photo" id="photo-input" style="display: none" class="input-file">
-                            <input type="submit" value="Сохранить">
+                            <input type="file" name="photo" id="photo-input-edit" style="display: none" class="input-file">
+                            <input type="submit" value="Сохранить" disabled>
                         </div>
                     </div>
                 </form>

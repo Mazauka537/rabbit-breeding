@@ -137,4 +137,31 @@ class RabbitController extends Controller
         $rabbit->delete();
         return redirect(route('rabbits'));
     }
+
+    function editPhoto(Request $request, $id) {
+
+        $this->validate($request, [
+            'photo' => 'nullable|image',
+        ]);
+
+        $rabbit = Auth::user()->rabbits()->findOrFail($id);
+
+        if ($rabbit->photo != null) {
+            Storage::disk('public')->delete($rabbit->photo);
+        }
+
+        if ($request->photo != null) {
+            $path = $request->file('photo')->store('/application/images/' . Auth::id() . '/rabbits', 'public');
+
+            if (!$path) {
+                return response('', 422);
+            }
+
+            $rabbit->photo = $path;
+        }
+
+        $rabbit->save();
+
+        return back();
+    }
 }

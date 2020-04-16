@@ -251,7 +251,8 @@ a {
 
 .photo {
   position: relative;
-  overflow: hidden; }
+  overflow: hidden;
+  min-height: 70px; }
   .photo img {
     width: 100%; }
   .photo:hover .side-panel {

@@ -34,10 +34,10 @@
                         <div class="line clearfix">
                             <div class="label">Фото:</div>
                             <div class="labeled">
-                                <label class="input-label" for="photo-input">
+                                <label class="input-label" for="photo-input-add">
                                     Выберите файл
                                 </label>
-                                <input type="file" name="photo" id="photo-input" style="display: none" class="input-file">
+                                <input type="file" name="photo" id="photo-input-add" style="display: none" class="input-file">
                             </div>
                         </div>
                         <div class="line clearfix">

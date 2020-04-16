@@ -23,7 +23,20 @@ function hideItemDesc(e) {
 }
 
 //выбор фото
-$('.input-file').change(function() {
-    if ($(this).val() != '') $(this).prev().text($(this)[0].files[0].name);
-    else $(this).prev().text('Выберите файл');
+$('#photo-input-add').change(function() {
+    if ($(this).val() != '')
+        $(this).prev().text($(this)[0].files[0].name);
+    else
+        $(this).prev().text('Выберите файл');
+});
+
+$('#photo-input-edit').change(function() {
+    if ($(this).val() != '') {
+        $(this).prev().text($(this)[0].files[0].name);
+        this.parentElement.querySelector('input[type="submit"]').disabled = false;
+    }
+    else {
+        $(this).prev().text('Выберите файл');
+        this.parentElement.querySelector('input[type="submit"]').disabled = true;
+    }
 });
