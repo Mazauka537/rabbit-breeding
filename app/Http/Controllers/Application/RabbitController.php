@@ -164,4 +164,15 @@ class RabbitController extends Controller
 
         return back();
     }
+
+    function deletePhoto($id) {
+        $rabbit = Auth::user()->rabbits()->findOrFail($id);
+
+        Storage::disk('public')->delete($rabbit->photo);
+
+        $rabbit->photo = null;
+        $rabbit->save();
+
+        return back();
+    }
 }

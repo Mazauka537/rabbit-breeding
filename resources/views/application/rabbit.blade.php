@@ -26,6 +26,26 @@
             </div>
         </div>
 
+        <div class="modal-window delete-modal" id="delete-photo-modal">
+            <div class="form__wrapper" id="delete-photo-form">
+                <div class="close-button" id="close-delete-photo-btn"></div>
+                <form action="{{ route('deletePhoto', $rabbit->id) }}" class="form" method="post" enctype="multipart/form-data">
+                    @csrf
+                    <div class="head">
+                        Удаление фотографии
+                    </div>
+
+                    <div class="body delete-photo-body">
+                        Удалить фотографию данного кролика ({{ $rabbit->name }})?
+                        <div class="buttons">
+                            <input type="submit" value="Да">
+                            <input type="button" value="Отмена" id="canсel-delete-photo">
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
         <div class="modal-window" id="edit-photo-modal">
             <div class="form__wrapper" id="edit-photo-form">
                 <div class="close-button" id="close-edit-photo-btn"></div>
@@ -61,7 +81,7 @@
                         @endif" alt="Фото кролика">
                         <div class="side-panel">
                             <div id="btn-show-edit-photo">Изменить фотографию</div>
-                            <div>Удалить фотографию</div>
+                            <div id="btn-show-delete-photo">Удалить фотографию</div>
                         </div>
                     </div>
                 </div>

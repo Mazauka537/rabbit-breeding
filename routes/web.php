@@ -26,7 +26,7 @@ Route::group(['middleware' => 'auth', 'namespace' => 'Application', 'prefix' => 
     Route::post('rabbit/edit/{id}', 'RabbitController@editRabbit')->where('id', '[0-9]+')->name('editRabbit');
     Route::post('rabbit/delete/{id}', 'RabbitController@deleteRabbit')->where('id', '[0-9]+')->name('deleteRabbit');
     Route::post('rabbit/edit-photo/{id}', 'RabbitController@editPhoto')->where('id', '[0-9]+')->name('editPhoto');
-
+    Route::post('rabbit/delete-photo/{id}', 'RabbitController@deletePhoto')->where('id', '[0-9]+')->name('deletePhoto');
 
     Route::get('cages', 'CageController@getCages')->name('cages');
     Route::get('cage/{id}', 'CageController@getCage')->where('id', '[0-9]+')->name('cage');
