@@ -31,7 +31,11 @@
             <div class="left">
                 <div class="photo__wrapper wrapper">
                     <div class="photo">
-                        <img src="{{ asset('storage/' . $rabbit->photo) }}" alt="Фото кролика">
+                        <img src="@if($rabbit->photo != null)
+                            {{ asset('storage/' . $rabbit->photo) }}
+                            @else
+                            {{ asset('application/images/rabbit.svg') }}
+                            @endif" alt="Фото кролика">
                     </div>
                 </div>
                 <div class="some-info__wrapper wrapper">

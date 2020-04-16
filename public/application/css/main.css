@@ -207,7 +207,8 @@ a {
   background: #eff0f2;
   height: 100%; }
   .rabbit-container .left {
-    max-width: 300px; }
+    max-width: 300px;
+    width: 100%; }
   .rabbit-container .right {
     width: 100%; }
   .rabbit-container .head {
