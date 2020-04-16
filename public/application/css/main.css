@@ -395,6 +395,10 @@ a {
 .form .body {
   padding-top: 5px;
   padding-bottom: 24px; }
+.form .edit-photo-body {
+  padding: 10px 0 0 0; }
+  .form .edit-photo-body .input-label {
+    margin-bottom: 5px; }
 .form .label {
   max-width: 160px;
   width: 100%;
@@ -417,8 +421,12 @@ input, select, textarea, option, button, .input-label {
     cursor: pointer;
     color: #FFF; }
 
+.text-center {
+  text-align: center; }
+
 .input-label {
-  display: block; }
+  display: inline-block;
+  text-align: center; }
 
 button {
   background: #A3F06C;

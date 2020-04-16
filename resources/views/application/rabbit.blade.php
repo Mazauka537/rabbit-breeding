@@ -36,8 +36,14 @@
                         Изменение фотографии
                     </div>
 
-                    <div class="body">
-
+                    <div class="body edit-photo-body">
+                        <div class="text-center">
+                            <label class="input-label" for="photo-input">
+                                Выберите файл
+                            </label>
+                            <input type="file" name="photo" id="photo-input" style="display: none" class="input-file">
+                            <input type="submit" value="Сохранить">
+                        </div>
                     </div>
                 </form>
             </div>

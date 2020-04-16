@@ -22,4 +22,8 @@ function hideItemDesc(e) {
     this.classList.remove('item-desc-shown');
 }
 
-
+//выбор фото
+$('.input-file').change(function() {
+    if ($(this).val() != '') $(this).prev().text($(this)[0].files[0].name);
+    else $(this).prev().text('Выберите файл');
+});

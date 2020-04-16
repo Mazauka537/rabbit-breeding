@@ -554,6 +554,13 @@ a {
         padding-bottom: 24px;
     }
 
+    .edit-photo-body {
+        padding: 10px 0 0 0;
+        .input-label {
+            margin-bottom: 5px;
+        }
+    }
+
     .label {
         max-width: 160px;
         width: 100%;
@@ -564,8 +571,6 @@ a {
     .labeled {
 
     }
-
-
 }
 
 input, select, textarea, option, button, .input-label {
@@ -587,8 +592,13 @@ input, select, textarea, option, button, .input-label {
     }
 }
 
+.text-center {
+    text-align: center;
+}
+
 .input-label {
-    display: block;
+    display: inline-block;
+    text-align: center;
 }
 
 button {
