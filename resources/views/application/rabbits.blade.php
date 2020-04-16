@@ -132,9 +132,9 @@
                 <div class="item__wrapper">
                     <a href="{{ route('rabbit', $rabbit->id) }}" class="item">
                         <div class="ratio ratio-4-3">
-                            <div class="item__inner ratio__inner"
+                            <div class="item__inner item__inner-rabbit ratio__inner"
                                 @if($rabbit->photo != null)
-                                    {{ 'style=background-image:url(' . asset('storage/' . $rabbit->photo) . ')' }}
+                                    {{ 'style=background-image:url(' . asset('storage/' . $rabbit->photo) . ');background-size:cover' }}
                                 @endif
                             >
                                 <div class="item-filter">

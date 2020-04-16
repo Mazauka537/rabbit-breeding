@@ -158,11 +158,7 @@ a {
     overflow: hidden;
 
     &:hover .item-filter {
-        background: none;
-
-        .info {
-            color: rgba(#DDD, 0);
-        }
+        background: rgba(#000, 0.2);
     }
 }
 
@@ -207,10 +203,19 @@ a {
 .item__inner {
     color: #000;
     text-align: center;
-    background-image: url('../images/пожилой крол.jpg');
-    background-size: cover;
+    background-size: 50%;
     background-position: 50% 50%;
     background-repeat: no-repeat;
+
+    &-rabbit {
+        background-image: url('../images/rabbit.svg');
+    }
+    &-cage {
+        background-image: url('../images/bird-cage.svg');
+    }
+    &-breed {
+        background-image: url('../images/pawprint.svg');
+    }
 
     .item-filter {
         height: 100%;
@@ -219,7 +224,7 @@ a {
         position: relative;
 
         .info {
-            color: #DDD;
+            color: #EEE;
             transition: color 0.3s;
             position: absolute;
             top: 50%;
@@ -431,10 +436,11 @@ a {
     .form {
 
         .body {
-            padding: 10px 0;
+            padding: 10px 0 3px;
 
             .buttons {
                 padding-top: 10px;
+                text-align: right;
 
                 input {
                     max-width: 120px;

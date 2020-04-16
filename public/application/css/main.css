@@ -118,9 +118,7 @@ a {
   position: relative;
   overflow: hidden; }
   .item:hover .item-filter {
-    background: none; }
-    .item:hover .item-filter .info {
-      color: rgba(221, 221, 221, 0); }
+    background: rgba(0, 0, 0, 0.2); }
 
 .item-desc {
   transition: all 0.3s;
@@ -153,17 +151,22 @@ a {
 .item__inner {
   color: #000;
   text-align: center;
-  background-image: url("../images/пожилой крол.jpg");
-  background-size: cover;
+  background-size: 50%;
   background-position: 50% 50%;
   background-repeat: no-repeat; }
+  .item__inner-rabbit {
+    background-image: url("../images/rabbit.svg"); }
+  .item__inner-cage {
+    background-image: url("../images/bird-cage.svg"); }
+  .item__inner-breed {
+    background-image: url("../images/pawprint.svg"); }
   .item__inner .item-filter {
     height: 100%;
     background: rgba(0, 0, 0, 0.3);
     transition: background-color 0.3s;
     position: relative; }
     .item__inner .item-filter .info {
-      color: #DDD;
+      color: #EEE;
       transition: color 0.3s;
       position: absolute;
       top: 50%;
@@ -312,9 +315,10 @@ a {
   display: none; }
 
 .delete-modal .form .body {
-  padding: 10px 0; }
+  padding: 10px 0 3px; }
   .delete-modal .form .body .buttons {
-    padding-top: 10px; }
+    padding-top: 10px;
+    text-align: right; }
     .delete-modal .form .body .buttons input {
       max-width: 120px;
       width: 100%;

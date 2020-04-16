@@ -58,7 +58,7 @@
             <div class="item__wrapper">
                 <a href="{{ route('cage', $cage->id) }}" class="item">
                     <div class="ratio ratio-4-3">
-                        <div class="item__inner ratio__inner">
+                        <div class="item__inner item__inner-cage ratio__inner">
                             <div class="item-filter">
                                 <div class="info cage-info">
                                     @if ($cage->rabbits == null)
