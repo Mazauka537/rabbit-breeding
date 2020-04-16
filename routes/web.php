@@ -23,6 +23,7 @@ Route::group(['middleware' => 'auth', 'namespace' => 'Application', 'prefix' => 
     Route::get('rabbits', 'RabbitController@getRabbits')->name('rabbits');
     Route::get('rabbit/{id}', 'RabbitController@getRabbit')->where('id', '[0-9]+')->name('rabbit');
     Route::post('rabbit/add', 'RabbitController@addRabbit')->name('addRabbit');
+    Route::post('rabbit/edit/{id}', 'RabbitController@editRabbit')->where('id', '[0-9]+')->name('editRabbit');
 
     Route::get('cages', 'CageController@getCages')->name('cages');
     Route::get('cage/{id}', 'CageController@getCage')->where('id', '[0-9]+')->name('cage');

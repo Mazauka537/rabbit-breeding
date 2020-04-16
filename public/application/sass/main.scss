@@ -299,15 +299,25 @@ a {
     .body {
         padding-top: 5px;
     }
+    .body-form {
+        display: none;
+        .label {
+            padding: 11px 0 8px;
+        }
+    }
 
     .buttons {
         padding-left: 15px;
-
+        white-space: nowrap;
+        flex-grow: 1;
+        text-align: right;
         button {
             cursor: pointer;
             padding: 3px 5px;
-            background: #eff0f2;
-            border: 1px solid #CCC;
+            font-size: 13px;
+            height: 24px;
+            max-width: 110px;
+            width: 100%;
             vertical-align: middle;
         }
     }
@@ -338,7 +348,7 @@ a {
 }
 
 .line {
-    padding: 5px 0;
+
 }
 
 .label {
@@ -346,16 +356,14 @@ a {
     width: 120px;
     font-size: 14px;
     color: #888;
+    padding: 5px 0;
 }
 
 .labeled {
+    padding: 5px 0;
     overflow: hidden;
     font-size: 14px;
     color: #555;
-}
-
-.labeled-edit {
-    display: none;
 }
 
 //add button
@@ -477,7 +485,7 @@ a {
 
 }
 
-input, select, textarea, option {
+input, select, textarea, option, button {
     height: 30px;
     padding: 5px 9px 5px;
     border-radius: 3px;
@@ -492,8 +500,15 @@ input, select, textarea, option {
         background: $color1;
         border: none;
         cursor: pointer;
-        color: #EEE;
+        color: #FFF;
     }
+}
+
+button {
+    background: $color1;
+    border: none;
+    cursor: pointer;
+    color: #FFF;
 }
 
 textarea {

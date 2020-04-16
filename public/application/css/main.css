@@ -218,13 +218,22 @@ a {
       color: #999; }
   .rabbit-container .body {
     padding-top: 5px; }
+  .rabbit-container .body-form {
+    display: none; }
+    .rabbit-container .body-form .label {
+      padding: 11px 0 8px; }
   .rabbit-container .buttons {
-    padding-left: 15px; }
+    padding-left: 15px;
+    white-space: nowrap;
+    flex-grow: 1;
+    text-align: right; }
     .rabbit-container .buttons button {
       cursor: pointer;
       padding: 3px 5px;
-      background: #eff0f2;
-      border: 1px solid #CCC;
+      font-size: 13px;
+      height: 24px;
+      max-width: 110px;
+      width: 100%;
       vertical-align: middle; }
 
 .wrapper {
@@ -246,22 +255,18 @@ a {
   clear: both;
   visibility: hidden; }
 
-.line {
-  padding: 5px 0; }
-
 .label {
   float: left;
   width: 120px;
   font-size: 14px;
-  color: #888; }
+  color: #888;
+  padding: 5px 0; }
 
 .labeled {
+  padding: 5px 0;
   overflow: hidden;
   font-size: 14px;
   color: #555; }
-
-.labeled-edit {
-  display: none; }
 
 .add-button {
   position: fixed;
@@ -351,7 +356,7 @@ a {
   text-align: right;
   padding: 5px 9px 5px; }
 
-input, select, textarea, option {
+input, select, textarea, option, button {
   height: 30px;
   padding: 5px 9px 5px;
   border-radius: 3px;
@@ -361,11 +366,17 @@ input, select, textarea, option {
   font-size: 14px;
   max-width: 300px;
   width: 100%; }
-  input[type="submit"], select[type="submit"], textarea[type="submit"], option[type="submit"] {
+  input[type="submit"], select[type="submit"], textarea[type="submit"], option[type="submit"], button[type="submit"] {
     background: #A3F06C;
     border: none;
     cursor: pointer;
-    color: #EEE; }
+    color: #FFF; }
+
+button {
+  background: #A3F06C;
+  border: none;
+  cursor: pointer;
+  color: #FFF; }
 
 textarea {
   width: 100%;

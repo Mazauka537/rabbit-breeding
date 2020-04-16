@@ -1,22 +1,14 @@
-let labeled = document.getElementsByClassName('labeled');
-let labeledEdit = document.getElementsByClassName('labeled-edit');
+document.getElementById('show-edit-fields-btn').addEventListener('click', showEditForm);
 
-document.getElementById('show-edit-fields-btn').addEventListener('click', showLabeledEdit);
-
-function showLabeledEdit() {
-    for (let i = 0; i < labeled.length; i++) {
-        labeled[i].style.display = 'none';
-    }
-    for (let i = 0; i < labeledEdit.length; i++) {
-        labeledEdit[i].style.display = 'block';
-    }
+function showEditForm() {
+    document.getElementById('body-info').style.display = 'none';
+    document.getElementById('body-form').style.display = 'block';
+    document.getElementById('head-buttons').style.display = 'none';
 }
 
-function hideLabeledEdit() {
-    for (let i = 0; i < labeledEdit.length; i++) {
-        labeledEdit[i].style.display = 'none';
-    }
-    for (let i = 0; i < labeled.length; i++) {
-        labeled[i].style.display = 'block';
-    }
-}
+// function hideEditForm() {
+//     document.getElementById('body-edit').style.display = 'none';
+//     document.getElementById('body-info').style.display = 'block';
+//     document.getElementById('head-buttons').style.display = 'block';
+//
+// }

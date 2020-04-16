@@ -54,17 +54,16 @@ class RabbitController extends Controller
         if ($rabbit == null || $rabbit->user_id != Auth::id())
             return response(view('errors.404'), 404);
 
-        $rabbit->breed_name = ($breed = Breed::find($rabbit->breed_id)) ? $breed->name : '(нет)';
-        $rabbit->cage_name = ($cage = Cage::find($rabbit->cage_id)) ? $cage->name : '(нет)';
-        $rabbit->mother_name = ($mother = Rabbit::find($rabbit->mother_id)) ? $mother->name : '(нет)';
-        $rabbit->father_name = ($father = Rabbit::find($rabbit->father_id)) ? $father->name : '(нет)';
+        $rabbit->breed_name = ($breed = $this->findItemById($breeds, $rabbit->breed_id)) ? $breed->name : '(нет)';
+        $rabbit->cage_name = ($cage = $this->findItemById($cages, $rabbit->cage_id)) ? $cage->name : '(нет)';
+        $rabbit->mother_name = ($mother = $this->findItemById($rabbits, $rabbit->mother_id)) ? $mother->name : '(нет)';
+        $rabbit->father_name = ($father = $this->findItemById($rabbits, $rabbit->father_id)) ? $father->name : '(нет)';
 
         return view('application.rabbit', compact(['rabbit', 'rabbits', 'cages', 'breeds']));
     }
 
     function addRabbit(Request $request)
     {
-
         $this->validate($request, [
             'name' => 'required|string|max:64',
             'gender' => 'required|in:f,m',
@@ -102,5 +101,34 @@ class RabbitController extends Controller
         $rabbit->save();
 
         return redirect(route('rabbits'));
+    }
+
+    function editRabbit(Request $request, $id) {
+        $this->validate($request, [
+            'name' => 'required|string|max:64',
+            'gender' => 'required|in:f,m',
+            'photo' => 'nullable|image',
+            'breed' => 'nullable|integer|exists:breeds,id,user_id,' . Auth::id(),
+            'cage' => 'nullable|integer|exists:cages,id,user_id,' . Auth::id(),
+            'birthday' => 'nullable|date',
+            'desc' => 'nullable|string|max:255',
+            'mother' => 'nullable|integer|exists:rabbits,id,user_id,' . Auth::id() . '|exists:rabbits,id,gender,f',
+            'father' => 'nullable|integer|exists:rabbits,id,user_id,' . Auth::id() . '|exists:rabbits,id,gender,m',
+        ]);
+
+        $rabbit = Auth::user()->rabbits()->findOrFail($id);
+
+        $rabbit->name = $request->name;
+        $rabbit->gender = $request->gender;
+        $rabbit->breed_id = $request->breed;
+        $rabbit->cage_id = $request->cage;
+        $rabbit->birthday = $request->birthday;
+        $rabbit->desc = $request->desc;
+        $rabbit->mother_id = $request->mother;
+        $rabbit->father_id = $request->father;
+
+        $result = $rabbit->save();
+
+        return back();
     }
 }
