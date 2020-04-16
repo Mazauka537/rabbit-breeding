@@ -26,6 +26,22 @@
             </div>
         </div>
 
+        <div class="modal-window" id="edit-photo-modal">
+            <div class="form__wrapper" id="edit-photo-form">
+                <div class="close-button" id="close-edit-photo-btn"></div>
+                <form action="{{ route('editPhoto', $rabbit->id) }}" class="form" method="post" enctype="multipart/form-data">
+                    @csrf
+                    <div class="head">
+                        Изменение фотографии
+                    </div>
+
+                    <div class="body">
+
+                    </div>
+                </form>
+            </div>
+        </div>
+
         <div class="rabbit-container">
 
             <div class="left">
@@ -36,6 +52,10 @@
                             @else
                             {{ asset('application/images/rabbit.svg') }}
                             @endif" alt="Фото кролика">
+                        <div class="side-panel">
+                            <div id="btn-show-edit-photo">Изменить фотографию</div>
+                            <div>Удалить фотографию</div>
+                        </div>
                     </div>
                 </div>
                 <div class="some-info__wrapper wrapper">
@@ -246,5 +266,6 @@
         </div>
 
         <script src="{{ asset('application/js/modal-edit-and-delete-item.js') }}"></script>
+        <script src="{{ asset('application/js/edit-rabbit-photo.js') }}"></script>
     </div>
 @endsection

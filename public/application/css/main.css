@@ -247,8 +247,32 @@ a {
   background: #FFF;
   box-shadow: 0 0 5px -4px #000; }
 
-.photo img {
-  width: 100%; }
+.photo {
+  position: relative;
+  overflow: hidden; }
+  .photo img {
+    width: 100%; }
+  .photo:hover .side-panel {
+    transform: translateY(0); }
+
+.side-panel {
+  position: absolute;
+  background: rgba(0, 0, 0, 0.4);
+  color: #ddd;
+  font-size: 13px;
+  padding: 5px;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  z-index: 800;
+  transform: translateY(110%);
+  transition: transform 0.2s; }
+  .side-panel * {
+    padding: 5px 3px;
+    cursor: pointer; }
+    .side-panel *:hover {
+      text-decoration: underline;
+      color: #fff; }
 
 .clearfix::after {
   content: ".";
@@ -400,5 +424,8 @@ textarea {
 .errors {
   font-size: 13px;
   color: red; }
+
+.show {
+  display: block; }
 
 /*# sourceMappingURL=main.css.map */

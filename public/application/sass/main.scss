@@ -210,9 +210,11 @@ a {
     &-rabbit {
         background-image: url('../images/rabbit.svg');
     }
+
     &-cage {
         background-image: url('../images/bird-cage.svg');
     }
+
     &-breed {
         background-image: url('../images/pawprint.svg');
     }
@@ -341,8 +343,43 @@ a {
     box-shadow: 0 0 5px -4px #000;
 }
 
-.photo img {
-    width: 100%
+.photo {
+    position: relative;
+    overflow: hidden;
+
+    img {
+        width: 100%
+    }
+
+    &:hover {
+        .side-panel {
+            transform: translateY(0);
+        }
+    }
+}
+
+.side-panel {
+    position: absolute;
+    background: rgba(#000, 0.4);
+    color: #ddd;
+    font-size: 13px;
+    padding: 5px;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    z-index: 800;
+    transform: translateY(110%);
+    transition: transform 0.2s;
+
+    * {
+        padding: 5px 3px;
+        cursor: pointer;
+
+        &:hover {
+            text-decoration: underline;
+            color: #fff;
+        }
+    }
 }
 
 .clearfix {
@@ -558,3 +595,8 @@ textarea {
     font-size: 13px;
     color: red;
 }
+
+.show {
+    display: block;
+}
+
