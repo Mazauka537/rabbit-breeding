@@ -67,5 +67,7 @@ class MatingController extends Controller
         $mating->alive_count = $request->alive_count;
         $mating->desc = $request->desc;
         $mating->save();
+
+        return redirect(route('matings'));
     }
 }

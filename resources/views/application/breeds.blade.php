@@ -6,47 +6,49 @@
     <div class="main__inner">
 
         <div class="modal-window" id="modal-add-item-form">
-            <div class="form__wrapper" id="add-item-form">
-                <div class="close-button" id="btn-close-add-item-form"></div>
-                <form action="{{ route('addBreed') }}" class="form" method="post">
-                    @csrf
-                    <div class="head">
-                        Добавление новой породы
-                    </div>
+            <div class="modal-window__inner scrollbar-macosx">
+                <div class="form__wrapper" id="add-item-form">
+                    <div class="close-button" id="btn-close-add-item-form"></div>
+                    <form action="{{ route('addBreed') }}" class="form" method="post">
+                        @csrf
+                        <div class="head">
+                            Добавление новой породы
+                        </div>
 
-                    <div class="body">
-                        <div class="center-form">
-                            <div class="line">
-                                <div class="label">Название*:</div>
-                                <div class="labeled">
-                                    <input type="text" name="name" value="{{ old('name') }}">
+                        <div class="body">
+                            <div class="center-form">
+                                <div class="line">
+                                    <div class="label">Название*:</div>
+                                    <div class="labeled">
+                                        <input type="text" name="name" value="{{ old('name') }}">
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="line">
-                                <div class="label">Описание:</div>
-                                <div class="labeled">
-                                    <textarea name="desc">{{ old('desc') }}</textarea>
+                                <div class="line">
+                                    <div class="label">Описание:</div>
+                                    <div class="labeled">
+                                        <textarea name="desc">{{ old('desc') }}</textarea>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="line">
-                                <div class="label"></div>
-                                <div class="labeled errors">
-                                    <ul>
-                                        @foreach ($errors->all() as $error)
-                                            <li>{{ $error }}</li>
-                                        @endforeach
-                                    </ul>
+                                <div class="line">
+                                    <div class="label"></div>
+                                    <div class="labeled errors">
+                                        <ul>
+                                            @foreach ($errors->all() as $error)
+                                                <li>{{ $error }}</li>
+                                            @endforeach
+                                        </ul>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="line">
-                                <div class="label"></div>
-                                <div class="labeled">
-                                    <input type="submit" value="Добавить">
+                                <div class="line">
+                                    <div class="label"></div>
+                                    <div class="labeled">
+                                        <input type="submit" value="Добавить">
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </form>
+                    </form>
+                </div>
             </div>
         </div>
 
