@@ -15,32 +15,34 @@
                     </div>
 
                     <div class="body">
-                        <div class="line clearfix">
-                            <div class="label">Название*:</div>
-                            <div class="labeled">
-                                <input type="text" name="name">
+                        <div class="center-form">
+                            <div class="line">
+                                <div class="label">Название*:</div>
+                                <div class="labeled">
+                                    <input type="text" name="name" value="{{ old('name') }}">
+                                </div>
                             </div>
-                        </div>
-                        <div class="line clearfix">
-                            <div class="label">Описание:</div>
-                            <div class="labeled">
-                                <textarea name="desc"></textarea>
+                            <div class="line">
+                                <div class="label">Описание:</div>
+                                <div class="labeled">
+                                    <textarea name="desc">{{ old('desc') }}</textarea>
+                                </div>
                             </div>
-                        </div>
-                        <div class="line clearfix">
-                            <div class="label"></div>
-                            <div class="labeled errors">
-                                <ul>
-                                    @foreach ($errors->all() as $error)
-                                        <li>{{ $error }}</li>
-                                    @endforeach
-                                </ul>
+                            <div class="line">
+                                <div class="label"></div>
+                                <div class="labeled errors">
+                                    <ul>
+                                        @foreach ($errors->all() as $error)
+                                            <li>{{ $error }}</li>
+                                        @endforeach
+                                    </ul>
+                                </div>
                             </div>
-                        </div>
-                        <div class="line clearfix">
-                            <div class="label"></div>
-                            <div class="labeled">
-                                <input type="submit" value="Добавить">
+                            <div class="line">
+                                <div class="label"></div>
+                                <div class="labeled">
+                                    <input type="submit" value="Добавить">
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -55,41 +57,60 @@
         <div class="items clearfix">
 
             @foreach($breeds as $breed)
-            <div class="item__wrapper">
-                <a href="{{ route('breed', $breed->id) }}" class="item">
-                    <div class="ratio ratio-4-3">
-                        <div class="item__inner item__inner-breed ratio__inner">
-                            <div class="item-filter">
-                                <div class="info breed-info">
-                                    @if ($breed->rabbits == null)
-                                        (пусто)
-                                    @else
-                                        @foreach($breed->rabbits as $key => $rabbit)
-                                            @if($rabbit->gender == 'f')
-                                                <span class="female">{{ $rabbit->name }}</span>
-                                            @else
-                                                <span class="male">{{ $rabbit->name }}</span>
-                                            @endif
-                                            @if($key != count($breed->rabbits) - 1)
-                                                ,
-                                            @endif
-                                        @endforeach
-                                    @endif
+                <div class="item__wrapper">
+                    <div class="item">
+                        <div class="item__head">
+                            <div class="item__name">
+                                {{ $breed->name }}
+                            </div>
+                            <div class="item__arrow">
+
+                            </div>
+                        </div>
+                        <div class="item__body">
+                            <div class="left-form">
+                                <div class="line">
+                                    <div class="label">
+                                        Название:
+                                    </div>
+                                    <div class="labeled">
+                                        {{ $breed->name }}
+                                    </div>
+                                </div>
+                                <div class="line">
+                                    <div class="label">
+                                        Кролики:
+                                    </div>
+                                    <div class="labeled">
+                                        @if(!empty($breed->rabbits))
+                                            @foreach($breed->rabbits as $key => $rabbit)
+                                                <a href="{{ route('rabbit', $rabbit->id) }}">
+                                                <span
+                                                    class="@if($rabbit->gender == 'f') {{ 'female' }} @elseif($rabbit->gender == 'm') {{ 'male' }} @endif">
+                                                    {{ $rabbit->name }}
+                                                </span>
+                                                    @if($key != count($breed->rabbits) - 1)
+                                                        {{ ',' }}
+                                                    @endif
+                                                </a>
+                                            @endforeach
+                                        @else
+                                            {{ '(нет кроликов)' }}
+                                        @endif
+                                    </div>
+                                </div>
+                                <div class="line">
+                                    <div class="label">
+                                        Описание:
+                                    </div>
+                                    <div class="labeled">
+                                        {{ $breed->desc ?? '(нет описания)' }}
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="item__footer">
-                        <div class="name">{{ $breed->name }}</div>
-                        <div class="info">
-                            <span class="show-desc-btn ico-info"></span>
-                        </div>
-                    </div>
-                    <div class="item-desc">
-                        {{ $breed->desc ?? "(нет описания)" }}
-                    </div>
-                </a>
-            </div>
+                </div>
             @endforeach
 
         </div>

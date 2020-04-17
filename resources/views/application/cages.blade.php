@@ -16,20 +16,20 @@
                         </div>
 
                         <div class="body">
-                            <div class="left-form">
-                                <div class="line clearfix">
+                            <div class="center-form">
+                                <div class="line">
                                     <div class="label">Название*:</div>
                                     <div class="labeled">
-                                        <input type="text" name="name">
+                                        <input type="text" name="name" value="{{ old('name') }}">
                                     </div>
                                 </div>
-                                <div class="line clearfix">
+                                <div class="line">
                                     <div class="label">Описание:</div>
                                     <div class="labeled">
-                                        <textarea name="desc"></textarea>
+                                        <textarea name="desc">{{ old('desc') }}</textarea>
                                     </div>
                                 </div>
-                                <div class="line clearfix">
+                                <div class="line">
                                     <div class="label"></div>
                                     <div class="labeled errors">
                                         <ul>
@@ -39,7 +39,7 @@
                                         </ul>
                                     </div>
                                 </div>
-                                <div class="line clearfix">
+                                <div class="line">
                                     <div class="label"></div>
                                     <div class="labeled">
                                         <input type="submit" value="Добавить">
@@ -85,12 +85,15 @@
                                     </div>
                                     <div class="labeled">
                                         @if(!empty($cage->rabbits))
-                                            @foreach($cage->rabbits as $rabbit)
+                                            @foreach($cage->rabbits as $key => $rabbit)
                                                 <a href="{{ route('rabbit', $rabbit->id) }}">
                                                 <span
                                                     class="@if($rabbit->gender == 'f') {{ 'female' }} @elseif($rabbit->gender == 'm') {{ 'male' }} @endif">
                                                     {{ $rabbit->name }}
                                                 </span>
+                                                    @if($key != count($cage->rabbits) - 1)
+                                                        {{ ',' }}
+                                                    @endif
                                                 </a>
                                             @endforeach
                                         @else
