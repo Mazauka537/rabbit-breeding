@@ -3,7 +3,7 @@
 @section('title', 'rabbits')
 
 @section('main')
-    <div class="main__inner">
+    <div class="main__inner rabbits-page">
 
         <div class="modal-window" id="modal-add-item-form">
             <div class="form__wrapper" id="add-item-form">

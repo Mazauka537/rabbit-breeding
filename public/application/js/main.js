@@ -1,6 +1,8 @@
 //инициализация скроллов
-$('#aside-inner').scrollbar();
-$('#main').scrollbar();
+// $('#aside-inner').scrollbar();
+// $('#main').scrollbar();
+$('#container').scrollbar();
+$('.modal-window__inner').scrollbar();
 
 //показать/спрятать описание карточки
 let showDescBtns = document.getElementsByClassName('show-desc-btn');
@@ -53,3 +55,13 @@ function toggleUserList(e) {
 document.onclick = function () {
     document.getElementById('user-name').nextElementSibling.classList.add('none-height');
 }
+
+//items togle body
+let itemHeads = document.getElementsByClassName('item__head');
+for (let i = 0; i < itemHeads.length; i++) {
+    itemHeads[i].onclick = toggleItemBody;
+}
+function toggleItemBody() {
+    $(this).next().slideToggle();
+}
+

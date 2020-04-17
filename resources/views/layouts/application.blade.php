@@ -13,101 +13,107 @@
 <div class="app">
 
     <header class="header" id="header">
-        <div class="header__inner">
-            <div class="left clearfix">
-                <div class="menu-btn"></div>
-                <div class="logo">
-                    <a href="#">
-                        <img src="{{ asset('images/logo-long.png') }}" alt="logo">
-                    </a>
+        <div class="container">
+            <div class="header__inner">
+                <div class="left clearfix">
+                    <div class="menu-btn"></div>
+                    <div class="logo">
+                        <a href="#">
+                            <img src="{{ asset('images/logo-long.png') }}" alt="logo">
+                        </a>
+                    </div>
                 </div>
-            </div>
-            <div class="right">
-                <div class="user">
-                    <a class="user-name" id="user-name">
-                        {{ \Illuminate\Support\Facades\Auth::user()->name }}
-                        <span class="caret"></span>
-                    </a>
-                    <ul class="user-list none-height">
-                        <li>
-                            <a href="#">настройки</a>
-                        </li>
-                        <li>
-                            <a href="{{ route('logout') }}"
-                               onclick="event.preventDefault();
+                <div class="right">
+                    <div class="user">
+                        <a class="user-name" id="user-name">
+                            {{ \Illuminate\Support\Facades\Auth::user()->name }}
+                            <span class="caret"></span>
+                        </a>
+                        <ul class="user-list none-height">
+                            <li>
+                                <a href="#">настройки</a>
+                            </li>
+                            <li>
+                                <a href="{{ route('logout') }}"
+                                   onclick="event.preventDefault();
                                document.getElementById('logout-form').submit();"
-                            >
-                                выход
-                            </a>
-                        </li>
-                    </ul>
-                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                        @csrf
-                    </form>
+                                >
+                                    выход
+                                </a>
+                            </li>
+                        </ul>
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                            @csrf
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
     </header>
 
-    <div class="content">
+    <div class="content scrollbar-macosx" id="container">
 
-        <aside class="aside" id="aside">
-            <div class="aside__header">
+        <div class="container">
+            <div class="content__inner">
+
+                <aside class="aside" id="aside">
+                    <div class="aside__inner">
+                        <nav class="nav">
+                            <ul>
+                                <li>
+                                    <a href="{{ route('rabbits') }}">
+                                        <span class="icon icon-rabbit"></span>
+                                        <span>Кролики</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="{{ route('breeds') }}">
+                                        <span class="icon icon-pawprint"></span>
+                                        <span>Породы</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="{{ route('cages') }}">
+                                        <span class="icon icon-bird-cage"></span>
+                                        <span>Клетки</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="{{ route('matings') }}">
+                                        <span class="icon icon-heart"></span>
+                                        <span>Случки</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="{{ route('vaccinations') }}">
+                                        <span class="icon icon-syringe"></span>
+                                        <span>Вакцинации</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="{{ route('reports') }}">
+                                        <span class="icon icon-statistics"></span>
+                                        <span>Отчеты</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="{{ route('notifications') }}">
+                                        <span class="icon icon-bell"></span>
+                                        <span>Уведомления</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+                </aside>
+
+
+                <main class="main">
+                    @yield('main')
+                </main>
 
             </div>
-            <div class="aside__inner scrollbar-macosx" id="aside-inner">
-                <nav class="nav">
-                    <ul>
-                        <li>
-                            <a href="{{ route('rabbits') }}">
-                                <span class="icon icon-rabbit"></span>
-                                <span>Кролики</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="{{ route('breeds') }}">
-                                <span class="icon icon-pawprint"></span>
-                                <span>Породы</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="{{ route('cages') }}">
-                                <span class="icon icon-bird-cage"></span>
-                                <span>Клетки</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="{{ route('matings') }}">
-                                <span class="icon icon-heart"></span>
-                                <span>Случки</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="{{ route('vaccinations') }}">
-                                <span class="icon icon-syringe"></span>
-                                <span>Вакцинации</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="{{ route('reports') }}">
-                                <span class="icon icon-statistics"></span>
-                                <span>Отчеты</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="{{ route('notifications') }}">
-                                <span class="icon icon-bell"></span>
-                                <span>Уведомления</span>
-                            </a>
-                        </li>
-                    </ul>
-                </nav>
-            </div>
-        </aside>
-
-        <main class="main scrollbar-macosx" id="main">
-            @yield('main')
-        </main>
+        </div>
 
     </div>
 
