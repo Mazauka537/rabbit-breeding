@@ -13,7 +13,40 @@
 <div class="app">
 
     <header class="header" id="header">
-
+        <div class="header__inner">
+            <div class="left clearfix">
+                <div class="menu-btn"></div>
+                <div class="logo">
+                    <a href="#">
+                        <img src="{{ asset('images/logo-long.png') }}" alt="logo">
+                    </a>
+                </div>
+            </div>
+            <div class="right">
+                <div class="user">
+                    <a class="user-name" id="user-name">
+                        {{ \Illuminate\Support\Facades\Auth::user()->name }}
+                        <span class="caret"></span>
+                    </a>
+                    <ul class="user-list none-height">
+                        <li>
+                            <a href="#">настройки</a>
+                        </li>
+                        <li>
+                            <a href="{{ route('logout') }}"
+                               onclick="event.preventDefault();
+                               document.getElementById('logout-form').submit();"
+                            >
+                                выход
+                            </a>
+                        </li>
+                    </ul>
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                        @csrf
+                    </form>
+                </div>
+            </div>
+        </div>
     </header>
 
     <div class="content">

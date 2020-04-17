@@ -40,3 +40,16 @@ $('#photo-input-edit').change(function() {
         this.parentElement.querySelector('input[type="submit"]').disabled = true;
     }
 });
+
+//user-list
+document.getElementById('user-name').onclick = toggleUserList;
+
+function toggleUserList(e) {
+    e.preventDefault();
+    e.stopPropagation();
+    this.nextElementSibling.classList.toggle('none-height');
+}
+
+document.onclick = function () {
+    document.getElementById('user-name').nextElementSibling.classList.add('none-height');
+}
