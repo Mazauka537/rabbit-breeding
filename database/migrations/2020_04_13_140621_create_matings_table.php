@@ -16,9 +16,9 @@ class CreateMatingsTable extends Migration
         Schema::create('matings', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->unsignedBigInteger('user_id');
-            $table->unsignedBigInteger('male_id');
-            $table->unsignedBigInteger('female_id');
-            $table->date('date');
+            $table->unsignedBigInteger('male_id')->nullable();
+            $table->unsignedBigInteger('female_id')->nullable();
+            $table->date('date')->nullable();
             $table->date('control_date')->nullable();
             $table->boolean('successfully')->nullable();
             $table->date('date_birth')->nullable();

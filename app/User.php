@@ -48,4 +48,8 @@ class User extends Authenticatable
     public function rabbits() {
         return $this->hasMany('App\Rabbit');
     }
+
+    public function matings() {
+        return $this->hasMany('App\Mating');
+    }
 }
