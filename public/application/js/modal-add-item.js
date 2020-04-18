@@ -24,3 +24,4 @@ function hideBlock(selector) {
     document.querySelector(selector).style.display = 'none';
 }
 
+

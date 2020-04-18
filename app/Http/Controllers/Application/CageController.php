@@ -31,4 +31,20 @@ class CageController extends Controller
 
         return redirect(route('cages'));
     }
+
+    function editCage(Request $request, $id) {
+        $this->validate($request, [
+            'name' => 'required|string|max:64',
+            'desc' => 'nullable|string|max:255'
+        ]);
+
+        $cage = Auth::user()->cages()->findOrFail($id);
+
+        $cage->name = $request->name;
+        $cage->desc = $request->desc;
+
+        $cage->save();
+
+        return redirect(route('cages'));
+    }
 }

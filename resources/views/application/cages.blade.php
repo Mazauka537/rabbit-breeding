@@ -52,6 +52,53 @@
             </div>
         </div>
 
+        <div class="modal-window" id="modal-edit-item-form">
+            <div class="modal-window__inner scrollbar-macosx">
+                <div class="form__wrapper" id="edit-item-form">
+                    <div class="close-button" id="btn-close-edit-item-form"></div>
+                    <form action="{{ route('editCage', 0) }}" class="form" method="post">
+                        @csrf
+                        <div class="head">
+                            Редактирование клетки <span id="cage-name"></span>
+                        </div>
+
+                        <div class="body">
+                            <div class="center-form">
+                                <div class="line">
+                                    <div class="label">Название*:</div>
+                                    <div class="labeled">
+                                        <input type="text" name="name" value="">
+                                    </div>
+                                </div>
+                                <div class="line">
+                                    <div class="label">Описание:</div>
+                                    <div class="labeled">
+                                        <textarea name="desc"></textarea>
+                                    </div>
+                                </div>
+                                <div class="line">
+                                    <div class="label"></div>
+                                    <div class="labeled errors">
+                                        <ul>
+                                            @foreach ($errors->all() as $error)
+                                                <li>{{ $error }}</li>
+                                            @endforeach
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="line">
+                                    <div class="label"></div>
+                                    <div class="labeled">
+                                        <input type="submit" value="Сохранить">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
         <div class="add-button">
             <button id="btn-show-add-item-form"></button>
         </div>
@@ -60,7 +107,11 @@
 
             @foreach($cages as $cage)
                 <div class="item__wrapper">
-                    <div class="item">
+                    <div class="item" data-id="{{ $cage->id }}">
+                        <div class="item-buttons">
+                            <button class="ico-btn edit-btn"></button>
+                            <button class="ico-btn delete-btn"></button>
+                        </div>
                         <div class="item__head">
                             <div class="item__name">
                                 {{ $cage->name }}
@@ -103,7 +154,7 @@
                                     <div class="label">
                                         Описание:
                                     </div>
-                                    <div class="labeled">
+                                    <div class="labeled" id="desc">
                                         {{ $cage->desc ?? '(нет описания)' }}
                                     </div>
                                 </div>
@@ -116,5 +167,6 @@
         </div>
 
         <script src="{{ asset('application/js/modal-add-item.js') }}"></script>
+        <script src="{{ asset('application/js/edit-item-cage.js') }}"></script>
     </div>
 @endsection
