@@ -232,6 +232,10 @@ a {
 .left-form .errors, .center-form .errors {
   font-size: 13px;
   color: red; }
+.left-form a, .center-form a {
+  font-size: 14px; }
+  .left-form a:hover, .center-form a:hover {
+    text-decoration: underline; }
 
 .center-form .label {
   width: 140px;
@@ -244,16 +248,15 @@ a {
   /* 100% ширины делим на 4 и умножаем на 3 */ }
 
 .rabbits-page .items {
-  padding: 10px;
-  padding-bottom: 30px; }
+  border: none; }
 .rabbits-page .item__wrapper {
   float: left;
-  width: 24.9%;
-  padding: 10px;
+  width: 33.3%;
+  padding: 7px;
   position: relative; }
 .rabbits-page .item {
   display: block;
-  box-shadow: 0 0 6px -1px #888;
+  box-shadow: 0 0 6px -2px #888;
   position: relative;
   overflow: hidden; }
   .rabbits-page .item:hover .item-filter {
@@ -288,13 +291,8 @@ a {
   text-align: center;
   background-size: 50%;
   background-position: 50% 50%;
-  background-repeat: no-repeat; }
-  .rabbits-page .item__inner-rabbit {
-    background-image: url("../images/rabbit.svg"); }
-  .rabbits-page .item__inner-cage {
-    background-image: url("../images/bird-cage.svg"); }
-  .rabbits-page .item__inner-breed {
-    background-image: url("../images/pawprint.svg"); }
+  background-repeat: no-repeat;
+  background-image: url("../images/rabbit.svg"); }
   .rabbits-page .item__inner .item-filter {
     height: 100%;
     background: rgba(0, 0, 0, 0.3);
@@ -308,10 +306,6 @@ a {
       left: 50%;
       transform: translate(-50%, -50%);
       font-size: 18px; }
-    .rabbits-page .item__inner .item-filter .breed-info, .rabbits-page .item__inner .item-filter .cage-info {
-      font-size: 16px; }
-      .rabbits-page .item__inner .item-filter .breed-info span, .rabbits-page .item__inner .item-filter .cage-info span {
-        letter-spacing: 0.1px; }
 .rabbits-page .item__footer {
   padding: 10px;
   color: #EEE;
@@ -440,7 +434,8 @@ a {
   background: rgba(0, 0, 0, 0.4);
   z-index: 1000;
   display: none;
-  overflow: hidden; }
+  overflow: hidden;
+  padding: 10px; }
 
 .modal-window__inner {
   padding: 10px;
@@ -484,7 +479,7 @@ a {
   background: #fff;
   padding: 15px;
   max-width: 540px;
-  margin: 40px auto;
+  margin: 30px auto;
   border-radius: 3px;
   position: relative; }
 

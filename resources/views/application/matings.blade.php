@@ -102,7 +102,7 @@
             <button id="btn-show-add-item-form"></button>
         </div>
 
-        <div class="items clearfix">
+        <div class="items">
 
             @foreach($matings as $mating)
                 <div class="item__wrapper">
@@ -128,7 +128,15 @@
                                         Самка:
                                     </div>
                                     <div class="labeled">
-                                        {{ $mating->female ?? '(неизвестно)' }}
+                                        @if(!empty($mating->female_id))
+                                            <a class="female" href="{{ route('rabbit', $mating->female_id) }}">
+                                                {{ $mating->female_name }}
+                                            </a>
+                                        @else
+                                            <span class="female">
+                                            (неизвестно)
+                                            </span>
+                                        @endif
                                     </div>
                                 </div>
                                 <div class="line">
@@ -136,7 +144,15 @@
                                         Самец:
                                     </div>
                                     <div class="labeled">
-                                        {{ $mating->male ?? '(неизвестно)' }}
+                                        @if(!empty($mating->male_id))
+                                            <a class="male" href="{{ route('rabbit', $mating->male_id) }}">
+                                                {{ $mating->male_name }}
+                                            </a>
+                                        @else
+                                            <span class="male">
+                                            (неизвестно)
+                                            </span>
+                                        @endif
                                     </div>
                                 </div>
                                 <div class="line">

@@ -86,15 +86,13 @@
                                     <div class="labeled">
                                         @if(!empty($cage->rabbits))
                                             @foreach($cage->rabbits as $key => $rabbit)
-                                                <a href="{{ route('rabbit', $rabbit->id) }}">
-                                                <span
-                                                    class="@if($rabbit->gender == 'f') {{ 'female' }} @elseif($rabbit->gender == 'm') {{ 'male' }} @endif">
+                                                <a href="{{ route('rabbit', $rabbit->id) }}"
+                                                   class="@if($rabbit->gender == 'f') {{ 'female' }} @elseif($rabbit->gender == 'm') {{ 'male' }} @endif">
                                                     {{ $rabbit->name }}
-                                                </span>
-                                                    @if($key != count($cage->rabbits) - 1)
-                                                        {{ ',' }}
-                                                    @endif
                                                 </a>
+                                                @if($key != count($cage->rabbits) - 1)
+                                                    {{ ',' }}
+                                                @endif
                                             @endforeach
                                         @else
                                             {{ '(нет кроликов)' }}

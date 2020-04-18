@@ -84,11 +84,13 @@ a {
     justify-content: space-between;
     align-items: center;
     height: 100%;
+
     .left {
         width: $sidebar-width;
         display: flex;
         align-items: center;
     }
+
     .right {
 
     }
@@ -96,9 +98,11 @@ a {
 
 .logo {
     margin-left: 24px;
+
     a {
         vertical-align: middle;
         display: block;
+
         img {
             max-width: 130px;
             max-height: 35px;
@@ -151,12 +155,14 @@ a {
     padding: 4px 0px;
     border-radius: 3px;
     border: 1px solid #DDD;
+
     a {
         font-family: 'Roboto', sans-serif;
         font-size: 15px;
         color: #333;
         padding: 8px 15px;
         display: block;
+
         &:hover {
             background: #EEE;
         }
@@ -299,6 +305,7 @@ a {
 
     .line {
         padding: 5px 0;
+
         &::after {
             content: "";
             display: block;
@@ -328,6 +335,13 @@ a {
         font-size: 13px;
         color: red;
     }
+
+    a {
+        font-size: 14px;
+        &:hover {
+            text-decoration: underline;
+        }
+    }
 }
 
 //left-form//
@@ -336,6 +350,7 @@ a {
     .line {
 
     }
+
     .label {
 
     }
@@ -346,10 +361,12 @@ a {
 .center-form {
     .line {
     }
+
     .label {
         width: 140px;
         text-align: right;
     }
+
     .labeled {
         padding-left: 8px;
     }
@@ -359,27 +376,24 @@ a {
     padding-top: 56%; /* 100% ширины делим на 4 и умножаем на 3 */
 }
 
+//items on rabbits page//
+
 .rabbits-page {
 
     .items {
-        padding: 10px;
-        padding-bottom: 30px;
-        //display: flex;
-        //flex-wrap: wrap;
-        //justify-content: space-around;
+        border: none;
     }
 
     .item__wrapper {
-        //flex-basis: 33%;
         float: left;
-        width: 24.9%;
-        padding: 10px;
+        width: 33.3%;
+        padding: 7px;
         position: relative;
     }
 
     .item {
         display: block;
-        box-shadow: 0 0 6px -1px #888;
+        box-shadow: 0 0 6px -2px #888;
         position: relative;
         overflow: hidden;
 
@@ -432,18 +446,7 @@ a {
         background-size: 50%;
         background-position: 50% 50%;
         background-repeat: no-repeat;
-
-        &-rabbit {
-            background-image: url('../images/rabbit.svg');
-        }
-
-        &-cage {
-            background-image: url('../images/bird-cage.svg');
-        }
-
-        &-breed {
-            background-image: url('../images/pawprint.svg');
-        }
+        background-image: url('../images/rabbit.svg');
 
         .item-filter {
             height: 100%;
@@ -459,15 +462,6 @@ a {
                 left: 50%;
                 transform: translate(-50%, -50%);
                 font-size: 18px;
-            }
-
-            .breed-info, .cage-info {
-                font-size: 16px;
-
-                span {
-                    letter-spacing: 0.1px;
-
-                }
             }
         }
     }
@@ -598,29 +592,8 @@ a {
     }
 }
 
-//.line {
-//    padding: 5px 0;
-//}
-//
-//.label {
-//    float: left;
-//    width: 120px;
-//    font-size: 14px;
-//    color: #888;
-//    padding: 5px 0;
-//}
-//
-//.labeled {
-//    overflow: hidden;
-//    font-size: 14px;
-//    color: #555;
-//}
-//
-//.labeled__inner {
-//    padding: 5px 0;
-//}
+//add button//
 
-//add button
 .add-button {
     position: fixed;
     right: 20px;
@@ -664,7 +637,8 @@ a {
     }
 }
 
-// modal-window
+//modal-window//
+
 .modal-window {
     position: fixed;
     top: 0;
@@ -675,6 +649,7 @@ a {
     z-index: 1000;
     display: none;
     overflow: hidden;
+    padding: 10px;
 }
 
 .modal-window__inner {
@@ -740,7 +715,7 @@ a {
     background: #fff;
     padding: 15px;
     max-width: 540px;
-    margin: 40px auto;
+    margin: 30px auto;
     border-radius: 3px;
     position: relative;
 }
@@ -760,10 +735,12 @@ a {
 
     .edit-photo-body {
         padding: 10px 0 0 0;
+
         .input-label {
             margin-bottom: 5px;
         }
     }
+
     .label {
         padding: 5px 0;
     }
