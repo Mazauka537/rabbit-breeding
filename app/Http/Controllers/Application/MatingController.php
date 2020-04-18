@@ -9,29 +9,24 @@ use Illuminate\Support\Facades\Auth;
 
 class MatingController extends Controller
 {
-    private function findItemById($arr, $id)
-    {
-        $result = false;
-        foreach ($arr as $item) {
-            if ($id == $item->id) {
-                $result = $item;
-                break;
-            }
-        }
-
-        return $result;
-    }
+//    private function findItemById($arr, $id)
+//    {
+//        $result = false;
+//        foreach ($arr as $item) {
+//            if ($id == $item->id) {
+//                $result = $item;
+//                break;
+//            }
+//        }
+//
+//        return $result;
+//    }
 
     function getMatings()
     {
-        $matings = Auth::user()->matings()->with(['female', 'male']);
+        $matings = Auth::user()->matings()->with(['female', 'male'])->get();
 
-//        $rabbits = Auth::user()->rabbits;
-//
-//        foreach ($matings as $mating) {
-//            $mating->female_name = ($female = $this->findItemById($rabbits, $mating->female_id)) ? $female->name : null;
-//            $mating->male_name = ($male = $this->findItemById($rabbits, $mating->male_id)) ? $male->name : null;
-//        }
+        $rabbits = Auth::user()->rabbits;
 
         return view('application.matings', compact(['matings', 'rabbits']));
     }

@@ -25,14 +25,14 @@ class Rabbit extends Model
     }
 
     public function user() {
-        $this->belongsTo('App\User');
+        return $this->belongsTo('App\User');
     }
 
     public function cage() {
-        $this->belongsTo('App\Cage');
+        return $this->belongsTo('App\Cage');
     }
 
     public function breed() {
-        $this->belongsTo('App\Breed');
+        return $this->belongsTo('App\Breed');
     }
 }

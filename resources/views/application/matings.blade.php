@@ -110,11 +110,11 @@
                         <div class="item__head">
                             <div class="item__name">
                                 <span class="female">
-                                    {{ $mating->female_name ?? '(неизвестно)' }}
+                                    {{ $mating->female->name ?? '(неизвестно)' }}
                                 </span>
                                 +
                                 <span class="male">
-                                    {{ $mating->male_name ?? '(неизвестно)' }}
+                                    {{ $mating->male->name ?? '(неизвестно)' }}
                                 </span>
                             </div>
                             <div class="item__arrow">
@@ -130,7 +130,7 @@
                                     <div class="labeled">
                                         @if(!empty($mating->female_id))
                                             <a class="female" href="{{ route('rabbit', $mating->female_id) }}">
-                                                {{ $mating->female_name }}
+                                                {{ $mating->female->name }}
                                             </a>
                                         @else
                                             <span class="female">
@@ -146,7 +146,7 @@
                                     <div class="labeled">
                                         @if(!empty($mating->male_id))
                                             <a class="male" href="{{ route('rabbit', $mating->male_id) }}">
-                                                {{ $mating->male_name }}
+                                                {{ $mating->male->name }}
                                             </a>
                                         @else
                                             <span class="male">
