@@ -24,13 +24,14 @@ class MatingController extends Controller
 
     function getMatings()
     {
-        $matings = Auth::user()->matings;
-        $rabbits = Auth::user()->rabbits;
+        $matings = Auth::user()->matings()->with(['female', 'male']);
 
-        foreach ($matings as $mating) {
-            $mating->female_name = ($female = $this->findItemById($rabbits, $mating->female_id)) ? $female->name : null;
-            $mating->male_name = ($male = $this->findItemById($rabbits, $mating->male_id)) ? $male->name : null;
-        }
+//        $rabbits = Auth::user()->rabbits;
+//
+//        foreach ($matings as $mating) {
+//            $mating->female_name = ($female = $this->findItemById($rabbits, $mating->female_id)) ? $female->name : null;
+//            $mating->male_name = ($male = $this->findItemById($rabbits, $mating->male_id)) ? $male->name : null;
+//        }
 
         return view('application.matings', compact(['matings', 'rabbits']));
     }

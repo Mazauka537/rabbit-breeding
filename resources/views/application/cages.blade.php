@@ -84,7 +84,7 @@
                                         Кролики:
                                     </div>
                                     <div class="labeled">
-                                        @if(!empty($cage->rabbits))
+                                        @if(count($cage->rabbits) != 0)
                                             @foreach($cage->rabbits as $key => $rabbit)
                                                 <a href="{{ route('rabbit', $rabbit->id) }}"
                                                    class="@if($rabbit->gender == 'f') {{ 'female' }} @elseif($rabbit->gender == 'm') {{ 'male' }} @endif">

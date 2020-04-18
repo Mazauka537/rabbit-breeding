@@ -9,22 +9,19 @@ use Illuminate\Support\Facades\Auth;
 
 class BreedController extends Controller
 {
-    private function getItemsWithParam($array, $param, $value) {
-        $result = [];
-        foreach ($array as $item) {
-            if ($item[$param] == $value) {
-                $result[] = $item;
-            }
-        }
-        return $result;
-    }
+//    private function getItemsWithParam($array, $param, $value) {
+//        $result = [];
+//        foreach ($array as $item) {
+//            if ($item[$param] == $value) {
+//                $result[] = $item;
+//            }
+//        }
+//        return $result;
+//    }
 
     function getBreeds() {
-        $breeds = Auth::user()->breeds;
-        $rabbits = Auth::user()->rabbits;
-        foreach ($breeds as $breed) {
-            $breed->rabbits = $this->getItemsWithParam($rabbits, 'breed_id', $breed->id);
-        }
+        $breeds = Auth::user()->breeds()->with('rabbits')->get();
+
         return view('application.breeds', ['breeds' => $breeds]);
     }
 
