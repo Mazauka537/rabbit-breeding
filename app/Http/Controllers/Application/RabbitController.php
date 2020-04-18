@@ -41,7 +41,7 @@ class RabbitController extends Controller
             $rabbit->cage_name = ($cage = $this->findItemById($cages, $rabbit->cage_id)) ? $cage->name : null;
             $rabbit->breed_name = ($breed = $this->findItemById($breeds, $rabbit->breed_id)) ? $breed->name : null;
         }
-        return view('application.rabbits', ['rabbits' => $rabbits, 'cages' => $cages, 'breeds' => $breeds]);
+        return view('application.rabbits', compact(['rabbits', 'cages', 'breeds']));
     }
 
     function getRabbit($id)
@@ -54,14 +54,14 @@ class RabbitController extends Controller
         if ($rabbit == null || $rabbit->user_id != Auth::id())
             return response(view('errors.404'), 404);
 
-        $rabbit->breed_name = ($breed = $this->findItemById($breeds, $rabbit->breed_id)) ? $breed->name : '(нет)';
-        $rabbit->cage_name = ($cage = $this->findItemById($cages, $rabbit->cage_id)) ? $cage->name : '(нет)';
-        $rabbit->mother_name = ($mother = $this->findItemById($rabbits, $rabbit->mother_id)) ? $mother->name : '(нет)';
-        $rabbit->father_name = ($father = $this->findItemById($rabbits, $rabbit->father_id)) ? $father->name : '(нет)';
+        $rabbit->breed = $this->findItemById($breeds, $rabbit->breed_id) ?? '(нет)';
+        $rabbit->cage = $this->findItemById($cages, $rabbit->cage_id) ?? '(нет)';
+        $rabbit->mother = $this->findItemById($rabbits, $rabbit->mother_id) ?? '(нет)';
+        $rabbit->father = $this->findItemById($rabbits, $rabbit->father_id) ?? '(нет)';
 
         $matings = $rabbit->matings;
 
-        return view('application.rabbit', compact(['rabbit', 'rabbits', 'cages', 'breeds']));
+        return view('application.rabbit', compact(['rabbit', 'rabbits', 'cages', 'breeds', 'matings']));
     }
 
     function addRabbit(Request $request)

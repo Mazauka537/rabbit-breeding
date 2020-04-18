@@ -482,12 +482,9 @@ a {
 // rabbit/{id}
 .rabbit-container {
     display: flex;
-    padding: 5px 10px;
-    background: #eff0f2;
-    height: 100%;
 
     .left {
-        max-width: 300px;
+        max-width: 200px;
         width: 100%;
     }
 
@@ -536,20 +533,14 @@ a {
             vertical-align: middle;
         }
     }
-
-    .body-info {
-        .line {
-            padding: 0;
-        }
-    }
 }
 
 .wrapper {
     padding: 10px;
-    margin: 10px 5px;
+    margin: 0 5px 10px 5px;
     border: 1px solid #EEE;
     background: #FFF;
-    box-shadow: 0 0 5px -4px #000;
+    border-radius: 5px;
 }
 
 .photo {
@@ -747,13 +738,14 @@ a {
 }
 
 input, select, textarea, option, button, .input-label {
+    font-family: 'Roboto', sans-serif;
+    font-size: 14px;
     height: 30px;
     padding: 5px 9px 5px;
     border-radius: 3px;
     border: 1px solid #d3d9de;
     color: #000;
     background: #fff;
-    font-size: 14px;
     max-width: 300px;
     width: 100%;
 
@@ -785,7 +777,6 @@ textarea {
     width: 100%;
     min-height: 100px;
     resize: none;
-    font-size: 14px;
 }
 
 .show {

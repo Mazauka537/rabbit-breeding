@@ -318,12 +318,9 @@ a {
   align-items: center; }
 
 .rabbit-container {
-  display: flex;
-  padding: 5px 10px;
-  background: #eff0f2;
-  height: 100%; }
+  display: flex; }
   .rabbit-container .left {
-    max-width: 300px;
+    max-width: 200px;
     width: 100%; }
   .rabbit-container .right {
     width: 100%; }
@@ -355,15 +352,13 @@ a {
       max-width: 110px;
       width: 100%;
       vertical-align: middle; }
-  .rabbit-container .body-info .line {
-    padding: 0; }
 
 .wrapper {
   padding: 10px;
-  margin: 10px 5px;
+  margin: 0 5px 10px 5px;
   border: 1px solid #EEE;
   background: #FFF;
-  box-shadow: 0 0 5px -4px #000; }
+  border-radius: 5px; }
 
 .photo {
   position: relative;
@@ -499,13 +494,14 @@ a {
   padding: 5px 0; }
 
 input, select, textarea, option, button, .input-label {
+  font-family: 'Roboto', sans-serif;
+  font-size: 14px;
   height: 30px;
   padding: 5px 9px 5px;
   border-radius: 3px;
   border: 1px solid #d3d9de;
   color: #000;
   background: #fff;
-  font-size: 14px;
   max-width: 300px;
   width: 100%; }
   input[type="submit"], input[type="button"], select[type="submit"], select[type="button"], textarea[type="submit"], textarea[type="button"], option[type="submit"], option[type="button"], button[type="submit"], button[type="button"], .input-label[type="submit"], .input-label[type="button"] {
@@ -530,8 +526,7 @@ button {
 textarea {
   width: 100%;
   min-height: 100px;
-  resize: none;
-  font-size: 14px; }
+  resize: none; }
 
 .show {
   display: block; }

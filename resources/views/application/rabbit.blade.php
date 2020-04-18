@@ -29,7 +29,8 @@
         <div class="modal-window delete-modal" id="delete-photo-modal">
             <div class="form__wrapper" id="delete-photo-form">
                 <div class="close-button" id="close-delete-photo-btn"></div>
-                <form action="{{ route('deletePhoto', $rabbit->id) }}" class="form" method="post" enctype="multipart/form-data">
+                <form action="{{ route('deletePhoto', $rabbit->id) }}" class="form" method="post"
+                      enctype="multipart/form-data">
                     @csrf
                     <div class="head">
                         Удаление фотографии
@@ -61,7 +62,8 @@
                             <label class="input-label" for="photo-input-edit">
                                 Выберите файл
                             </label>
-                            <input type="file" name="photo" id="photo-input-edit" style="display: none" class="input-file">
+                            <input type="file" name="photo" id="photo-input-edit" style="display: none"
+                                   class="input-file">
                             <input type="submit" value="Сохранить" disabled>
                         </div>
                     </div>
@@ -110,79 +112,73 @@
 
                         <div class="body">
                             <div class="body-info" id="body-info">
-                                <div class="line clearfix">
-                                    <div class="label">Пол:</div>
-                                    <div class="labeled">
-                                        <div class="labeled__inner">
-                                            @if($rabbit->gender == 'f')
-                                                {{ 'Женский' }}
-                                            @else
-                                                {{ 'Мужской' }}
-                                            @endif
+                                <div class="left-form">
+                                    <div class="line">
+                                        <div class="label">Пол:</div>
+                                        <div class="labeled">
+                                            <div class="labeled__inner">
+                                                @if($rabbit->gender == 'f')
+                                                    <span class="female">{{ 'Женский' }}</span>
+                                                @else
+                                                    <span class="male">{{ 'Мужской' }}</span>
+                                                @endif
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="line clearfix">
-                                    <div class="label">Дата рождения:</div>
-                                    <div class="labeled">
-                                        <div class="labeled__inner">
-                                            {{ $rabbit->birthday ?? '(нет)' }}
+                                    <div class="line">
+                                        <div class="label">Дата рождения:</div>
+                                        <div class="labeled">
+                                            <div class="labeled__inner">
+                                                {{ $rabbit->birthday ?? '(нет)' }}
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="line clearfix">
-                                    <div class="label">Порода:</div>
-                                    <div class="labeled">
-                                        <div class="labeled__inner">
-                                            @if($rabbit->breed_id)
-                                                <a href="{{ route('breed', $rabbit->breed_id) }}">{{ $rabbit->breed_name }}</a>
-                                            @else
-                                                {{ '(нет)' }}
-                                            @endif
+                                    <div class="line">
+                                        <div class="label">Порода:</div>
+                                        <div class="labeled">
+                                            <div class="labeled__inner">
+                                                {{ $rabbit->breed->name ?? '(нет)' }}
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="line clearfix">
-                                    <div class="label">Клетка:</div>
-                                    <div class="labeled">
-                                        <div class="labeled__inner">
-                                            @if($rabbit->cage_id)
-                                                <a href="{{ route('cage', $rabbit->cage_id) }}">{{ $rabbit->cage_name }}</a>
-                                            @else
-                                                {{ '(нет)' }}
-                                            @endif
+                                    <div class="line">
+                                        <div class="label">Клетка:</div>
+                                        <div class="labeled">
+                                            <div class="labeled__inner">
+                                                {{ $rabbit->cage->name ?? '(нет)' }}
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="line clearfix">
-                                    <div class="label">Мама:</div>
-                                    <div class="labeled">
-                                        <div class="labeled__inner">
-                                            @if($rabbit->mother_id)
-                                                <a href="{{ route('rabbit', $rabbit->mother_id) }}">{{ $rabbit->mother_name }}</a>
-                                            @else
-                                                {{ '(нет)' }}
-                                            @endif
+                                    <div class="line">
+                                        <div class="label">Мама:</div>
+                                        <div class="labeled">
+                                            <div class="labeled__inner">
+                                                @if($rabbit->mother_id)
+                                                    <a href="{{ route('rabbit', $rabbit->mother->id) }}">{{ $rabbit->mother->name }}</a>
+                                                @else
+                                                    {{ '(нет)' }}
+                                                @endif
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="line clearfix">
-                                    <div class="label">Папа:</div>
-                                    <div class="labeled">
-                                        <div class="labeled__inner">
-                                            @if($rabbit->father_id)
-                                                <a href="{{ route('rabbit', $rabbit->father_id) }}">{{ $rabbit->father_name }}</a>
-                                            @else
-                                                {{ '(нет)' }}
-                                            @endif
+                                    <div class="line">
+                                        <div class="label">Папа:</div>
+                                        <div class="labeled">
+                                            <div class="labeled__inner">
+                                                @if($rabbit->father_id)
+                                                    <a href="{{ route('rabbit', $rabbit->father->id) }}">{{ $rabbit->father->name }}</a>
+                                                @else
+                                                    {{ '(нет)' }}
+                                                @endif
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="line clearfix">
-                                    <div class="label">Описание:</div>
-                                    <div class="labeled">
-                                        <div class="labeled__inner">
-                                            {{ $rabbit->desc ?? '(нет)' }}
+                                    <div class="line">
+                                        <div class="label">Описание:</div>
+                                        <div class="labeled">
+                                            <div class="labeled__inner">
+                                                {{ $rabbit->desc ?? '(нет)' }}
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -192,94 +188,99 @@
                                 <form action="{{ route('editRabbit', $rabbit->id) }}" method="post"
                                       enctype="multipart/form-data">
                                     @csrf
-                                    <div class="line clearfix">
-                                        <div class="label">Имя:</div>
-                                        <div class="labeled">
-                                            <input type="text" name="name" value="{{ $rabbit->name }}">
+                                    <div class="center-form">
+                                        <div class="line">
+                                            <div class="label">Имя:</div>
+                                            <div class="labeled">
+                                                <input type="text" name="name" value="{{ $rabbit->name }}">
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="line clearfix">
-                                        <div class="label">Пол:</div>
-                                        <div class="labeled">
-                                            <select name="gender">
-                                                <option value=""></option>
-                                                <option value="f" @if($rabbit->gender == 'f') {{ 'selected' }} @endif>
-                                                    Ж
-                                                </option>
-                                                <option value="m" @if($rabbit->gender == 'm') {{ 'selected' }} @endif>
-                                                    М
-                                                </option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="line clearfix">
-                                        <div class="label">Дата рождения:</div>
-                                        <div class="labeled">
-                                            <input type="date" name="birthday" value="{{ $rabbit->birthday ?? '' }}">
-                                        </div>
-                                    </div>
-                                    <div class="line clearfix">
-                                        <div class="label">Порода:</div>
-                                        <div class="labeled">
-                                            <select name="breed">
-                                                <option value=""></option>
-                                                @foreach($breeds as $breed)
+                                        <div class="line">
+                                            <div class="label">Пол:</div>
+                                            <div class="labeled">
+                                                <select name="gender">
+                                                    <option value=""></option>
                                                     <option
-                                                        value="{{ $breed->id }}" @if($breed->id == $rabbit->breed_id) {{ 'selected' }} @endif>{{ $breed->name }}</option>
-                                                @endforeach
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="line clearfix">
-                                        <div class="label">Клетка:</div>
-                                        <div class="labeled">
-                                            <select name="cage">
-                                                <option value=""></option>
-                                                @foreach($cages as $cage)
+                                                        value="f" @if($rabbit->gender == 'f') {{ 'selected' }} @endif>
+                                                        Ж
+                                                    </option>
                                                     <option
-                                                        value="{{ $cage->id }}" @if($cage->id == $rabbit->cage_id) {{ 'selected' }} @endif>{{ $cage->name }}</option>
-                                                @endforeach
-                                            </select>
+                                                        value="m" @if($rabbit->gender == 'm') {{ 'selected' }} @endif>
+                                                        М
+                                                    </option>
+                                                </select>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="line clearfix">
-                                        <div class="label">Мама:</div>
-                                        <div class="labeled">
-                                            <select name="mother">
-                                                <option value=""></option>
-                                                @foreach($rabbits as $mother)
-                                                    @if($mother->gender == 'f')
+                                        <div class="line">
+                                            <div class="label">Дата рождения:</div>
+                                            <div class="labeled">
+                                                <input type="date" name="birthday"
+                                                       value="{{ $rabbit->birthday ?? '' }}">
+                                            </div>
+                                        </div>
+                                        <div class="line">
+                                            <div class="label">Порода:</div>
+                                            <div class="labeled">
+                                                <select name="breed">
+                                                    <option value=""></option>
+                                                    @foreach($breeds as $breed)
                                                         <option
-                                                            value="{{ $mother->id }}" @if($mother->id == $rabbit->mother_id) {{ 'selected' }} @endif>{{ $mother->name }}</option>
-                                                    @endif
-                                                @endforeach
-                                            </select>
+                                                            value="{{ $breed->id }}" @if($breed->id == $rabbit->breed_id) {{ 'selected' }} @endif>{{ $breed->name }}</option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="line clearfix">
-                                        <div class="label">Папа:</div>
-                                        <div class="labeled">
-                                            <select name="father">
-                                                <option value=""></option>
-                                                @foreach($rabbits as $father)
-                                                    @if($father->gender == 'm')
+                                        <div class="line">
+                                            <div class="label">Клетка:</div>
+                                            <div class="labeled">
+                                                <select name="cage">
+                                                    <option value=""></option>
+                                                    @foreach($cages as $cage)
                                                         <option
-                                                            value="{{ $father->id }}" @if($father->id == $rabbit->father_id) {{ 'selected' }} @endif>{{ $father->name }}</option>
-                                                    @endif
-                                                @endforeach
-                                            </select>
+                                                            value="{{ $cage->id }}" @if($cage->id == $rabbit->cage_id) {{ 'selected' }} @endif>{{ $cage->name }}</option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="line clearfix">
-                                        <div class="label">Описание:</div>
-                                        <div class="labeled">
-                                            <textarea name="desc">{{ $rabbit->desc ?? '' }}</textarea>
+                                        <div class="line">
+                                            <div class="label">Мама:</div>
+                                            <div class="labeled">
+                                                <select name="mother">
+                                                    <option value=""></option>
+                                                    @foreach($rabbits as $mother)
+                                                        @if($mother->gender == 'f')
+                                                            <option
+                                                                value="{{ $mother->id }}" @if($mother->id == $rabbit->mother_id) {{ 'selected' }} @endif>{{ $mother->name }}</option>
+                                                        @endif
+                                                    @endforeach
+                                                </select>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="line clearfix">
-                                        <div class="label"></div>
-                                        <div class="labeled">
-                                            <input type="submit" value="Сохранить">
+                                        <div class="line">
+                                            <div class="label">Папа:</div>
+                                            <div class="labeled">
+                                                <select name="father">
+                                                    <option value=""></option>
+                                                    @foreach($rabbits as $father)
+                                                        @if($father->gender == 'm')
+                                                            <option
+                                                                value="{{ $father->id }}" @if($father->id == $rabbit->father_id) {{ 'selected' }} @endif>{{ $father->name }}</option>
+                                                        @endif
+                                                    @endforeach
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="line">
+                                            <div class="label">Описание:</div>
+                                            <div class="labeled">
+                                                <textarea name="desc">{{ $rabbit->desc ?? '' }}</textarea>
+                                            </div>
+                                        </div>
+                                        <div class="line">
+                                            <div class="label"></div>
+                                            <div class="labeled">
+                                                <input type="submit" value="Сохранить">
+                                            </div>
                                         </div>
                                     </div>
                                 </form>
@@ -297,9 +298,102 @@
                         </div>
 
                         <div class="body">
-                            <div class="line">
+                            @foreach($matings as $mating)
+                                <div class="item__wrapper">
+                                    <div class="item">
+                                        <div class="item__head">
+                                            <div class="item__name">
+                                <span class="female">
+                                    {{ $mating->female->name ?? '(неизвестно)' }}
+                                </span>
+                                                +
+                                                <span class="male">
+                                    {{ $mating->male->name ?? '(неизвестно)' }}
+                                </span>
+                                            </div>
+                                            <div class="item__arrow">
 
-                            </div>
+                                            </div>
+                                        </div>
+                                        <div class="item__body">
+                                            <div class="left-form">
+                                                <div class="line">
+                                                    <div class="label">
+                                                        Самка:
+                                                    </div>
+                                                    <div class="labeled">
+                                                        @if(!empty($mating->female_id))
+                                                            <a class="female" href="{{ route('rabbit', $mating->female_id) }}">
+                                                                {{ $mating->female->name }}
+                                                            </a>
+                                                        @else
+                                                            <span class="female">
+                                            (неизвестно)
+                                            </span>
+                                                        @endif
+                                                    </div>
+                                                </div>
+                                                <div class="line">
+                                                    <div class="label">
+                                                        Самец:
+                                                    </div>
+                                                    <div class="labeled">
+                                                        @if(!empty($mating->male_id))
+                                                            <a class="male" href="{{ route('rabbit', $mating->male_id) }}">
+                                                                {{ $mating->male->name }}
+                                                            </a>
+                                                        @else
+                                                            <span class="male">
+                                            (неизвестно)
+                                            </span>
+                                                        @endif
+                                                    </div>
+                                                </div>
+                                                <div class="line">
+                                                    <div class="label">
+                                                        Дата случки:
+                                                    </div>
+                                                    <div class="labeled">
+                                                        {{ $mating->date ?? '(неизвестно)' }}
+                                                    </div>
+                                                </div>
+                                                <div class="line">
+                                                    <div class="label">
+                                                        Дата окрола:
+                                                    </div>
+                                                    <div class="labeled">
+                                                        {{ $mating->date_birth ?? '(неизвестно)' }}
+                                                    </div>
+                                                </div>
+                                                <div class="line">
+                                                    <div class="label">
+                                                        Всего крольчат:
+                                                    </div>
+                                                    <div class="labeled">
+                                                        {{ $mating->child_count ?? '(неизвестно)' }}
+                                                    </div>
+                                                </div>
+                                                <div class="line">
+                                                    <div class="label">
+                                                        Выживших крольчат:
+                                                    </div>
+                                                    <div class="labeled">
+                                                        {{ $mating->alive_count ?? '(неизвестно)' }}
+                                                    </div>
+                                                </div>
+                                                <div class="line">
+                                                    <div class="label">
+                                                        Дополнительная информация:
+                                                    </div>
+                                                    <div class="labeled">
+                                                        {{ $mating->desc ?? '(нет)' }}
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            @endforeach
                         </div>
 
                     </div>
