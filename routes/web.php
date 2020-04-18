@@ -31,6 +31,7 @@ Route::group(['middleware' => 'auth', 'namespace' => 'Application', 'prefix' => 
     Route::get('cages', 'CageController@getCages')->name('cages');
     Route::post('cage/add', 'CageController@addCage')->name('addCage');
     Route::post('cage/edit/{id}', 'CageController@editCage')->where('id', '[0-9]+')->name('editCage');
+    Route::post('cage/delete/{id}', 'CageController@deleteCage')->where('id', '[0-9]+')->name('deleteCage');
 
     Route::get('breeds', 'BreedController@getBreeds')->name('breeds');
     Route::post('breed/add', 'BreedController@addBreed')->name('addBreed');
@@ -46,3 +47,7 @@ Route::group(['middleware' => 'auth', 'namespace' => 'Application', 'prefix' => 
     Route::get('notifications', 'NotificationsController@getNotifications')->name('notifications');
 
 });
+
+//DB::listen(function($query) {
+//    var_dump($query->sql, $query->bindings);
+//});

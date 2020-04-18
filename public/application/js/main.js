@@ -1,6 +1,4 @@
 //инициализация скроллов
-// $('#aside-inner').scrollbar();
-// $('#main').scrollbar();
 $('#container').scrollbar();
 $('.modal-window__inner').scrollbar();
 

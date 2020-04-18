@@ -366,6 +366,7 @@ a {
 
     a {
         font-size: 14px;
+
         &:hover {
             text-decoration: underline;
         }
@@ -697,6 +698,18 @@ a {
     }
 }
 
+.delete-form-buttons {
+    padding-top: 25px;
+    margin-bottom: -10px;
+    text-align: right;
+
+    input {
+        max-width: 120px;
+        width: 100%;
+        margin-right: 3px;
+    }
+}
+
 .close-button {
     position: absolute;
     top: 15px;
@@ -807,6 +820,12 @@ textarea {
     resize: none;
 }
 
+.delete-form-buttons {
+
+}
+
+//show//
+
 .show {
     display: block;
 }
@@ -884,4 +903,10 @@ textarea {
             }
         }
     }
+}
+
+//pt-20//
+
+.pt-20 {
+    padding-top: 20px !important;
 }

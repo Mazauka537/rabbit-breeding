@@ -468,6 +468,15 @@ a {
       width: 100%;
       margin-right: 3px; }
 
+.delete-form-buttons {
+  padding-top: 25px;
+  margin-bottom: -10px;
+  text-align: right; }
+  .delete-form-buttons input {
+    max-width: 120px;
+    width: 100%;
+    margin-right: 3px; }
+
 .close-button {
   position: absolute;
   top: 15px;
@@ -602,5 +611,8 @@ textarea {
     background: red; }
   .alert-error .alert-close-button:hover::before, .alert-error .alert-close-button:hover::after {
     background: darkred; }
+
+.pt-20 {
+  padding-top: 20px !important; }
 
 /*# sourceMappingURL=main.css.map */

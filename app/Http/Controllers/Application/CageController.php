@@ -47,4 +47,14 @@ class CageController extends Controller
 
         return redirect(route('cages'));
     }
+
+    function deleteCage($id) {
+        $cage = Auth::user()->cages()->findOrFail($id);
+
+        $cage->rabbits()->update(['cage_id' => null]);
+
+        $cage->delete();
+
+        return redirect(route('cages'));
+    }
 }

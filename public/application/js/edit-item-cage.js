@@ -15,7 +15,7 @@ function showEditItemModal() {
     let modal = document.getElementById('modal-edit-item-form');
     let form = modal.querySelector('form');
 
-    modal.querySelector('#cage-name').innerHTML = item.querySelector('.item__name').innerHTML.trim();
+    modal.querySelector('#cage-name-edit').innerHTML = item.querySelector('.item__name').innerHTML.trim();
     form.elements.name.value = item.querySelector('.item__name').innerHTML.trim();
     form.elements.desc.value = item.querySelector('#desc').innerHTML.trim();
 

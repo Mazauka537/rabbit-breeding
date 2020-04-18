@@ -49,7 +49,7 @@
                     <form action="{{ route('editCage', 0) }}" class="form" method="post">
                         @csrf
                         <div class="head">
-                            Редактирование клетки <span id="cage-name"></span>
+                            Редактирование клетки <span id="cage-name-edit"></span>
                         </div>
 
                         <div class="body">
@@ -72,6 +72,28 @@
                                         <input type="submit" value="Сохранить">
                                     </div>
                                 </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal-window" id="modal-delete-item-form">
+            <div class="modal-window__inner scrollbar-macosx">
+                <div class="form__wrapper" id="delete-item-form">
+                    <div class="close-button" id="btn-close-delete-item-form"></div>
+                    <form action="{{ route('deleteCage', 0) }}" class="form" method="post">
+                        @csrf
+                        <div class="head">
+                            Удаление клетки <span id="cage-name-delete"></span>
+                        </div>
+
+                        <div class="body pt-20">
+                            Вы действительно хотите удалить клетку "<span id="cage-name-delete-2"></span>"?
+                            <div class="delete-form-buttons">
+                                <input type="submit" value="Да">
+                                <input type="button" value="Отмена" id="canсel-delete-cage">
                             </div>
                         </div>
                     </form>
@@ -163,5 +185,6 @@
 
         <script src="{{ asset('application/js/modal-add-item.js') }}"></script>
         <script src="{{ asset('application/js/edit-item-cage.js') }}"></script>
+        <script src="{{ asset('application/js/delete-item-cage.js') }}"></script>
     </div>
 @endsection
