@@ -31,16 +31,6 @@
                                 </div>
                                 <div class="line">
                                     <div class="label"></div>
-                                    <div class="labeled errors">
-                                        <ul>
-                                            @foreach ($errors->all() as $error)
-                                                <li>{{ $error }}</li>
-                                            @endforeach
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div class="line">
-                                    <div class="label"></div>
                                     <div class="labeled">
                                         <input type="submit" value="Добавить">
                                     </div>
@@ -74,16 +64,6 @@
                                     <div class="label">Описание:</div>
                                     <div class="labeled">
                                         <textarea name="desc"></textarea>
-                                    </div>
-                                </div>
-                                <div class="line">
-                                    <div class="label"></div>
-                                    <div class="labeled errors">
-                                        <ul>
-                                            @foreach ($errors->all() as $error)
-                                                <li>{{ $error }}</li>
-                                            @endforeach
-                                        </ul>
                                     </div>
                                 </div>
                                 <div class="line">
@@ -164,6 +144,21 @@
                 </div>
             @endforeach
 
+        </div>
+
+        <div class="alerts">
+            @if(count($errors->all()) != 0)
+                <div class="alert alert-error">
+                    <button class="alert-close-button"></button>
+                    <div class="alert__inner">
+                        <ul>
+                            @foreach($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                </div>
+            @endif
         </div>
 
         <script src="{{ asset('application/js/modal-add-item.js') }}"></script>

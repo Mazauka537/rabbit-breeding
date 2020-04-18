@@ -43,7 +43,7 @@ $('#photo-input-edit').change(function() {
     }
 });
 
-//user-list
+//user-list in header
 document.getElementById('user-name').onclick = toggleUserList;
 
 function toggleUserList(e) {
@@ -56,12 +56,21 @@ document.onclick = function () {
     document.getElementById('user-name').nextElementSibling.classList.add('none-height');
 }
 
-//items togle body
+//items toggle body
 let itemHeads = document.getElementsByClassName('item__head');
 for (let i = 0; i < itemHeads.length; i++) {
     itemHeads[i].onclick = toggleItemBody;
 }
 function toggleItemBody() {
     $(this).next().slideToggle();
+}
+
+//alerts
+let alertButtons = document.getElementsByClassName('alert-close-button');
+for (let i = 0; i < alertButtons.length; i++) {
+    alertButtons[i].addEventListener('click', closeAlert);
+}
+function closeAlert() {
+    this.closest('.alert').remove();
 }
 

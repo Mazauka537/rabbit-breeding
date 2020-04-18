@@ -253,9 +253,6 @@ a {
   overflow: hidden;
   font-size: 14px;
   color: #555; }
-.left-form .errors, .center-form .errors {
-  font-size: 13px;
-  color: red; }
 .left-form a, .center-form a {
   font-size: 14px; }
   .left-form a:hover, .center-form a:hover {
@@ -554,5 +551,56 @@ textarea {
 
 .show {
   display: block; }
+
+.alerts {
+  position: fixed;
+  bottom: 10px;
+  right: 10px;
+  z-index: 1100; }
+
+.alert {
+  background: #FFF;
+  box-shadow: 0 0 4px #999;
+  color: #333;
+  font-size: 14px;
+  max-width: 300px;
+  padding: 12px 20px 12px 12px;
+  position: relative;
+  border-radius: 5px;
+  margin-top: 10px; }
+
+.alert-close-button {
+  border: none;
+  background: none;
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 20px;
+  height: 20px;
+  padding: 0; }
+  .alert-close-button:before, .alert-close-button:after {
+    content: "";
+    display: block;
+    position: absolute;
+    height: 2px;
+    width: 12px;
+    left: 50%;
+    top: 50%;
+    background: #444;
+    border-radius: 50px; }
+  .alert-close-button::before {
+    transform: translate(-50%, -50%) rotate(45deg); }
+  .alert-close-button::after {
+    transform: translate(-50%, -50%) rotate(-45deg); }
+  .alert-close-button:hover::before, .alert-close-button:hover::after {
+    background: #000; }
+
+.alert-error {
+  background: #ffc3cb;
+  color: red; }
+  .alert-error .alert-close-button::before, .alert-error .alert-close-button::after {
+    background: red; }
+  .alert-error .alert-close-button:hover::before, .alert-error .alert-close-button:hover::after {
+    background: darkred; }
 
 /*# sourceMappingURL=main.css.map */
