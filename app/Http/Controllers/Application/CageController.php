@@ -23,14 +23,10 @@ class CageController extends Controller
         $cages = Auth::user()->cages;
         $rabbits = Auth::user()->rabbits;
         foreach ($cages as $cage) {
-            $cage->rabbits = $this->getItemsWithParam($rabbits, 'breed_id', $cage->id);
+            $cage->rabbits = $this->getItemsWithParam($rabbits, 'cage_id', $cage->id);
         }
 
         return view('application.cages', ['cages' => $cages]);
-    }
-
-    function getCage($id) {
-        return view('application.cage');
     }
 
     function addCage(Request $request) {

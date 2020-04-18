@@ -28,10 +28,6 @@ class BreedController extends Controller
         return view('application.breeds', ['breeds' => $breeds]);
     }
 
-    function getBreed() {
-        return view('application.breed');
-    }
-
     function addBreed(Request $request) {
 
         $this->validate($request, [
