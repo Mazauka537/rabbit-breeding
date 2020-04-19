@@ -42,4 +42,30 @@ class BreedController extends Controller
 
         return redirect(route('breeds'));
     }
+
+    function editBreed(Request $request, $id) {
+        $this->validate($request, [
+            'name' => 'required|string|max:64',
+            'desc' => 'nullable|string|max:255'
+        ]);
+
+        $breed = Auth::user()->breeds()->findOrFail($id);
+
+        $breed->name = $request->name;
+        $breed->desc = $request->desc;
+
+        $breed->save();
+
+        return redirect(route('breeds'));
+    }
+
+    function deleteBreed($id) {
+        $breed = Auth::user()->breeds()->findOrFail($id);
+
+        $breed->rabbits()->update(['breed_id' => null]);
+
+        $breed->delete();
+
+        return redirect(route('breeds'));
+    }
 }

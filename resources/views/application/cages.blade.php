@@ -49,7 +49,7 @@
                     <form action="{{ route('editCage', 0) }}" class="form" method="post">
                         @csrf
                         <div class="head">
-                            Редактирование клетки <span id="cage-name-edit"></span>
+                            Редактирование клетки "<span id="cage-name-edit"></span>"
                         </div>
 
                         <div class="body">
@@ -86,7 +86,7 @@
                     <form action="{{ route('deleteCage', 0) }}" class="form" method="post">
                         @csrf
                         <div class="head">
-                            Удаление клетки <span id="cage-name-delete"></span>
+                            Удаление клетки "<span id="cage-name-delete"></span>"
                         </div>
 
                         <div class="body pt-20">

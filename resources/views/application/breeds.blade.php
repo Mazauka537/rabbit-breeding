@@ -31,16 +31,6 @@
                                 </div>
                                 <div class="line">
                                     <div class="label"></div>
-                                    <div class="labeled errors">
-                                        <ul>
-                                            @foreach ($errors->all() as $error)
-                                                <li>{{ $error }}</li>
-                                            @endforeach
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div class="line">
-                                    <div class="label"></div>
                                     <div class="labeled">
                                         <input type="submit" value="Добавить">
                                     </div>
@@ -52,15 +42,78 @@
             </div>
         </div>
 
+        <div class="modal-window" id="modal-edit-item-form">
+            <div class="modal-window__inner scrollbar-macosx">
+                <div class="form__wrapper" id="edit-item-form">
+                    <div class="close-button" id="btn-close-edit-item-form"></div>
+                    <form action="{{ route('editBreed', 0) }}" class="form" method="post">
+                        @csrf
+                        <div class="head">
+                            Редактирование породы "<span id="breed-name-edit"></span>"
+                        </div>
+
+                        <div class="body">
+                            <div class="center-form">
+                                <div class="line">
+                                    <div class="label">Название*:</div>
+                                    <div class="labeled">
+                                        <input type="text" name="name" value="">
+                                    </div>
+                                </div>
+                                <div class="line">
+                                    <div class="label">Описание:</div>
+                                    <div class="labeled">
+                                        <textarea name="desc"></textarea>
+                                    </div>
+                                </div>
+                                <div class="line">
+                                    <div class="label"></div>
+                                    <div class="labeled">
+                                        <input type="submit" value="Сохранить">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal-window" id="modal-delete-item-form">
+            <div class="modal-window__inner scrollbar-macosx">
+                <div class="form__wrapper" id="delete-item-form">
+                    <div class="close-button" id="btn-close-delete-item-form"></div>
+                    <form action="{{ route('deleteBreed', 0) }}" class="form" method="post">
+                        @csrf
+                        <div class="head">
+                            Удаление породы "<span id="breed-name-delete"></span>"
+                        </div>
+
+                        <div class="body pt-20">
+                            Вы действительно хотите удалить породу "<span id="breed-name-delete-2"></span>"?
+                            <div class="delete-form-buttons">
+                                <input type="submit" value="Да">
+                                <input type="button" value="Отмена" id="canсel-delete-breed">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
         <div class="add-button">
             <button id="btn-show-add-item-form"></button>
         </div>
 
-        <div class="items clearfix">
+        <div class="items">
 
             @foreach($breeds as $breed)
                 <div class="item__wrapper">
-                    <div class="item">
+                    <div class="item" data-id="{{ $breed->id }}">
+                        <div class="item-buttons">
+                            <button class="ico-btn edit-btn"></button>
+                            <button class="ico-btn delete-btn"></button>
+                        </div>
                         <div class="item__head">
                             <div class="item__name">
                                 {{ $breed->name }}
@@ -103,7 +156,7 @@
                                     <div class="label">
                                         Описание:
                                     </div>
-                                    <div class="labeled">
+                                    <div class="labeled"  id="desc">
                                         {{ $breed->desc ?? '(нет описания)' }}
                                     </div>
                                 </div>
@@ -115,6 +168,23 @@
 
         </div>
 
+        <div class="alerts">
+            @if(count($errors->all()) != 0)
+                <div class="alert alert-error">
+                    <button class="alert-close-button"></button>
+                    <div class="alert__inner">
+                        <ul>
+                            @foreach($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                </div>
+            @endif
+        </div>
+
         <script src="{{ asset('application/js/modal-add-item.js') }}"></script>
+        <script src="{{ asset('application/js/edit-item-breed.js') }}"></script>
+        <script src="{{ asset('application/js/delete-item-breed.js') }}"></script>
     </div>
 @endsection

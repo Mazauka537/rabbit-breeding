@@ -35,6 +35,8 @@ Route::group(['middleware' => 'auth', 'namespace' => 'Application', 'prefix' => 
 
     Route::get('breeds', 'BreedController@getBreeds')->name('breeds');
     Route::post('breed/add', 'BreedController@addBreed')->name('addBreed');
+    Route::post('breed/edit/{id}', 'BreedController@editBreed')->where('id', '[0-9]+')->name('editBreed');
+    Route::post('breed/delete/{id}', 'BreedController@deleteBreed')->where('id', '[0-9]+')->name('deleteBreed');
 
     Route::get('matings', 'MatingController@getMatings')->name('matings');
     Route::post('mating/add', 'MatingController@addMating')->name('addMating');
