@@ -52,4 +52,8 @@ class User extends Authenticatable
     public function matings() {
         return $this->hasMany('App\Mating');
     }
+
+    public function vaccinations() {
+        return$this->hasMany('App\Vaccination');
+    }
 }

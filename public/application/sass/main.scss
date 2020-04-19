@@ -208,9 +208,10 @@ a {
                 display: block;
                 padding: 10px;
                 font-weight: 500;
+                color: #555;
 
                 &:hover {
-                    background: $color2;
+                    color: #000;
                 }
 
                 span {

@@ -45,6 +45,8 @@ Route::group(['middleware' => 'auth', 'namespace' => 'Application', 'prefix' => 
 
     Route::get('vaccinations', 'VaccinationController@getVaccinations')->name('vaccinations');
     Route::post('vaccination/add', 'VaccinationController@addVaccination')->name('addVaccination');
+    Route::post('vaccination/edit/{id}', 'VaccinationController@editVaccination')->where('id', '[0-9]+')->name('editVaccination');
+    Route::post('vaccination/delete/{id}', 'VaccinationController@deleteVaccination')->where('id', '[0-9]+')->name('deleteVaccination');
 
     Route::get('reports', 'ReportController@getReports')->name('reports');
 
@@ -53,5 +55,5 @@ Route::group(['middleware' => 'auth', 'namespace' => 'Application', 'prefix' => 
 });
 
 //DB::listen(function($query) {
-//    var_dump($query->sql, $query->bindings);
+//    dump($query->sql, $query->bindings);
 //});

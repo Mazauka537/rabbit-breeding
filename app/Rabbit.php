@@ -21,7 +21,7 @@ class Rabbit extends Model
     }
 
     public function vaccinations() {
-        return $this->hasMany('App\Vaccinations');
+        return $this->hasMany('App\Vaccination');
     }
 
     public function user() {
