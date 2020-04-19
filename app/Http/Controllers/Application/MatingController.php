@@ -64,7 +64,7 @@ class MatingController extends Controller
         $mating->desc = $request->desc;
         $mating->save();
 
-        return redirect(route('matings'));
+        return back();
     }
 
     function editMating(Request $request, $id) {
@@ -100,7 +100,7 @@ class MatingController extends Controller
 
         $mating->save();
 
-        return redirect(route('matings'));
+        return back();
     }
 
     function deleteMating($id) {
@@ -108,6 +108,6 @@ class MatingController extends Controller
 
         $mating->delete();
 
-        return redirect(route('matings'));
+        return back();
     }
 }

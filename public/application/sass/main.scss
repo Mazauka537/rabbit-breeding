@@ -678,26 +678,6 @@ a {
     overflow: hidden;
 }
 
-.delete-modal {
-    .form {
-
-        .body {
-            padding: 10px 0 3px;
-
-            .buttons {
-                padding-top: 10px;
-                text-align: right;
-
-                input {
-                    max-width: 120px;
-                    width: 100%;
-                    margin-right: 3px;
-                }
-            }
-        }
-    }
-}
-
 .delete-form-buttons {
     padding-top: 25px;
     margin-bottom: -10px;
@@ -818,10 +798,6 @@ textarea {
     width: 100%;
     min-height: 100px;
     resize: none;
-}
-
-.delete-form-buttons {
-
 }
 
 //show//

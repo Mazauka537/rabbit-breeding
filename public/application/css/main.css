@@ -458,16 +458,6 @@ a {
   height: 100%;
   overflow: hidden; }
 
-.delete-modal .form .body {
-  padding: 10px 0 3px; }
-  .delete-modal .form .body .buttons {
-    padding-top: 10px;
-    text-align: right; }
-    .delete-modal .form .body .buttons input {
-      max-width: 120px;
-      width: 100%;
-      margin-right: 3px; }
-
 .delete-form-buttons {
   padding-top: 25px;
   margin-bottom: -10px;

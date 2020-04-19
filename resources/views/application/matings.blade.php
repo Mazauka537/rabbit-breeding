@@ -88,10 +88,10 @@
             </div>
         </div>
 
-        <div class="modal-window" id="modal-edit-item-form">
+        <div class="modal-window" id="modal-edit-mating-form">
             <div class="modal-window__inner scrollbar-macosx">
-                <div class="form__wrapper" id="edit-item-form">
-                    <div class="close-button" id="btn-close-edit-item-form"></div>
+                <div class="form__wrapper" id="edit-mating-form">
+                    <div class="close-button" id="btn-close-edit-mating-form"></div>
                     <form action="{{ route('editMating', 0) }}" class="form" method="post">
                         @csrf
                         <div class="head">
@@ -171,10 +171,10 @@
             </div>
         </div>
 
-        <div class="modal-window" id="modal-delete-item-form">
+        <div class="modal-window" id="modal-delete-mating-form">
             <div class="modal-window__inner scrollbar-macosx">
-                <div class="form__wrapper" id="delete-item-form">
-                    <div class="close-button" id="btn-close-delete-item-form"></div>
+                <div class="form__wrapper" id="delete-mating-form">
+                    <div class="close-button" id="btn-close-delete-mating-form"></div>
                     <form action="{{ route('deleteMating', 0) }}" class="form" method="post">
                         @csrf
                         <div class="head">
@@ -204,8 +204,8 @@
                     <div class="item" data-id="{{ $mating->id }}" data-female_id="{{ $mating->female->id ?? ''}}"
                          data-male_id="{{ $mating->male->id ?? ''}}">
                         <div class="item-buttons">
-                            <button class="ico-btn edit-btn"></button>
-                            <button class="ico-btn delete-btn"></button>
+                            <button class="ico-btn edit-btn edit-mating-btn"></button>
+                            <button class="ico-btn delete-btn delete-mating-btn"></button>
                         </div>
                         <div class="item__head">
                             <div class="item__name">
