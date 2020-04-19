@@ -40,6 +40,8 @@ Route::group(['middleware' => 'auth', 'namespace' => 'Application', 'prefix' => 
 
     Route::get('matings', 'MatingController@getMatings')->name('matings');
     Route::post('mating/add', 'MatingController@addMating')->name('addMating');
+    Route::post('mating/edit/{id}', 'MatingController@editMating')->where('id', '[0-9]+')->name('editMating');
+    Route::post('mating/delete/{id}', 'MatingController@deleteMating')->where('id', '[0-9]+')->name('deleteMating');
 
     Route::get('vaccinations', 'VaccinationController@getVaccinations')->name('vaccinations');
     Route::post('vaccination/add', 'VaccinationController@addVaccination')->name('addVaccination');
