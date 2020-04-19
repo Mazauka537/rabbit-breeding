@@ -36,9 +36,9 @@
                         Удаление фотографии
                     </div>
 
-                    <div class="body delete-photo-body">
+                    <div class="body pt-20">
                         Удалить фотографию данного кролика ({{ $rabbit->name }})?
-                        <div class="buttons">
+                        <div class="delete-form-buttons">
                             <input type="submit" value="Да">
                             <input type="button" value="Отмена" id="canсel-delete-photo">
                         </div>
@@ -522,6 +522,21 @@
                 </div>
 
             </div>
+        </div>
+
+        <div class="alerts">
+            @if(count($errors->all()) != 0)
+                <div class="alert alert-error">
+                    <button class="alert-close-button"></button>
+                    <div class="alert__inner">
+                        <ul>
+                            @foreach($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                </div>
+            @endif
         </div>
 
         <script src="{{ asset('application/js/edit-item-rabbit.js') }}"></script>

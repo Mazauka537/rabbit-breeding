@@ -143,7 +143,7 @@ class RabbitController extends Controller
     function editPhoto(Request $request, $id) {
 
         $this->validate($request, [
-            'photo' => 'nullable|image',
+            'photo' => 'required|image',
         ]);
 
         $rabbit = Auth::user()->rabbits()->findOrFail($id);
