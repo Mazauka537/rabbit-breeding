@@ -176,6 +176,56 @@
             </div>
         </div>
 
+        <div class="modal-window" id="modal-add-vaccination-form">
+            <div class="modal-window__inner scrollbar-macosx">
+                <div class="form__wrapper" id="add-vaccination-form">
+                    <div class="close-button" id="btn-close-add-vaccination-form"></div>
+                    <form action="{{ route('addVaccination') }}" class="form" method="post">
+                        @csrf
+                        <input type="hidden" name="rabbit" value="{{ $rabbit->id }}">
+                        <div class="head">
+                            Добавление новой вакцинации
+                        </div>
+
+                        <div class="body">
+                            <div class="center-form">
+                                <div class="line">
+                                    <div class="label">
+                                        Название*:
+                                    </div>
+                                    <div class="labeled">
+                                        <input type="text" name="name" value="{{ old('name') }}">
+                                    </div>
+                                </div>
+                                <div class="line">
+                                    <div class="label">
+                                        Дата:
+                                    </div>
+                                    <div class="labeled">
+                                        <input type="date" name="date" value="{{ old('date') }}">
+                                    </div>
+                                </div>
+                                <div class="line">
+                                    <div class="label">
+                                        Примечания:
+                                    </div>
+                                    <div class="labeled">
+                                        <textarea name="desc">{{ old('desc') }}</textarea>
+                                    </div>
+                                </div>
+                                <div class="line">
+                                    <div class="label"></div>
+                                    <div class="labeled">
+                                        <input type="submit" value="Добавить">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
         <div class="modal-window" id="modal-edit-vaccination-form">
             <div class="modal-window__inner scrollbar-macosx">
                 <div class="form__wrapper" id="edit-vaccination-form">
@@ -495,7 +545,8 @@
                         <div class="body">
                             @foreach($matings as $mating)
                                 <div class="item__wrapper">
-                                    <div class="item" data-id="{{ $mating->id }}" data-female_id="{{ $mating->female->id ?? ''}}"
+                                    <div class="item" data-id="{{ $mating->id }}"
+                                         data-female_id="{{ $mating->female->id ?? ''}}"
                                          data-male_id="{{ $mating->male->id ?? ''}}">
                                         <div class="item-buttons">
                                             <button class="ico-btn edit-btn edit-mating-btn"></button>
@@ -525,7 +576,8 @@
                                                     </div>
                                                     <div class="labeled">
                                                         @if(!empty($mating->female_id))
-                                                            <a class="female" href="{{ route('rabbit', $mating->female_id) }}">
+                                                            <a class="female"
+                                                               href="{{ route('rabbit', $mating->female_id) }}">
                                                                 {{ $mating->female->name }}
                                                             </a>
                                                         @else
@@ -541,7 +593,8 @@
                                                     </div>
                                                     <div class="labeled">
                                                         @if(!empty($mating->male_id))
-                                                            <a class="male" href="{{ route('rabbit', $mating->male_id) }}">
+                                                            <a class="male"
+                                                               href="{{ route('rabbit', $mating->male_id) }}">
                                                                 {{ $mating->male->name }}
                                                             </a>
                                                         @else
@@ -555,7 +608,8 @@
                                                     <div class="label">
                                                         Дата случки:
                                                     </div>
-                                                    <div class="labeled" id="mating-item-date" data-date="{{ $mating->date ?? '' }}">
+                                                    <div class="labeled" id="mating-item-date"
+                                                         data-date="{{ $mating->date ?? '' }}">
                                                         @if(!empty($mating->date))
                                                             {{ date("d.m.Y", strtotime($mating->date)) }}
                                                         @else
@@ -567,7 +621,8 @@
                                                     <div class="label">
                                                         Дата окрола:
                                                     </div>
-                                                    <div class="labeled" id="mating-item-date_birth" data-date_birth="{{ $mating->date_birth ?? '' }}">
+                                                    <div class="labeled" id="mating-item-date_birth"
+                                                         data-date_birth="{{ $mating->date_birth ?? '' }}">
                                                         @if(!empty($mating->date_birth))
                                                             {{ date("d.m.Y", strtotime($mating->date_birth)) }}
                                                         @else
@@ -614,12 +669,14 @@
 
                         <div class="head">
                             Вакцинации
+                            <span class="ico-btn plus-btn" id="add-vaccination-btn"></span>
                         </div>
 
                         <div class="body">
                             @foreach($vaccinations as $vaccination)
                                 <div class="item__wrapper">
-                                    <div class="item" data-id="{{ $vaccination->id }}" data-rabbit_id="{{ $vaccination->rabbit_id }}">
+                                    <div class="item" data-id="{{ $vaccination->id }}"
+                                         data-rabbit_id="{{ $vaccination->rabbit_id }}">
                                         <div class="item__head">
                                             <div class="item__name">
                                                 {{ $vaccination->name }}
@@ -695,5 +752,7 @@
         <script src="{{ asset('application/js/delete-item-mating.js') }}"></script>
         <script src="{{ asset('application/js/edit-item-vaccination.js') }}"></script>
         <script src="{{ asset('application/js/delete-item-vaccination.js') }}"></script>
+        <script src="{{ asset('application/js/add-item-vaccination.js') }}"></script>
+
     </div>
 @endsection

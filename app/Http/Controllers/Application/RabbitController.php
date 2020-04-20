@@ -25,6 +25,20 @@ class RabbitController extends Controller
         return $result;
     }
 
+    private function getUniqueItems($array, $field) {
+        $result = [];
+        foreach ($array as $item) {
+            if (!in_array($item[$field], $result)) {
+                $result[] = $item[$field];
+            }
+        }
+
+        if (count($result) != 0)
+            return $result;
+        else
+            return false;
+    }
+
     private function getRandomStr($length)
     {
         $permitted_chars = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
@@ -49,6 +63,7 @@ class RabbitController extends Controller
         $cages = Auth::user()->cages;
         $breeds = Auth::user()->breeds;
         $rabbits = Auth::user()->rabbits;
+        $all_vaccinations = Auth::user()->vaccinations;
 
         $rabbit = ($r = $this->findItemById($rabbits, $id)) ? $r : null;
         if ($rabbit == null || $rabbit->user_id != Auth::id())
@@ -62,7 +77,9 @@ class RabbitController extends Controller
         $matings = $rabbit->matings;
         $vaccinations = $rabbit->vaccinations;
 
-        return view('application.rabbit', compact(['rabbit', 'rabbits', 'cages', 'breeds', 'matings', 'vaccinations']));
+        $uniqueVaccinations = $this->getUniqueItems($all_vaccinations, 'name');
+
+        return view('application.rabbit', compact(['rabbit', 'rabbits', 'cages', 'breeds', 'matings', 'vaccinations', 'uniqueVaccinations']));
     }
 
     function addRabbit(Request $request)

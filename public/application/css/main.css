@@ -218,6 +218,10 @@ a {
     content: "\e9ac"; }
   .ico-btn.caret-btn::before {
     content: "\e909"; }
+  .ico-btn.plus-btn::before {
+    content: "\ea0a";
+    color: #444;
+    font-size: 18px; }
 
 .item__head {
   padding: 10px 15px;
@@ -263,7 +267,8 @@ a {
 .left-form .labeled, .center-form .labeled {
   overflow: hidden;
   font-size: 14px;
-  color: #555; }
+  color: #555;
+  position: relative; }
 .left-form a, .center-form a {
   font-size: 14px; }
   .left-form a:hover, .center-form a:hover {
@@ -559,6 +564,26 @@ textarea {
   min-height: 100px;
   resize: none; }
 
+.drop-down-btn, .drop-down-list {
+  font-size: 14px;
+  height: 30px;
+  padding: 5px 9px 5px;
+  border-radius: 3px;
+  border: 1px solid #d3d9de;
+  color: #000;
+  background: #fff; }
+
+.drop-down-btn {
+  width: 30px;
+  display: inline-block; }
+
+.drop-down-list {
+  max-width: 300px;
+  width: 100%;
+  position: absolute;
+  left: 10px;
+  top: 100%; }
+
 .show {
   display: block; }
 
@@ -615,5 +640,8 @@ textarea {
 
 .pt-20 {
   padding-top: 20px !important; }
+
+.mw-270 {
+  max-width: 270px !important; }
 
 /*# sourceMappingURL=main.css.map */
