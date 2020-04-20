@@ -165,9 +165,12 @@
             @foreach($vaccinations as $vaccination)
                 <div class="item__wrapper">
                     <div class="item" data-id="{{ $vaccination->id }}" data-rabbit_id="{{ $vaccination->rabbit_id }}">
-                        <div class="item__head">
+                        <div class="item__head item__head-hovered">
                             <div class="item__name">
                                 {{ $vaccination->name }}
+                            </div>
+                            <div class="item__name-2">
+                                {{ $vaccination->rabbit->name }}
                             </div>
                             <div class="item-buttons">
                                 <button class="ico-btn edit-btn edit-vaccination-btn"></button>

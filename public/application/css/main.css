@@ -226,6 +226,14 @@ a {
   border-top: 1px solid #f1f1f1;
   cursor: pointer; }
 
+.item__head-hovered:hover .item__name {
+  display: none; }
+.item__head-hovered:hover .item__name-2 {
+  display: block; }
+
+.item__name-2 {
+  display: none; }
+
 .item__wrapper:first-child .item__head {
   border-top: none; }
 
