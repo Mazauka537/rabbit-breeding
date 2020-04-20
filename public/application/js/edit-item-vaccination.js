@@ -10,7 +10,8 @@ document.getElementById('edit-vaccination-form').onclick = function (e) {
 }
 document.getElementById('btn-close-edit-vaccination-form').addEventListener('click', hideEditVaccinationModal);
 
-function showEditVaccinationModal() {
+function showEditVaccinationModal(e) {
+    e.stopPropagation();
     let item = this.closest('.item');
     let modal = document.getElementById('modal-edit-vaccination-form');
     let form = modal.querySelector('form');

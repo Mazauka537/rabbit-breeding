@@ -425,8 +425,10 @@
                                     {{ $mating->male->name ?? '(неизвестно)' }}
                                 </span>
                                             </div>
-                                            <div class="item__arrow">
-
+                                            <div class="item-buttons">
+                                                <button class="ico-btn edit-btn edit-mating-btn"></button>
+                                                <button class="ico-btn delete-btn delete-mating-btn"></button>
+                                                <span class="ico-btn caret-btn"></span>
                                             </div>
                                         </div>
                                         <div class="item__body">

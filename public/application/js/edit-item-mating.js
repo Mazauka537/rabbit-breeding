@@ -10,7 +10,8 @@ document.getElementById('edit-mating-form').onclick = function (e) {
 }
 document.getElementById('btn-close-edit-mating-form').addEventListener('click', hideEditItemModal);
 
-function showEditItemModal() {
+function showEditItemModal(e) {
+    e.stopPropagation();
     let item = this.closest('.item');
     let modal = document.getElementById('modal-edit-mating-form');
     let form = modal.querySelector('form');

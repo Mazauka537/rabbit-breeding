@@ -10,7 +10,9 @@ document.getElementById('edit-item-form').onclick = function (e) {
 }
 document.getElementById('btn-close-edit-item-form').addEventListener('click', hideEditItemModal);
 
-function showEditItemModal() {
+function showEditItemModal(e) {
+    e.stopPropagation();
+
     let item = this.closest('.item');
     let modal = document.getElementById('modal-edit-item-form');
     let form = modal.querySelector('form');

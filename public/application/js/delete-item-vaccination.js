@@ -11,7 +11,8 @@ document.getElementById('delete-vaccination-form').onclick = function (e) {
 document.getElementById('btn-close-delete-vaccination-form').addEventListener('click', hideDeleteVaccinationModal);
 document.getElementById('canсel-delete-vaccination').addEventListener('click', hideDeleteVaccinationModal);
 
-function showDeleteVaccinationModal() {
+function showDeleteVaccinationModal(e) {
+    e.stopPropagation();
     let item = this.closest('.item');
     let modal = document.getElementById('modal-delete-vaccination-form');
     let form = modal.querySelector('form');

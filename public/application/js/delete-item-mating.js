@@ -11,7 +11,9 @@ document.getElementById('delete-mating-form').onclick = function (e) {
 document.getElementById('btn-close-delete-mating-form').addEventListener('click', hideDeleteItemModal);
 document.getElementById('canсel-delete-mating').addEventListener('click', hideDeleteItemModal);
 
-function showDeleteItemModal() {
+function showDeleteItemModal(e) {
+    e.stopPropagation();
+
     let item = this.closest('.item');
     let modal = document.getElementById('modal-delete-mating-form');
     let form = modal.querySelector('form');

@@ -11,7 +11,9 @@ document.getElementById('delete-item-form').onclick = function (e) {
 document.getElementById('btn-close-delete-item-form').addEventListener('click', hideDeleteItemModal);
 document.getElementById('canсel-delete-cage').addEventListener('click', hideDeleteItemModal);
 
-function showDeleteItemModal() {
+function showDeleteItemModal(e) {
+    e.stopPropagation();
+
     let item = this.closest('.item');
     let modal = document.getElementById('modal-delete-item-form');
     let form = modal.querySelector('form');

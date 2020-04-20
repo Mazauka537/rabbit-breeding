@@ -110,16 +110,14 @@
             @foreach($cages as $cage)
                 <div class="item__wrapper">
                     <div class="item" data-id="{{ $cage->id }}">
-                        <div class="item-buttons">
-                            <button class="ico-btn edit-btn"></button>
-                            <button class="ico-btn delete-btn"></button>
-                        </div>
                         <div class="item__head">
                             <div class="item__name">
                                 {{ $cage->name }}
                             </div>
-                            <div class="item__arrow">
-
+                            <div class="item-buttons">
+                                <button class="ico-btn edit-btn"></button>
+                                <button class="ico-btn delete-btn"></button>
+                                <span class="ico-btn caret-btn"></span>
                             </div>
                         </div>
                         <div class="item__body">

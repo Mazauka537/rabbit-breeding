@@ -203,10 +203,6 @@
                 <div class="item__wrapper">
                     <div class="item" data-id="{{ $mating->id }}" data-female_id="{{ $mating->female->id ?? ''}}"
                          data-male_id="{{ $mating->male->id ?? ''}}">
-                        <div class="item-buttons">
-                            <button class="ico-btn edit-btn edit-mating-btn"></button>
-                            <button class="ico-btn delete-btn delete-mating-btn"></button>
-                        </div>
                         <div class="item__head">
                             <div class="item__name">
                                 <span class="female">
@@ -217,8 +213,10 @@
                                     {{ $mating->male->name ?? '(неизвестно)' }}
                                 </span>
                             </div>
-                            <div class="item__arrow">
-
+                            <div class="item-buttons">
+                                <button class="ico-btn edit-btn edit-mating-btn"></button>
+                                <button class="ico-btn delete-btn delete-mating-btn"></button>
+                                <span class="ico-btn caret-btn"></span>
                             </div>
                         </div>
                         <div class="item__body">
