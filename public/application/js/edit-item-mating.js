@@ -29,7 +29,6 @@ function showEditItemModal() {
             break;
         }
     }
-    console.log(item.querySelector('#mating-item-date').innerHTML);
     form.elements.date.value = item.querySelector('#mating-item-date').dataset.date.trim();
     form.elements.date_birth.value = item.querySelector('#mating-item-date_birth').dataset.date_birth.trim();
     form.elements.child_count.value = item.querySelector('#mating-item-child_count').innerHTML.trim();

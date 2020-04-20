@@ -38,7 +38,6 @@
                                                     {{ $rabbit->name }}
                                                 </option>
                                             @endforeach
-
                                         </select>
                                     </div>
                                 </div>
@@ -83,7 +82,45 @@
 
                         <div class="body">
                             <div class="center-form">
-
+                                <div class="line">
+                                    <div class="label">
+                                        Название*:
+                                    </div>
+                                    <div class="labeled">
+                                        <input type="text" name="name" value="">
+                                    </div>
+                                </div>
+                                <div class="line">
+                                    <div class="label">
+                                        Кролик*:
+                                    </div>
+                                    <div class="labeled">
+                                        <select name="rabbit">
+                                            <option value=""></option>
+                                            @foreach($rabbits as $rabbit)
+                                                <option value="{{ $rabbit->id }}">
+                                                    {{ $rabbit->name }}
+                                                </option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="line">
+                                    <div class="label">
+                                        Дата:
+                                    </div>
+                                    <div class="labeled">
+                                        <input type="date" name="date" value="">
+                                    </div>
+                                </div>
+                                <div class="line">
+                                    <div class="label">
+                                        Примечания:
+                                    </div>
+                                    <div class="labeled">
+                                        <textarea name="desc"></textarea>
+                                    </div>
+                                </div>
                                 <div class="line">
                                     <div class="label"></div>
                                     <div class="labeled">
@@ -108,7 +145,7 @@
                         </div>
 
                         <div class="body pt-20">
-                            Вы действительно хотите удалить вакцинацию "<span id="mating-name-delete-2"></span>"?
+                            Вы действительно хотите удалить вакцинацию "<span id="vaccination-name-delete-2"></span>"?
                             <div class="delete-form-buttons">
                                 <input type="submit" value="Да">
                                 <input type="button" value="Отмена" id="canсel-delete-vaccination">

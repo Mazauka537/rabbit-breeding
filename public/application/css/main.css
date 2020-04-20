@@ -81,11 +81,16 @@ a {
   height: 30px;
   width: 30px;
   cursor: pointer;
-  text-align: center; }
+  text-align: center;
+  position: relative; }
   .menu-btn::before {
     content: "\e907";
     font-family: icomoon;
-    font-size: 30px; }
+    font-size: 24px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); }
 
 .user {
   padding: 0 18px;

@@ -38,4 +38,32 @@ class VaccinationController extends Controller
 
         return back();
     }
+
+    function editVaccination(Request $request, $id) {
+        $this->validate($request, [
+            'name' => 'required|string|max:64',
+            'rabbit' => 'required|integer|exists:rabbits,id,user_id,' . Auth::id(),
+            'date' => 'nullable|date',
+            'desc' => 'nullable|string|max:255',
+        ]);
+
+        $vaccination = Auth::user()->vaccinations()->findOrFail($id);
+
+        $vaccination->name = $request->name;
+        $vaccination->rabbit_id = $request->rabbit;
+        $vaccination->date = $request->date;
+        $vaccination->desc = $request->desc;
+
+        $vaccination->save();
+
+        return back();
+    }
+
+    function deleteVaccination($id) {
+        $vaccination = Auth::user()->vaccinations()->findOrFail($id);
+
+        $vaccination->delete();
+
+        return back();
+    }
 }
