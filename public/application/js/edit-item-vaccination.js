@@ -1,7 +1,7 @@
-let editButtons = document.getElementsByClassName('edit-vaccination-btn');
+let editVatinationButtons = document.getElementsByClassName('edit-vaccination-btn');
 
-for (let i = 0; i < editButtons.length; i++) {
-    editButtons[i].addEventListener('click', showEditVaccinationModal);
+for (let i = 0; i < editVatinationButtons.length; i++) {
+    editVatinationButtons[i].addEventListener('click', showEditVaccinationModal);
 }
 
 document.getElementById('modal-edit-vaccination-form').addEventListener('click', hideEditVaccinationModal);

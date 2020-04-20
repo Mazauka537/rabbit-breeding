@@ -1,7 +1,7 @@
-let editButtons = document.getElementsByClassName('edit-mating-btn');
+let editMatingButtons = document.getElementsByClassName('edit-mating-btn');
 
-for (let i = 0; i < editButtons.length; i++) {
-    editButtons[i].addEventListener('click', showEditItemModal);
+for (let i = 0; i < editMatingButtons.length; i++) {
+    editMatingButtons[i].addEventListener('click', showEditItemModal);
 }
 
 document.getElementById('modal-edit-mating-form').addEventListener('click', hideEditItemModal);

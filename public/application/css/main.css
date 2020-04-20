@@ -153,16 +153,17 @@ a {
     display: block;
     padding: 10px;
     font-weight: 500;
-    color: #555; }
+    color: #444; }
     .aside__inner .nav li a:hover {
-      color: #000; }
+      color: #000;
+      font-size: 110%; }
     .aside__inner .nav li a span {
       vertical-align: middle; }
 
 .icon::before {
   font-family: 'icomoon';
   font-size: 24px;
-  padding-right: 24px; }
+  padding-right: 15px; }
 
 .main {
   height: 100%;

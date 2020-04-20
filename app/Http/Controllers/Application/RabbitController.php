@@ -60,8 +60,9 @@ class RabbitController extends Controller
         $rabbit->father = $this->findItemById($rabbits, $rabbit->father_id) ?? '(нет)';
 
         $matings = $rabbit->matings;
+        $vaccinations = $rabbit->vaccinations;
 
-        return view('application.rabbit', compact(['rabbit', 'rabbits', 'cages', 'breeds', 'matings']));
+        return view('application.rabbit', compact(['rabbit', 'rabbits', 'cages', 'breeds', 'matings', 'vaccinations']));
     }
 
     function addRabbit(Request $request)

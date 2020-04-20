@@ -1,7 +1,7 @@
-let deleteButtons = document.getElementsByClassName('delete-vaccination-btn');
+let deleteVatinationButtons = document.getElementsByClassName('delete-vaccination-btn');
 
-for (let i = 0; i < deleteButtons.length; i++) {
-    deleteButtons[i].addEventListener('click', showDeleteVaccinationModal);
+for (let i = 0; i < deleteVatinationButtons.length; i++) {
+    deleteVatinationButtons[i].addEventListener('click', showDeleteVaccinationModal);
 }
 
 document.getElementById('modal-delete-vaccination-form').addEventListener('click', hideDeleteVaccinationModal);

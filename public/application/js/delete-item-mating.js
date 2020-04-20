@@ -1,7 +1,7 @@
-let deleteButtons = document.getElementsByClassName('delete-mating-btn');
+let deleteMatingButtons = document.getElementsByClassName('delete-mating-btn');
 
-for (let i = 0; i < deleteButtons.length; i++) {
-    deleteButtons[i].addEventListener('click', showDeleteItemModal);
+for (let i = 0; i < deleteMatingButtons.length; i++) {
+    deleteMatingButtons[i].addEventListener('click', showDeleteItemModal);
 }
 
 document.getElementById('modal-delete-mating-form').addEventListener('click', hideDeleteItemModal);

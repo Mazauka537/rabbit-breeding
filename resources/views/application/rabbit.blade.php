@@ -176,6 +176,92 @@
             </div>
         </div>
 
+        <div class="modal-window" id="modal-edit-vaccination-form">
+            <div class="modal-window__inner scrollbar-macosx">
+                <div class="form__wrapper" id="edit-vaccination-form">
+                    <div class="close-button" id="btn-close-edit-vaccination-form"></div>
+                    <form action="{{ route('editVaccination', 0) }}" class="form" method="post">
+                        @csrf
+                        <div class="head">
+                            Редактирование вакцинации "<span id="vaccination-name-edit"></span>"
+                        </div>
+
+                        <div class="body">
+                            <div class="center-form">
+                                <div class="line">
+                                    <div class="label">
+                                        Название*:
+                                    </div>
+                                    <div class="labeled">
+                                        <input type="text" name="name" value="">
+                                    </div>
+                                </div>
+                                <div class="line">
+                                    <div class="label">
+                                        Кролик*:
+                                    </div>
+                                    <div class="labeled">
+                                        <select name="rabbit">
+                                            <option value=""></option>
+                                            @foreach($rabbits as $r)
+                                                <option value="{{ $r->id }}">
+                                                    {{ $r->name }}
+                                                </option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="line">
+                                    <div class="label">
+                                        Дата:
+                                    </div>
+                                    <div class="labeled">
+                                        <input type="date" name="date" value="">
+                                    </div>
+                                </div>
+                                <div class="line">
+                                    <div class="label">
+                                        Примечания:
+                                    </div>
+                                    <div class="labeled">
+                                        <textarea name="desc"></textarea>
+                                    </div>
+                                </div>
+                                <div class="line">
+                                    <div class="label"></div>
+                                    <div class="labeled">
+                                        <input type="submit" value="Сохранить">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal-window" id="modal-delete-vaccination-form">
+            <div class="modal-window__inner scrollbar-macosx">
+                <div class="form__wrapper" id="delete-vaccination-form">
+                    <div class="close-button" id="btn-close-delete-vaccination-form"></div>
+                    <form action="{{ route('deleteVaccination', 0) }}" class="form" method="post">
+                        @csrf
+                        <div class="head">
+                            Удаление вакцинации "<span id="vaccination-name-delete"></span>"
+                        </div>
+
+                        <div class="body pt-20">
+                            Вы действительно хотите удалить вакцинацию "<span id="vaccination-name-delete-2"></span>"?
+                            <div class="delete-form-buttons">
+                                <input type="submit" value="Да">
+                                <input type="button" value="Отмена" id="canсel-delete-vaccination">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
         <div class="rabbit-container">
 
             <div class="left">
@@ -523,6 +609,67 @@
                     </div>
                 </div>
 
+                <div class="vaccinations__wrapper wrapper">
+                    <div class="vaccinations">
+
+                        <div class="head">
+                            Вакцинации
+                        </div>
+
+                        <div class="body">
+                            @foreach($vaccinations as $vaccination)
+                                <div class="item__wrapper">
+                                    <div class="item" data-id="{{ $vaccination->id }}" data-rabbit_id="{{ $vaccination->rabbit_id }}">
+                                        <div class="item__head">
+                                            <div class="item__name">
+                                                {{ $vaccination->name }}
+                                            </div>
+                                            <div class="item-buttons">
+                                                <button class="ico-btn edit-btn edit-vaccination-btn"></button>
+                                                <button class="ico-btn delete-btn delete-vaccination-btn"></button>
+                                                <span class="ico-btn caret-btn"></span>
+                                            </div>
+                                        </div>
+                                        <div class="item__body">
+                                            <div class="left-form">
+                                                <div class="line">
+                                                    <div class="label">
+                                                        Название:
+                                                    </div>
+                                                    <div class="labeled">
+                                                        {{ $vaccination->name }}
+                                                    </div>
+                                                </div>
+                                                <div class="line">
+                                                    <div class="label">
+                                                        Дата:
+                                                    </div>
+                                                    <div class="labeled" id="vaccination-item-date"
+                                                         data-date="{{ $vaccination->date ?? '' }}">
+                                                        @if(!empty($vaccination->date))
+                                                            {{ date("d.m.Y", strtotime($vaccination->date)) }}
+                                                        @else
+                                                            {{ '(неизвестно)' }}
+                                                        @endif
+                                                    </div>
+                                                </div>
+                                                <div class="line">
+                                                    <div class="label">
+                                                        Примечания:
+                                                    </div>
+                                                    <div class="labeled" id="vaccination-item-desc">
+                                                        {{ $vaccination->desc ?? '(нет)' }}
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            @endforeach
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </div>
 
@@ -546,5 +693,7 @@
         <script src="{{ asset('application/js/edit-rabbit-photo.js') }}"></script>
         <script src="{{ asset('application/js/edit-item-mating.js') }}"></script>
         <script src="{{ asset('application/js/delete-item-mating.js') }}"></script>
+        <script src="{{ asset('application/js/edit-item-vaccination.js') }}"></script>
+        <script src="{{ asset('application/js/delete-item-vaccination.js') }}"></script>
     </div>
 @endsection
