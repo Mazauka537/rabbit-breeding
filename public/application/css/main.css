@@ -564,26 +564,6 @@ textarea {
   min-height: 100px;
   resize: none; }
 
-.drop-down-btn, .drop-down-list {
-  font-size: 14px;
-  height: 30px;
-  padding: 5px 9px 5px;
-  border-radius: 3px;
-  border: 1px solid #d3d9de;
-  color: #000;
-  background: #fff; }
-
-.drop-down-btn {
-  width: 30px;
-  display: inline-block; }
-
-.drop-down-list {
-  max-width: 300px;
-  width: 100%;
-  position: absolute;
-  left: 10px;
-  top: 100%; }
-
 .show {
   display: block; }
 

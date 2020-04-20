@@ -25,7 +25,8 @@ class RabbitController extends Controller
         return $result;
     }
 
-    private function getUniqueItems($array, $field) {
+    private function getUniqueItems($array, $field)
+    {
         $result = [];
         foreach ($array as $item) {
             if (!in_array($item[$field], $result)) {
@@ -123,7 +124,8 @@ class RabbitController extends Controller
         return redirect(route('rabbits'));
     }
 
-    function editRabbit(Request $request, $id) {
+    function editRabbit(Request $request, $id)
+    {
         $this->validate($request, [
             'name' => 'required|string|max:64',
             'gender' => 'required|in:f,m',
@@ -152,13 +154,24 @@ class RabbitController extends Controller
         return back();
     }
 
-    function deleteRabbit($id) {
+    function deleteRabbit($id)
+    {
         $rabbit = Auth::user()->rabbits()->findOrFail($id);
+
+        if ($rabbit->gender == 'f')
+            $rabbit->matings()->update(['female_id' => null]);
+        else
+            $rabbit->matings()->update(['male_id' => null]);
+
+        $rabbit->vaccinations()->delete();
+
         $rabbit->delete();
+
         return redirect(route('rabbits'));
     }
 
-    function editPhoto(Request $request, $id) {
+    function editPhoto(Request $request, $id)
+    {
 
         $this->validate($request, [
             'photo' => 'required|image',
@@ -185,7 +198,8 @@ class RabbitController extends Controller
         return back();
     }
 
-    function deletePhoto($id) {
+    function deletePhoto($id)
+    {
         $rabbit = Auth::user()->rabbits()->findOrFail($id);
 
         Storage::disk('public')->delete($rabbit->photo);
