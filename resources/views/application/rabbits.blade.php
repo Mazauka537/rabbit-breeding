@@ -92,7 +92,7 @@
                                 <div class="line">
                                     <div class="label">Описание:</div>
                                     <div class="labeled">
-                                        <textarea name="desc">{{ old('desc') }}</textarea>
+                                        <textarea name="desc" maxlength="255">{{ old('desc') }}</textarea>
                                     </div>
                                 </div>
                                 <div class="line">

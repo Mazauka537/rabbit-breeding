@@ -539,7 +539,7 @@ a {
 .form .body {
   padding: 5px 15px 25px 15px; }
 .form .edit-photo-body {
-  padding: 10px 0 0 0; }
+  padding-top: 10px; }
   .form .edit-photo-body .input-label {
     margin-bottom: 5px; }
 .form .label {

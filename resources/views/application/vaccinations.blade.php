@@ -54,7 +54,7 @@
                                         Примечания:
                                     </div>
                                     <div class="labeled">
-                                        <textarea name="desc">{{ old('desc') }}</textarea>
+                                        <textarea name="desc" maxlength="255">{{ old('desc') }}</textarea>
                                     </div>
                                 </div>
                                 <div class="line">
@@ -118,7 +118,7 @@
                                         Примечания:
                                     </div>
                                     <div class="labeled">
-                                        <textarea name="desc"></textarea>
+                                        <textarea name="desc" maxlength="255"></textarea>
                                     </div>
                                 </div>
                                 <div class="line">
