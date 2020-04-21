@@ -37,23 +37,33 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function cages() {
+    public function cages()
+    {
         return $this->hasMany('App\Cage');
     }
 
-    public function breeds() {
+    public function breeds()
+    {
         return $this->hasMany('App\Breed');
     }
 
-    public function rabbits() {
+    public function rabbits()
+    {
         return $this->hasMany('App\Rabbit');
     }
 
-    public function matings() {
+    public function matings()
+    {
         return $this->hasMany('App\Mating');
     }
 
-    public function vaccinations() {
-        return$this->hasMany('App\Vaccination');
+    public function vaccinations()
+    {
+        return $this->hasMany('App\Vaccination');
+    }
+
+    public function reminders()
+    {
+        return $this->hasMany('App\Reminder');
     }
 }

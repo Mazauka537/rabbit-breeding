@@ -24,6 +24,10 @@ class Rabbit extends Model
         return $this->hasMany('App\Vaccination');
     }
 
+    public function reminders() {
+        return $this->hasMany('App\Reminder');
+    }
+
     public function user() {
         return $this->belongsTo('App\User');
     }
