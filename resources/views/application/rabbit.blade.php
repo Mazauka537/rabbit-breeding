@@ -395,30 +395,6 @@
                                         </div>
                                     </div>
                                     <div class="line">
-                                        <div class="label">Мама:</div>
-                                        <div class="labeled">
-                                            <div class="labeled__inner">
-                                                @if($rabbit->mother_id)
-                                                    <a href="{{ route('rabbit', $rabbit->mother->id) }}">{{ $rabbit->mother->name }}</a>
-                                                @else
-                                                    {{ '(нет)' }}
-                                                @endif
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="line">
-                                        <div class="label">Папа:</div>
-                                        <div class="labeled">
-                                            <div class="labeled__inner">
-                                                @if($rabbit->father_id)
-                                                    <a href="{{ route('rabbit', $rabbit->father->id) }}">{{ $rabbit->father->name }}</a>
-                                                @else
-                                                    {{ '(нет)' }}
-                                                @endif
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="line">
                                         <div class="label">Описание:</div>
                                         <div class="labeled">
                                             <div class="labeled__inner">
@@ -483,34 +459,6 @@
                                                     @foreach($cages as $cage)
                                                         <option
                                                             value="{{ $cage->id }}" @if($cage->id == $rabbit->cage_id) {{ 'selected' }} @endif>{{ $cage->name }}</option>
-                                                    @endforeach
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <div class="line">
-                                            <div class="label">Мама:</div>
-                                            <div class="labeled">
-                                                <select name="mother">
-                                                    <option value=""></option>
-                                                    @foreach($rabbits as $mother)
-                                                        @if($mother->gender == 'f')
-                                                            <option
-                                                                value="{{ $mother->id }}" @if($mother->id == $rabbit->mother_id) {{ 'selected' }} @endif>{{ $mother->name }}</option>
-                                                        @endif
-                                                    @endforeach
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <div class="line">
-                                            <div class="label">Папа:</div>
-                                            <div class="labeled">
-                                                <select name="father">
-                                                    <option value=""></option>
-                                                    @foreach($rabbits as $father)
-                                                        @if($father->gender == 'm')
-                                                            <option
-                                                                value="{{ $father->id }}" @if($father->id == $rabbit->father_id) {{ 'selected' }} @endif>{{ $father->name }}</option>
-                                                        @endif
                                                     @endforeach
                                                 </select>
                                             </div>

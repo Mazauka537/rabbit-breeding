@@ -76,34 +76,6 @@
                                     </div>
                                 </div>
                                 <div class="line">
-                                    <div class="label">Мама:</div>
-                                    <div class="labeled">
-                                        <select name="mother">
-                                            <option value=""></option>
-                                            @foreach($rabbits as $rabbit)
-                                                @if($rabbit->gender == 'f')
-                                                    <option
-                                                        value="{{ $rabbit->id }}" @if($rabbit->id == old('mother')) {{ 'selected' }} @endif>{{ $rabbit->name }}</option>
-                                                @endif
-                                            @endforeach
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="line">
-                                    <div class="label">Папа:</div>
-                                    <div class="labeled">
-                                        <select name="father">
-                                            <option value=""></option>
-                                            @foreach($rabbits as $rabbit)
-                                                @if($rabbit->gender == 'm')
-                                                    <option
-                                                        value="{{ $rabbit->id }}" @if($rabbit->id == old('father')) {{ 'selected' }} @endif>{{ $rabbit->name }}</option>
-                                                @endif
-                                            @endforeach
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="line">
                                     <div class="label">Описание:</div>
                                     <div class="labeled">
                                         <textarea name="desc">{{ old('desc') }}</textarea>

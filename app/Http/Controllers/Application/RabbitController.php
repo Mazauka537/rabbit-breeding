@@ -72,8 +72,6 @@ class RabbitController extends Controller
 
         $rabbit->breed = $this->findItemById($breeds, $rabbit->breed_id) ?? '(нет)';
         $rabbit->cage = $this->findItemById($cages, $rabbit->cage_id) ?? '(нет)';
-        $rabbit->mother = $this->findItemById($rabbits, $rabbit->mother_id) ?? '(нет)';
-        $rabbit->father = $this->findItemById($rabbits, $rabbit->father_id) ?? '(нет)';
 
         $matings = $rabbit->matings;
         $vaccinations = $rabbit->vaccinations;
@@ -93,8 +91,6 @@ class RabbitController extends Controller
             'cage' => 'nullable|integer|exists:cages,id,user_id,' . Auth::id(),
             'birthday' => 'nullable|date',
             'desc' => 'nullable|string|max:255',
-            'mother' => 'nullable|integer|exists:rabbits,id,user_id,' . Auth::id() . '|exists:rabbits,id,gender,f',
-            'father' => 'nullable|integer|exists:rabbits,id,user_id,' . Auth::id() . '|exists:rabbits,id,gender,m',
         ]);
 
         $rabbit = new Rabbit();
@@ -106,8 +102,6 @@ class RabbitController extends Controller
         $rabbit->user_id = Auth::id();
         $rabbit->birthday = $request->birthday;
         $rabbit->desc = $request->desc;
-        $rabbit->mother_id = $request->mother;
-        $rabbit->father_id = $request->father;
 
         if ($request->photo != null) {
             $path = $request->file('photo')->store('/application/images/' . Auth::id() . '/rabbits', 'public');
@@ -134,8 +128,6 @@ class RabbitController extends Controller
             'cage' => 'nullable|integer|exists:cages,id,user_id,' . Auth::id(),
             'birthday' => 'nullable|date',
             'desc' => 'nullable|string|max:255',
-            'mother' => 'nullable|integer|exists:rabbits,id,user_id,' . Auth::id() . '|exists:rabbits,id,gender,f',
-            'father' => 'nullable|integer|exists:rabbits,id,user_id,' . Auth::id() . '|exists:rabbits,id,gender,m',
         ]);
 
         $rabbit = Auth::user()->rabbits()->findOrFail($id);
@@ -146,8 +138,6 @@ class RabbitController extends Controller
         $rabbit->cage_id = $request->cage;
         $rabbit->birthday = $request->birthday;
         $rabbit->desc = $request->desc;
-        $rabbit->mother_id = $request->mother;
-        $rabbit->father_id = $request->father;
 
         $result = $rabbit->save();
 
@@ -172,7 +162,6 @@ class RabbitController extends Controller
 
     function editPhoto(Request $request, $id)
     {
-
         $this->validate($request, [
             'photo' => 'required|image',
         ]);
