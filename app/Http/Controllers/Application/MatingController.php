@@ -22,11 +22,32 @@ class MatingController extends Controller
 //        return $result;
 //    }
 
+    private function setRabbitStatus($status)
+    {
+        switch ($status) {
+            case 'yong':
+                return 'Молодняк';
+            case 'ready':
+                return 'Готова к спариванию';
+            case 'pregnant':
+                return 'Беременная';
+            case 'lactation':
+                return 'Лактация';
+            case 'rest':
+                return 'Отдых';
+        }
+        return null;
+    }
+
     function getMatings()
     {
         $matings = Auth::user()->matings()->with(['female', 'male'])->get();
 
         $rabbits = Auth::user()->rabbits;
+
+        foreach ($rabbits as $rabbit) {
+            $rabbit->status_value = $this->setRabbitStatus($rabbit->status);
+        }
 
         return view('application.matings', compact(['matings', 'rabbits']));
     }

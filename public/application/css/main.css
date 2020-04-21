@@ -564,6 +564,9 @@ textarea {
   min-height: 100px;
   resize: none; }
 
+[disabled] {
+  color: #aaa; }
+
 .show {
   display: block; }
 

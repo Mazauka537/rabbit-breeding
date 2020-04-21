@@ -25,7 +25,7 @@
                                             @foreach($rabbits as $rabbit)
                                                 @if($rabbit->gender == 'f')
                                                     <option
-                                                        value="{{ $rabbit->id }}" @if($rabbit->id == old('female')) {{ 'selected' }} @endif>{{ $rabbit->name }}</option>
+                                                        value="{{ $rabbit->id }}" @if($rabbit->id == old('female')) {{ 'selected' }} @endif >{{ $rabbit->name }}  @if(!empty($rabbit->status_value)) {{ '('.$rabbit->status_value.')' }} @endif</option>
                                                 @endif
                                             @endforeach
                                         </select>
@@ -108,7 +108,7 @@
                                             @foreach($rabbits as $rabbit)
                                                 @if($rabbit->gender == 'f')
                                                     <option
-                                                        value="{{ $rabbit->id }}">{{ $rabbit->name }}</option>
+                                                        value="{{ $rabbit->id }}">{{ $rabbit->name }} @if(!empty($rabbit->status_value)) {{ '('.$rabbit->status_value.')' }} @endif</option>
                                                 @endif
                                             @endforeach
                                         </select>
@@ -269,7 +269,8 @@
                                     <div class="label">
                                         Дата окрола:
                                     </div>
-                                    <div class="labeled" id="mating-item-date_birth" data-date_birth="{{ $mating->date_birth ?? '' }}">
+                                    <div class="labeled" id="mating-item-date_birth"
+                                         data-date_birth="{{ $mating->date_birth ?? '' }}">
                                         @if(!empty($mating->date_birth))
                                             {{ date("d.m.Y", strtotime($mating->date_birth)) }}
                                         @else

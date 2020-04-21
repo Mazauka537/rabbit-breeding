@@ -343,7 +343,7 @@
                         <div class="head">
                             <div>
                                 <div class="name">{{ $rabbit->name }}</div>
-                                <div class="status">{{ $rabbit->status }}</div>
+                                <div class="status">{{ $rabbit->status_value ?? '' }}</div>
                             </div>
                             <div class="buttons" id="head-buttons">
                                 <button id="show-edit-fields-btn">Редактировать</button>
@@ -419,7 +419,7 @@
                                         <div class="line">
                                             <div class="label">Пол:</div>
                                             <div class="labeled">
-                                                <select name="gender">
+                                                <select name="gender" id="inp-rabbit-gender">
                                                     <option value=""></option>
                                                     <option
                                                         value="f" @if($rabbit->gender == 'f') {{ 'selected' }} @endif>
@@ -429,6 +429,20 @@
                                                         value="m" @if($rabbit->gender == 'm') {{ 'selected' }} @endif>
                                                         М
                                                     </option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="line">
+                                            <div class="label">
+                                                Статус:
+                                            </div>
+                                            <div class="labeled">
+                                                <select name="status" class="select-status" @if($rabbit->gender != 'f') {{ 'disabled' }} @endif>
+                                                    <option value="young">Молодняк</option>
+                                                    <option value="ready" selected>Готова к спариванию</option>
+                                                    <option value="pregnant">Беременная</option>
+                                                    <option value="lactation">Лактация</option>
+                                                    <option value="rest">Отдых</option>
                                                 </select>
                                             </div>
                                         </div>
@@ -701,6 +715,7 @@
         <script src="{{ asset('application/js/edit-item-vaccination.js') }}"></script>
         <script src="{{ asset('application/js/delete-item-vaccination.js') }}"></script>
         <script src="{{ asset('application/js/add-item-vaccination.js') }}"></script>
+        <script src="{{ asset('application/js/enable-input.js') }}"></script>
 
     </div>
 @endsection

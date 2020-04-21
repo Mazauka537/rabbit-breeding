@@ -26,12 +26,26 @@
                                 <div class="line">
                                     <div class="label">Пол*:</div>
                                     <div class="labeled">
-                                        <select name="gender">
+                                        <select name="gender" id="inp-rabbit-gender">
                                             <option value=""></option>
                                             <option value="m" @if(old('gender') == 'm') {{ "selected" }} @endif>М
                                             </option>
                                             <option value="f" @if(old('gender') == 'f') {{ "selected" }} @endif>Ж
                                             </option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="line">
+                                    <div class="label">
+                                        Статус:
+                                    </div>
+                                    <div class="labeled">
+                                        <select name="status" class="select-status" disabled>
+                                            <option value="young">Молодняк</option>
+                                            <option value="ready" selected>Готова к спариванию</option>
+                                            <option value="pregnant">Беременная</option>
+                                            <option value="lactation">Лактация</option>
+                                            <option value="rest">Отдых</option>
                                         </select>
                                     </div>
                                 </div>
@@ -149,5 +163,6 @@
         </div>
 
         <script src="{{ asset('application/js/modal-add-item.js') }}"></script>
+        <script src="{{ asset('application/js/enable-input.js') }}"></script>
     </div>
 @endsection

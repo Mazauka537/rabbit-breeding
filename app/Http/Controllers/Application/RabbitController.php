@@ -47,6 +47,23 @@ class RabbitController extends Controller
         return $str;
     }
 
+    private function setRabbitStatus($status)
+    {
+        switch ($status) {
+            case 'yong':
+                return 'Молодняк';
+            case 'ready':
+                return 'Готова к спариванию';
+            case 'pregnant':
+                return 'Беременная';
+            case 'lactation':
+                return 'Лактация';
+            case 'rest':
+                return 'Отдых';
+        }
+        return null;
+    }
+
     function getRabbits()
     {
         $cages = Auth::user()->cages;
@@ -55,6 +72,7 @@ class RabbitController extends Controller
         foreach ($rabbits as $rabbit) {
             $rabbit->cage_name = ($cage = $this->findItemById($cages, $rabbit->cage_id)) ? $cage->name : null;
             $rabbit->breed_name = ($breed = $this->findItemById($breeds, $rabbit->breed_id)) ? $breed->name : null;
+            $rabbit->status_value = $this->setRabbitStatus($rabbit->status);
         }
         return view('application.rabbits', compact(['rabbits', 'cages', 'breeds']));
     }
@@ -72,6 +90,7 @@ class RabbitController extends Controller
 
         $rabbit->breed = $this->findItemById($breeds, $rabbit->breed_id) ?? '(нет)';
         $rabbit->cage = $this->findItemById($cages, $rabbit->cage_id) ?? '(нет)';
+        $rabbit->status_value = $this->setRabbitStatus($rabbit->status);
 
         $matings = $rabbit->matings;
         $vaccinations = $rabbit->vaccinations;
@@ -86,6 +105,7 @@ class RabbitController extends Controller
         $this->validate($request, [
             'name' => 'required|string|max:64',
             'gender' => 'required|in:f,m',
+            'status' => 'required_if:gender,f|in:young,ready,pregnant,lactation,rest',
             'photo' => 'nullable|image',
             'breed' => 'nullable|integer|exists:breeds,id,user_id,' . Auth::id(),
             'cage' => 'nullable|integer|exists:cages,id,user_id,' . Auth::id(),
@@ -97,6 +117,10 @@ class RabbitController extends Controller
 
         $rabbit->name = $request->name;
         $rabbit->gender = $request->gender;
+        if ($request->gender == 'f')
+            $rabbit->status = $request->status;
+        else
+            $rabbit->status = null;
         $rabbit->breed_id = $request->breed;
         $rabbit->cage_id = $request->cage;
         $rabbit->user_id = Auth::id();
@@ -123,6 +147,7 @@ class RabbitController extends Controller
         $this->validate($request, [
             'name' => 'required|string|max:64',
             'gender' => 'required|in:f,m',
+            'status' => 'required_if:gender,f|in:young,ready,pregnant,lactation,rest',
             'photo' => 'nullable|image',
             'breed' => 'nullable|integer|exists:breeds,id,user_id,' . Auth::id(),
             'cage' => 'nullable|integer|exists:cages,id,user_id,' . Auth::id(),
@@ -134,6 +159,10 @@ class RabbitController extends Controller
 
         $rabbit->name = $request->name;
         $rabbit->gender = $request->gender;
+        if ($request->gender == 'f')
+            $rabbit->status = $request->status;
+        else
+            $rabbit->status = null;
         $rabbit->breed_id = $request->breed;
         $rabbit->cage_id = $request->cage;
         $rabbit->birthday = $request->birthday;
