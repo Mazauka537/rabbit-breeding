@@ -11,6 +11,6 @@ class Reminder extends Model
     }
 
     public function rabbit() {
-        return $this->belongsTo('App/Rabbit');
+        return $this->belongsTo('App\Rabbit');
     }
 }

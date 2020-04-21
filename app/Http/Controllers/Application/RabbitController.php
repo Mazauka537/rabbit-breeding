@@ -50,7 +50,7 @@ class RabbitController extends Controller
     private function setRabbitStatus($status)
     {
         switch ($status) {
-            case 'yong':
+            case 'young':
                 return 'Молодняк';
             case 'ready':
                 return 'Готова к спариванию';
@@ -183,6 +183,8 @@ class RabbitController extends Controller
             $rabbit->matings()->update(['male_id' => null]);
 
         $rabbit->vaccinations()->delete();
+
+        $rabbit->reminders()->update(['rabbit_id' => null]);
 
         $rabbit->delete();
 

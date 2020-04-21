@@ -17,7 +17,38 @@
 
                         <div class="body">
                             <div class="center-form">
-
+                                <div class="line">
+                                    <div class="label">
+                                        Дата*:
+                                    </div>
+                                    <div class="labeled">
+                                        <input type="date" name="date">
+                                    </div>
+                                </div>
+                                <div class="line">
+                                    <div class="label">
+                                        Текст*:
+                                    </div>
+                                    <div class="labeled">
+                                        <textarea name="text"
+                                                  placeholder="Напишите ваши планы на выбранную дату"
+                                                  maxlength="255"></textarea>
+                                    </div>
+                                </div>
+                                <div class="line">
+                                    <div class="label">
+                                        Кролик:
+                                    </div>
+                                    <div class="labeled">
+                                        <select name="rabbit">
+                                            <option value="">(нет)</option>
+                                            @foreach($rabbits as $r)
+                                                <option
+                                                    value="{{ $r->id }}" @if(old('rabbit') == $r->id) {{ 'selected' }} @endif>{{ $r->name }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                </div>
                                 <div class="line">
                                     <div class="label"></div>
                                     <div class="labeled">
@@ -82,12 +113,25 @@
             <button id="btn-show-add-item-form"></button>
         </div>
 
-        <div class="items">
+        <div class="items overflow-v">
 
-            @foreach($reminders as $reminder)
+            @foreach($reminders as $key => $reminder)
                 <div class="item__wrapper">
+                    @if($key != 0 && $reminder->date != $reminders[$key - 1]->date || $key == 0)
+                        <div class="item__date">
+                            @if($reminder->date == date('Y-m-d'))
+                                {{ 'сегодня' }}
+                            @elseif($reminder->date == date('Y-m-d', time() - 3600 * 24))
+                                {{ 'вчера' }}
+                            @elseif($reminder->date == date('Y-m-d', time() + 3600 * 24))
+                                {{ 'завтра' }}
+                            @else
+                                {{ date("d.m.Y", strtotime($reminder->date)) }}
+                            @endif
+                        </div>
+                    @endif
                     <div class="item" data-id="{{ $reminder->id }}" data-rabbit_id="{{ $reminder->rabbit_id }}">
-                        <div class="item__head item__head-hovered">
+                        <div class="item__head">
                             <div class="item__name">
                                 {{ $reminder->text }}
                             </div>
@@ -99,7 +143,37 @@
                         </div>
                         <div class="item__body">
                             <div class="left-form">
-
+                                <div class="line">
+                                    <div class="label">
+                                        Дата:
+                                    </div>
+                                    <div class="labeled">
+                                        {{ date("d.m.Y", strtotime($reminder->date)) }}
+                                    </div>
+                                </div>
+                                <div class="line">
+                                    <div class="label">
+                                        Текст:
+                                    </div>
+                                    <div class="labeled">
+                                        {{ $reminder->text }}
+                                    </div>
+                                </div>
+                                <div class="line">
+                                    <div class="label">
+                                        Кролик:
+                                    </div>
+                                    <div class="labeled">
+                                        @if(!empty($reminder->rabbit))
+                                            <a href="{{ route('rabbit', $reminder->rabbit->id) }}"
+                                               class="@if($reminder->rabbit->gender == 'f') {{ 'female' }} @else {{ 'male' }} @endif">
+                                                {{ $reminder->rabbit->name }}
+                                            </a>
+                                        @else
+                                            {{ '(нет)' }}
+                                        @endif
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>

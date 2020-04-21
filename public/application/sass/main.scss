@@ -261,6 +261,12 @@ a {
     left: 0;
 }
 
+//overflow-v//
+
+.overflow-v {
+    overflow: visible !important;
+}
+
 //items
 
 .items {
@@ -271,7 +277,21 @@ a {
 }
 
 .item__wrapper {
+    position: relative;
+}
 
+.item__date {
+    position: absolute;
+    padding: 2px 10px;
+    color: #999;
+    font-size: 12px;
+    top: -1px;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 11;
+    background: #fff;
+    border-radius: 5px;
+    border-top: 1px solid #eee;
 }
 
 .item {
@@ -328,8 +348,6 @@ a {
 
 .item__head {
     padding: 10px 15px;
-    justify-content: space-between;
-    align-items: center;
     background: #fff;
     border-top: 1px solid #f1f1f1;
     cursor: pointer;
