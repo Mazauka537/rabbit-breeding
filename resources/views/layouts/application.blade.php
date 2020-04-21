@@ -91,15 +91,15 @@
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="{{ route('reports') }}">
-                                        <span class="icon icon-statistics"></span>
-                                        <span>Отчеты</span>
+                                    <a href="{{ route('reminders') }}">
+                                        <span class="icon icon-bell"></span>
+                                        <span>Напоминания</span>
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="{{ route('notifications') }}">
-                                        <span class="icon icon-bell"></span>
-                                        <span>Уведомления</span>
+                                    <a href="{{ route('reports') }}">
+                                        <span class="icon icon-statistics"></span>
+                                        <span>Отчеты</span>
                                     </a>
                                 </li>
                             </ul>

@@ -48,9 +48,12 @@ Route::group(['middleware' => 'auth', 'namespace' => 'Application', 'prefix' => 
     Route::post('vaccination/edit/{id}', 'VaccinationController@editVaccination')->where('id', '[0-9]+')->name('editVaccination');
     Route::post('vaccination/delete/{id}', 'VaccinationController@deleteVaccination')->where('id', '[0-9]+')->name('deleteVaccination');
 
-    Route::get('reports', 'ReportController@getReports')->name('reports');
+    Route::get('reminders', 'ReminderController@getReminders')->name('reminders');
+    Route::post('reminder/add', 'ReminderController@addReminder')->name('addReminder');
+    Route::post('reminder/edit/{id}', 'ReminderController@editReminder')->where('id', '[0-9]+')->name('editReminder');
+    Route::post('reminder/delete/{id}', 'ReminderController@deleteReminder')->where('id', '[0-9]+')->name('deleteReminder');
 
-    Route::get('notifications', 'NotificationsController@getNotifications')->name('notifications');
+    Route::get('reports', 'ReportController@getReports')->name('reports');
 
 });
 
