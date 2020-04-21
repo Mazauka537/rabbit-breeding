@@ -253,6 +253,12 @@ a {
 .item__head-hovered:hover .item__name-2 {
   display: block; }
 
+.item__name, .item__name-2 {
+  max-width: 540px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis; }
+
 .item__name-2 {
   display: none; }
 
@@ -264,6 +270,11 @@ a {
   padding: 10px 15px;
   background: #f9f9f9;
   box-shadow: inset 0 0 6px -3px #555; }
+
+.txt-clip {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis; }
 
 .left-form .line, .center-form .line {
   padding: 5px 0; }
@@ -373,6 +384,8 @@ a {
 
 .rabbit-container {
   display: flex; }
+  .rabbit-container .item__name {
+    max-width: 340px; }
   .rabbit-container .left {
     max-width: 200px;
     width: 100%; }
@@ -384,6 +397,11 @@ a {
     font-size: 20px;
     border-bottom: 1px solid #EEE;
     padding-bottom: 5px; }
+    .rabbit-container .head .name {
+      max-width: 250px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis; }
     .rabbit-container .head .status {
       font-size: 13px;
       color: #999; }
@@ -535,7 +553,11 @@ a {
   font-size: 20px;
   border-bottom: 1px solid #EEE;
   padding: 20px 20px 15px 20px;
-  background: #FAFBFC; }
+  background: #FAFBFC;
+  max-width: 520px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis; }
 .form .body {
   padding: 5px 15px 25px 15px; }
 .form .edit-photo-body {

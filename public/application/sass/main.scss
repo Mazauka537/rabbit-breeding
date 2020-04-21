@@ -365,6 +365,13 @@ a {
     }
 }
 
+.item__name, .item__name-2 {
+    max-width: 540px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
 .item__name-2 {
     display: none;
 }
@@ -378,6 +385,14 @@ a {
     padding: 10px 15px;
     background: #f9f9f9;
     box-shadow: inset 0 0 6px -3px #555;
+}
+
+//txt-clip//
+
+.txt-clip {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 //left-center-form//
@@ -561,6 +576,10 @@ a {
 .rabbit-container {
     display: flex;
 
+    .item__name {
+        max-width: 340px;
+    }
+
     .left {
         max-width: 200px;
         width: 100%;
@@ -576,6 +595,13 @@ a {
         font-size: 20px;
         border-bottom: 1px solid #EEE;
         padding-bottom: 5px;
+
+        .name {
+            max-width: 250px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
 
         .status {
             font-size: 13px;
@@ -787,6 +813,10 @@ a {
         border-bottom: 1px solid #EEE;
         padding: 20px 20px 15px 20px;
         background: #FAFBFC;
+        max-width: 520px;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
     }
 
     .body {
