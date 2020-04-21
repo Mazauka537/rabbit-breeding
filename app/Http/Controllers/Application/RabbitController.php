@@ -70,7 +70,6 @@ class RabbitController extends Controller
         $breeds = Auth::user()->breeds;
         $rabbits = Auth::user()->rabbits;
         foreach ($rabbits as $rabbit) {
-            $rabbit->cage_name = ($cage = $this->findItemById($cages, $rabbit->cage_id)) ? $cage->name : null;
             $rabbit->breed_name = ($breed = $this->findItemById($breeds, $rabbit->breed_id)) ? $breed->name : null;
             $rabbit->status_value = $this->setRabbitStatus($rabbit->status);
         }

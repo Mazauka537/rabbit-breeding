@@ -61,6 +61,14 @@ a {
     color: $female-color;
 }
 
+.b-female::before {
+    color: $female-color;
+}
+
+.b-male::before {
+    color: $male-color;
+}
+
 .app {
     display: flex;
     flex-direction: column;
@@ -475,23 +483,29 @@ a {
 
     .items {
         border: none;
+        //background: #fff;
     }
 
     .item__wrapper {
         float: left;
         width: 33.3%;
-        padding: 7px;
+        padding: 10px;
+        padding-bottom: 20px;
         position: relative;
     }
 
     .item {
         display: block;
-        box-shadow: 0 0 6px -2px #888;
         position: relative;
         overflow: hidden;
 
-        &:hover .item-filter {
-            background: rgba(#000, 0.2);
+        &:hover {
+            .item-filter {
+                background: rgba(#000, 0.2);
+            }
+            .ico-info {
+                opacity: 1;
+            }
         }
     }
 
@@ -508,6 +522,7 @@ a {
         width: 100%;
         padding: 10px;
         transform: translateX(-110%);
+        font-size: 15px;
     }
 
     .item-desc-shown {
@@ -516,20 +531,29 @@ a {
 
     .ico-info {
         cursor: pointer;
+        display: block;
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 20px;
+        height: 25px;
+        padding-top: 3px;
+        padding-right: 2px;
+        vertical-align: middle;
+        text-align: right;
+        opacity: 0;
+        color: #666;
 
-        &::before {
-            content: "\ea0c";
+        &::after {
+            content: "\e90a";
             font-family: icomoon;
-            color: rgba($color4, 0.8);
+            font-size: 16px;
             vertical-align: middle;
-            font-size: 18px;
-
+            text-align: right;
         }
 
         &:hover {
-            &::before {
-                color: rgba($color4, 0.5);
-            }
+            color: #000;
         }
     }
 
@@ -539,36 +563,54 @@ a {
         background-size: 50%;
         background-position: 50% 50%;
         background-repeat: no-repeat;
+        background-color: #ddd;
         background-image: url('../images/rabbit.svg');
 
         .item-filter {
             height: 100%;
-            background: rgba(#000, 0.3);
+            background: rgba(#000, 0);
             transition: background-color 0.3s;
             position: relative;
 
             .info {
-                color: #EEE;
+                color: #fff;
                 transition: color 0.3s;
                 position: absolute;
                 top: 50%;
                 left: 50%;
                 transform: translate(-50%, -50%);
                 font-size: 18px;
+
+                .status, .birthday, .breed {
+                    max-width: 190px;
+
+                    &::before {
+                        font-family: icomoon;
+                        font-size: 12px;
+                        margin-right: 5px;
+                    }
+                }
+
+
             }
         }
     }
 
+    .h-gender {
+        position: absolute;
+        top: 0px;
+        right: 4px;
+    }
+
     .item__footer {
-        padding: 10px;
-        color: #EEE;
-        background: $color2;
-        font-weight: 700;
-        height: 40px;
-        font-size: 17px;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
+        padding: 5px 1px 5px 0;
+        color: #333;
+        font-size: 16px;
+        position: relative;
+
+        .name {
+            max-width: 200px;
+        }
     }
 }
 
@@ -811,9 +853,8 @@ a {
     .head {
         font-size: 20px;
         border-bottom: 1px solid #EEE;
-        padding: 20px 20px 15px 20px;
+        padding: 20px 40px 15px 20px;
         background: #FAFBFC;
-        max-width: 520px;
         overflow: hidden;
         white-space: nowrap;
         text-overflow: ellipsis;

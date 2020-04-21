@@ -125,21 +125,32 @@
                             >
                                 <div class="item-filter">
                                     <div class="info">
-                                        <div class="cage">{{ $rabbit->cage_name }}</div>
-                                        <div class="birthday">{{ $rabbit->birthday }}</div>
-                                        <div class="breed">{{ $rabbit->breed_name }}</div>
+                                        @if(!empty($rabbit->status_value))
+                                            <div class="status txt-clip icon-power">{{ $rabbit->status_value }}</div>
+                                        @endif
+                                        @if(!empty($rabbit->birthday))
+                                            <div
+                                                class="birthday txt-clip icon-calendar">{{ date("d.m.Y", strtotime($rabbit->birthday)) }}</div>
+                                        @endif
+                                        @if(!empty($rabbit->breed_name))
+                                            <div class="breed txt-clip icon-pawprint">{{ $rabbit->breed_name }}</div>
+                                        @endif
                                     </div>
+                                </div>
+                                <div class="item-desc">
+                                    {{ $rabbit->desc ?? "(нет описания)" }}
+                                </div>
+                                <div
+                                    class="h-gender @if($rabbit->gender == 'f') {{ 'female' }} @else {{ 'male' }} @endif">
+                                    ♥
                                 </div>
                             </div>
                         </div>
                         <div class="item__footer">
-                            <div class="name">{{ $rabbit->name }}</div>
-                            <div class="info">
-                                <span class="show-desc-btn ico-info"></span>
+                            <div class="name txt-clip">
+                                {{ $rabbit->name }}
                             </div>
-                        </div>
-                        <div class="item-desc">
-                            {{ $rabbit->desc ?? "(нет описания)" }}
+                            <span class="show-desc-btn ico-info"></span>
                         </div>
                     </a>
                 </div>

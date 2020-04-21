@@ -43,6 +43,12 @@ a {
 .female {
   color: pink; }
 
+.b-female::before {
+  color: pink; }
+
+.b-male::before {
+  color: skyblue; }
+
 .app {
   display: flex;
   flex-direction: column;
@@ -317,15 +323,17 @@ a {
 .rabbits-page .item__wrapper {
   float: left;
   width: 33.3%;
-  padding: 7px;
+  padding: 10px;
+  padding-bottom: 20px;
   position: relative; }
 .rabbits-page .item {
   display: block;
-  box-shadow: 0 0 6px -2px #888;
   position: relative;
   overflow: hidden; }
   .rabbits-page .item:hover .item-filter {
     background: rgba(0, 0, 0, 0.2); }
+  .rabbits-page .item:hover .ico-info {
+    opacity: 1; }
 .rabbits-page .item-desc {
   transition: all 0.3s;
   position: absolute;
@@ -338,49 +346,70 @@ a {
   text-align: center;
   width: 100%;
   padding: 10px;
-  transform: translateX(-110%); }
+  transform: translateX(-110%);
+  font-size: 15px; }
 .rabbits-page .item-desc-shown {
   transform: translateX(0); }
 .rabbits-page .ico-info {
-  cursor: pointer; }
-  .rabbits-page .ico-info::before {
-    content: "\ea0c";
+  cursor: pointer;
+  display: block;
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 20px;
+  height: 25px;
+  padding-top: 3px;
+  padding-right: 2px;
+  vertical-align: middle;
+  text-align: right;
+  opacity: 0;
+  color: #666; }
+  .rabbits-page .ico-info::after {
+    content: "\e90a";
     font-family: icomoon;
-    color: rgba(32, 203, 0, 0.8);
+    font-size: 16px;
     vertical-align: middle;
-    font-size: 18px; }
-  .rabbits-page .ico-info:hover::before {
-    color: rgba(32, 203, 0, 0.5); }
+    text-align: right; }
+  .rabbits-page .ico-info:hover {
+    color: #000; }
 .rabbits-page .item__inner {
   color: #000;
   text-align: center;
   background-size: 50%;
   background-position: 50% 50%;
   background-repeat: no-repeat;
+  background-color: #ddd;
   background-image: url("../images/rabbit.svg"); }
   .rabbits-page .item__inner .item-filter {
     height: 100%;
-    background: rgba(0, 0, 0, 0.3);
+    background: rgba(0, 0, 0, 0);
     transition: background-color 0.3s;
     position: relative; }
     .rabbits-page .item__inner .item-filter .info {
-      color: #EEE;
+      color: #fff;
       transition: color 0.3s;
       position: absolute;
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
       font-size: 18px; }
+      .rabbits-page .item__inner .item-filter .info .status, .rabbits-page .item__inner .item-filter .info .birthday, .rabbits-page .item__inner .item-filter .info .breed {
+        max-width: 190px; }
+        .rabbits-page .item__inner .item-filter .info .status::before, .rabbits-page .item__inner .item-filter .info .birthday::before, .rabbits-page .item__inner .item-filter .info .breed::before {
+          font-family: icomoon;
+          font-size: 12px;
+          margin-right: 5px; }
+.rabbits-page .h-gender {
+  position: absolute;
+  top: 0px;
+  right: 4px; }
 .rabbits-page .item__footer {
-  padding: 10px;
-  color: #EEE;
-  background: #87F03C;
-  font-weight: 700;
-  height: 40px;
-  font-size: 17px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center; }
+  padding: 5px 1px 5px 0;
+  color: #333;
+  font-size: 16px;
+  position: relative; }
+  .rabbits-page .item__footer .name {
+    max-width: 200px; }
 
 .rabbit-container {
   display: flex; }
@@ -552,9 +581,8 @@ a {
 .form .head {
   font-size: 20px;
   border-bottom: 1px solid #EEE;
-  padding: 20px 20px 15px 20px;
+  padding: 20px 40px 15px 20px;
   background: #FAFBFC;
-  max-width: 520px;
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis; }
