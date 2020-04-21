@@ -22,7 +22,7 @@
                                         Дата*:
                                     </div>
                                     <div class="labeled">
-                                        <input type="date" name="date">
+                                        <input type="date" name="date" value="{{ old('date') }}">
                                     </div>
                                 </div>
                                 <div class="line">
@@ -31,8 +31,8 @@
                                     </div>
                                     <div class="labeled">
                                         <textarea name="text"
-                                                  placeholder="Напишите ваши планы на выбранную дату"
-                                                  maxlength="255"></textarea>
+                                                  placeholder="Опишите ваши планы на выбранную дату"
+                                                  maxlength="255">{{ old('text') }}</textarea>
                                     </div>
                                 </div>
                                 <div class="line">
@@ -74,6 +74,38 @@
 
                         <div class="body">
                             <div class="center-form">
+                                <div class="line">
+                                    <div class="label">
+                                        Дата*:
+                                    </div>
+                                    <div class="labeled">
+                                        <input type="date" name="date">
+                                    </div>
+                                </div>
+                                <div class="line">
+                                    <div class="label">
+                                        Текст*:
+                                    </div>
+                                    <div class="labeled">
+                                        <textarea name="text"
+                                                  placeholder="Опишите ваши планы на выбранную дату"
+                                                  maxlength="255"></textarea>
+                                    </div>
+                                </div>
+                                <div class="line">
+                                    <div class="label">
+                                        Кролик:
+                                    </div>
+                                    <div class="labeled">
+                                        <select name="rabbit">
+                                            <option value="">(нет)</option>
+                                            @foreach($rabbits as $r)
+                                                <option
+                                                    value="{{ $r->id }}">{{ $r->name }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                </div>
                                 <div class="line">
                                     <div class="label"></div>
                                     <div class="labeled">
@@ -147,7 +179,7 @@
                                     <div class="label">
                                         Дата:
                                     </div>
-                                    <div class="labeled">
+                                    <div class="labeled" id="reminder-item-date" data-date="{{ $reminder->date }}">
                                         {{ date("d.m.Y", strtotime($reminder->date)) }}
                                     </div>
                                 </div>
