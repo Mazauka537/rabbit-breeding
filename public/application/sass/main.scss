@@ -774,24 +774,23 @@ a {
 
 .form__wrapper {
     background: #fff;
-    padding: 15px;
     max-width: 540px;
     margin: 30px auto;
     border-radius: 3px;
     position: relative;
+    overflow: hidden;
 }
 
 .form {
     .head {
         font-size: 20px;
         border-bottom: 1px solid #EEE;
-        padding: 5px 5px 15px;
+        padding: 20px 20px 15px 20px;
         background: #FAFBFC;
     }
 
     .body {
-        padding-top: 5px;
-        padding-bottom: 10px;
+        padding: 5px 15px 25px 15px;
     }
 
     .edit-photo-body {

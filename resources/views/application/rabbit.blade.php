@@ -438,11 +438,11 @@
                                             </div>
                                             <div class="labeled">
                                                 <select name="status" class="select-status" @if($rabbit->gender != 'f') {{ 'disabled' }} @endif>
-                                                    <option value="young">Молодняк</option>
-                                                    <option value="ready" selected>Готова к спариванию</option>
-                                                    <option value="pregnant">Беременная</option>
-                                                    <option value="lactation">Лактация</option>
-                                                    <option value="rest">Отдых</option>
+                                                    <option value="young" @if($rabbit->status == 'young') {{ 'selected' }} @endif>Молодняк</option>
+                                                    <option value="ready" @if($rabbit->status == 'ready') {{ 'selected' }} @endif>Готова к спариванию</option>
+                                                    <option value="pregnant" @if($rabbit->status == 'pregnant') {{ 'selected' }} @endif>Беременная</option>
+                                                    <option value="lactation" @if($rabbit->status == 'lactation') {{ 'selected' }} @endif>Лактация</option>
+                                                    <option value="rest" @if($rabbit->status == 'rest') {{ 'selected' }} @endif>Отдых</option>
                                                 </select>
                                             </div>
                                         </div>
