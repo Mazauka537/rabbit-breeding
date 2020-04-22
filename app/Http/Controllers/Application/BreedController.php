@@ -3,35 +3,22 @@
 namespace App\Http\Controllers\Application;
 
 use App\Breed;
+use App\Http\Requests\Application\BreedAddRequest;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 
 class BreedController extends Controller
 {
-//    private function getItemsWithParam($array, $param, $value) {
-//        $result = [];
-//        foreach ($array as $item) {
-//            if ($item[$param] == $value) {
-//                $result[] = $item;
-//            }
-//        }
-//        return $result;
-//    }
-
-    function getBreeds() {
+    function getBreeds()
+    {
         $breeds = Auth::user()->breeds()->with('rabbits')->get();
 
         return view('application.breeds', ['breeds' => $breeds]);
     }
 
-    function addBreed(Request $request) {
-
-        $this->validate($request, [
-            'name' => 'required|string|max:64',
-            'desc' => 'nullable|string|max:255'
-        ]);
-
+    function addBreed(BreedAddRequest $request)
+    {
         $breed = new Breed();
 
         $breed->name = $request->name;
@@ -43,12 +30,8 @@ class BreedController extends Controller
         return redirect(route('breeds'));
     }
 
-    function editBreed(Request $request, $id) {
-        $this->validate($request, [
-            'name' => 'required|string|max:64',
-            'desc' => 'nullable|string|max:255'
-        ]);
-
+    function editBreed(BreedAddRequest $request, $id)
+    {
         $breed = Auth::user()->breeds()->findOrFail($id);
 
         $breed->name = $request->name;
@@ -59,7 +42,8 @@ class BreedController extends Controller
         return redirect(route('breeds'));
     }
 
-    function deleteBreed($id) {
+    function deleteBreed($id)
+    {
         $breed = Auth::user()->breeds()->findOrFail($id);
 
         $breed->rabbits()->update(['breed_id' => null]);

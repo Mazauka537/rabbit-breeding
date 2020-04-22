@@ -124,21 +124,21 @@
                                     </div>
                                 </div>
                                 <div class="line">
-                                    <div class="label">Общее кол-во крольчат:</div>
+                                    <div class="label">Рождено:</div>
                                     <div class="labeled">
-                                        <input type="number" name="child_count" value="">
+                                        <input type="number" name="child_count" placeholder="Общее кол-во крольчат" value="">
                                     </div>
                                 </div>
                                 <div class="line">
-                                    <div class="label">Кол-во выживших крольчат:</div>
+                                    <div class="label">Выжило:</div>
                                     <div class="labeled">
-                                        <input type="number" name="alive_count" value="">
+                                        <input type="number" name="alive_count" placeholder="Кол-во выживших крольчат" value="">
                                     </div>
                                 </div>
                                 <div class="line">
-                                    <div class="label">Дополнительная информация:</div>
+                                    <div class="label">Примечания:</div>
                                     <div class="labeled">
-                                        <textarea name="desc" maxlength="255"></textarea>
+                                        <textarea name="desc" maxlength="255" placeholder="Дополнительная информация"></textarea>
                                     </div>
                                 </div>
                                 <div class="line">
@@ -413,7 +413,7 @@
                                         <div class="line">
                                             <div class="label">Имя:</div>
                                             <div class="labeled">
-                                                <input type="text" name="name" value="{{ $rabbit->name }}">
+                                                <input type="text" name="name" placeholder="Имя кролика" value="{{ $rabbit->name }}">
                                             </div>
                                         </div>
                                         <div class="line">
@@ -480,7 +480,7 @@
                                         <div class="line">
                                             <div class="label">Описание:</div>
                                             <div class="labeled">
-                                                <textarea name="desc" maxlength="255">{{ $rabbit->desc ?? '' }}</textarea>
+                                                <textarea name="desc" maxlength="255" placeholder="Дополнительная информация о кролике">{{ $rabbit->desc ?? '' }}</textarea>
                                             </div>
                                         </div>
                                         <div class="line">
@@ -594,7 +594,7 @@
                                                 </div>
                                                 <div class="line">
                                                     <div class="label">
-                                                        Всего крольчат:
+                                                        Рождено:
                                                     </div>
                                                     <div class="labeled" id="mating-item-child_count">
                                                         {{ $mating->child_count ?? '(неизвестно)' }}
@@ -602,7 +602,7 @@
                                                 </div>
                                                 <div class="line">
                                                     <div class="label">
-                                                        Выживших крольчат:
+                                                        Выжило:
                                                     </div>
                                                     <div class="labeled" id="mating-item-alive_count">
                                                         {{ $mating->alive_count ?? '(неизвестно)' }}
@@ -610,7 +610,7 @@
                                                 </div>
                                                 <div class="line">
                                                     <div class="label">
-                                                        Дополнительная информация:
+                                                        Примечания:
                                                     </div>
                                                     <div class="labeled" id="mating-item-desc">
                                                         {{ $mating->desc ?? '(нет)' }}

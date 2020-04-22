@@ -889,6 +889,10 @@ input, select, textarea, option, button, .input-label {
     max-width: 300px;
     width: 100%;
 
+    &::placeholder {
+        color: #aaa;
+    }
+
     &[type="submit"], &[type="button"] {
         background: $color1;
         border: none;

@@ -20,7 +20,7 @@
                                 <div class="line">
                                     <div class="label">Имя*:</div>
                                     <div class="labeled">
-                                        <input type="text" name="name" value="{{ old('name') }}">
+                                        <input type="text" name="name" placeholder="Имя кролика" value="{{ old('name') }}">
                                     </div>
                                 </div>
                                 <div class="line">
@@ -92,7 +92,7 @@
                                 <div class="line">
                                     <div class="label">Описание:</div>
                                     <div class="labeled">
-                                        <textarea name="desc" maxlength="255">{{ old('desc') }}</textarea>
+                                        <textarea name="desc" maxlength="255" placeholder="Дополнительная информация о кролике">{{ old('desc') }}</textarea>
                                     </div>
                                 </div>
                                 <div class="line">

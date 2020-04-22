@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Application;
 
+use App\Http\Requests\Application\MatingAddRequest;
 use App\Mating;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -9,19 +10,6 @@ use Illuminate\Support\Facades\Auth;
 
 class MatingController extends Controller
 {
-//    private function findItemById($arr, $id)
-//    {
-//        $result = false;
-//        foreach ($arr as $item) {
-//            if ($id == $item->id) {
-//                $result = $item;
-//                break;
-//            }
-//        }
-//
-//        return $result;
-//    }
-
     private function setRabbitStatus($status)
     {
         switch ($status) {
@@ -52,18 +40,8 @@ class MatingController extends Controller
         return view('application.matings', compact(['matings', 'rabbits']));
     }
 
-    function addMating(Request $request)
+    function addMating(MatingAddRequest $request)
     {
-        $this->validate($request, [
-            'female' => 'nullable|integer|exists:rabbits,id,user_id,' . Auth::id() . '|exists:rabbits,id,gender,f',
-            'male' => 'nullable|integer|exists:rabbits,id,user_id,' . Auth::id() . '|exists:rabbits,id,gender,m',
-            'date' => 'nullable|date',
-            'birth_date' => 'nullable|date',
-            'child_count' => 'nullable|integer',
-            'alive_count' => 'nullable|integer',
-            'desc' => 'nullable|string|max:255',
-        ]);
-
         if (empty($request->female)
             && empty($request->male)
             && empty($request->date)
@@ -88,17 +66,8 @@ class MatingController extends Controller
         return back();
     }
 
-    function editMating(Request $request, $id) {
-        $this->validate($request, [
-            'female' => 'nullable|integer|exists:rabbits,id,user_id,' . Auth::id() . '|exists:rabbits,id,gender,f',
-            'male' => 'nullable|integer|exists:rabbits,id,user_id,' . Auth::id() . '|exists:rabbits,id,gender,m',
-            'date' => 'nullable|date',
-            'birth_date' => 'nullable|date',
-            'child_count' => 'nullable|integer',
-            'alive_count' => 'nullable|integer',
-            'desc' => 'nullable|string|max:255',
-        ]);
-
+    function editMating(MatingAddRequest $request, $id)
+    {
         if (empty($request->female)
             && empty($request->male)
             && empty($request->date)
@@ -124,7 +93,8 @@ class MatingController extends Controller
         return back();
     }
 
-    function deleteMating($id) {
+    function deleteMating($id)
+    {
         $mating = Auth::user()->matings()->findOrFail($id);
 
         $mating->delete();

@@ -606,6 +606,8 @@ input, select, textarea, option, button, .input-label {
   background: #fff;
   max-width: 300px;
   width: 100%; }
+  input::placeholder, select::placeholder, textarea::placeholder, option::placeholder, button::placeholder, .input-label::placeholder {
+    color: #aaa; }
   input[type="submit"], input[type="button"], select[type="submit"], select[type="button"], textarea[type="submit"], textarea[type="button"], option[type="submit"], option[type="button"], button[type="submit"], button[type="button"], .input-label[type="submit"], .input-label[type="button"] {
     background: #A3F06C;
     border: none;

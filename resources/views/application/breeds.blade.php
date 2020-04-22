@@ -20,13 +20,13 @@
                                 <div class="line">
                                     <div class="label">Название*:</div>
                                     <div class="labeled">
-                                        <input type="text" name="name" value="{{ old('name') }}">
+                                        <input type="text" name="name" placeholder="Название породы" value="{{ old('name') }}">
                                     </div>
                                 </div>
                                 <div class="line">
                                     <div class="label">Описание:</div>
                                     <div class="labeled">
-                                        <textarea name="desc" maxlength="255">{{ old('desc') }}</textarea>
+                                        <textarea name="desc" maxlength="255" placeholder="Дополнительная информация о данной породе">{{ old('desc') }}</textarea>
                                     </div>
                                 </div>
                                 <div class="line">
@@ -57,13 +57,13 @@
                                 <div class="line">
                                     <div class="label">Название*:</div>
                                     <div class="labeled">
-                                        <input type="text" name="name" value="">
+                                        <input type="text" name="name" placeholder="Название породы" value="">
                                     </div>
                                 </div>
                                 <div class="line">
                                     <div class="label">Описание:</div>
                                     <div class="labeled">
-                                        <textarea name="desc" maxlength="255"></textarea>
+                                        <textarea name="desc" maxlength="255" placeholder="Дополнительная информация о данной породе"></textarea>
                                     </div>
                                 </div>
                                 <div class="line">
