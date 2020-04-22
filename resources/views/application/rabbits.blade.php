@@ -40,7 +40,7 @@
                                         Статус:
                                     </div>
                                     <div class="labeled">
-                                        <select name="status" class="select-status" disabled>
+                                        <select name="status" class="select-status" @if(old('gender') != 'f') {{ 'disabled' }} @endif>
                                             <option value="young">Молодняк</option>
                                             <option value="ready" selected>Готова к спариванию</option>
                                             <option value="pregnant">Беременная</option>
@@ -52,7 +52,7 @@
                                 <div class="line">
                                     <div class="label">Фото:</div>
                                     <div class="labeled">
-                                        <label class="input-label" for="photo-input-add">
+                                        <label class="input-label txt-clip" for="photo-input-add">
                                             Выберите файл
                                         </label>
                                         <input type="file" name="photo" id="photo-input-add" style="display: none"

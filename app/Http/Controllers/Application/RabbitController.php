@@ -2,9 +2,8 @@
 
 namespace App\Http\Controllers\Application;
 
-use App\Breed;
+use App\Http\Requests\Application\RabbitAddRequest;
 use App\Rabbit;
-use App\Cage;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
@@ -99,18 +98,8 @@ class RabbitController extends Controller
         return view('application.rabbit', compact(['rabbit', 'rabbits', 'cages', 'breeds', 'matings', 'vaccinations', 'uniqueVaccinations']));
     }
 
-    function addRabbit(Request $request)
+    function addRabbit(RabbitAddRequest $request)
     {
-        $this->validate($request, [
-            'name' => 'required|string|max:64',
-            'gender' => 'required|in:f,m',
-            'status' => 'required_if:gender,f|in:young,ready,pregnant,lactation,rest',
-            'photo' => 'nullable|image',
-            'breed' => 'nullable|integer|exists:breeds,id,user_id,' . Auth::id(),
-            'cage' => 'nullable|integer|exists:cages,id,user_id,' . Auth::id(),
-            'birthday' => 'nullable|date',
-            'desc' => 'nullable|string|max:255',
-        ]);
 
         $rabbit = new Rabbit();
 

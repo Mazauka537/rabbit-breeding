@@ -59,7 +59,7 @@
 
                     <div class="body edit-photo-body">
                         <div class="text-center">
-                            <label class="input-label" for="photo-input-edit">
+                            <label class="input-label txt-clip" for="photo-input-edit">
                                 Выберите файл
                             </label>
                             <input type="file" name="photo" id="photo-input-edit" style="display: none"
