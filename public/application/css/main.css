@@ -282,9 +282,9 @@ a {
   overflow: hidden;
   text-overflow: ellipsis; }
 
-.left-form .line, .center-form .line {
+.left-form .line, .center-form .line, .small-form .line {
   padding: 5px 0; }
-  .left-form .line::after, .center-form .line::after {
+  .left-form .line::after, .center-form .line::after, .small-form .line::after {
     content: "";
     display: block;
     height: 0;
@@ -292,20 +292,20 @@ a {
     line-height: 0;
     clear: both;
     visibility: hidden; }
-.left-form .label, .center-form .label {
+.left-form .label, .center-form .label, .small-form .label {
   float: left;
   width: 120px;
-  font-size: 14px;
-  color: #666;
+  font-size: 13px;
+  color: #999;
   min-height: 5px; }
-.left-form .labeled, .center-form .labeled {
+.left-form .labeled, .center-form .labeled, .small-form .labeled {
   overflow: hidden;
   font-size: 14px;
   color: #555;
   position: relative; }
-.left-form a, .center-form a {
+.left-form a, .center-form a, .small-form a {
   font-size: 14px; }
-  .left-form a:hover, .center-form a:hover {
+  .left-form a:hover, .center-form a:hover, .small-form a:hover {
     text-decoration: underline; }
 
 .center-form .label {
@@ -313,6 +313,15 @@ a {
   text-align: right; }
 .center-form .labeled {
   padding-left: 8px; }
+
+.small-form .line + .line {
+  border-top: 1px solid #eee; }
+.small-form .label {
+  width: 70px; }
+.small-form .labeled {
+  text-align: right;
+  padding-left: 5px;
+  color: #888; }
 
 .ratio-4-3 {
   padding-top: 56%;
@@ -439,7 +448,7 @@ a {
   .rabbit-container .body-form {
     display: none; }
     .rabbit-container .body-form .label {
-      padding: 5px 0; }
+      padding: 6px 0; }
   .rabbit-container .buttons {
     padding-left: 15px;
     white-space: nowrap;
@@ -593,7 +602,7 @@ a {
   .form .edit-photo-body .input-label {
     margin-bottom: 5px; }
 .form .label {
-  padding: 5px 0; }
+  padding: 6px 0; }
 
 input, select, textarea, option, button, .input-label {
   font-family: 'Roboto', sans-serif;

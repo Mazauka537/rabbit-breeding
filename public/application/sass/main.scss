@@ -405,7 +405,7 @@ a {
 
 //left-center-form//
 
-.left-form, .center-form {
+.left-form, .center-form, .small-form {
 
     .line {
         padding: 5px 0;
@@ -424,8 +424,8 @@ a {
     .label {
         float: left;
         width: 120px;
-        font-size: 14px;
-        color: #666;
+        font-size: 13px;
+        color: #999;
         min-height: 5px;
     }
 
@@ -470,6 +470,22 @@ a {
 
     .labeled {
         padding-left: 8px;
+    }
+}
+
+//small-form//
+
+.small-form {
+    .line+.line {
+        border-top: 1px solid #eee;
+    }
+    .label {
+        width: 70px;
+    }
+    .labeled {
+        text-align: right;
+        padding-left: 5px;
+        color: #888;
     }
 }
 
@@ -659,7 +675,7 @@ a {
         display: none;
 
         .label {
-            padding: 5px 0;
+            padding: 6px 0;
         }
     }
 
@@ -873,7 +889,7 @@ a {
     }
 
     .label {
-        padding: 5px 0;
+        padding: 6px 0;
     }
 }
 

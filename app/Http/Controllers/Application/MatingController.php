@@ -42,6 +42,8 @@ class MatingController extends Controller
 
     function addMating(MatingAddRequest $request)
     {
+        $errors = [];
+
         if (empty($request->female)
             && empty($request->male)
             && empty($request->date)
@@ -49,8 +51,21 @@ class MatingController extends Controller
             && empty($request->child_count)
             && empty($request->alive_count)
             && empty($request->desc)) {
-            return back()->withErrors('-_-');
+            $errors[] = '-_-';
         }
+
+        if (!empty($request->child_count) && !empty($request->alive_count)) {
+            if ($request->child_count < $request->alive_count)
+                $errors[] = 'Число выживших крольчат не может превышать число рожденных';
+        }
+
+        if (!empty($request->date) && !empty($request->date_birth)) {
+            if (strtotime($request->date) > strtotime($request->date_birth))
+                $errors[] = 'Дата окрола не может быть раньше даты случки';
+        }
+
+        if (!empty($errors))
+            return back()->withErrors($errors);
 
         $mating = new Mating();
         $mating->user_id = Auth::id();
@@ -68,6 +83,8 @@ class MatingController extends Controller
 
     function editMating(MatingAddRequest $request, $id)
     {
+        $errors = [];
+
         if (empty($request->female)
             && empty($request->male)
             && empty($request->date)
@@ -75,7 +92,7 @@ class MatingController extends Controller
             && empty($request->child_count)
             && empty($request->alive_count)
             && (empty($request->desc) || $request->desc == '(нет)')) {
-            return back()->withErrors('должны быть хоть какие-нибудь данные');
+            return $this->error('Должны быть хоть какие-нибудь данные');
         }
 
         $mating = Auth::user()->matings()->findOrFail($id);
@@ -87,6 +104,19 @@ class MatingController extends Controller
         $mating->child_count = $request->child_count;
         $mating->alive_count = $request->alive_count;
         $mating->desc = $request->desc;
+
+        if (!empty($mating->child_count) && !empty($mating->alive_count)) {
+            if ($mating->child_count < $mating->alive_count)
+                $errors[] = 'Число выживших крольчат не может превышать число рожденных';
+        }
+
+        if (!empty($mating->date) && !empty($mating->date_birth)) {
+            if (strtotime($mating->date) > strtotime($mating->date_birth))
+                $errors[] = 'Дата окрола не может быть раньше даты случки';
+        }
+
+        if (!empty($errors))
+            return back()->withErrors($errors);
 
         $mating->save();
 

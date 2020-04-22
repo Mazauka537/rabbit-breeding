@@ -25,20 +25,20 @@ class RabbitController extends Controller
         return $result;
     }
 
-    private function getUniqueItems($array, $field)
-    {
-        $result = [];
-        foreach ($array as $item) {
-            if (!in_array($item[$field], $result)) {
-                $result[] = $item[$field];
-            }
-        }
-
-        if (count($result) != 0)
-            return $result;
-        else
-            return false;
-    }
+//    private function getUniqueItems($array, $field)
+//    {
+//        $result = [];
+//        foreach ($array as $item) {
+//            if (!in_array($item[$field], $result)) {
+//                $result[] = $item[$field];
+//            }
+//        }
+//
+//        if (count($result) != 0)
+//            return $result;
+//        else
+//            return false;
+//    }
 
     private function getRandomStr($length)
     {
@@ -64,6 +64,23 @@ class RabbitController extends Controller
         return null;
     }
 
+    function getYears($value) //YYYY-MM-DD
+    {
+        $date = explode('-', $value);
+        if ($date[1] > date('m') || $date[1] == date('m') && $date[2] > date('d'))
+            return (date('Y') - $date[0] - 1);
+        else
+            return (date('Y') - $date[0]);
+    }
+
+    function getDays($value) //YYYY-MM-DD
+    {
+        $now = time();
+        $your_date = strtotime($value);
+        $datediff = $now - $your_date;
+        return floor($datediff / (60 * 60 * 24));
+    }
+
     function getRabbits()
     {
         $cages = Auth::user()->cages;
@@ -81,22 +98,35 @@ class RabbitController extends Controller
         $cages = Auth::user()->cages;
         $breeds = Auth::user()->breeds;
         $rabbits = Auth::user()->rabbits;
-        $all_vaccinations = Auth::user()->vaccinations;
 
         $rabbit = ($r = $this->findItemById($rabbits, $id)) ? $r : null;
         if ($rabbit == null || $rabbit->user_id != Auth::id())
             return response(view('errors.404'), 404);
 
-        $rabbit->breed = $this->findItemById($breeds, $rabbit->breed_id) ?? '(нет)';
-        $rabbit->cage = $this->findItemById($cages, $rabbit->cage_id) ?? '(нет)';
-        $rabbit->status_value = $this->setRabbitStatus($rabbit->status);
-
         $matings = $rabbit->matings;
         $vaccinations = $rabbit->vaccinations;
 
-        $uniqueVaccinations = $this->getUniqueItems($all_vaccinations, 'name');
+        $rabbit->breed = $this->findItemById($breeds, $rabbit->breed_id) ?? '(нет)';
+        $rabbit->cage = $this->findItemById($cages, $rabbit->cage_id) ?? '(нет)';
+        $rabbit->status_value = $this->setRabbitStatus($rabbit->status);
+        $rabbit->matings_count = count($matings);
+        if (!empty($rabbit->birthday)) {
+            $rabbit->days = $this->getDays($rabbit->birthday);
+            $rabbit->years = $this->getYears($rabbit->birthday);
+            $rabbit->months = floor($rabbit->days / 30);
+        }
 
-        return view('application.rabbit', compact(['rabbit', 'rabbits', 'cages', 'breeds', 'matings', 'vaccinations', 'uniqueVaccinations']));
+        $child_count = 0;
+        $alive_count = 0;
+        foreach ($matings as $m) {
+            $child_count += $m->child_count;
+            $alive_count += $m->alive_count;
+        }
+
+        $rabbit->child_count = $child_count;
+        $rabbit->alive_count = $alive_count;
+
+        return view('application.rabbit', compact(['rabbit', 'rabbits', 'cages', 'breeds', 'matings', 'vaccinations']));
     }
 
     function addRabbit(RabbitAddRequest $request)

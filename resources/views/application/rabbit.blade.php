@@ -126,19 +126,22 @@
                                 <div class="line">
                                     <div class="label">Рождено:</div>
                                     <div class="labeled">
-                                        <input type="number" name="child_count" placeholder="Общее кол-во крольчат" value="">
+                                        <input type="number" name="child_count" placeholder="Общее кол-во крольчат"
+                                               value="">
                                     </div>
                                 </div>
                                 <div class="line">
                                     <div class="label">Выжило:</div>
                                     <div class="labeled">
-                                        <input type="number" name="alive_count" placeholder="Кол-во выживших крольчат" value="">
+                                        <input type="number" name="alive_count" placeholder="Кол-во выживших крольчат"
+                                               value="">
                                     </div>
                                 </div>
                                 <div class="line">
                                     <div class="label">Примечания:</div>
                                     <div class="labeled">
-                                        <textarea name="desc" maxlength="255" placeholder="Дополнительная информация"></textarea>
+                                        <textarea name="desc" maxlength="255"
+                                                  placeholder="Дополнительная информация"></textarea>
                                     </div>
                                 </div>
                                 <div class="line">
@@ -329,8 +332,47 @@
                     </div>
                 </div>
                 <div class="some-info__wrapper wrapper">
-                    <div class="some-info">
-                        some info
+                    <div class="some-info small-form">
+                        <div class="line">
+                            <div class="label">
+                                Возраст:
+                            </div>
+                            <div class="labeled">
+                                @if(!empty($rabbit->birthday))
+                                    <ul class="rabbit-age">
+                                        <li>{{ $rabbit->days . ' дней' }}</li>
+                                        <li>{{ $rabbit->months . ' месяцев' }}</li>
+                                        <li>{{ $rabbit->years . ' лет' }}</li>
+                                    </ul>
+                                @else
+                                    {{ '(неизвестно)' }}
+                                @endif
+                            </div>
+                        </div>
+                        <div class="line">
+                            <div class="label">
+                                Случек:
+                            </div>
+                            <div class="labeled">
+                                {{ count($matings) }}
+                            </div>
+                        </div>
+                        <div class="line">
+                            <div class="label">
+                                Детей:
+                            </div>
+                            <div class="labeled">
+                                {{ $rabbit->child_count }}
+                            </div>
+                        </div>
+                        <div class="line">
+                            <div class="label">
+                                Выживших:
+                            </div>
+                            <div class="labeled">
+                                {{ $rabbit->alive_count }}
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -413,7 +455,8 @@
                                         <div class="line">
                                             <div class="label">Имя:</div>
                                             <div class="labeled">
-                                                <input type="text" name="name" placeholder="Имя кролика" value="{{ $rabbit->name }}">
+                                                <input type="text" name="name" placeholder="Имя кролика"
+                                                       value="{{ $rabbit->name }}">
                                             </div>
                                         </div>
                                         <div class="line">
@@ -437,12 +480,28 @@
                                                 Статус:
                                             </div>
                                             <div class="labeled">
-                                                <select name="status" class="select-status" @if($rabbit->gender != 'f') {{ 'disabled' }} @endif>
-                                                    <option value="young" @if($rabbit->status == 'young') {{ 'selected' }} @endif>Молодняк</option>
-                                                    <option value="ready" @if($rabbit->status == 'ready') {{ 'selected' }} @endif>Готова к спариванию</option>
-                                                    <option value="pregnant" @if($rabbit->status == 'pregnant') {{ 'selected' }} @endif>Беременная</option>
-                                                    <option value="lactation" @if($rabbit->status == 'lactation') {{ 'selected' }} @endif>Лактация</option>
-                                                    <option value="rest" @if($rabbit->status == 'rest') {{ 'selected' }} @endif>Отдых</option>
+                                                <select name="status"
+                                                        class="select-status" @if($rabbit->gender != 'f') {{ 'disabled' }} @endif>
+                                                    <option
+                                                        value="young" @if($rabbit->status == 'young') {{ 'selected' }} @endif>
+                                                        Молодняк
+                                                    </option>
+                                                    <option
+                                                        value="ready" @if($rabbit->status == 'ready') {{ 'selected' }} @endif>
+                                                        Готова к спариванию
+                                                    </option>
+                                                    <option
+                                                        value="pregnant" @if($rabbit->status == 'pregnant') {{ 'selected' }} @endif>
+                                                        Беременная
+                                                    </option>
+                                                    <option
+                                                        value="lactation" @if($rabbit->status == 'lactation') {{ 'selected' }} @endif>
+                                                        Лактация
+                                                    </option>
+                                                    <option
+                                                        value="rest" @if($rabbit->status == 'rest') {{ 'selected' }} @endif>
+                                                        Отдых
+                                                    </option>
                                                 </select>
                                             </div>
                                         </div>
@@ -480,7 +539,8 @@
                                         <div class="line">
                                             <div class="label">Описание:</div>
                                             <div class="labeled">
-                                                <textarea name="desc" maxlength="255" placeholder="Дополнительная информация о кролике">{{ $rabbit->desc ?? '' }}</textarea>
+                                                <textarea name="desc" maxlength="255"
+                                                          placeholder="Дополнительная информация о кролике">{{ $rabbit->desc ?? '' }}</textarea>
                                             </div>
                                         </div>
                                         <div class="line">
