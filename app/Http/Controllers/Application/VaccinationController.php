@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Application;
 
+use App\Http\Requests\Application\VaccinationAddRequest;
 use App\Vaccination;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -17,14 +18,8 @@ class VaccinationController extends Controller
         return view('application.vaccinations', compact('vaccinations', 'rabbits'));
     }
 
-    function addVaccination(Request $request)
+    function addVaccination(VaccinationAddRequest $request)
     {
-        $this->validate($request, [
-            'name' => 'required|string|max:64',
-            'rabbit' => 'required|integer|exists:rabbits,id,user_id,' . Auth::id(),
-            'date' => 'nullable|date',
-            'desc' => 'nullable|string|max:255',
-        ]);
 
         $vaccination = new Vaccination();
 
@@ -39,13 +34,7 @@ class VaccinationController extends Controller
         return back();
     }
 
-    function editVaccination(Request $request, $id) {
-        $this->validate($request, [
-            'name' => 'required|string|max:64',
-            'rabbit' => 'required|integer|exists:rabbits,id,user_id,' . Auth::id(),
-            'date' => 'nullable|date',
-            'desc' => 'nullable|string|max:255',
-        ]);
+    function editVaccination(VaccinationAddRequest $request, $id) {
 
         $vaccination = Auth::user()->vaccinations()->findOrFail($id);
 

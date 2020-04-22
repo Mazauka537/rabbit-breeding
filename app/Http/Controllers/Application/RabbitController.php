@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Application;
 
 use App\Http\Requests\Application\RabbitAddRequest;
+use App\Http\Requests\Application\RabbitEditPhotoRequest;
 use App\Rabbit;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -100,7 +101,6 @@ class RabbitController extends Controller
 
     function addRabbit(RabbitAddRequest $request)
     {
-
         $rabbit = new Rabbit();
 
         $rabbit->name = $request->name;
@@ -130,7 +130,7 @@ class RabbitController extends Controller
         return redirect(route('rabbits'));
     }
 
-    function editRabbit(Request $request, $id)
+    function editRabbit(RabbitAddRequest $request, $id)
     {
         $this->validate($request, [
             'name' => 'required|string|max:64',
@@ -179,12 +179,8 @@ class RabbitController extends Controller
         return redirect(route('rabbits'));
     }
 
-    function editPhoto(Request $request, $id)
+    function editPhoto(RabbitEditPhotoRequest $request, $id)
     {
-        $this->validate($request, [
-            'photo' => 'required|image',
-        ]);
-
         $rabbit = Auth::user()->rabbits()->findOrFail($id);
 
         if ($rabbit->photo != null) {

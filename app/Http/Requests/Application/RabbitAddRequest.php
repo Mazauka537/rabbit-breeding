@@ -2,10 +2,8 @@
 
 namespace App\Http\Requests\Application;
 
-use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Validation\ValidationException;
 
 class RabbitAddRequest extends FormRequest
 {

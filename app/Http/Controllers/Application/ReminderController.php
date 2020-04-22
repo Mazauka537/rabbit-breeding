@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Application;
 
+use App\Http\Requests\Application\ReminderAddRequest;
 use App\Reminder;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -17,14 +18,8 @@ class ReminderController extends Controller
         return view('application.reminders', compact(['reminders', 'rabbits']));
     }
 
-    function addReminder(Request $request)
+    function addReminder(ReminderAddRequest $request)
     {
-        $this->validate($request, [
-            'date' => 'required|date',
-            'text' => 'required|string|max:255',
-            'rabbit' => 'nullable|integer|exists:rabbits,id,user_id,' . Auth::id(),
-        ]);
-
         $reminder = new Reminder();
 
         $reminder->date = $request->date;
@@ -37,14 +32,8 @@ class ReminderController extends Controller
         return back();
     }
 
-    function editReminder(Request $request, $id)
+    function editReminder(ReminderAddRequest $request, $id)
     {
-        $this->validate($request, [
-            'date' => 'required|date',
-            'text' => 'required|string|max:255',
-            'rabbit' => 'nullable|integer|exists:rabbits,id,user_id,' . Auth::id(),
-        ]);
-
         $reminder = Auth::user()->reminders()->findOrFail($id);
 
         $reminder->date = $request->date;
