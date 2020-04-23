@@ -77,8 +77,8 @@ class RabbitController extends Controller
     {
         $now = time();
         $your_date = strtotime($value);
-        $datediff = $now - $your_date;
-        return floor($datediff / (60 * 60 * 24));
+        $date_diff = $now - $your_date;
+        return floor($date_diff / (60 * 60 * 24));
     }
 
     function getRabbits()

@@ -34,8 +34,9 @@ a {
   visibility: hidden; }
 
 .container {
-  max-width: 960px;
-  margin: 0 auto; }
+  max-width: 990px;
+  margin: 0 auto;
+  padding: 0 15px; }
 
 .male {
   color: skyblue; }
@@ -68,20 +69,14 @@ a {
   justify-content: space-between;
   align-items: center;
   height: 100%; }
-  .header__inner .left {
-    width: 180px;
-    display: flex;
-    align-items: center; }
 
-.logo {
-  margin-left: 24px; }
-  .logo a {
-    vertical-align: middle;
-    display: block; }
-    .logo a img {
-      max-width: 130px;
-      max-height: 35px;
-      vertical-align: middle; }
+.logo a {
+  vertical-align: middle;
+  display: block; }
+  .logo a img {
+    max-width: 130px;
+    max-height: 35px;
+    vertical-align: middle; }
 
 .menu-btn {
   height: 30px;
@@ -99,23 +94,16 @@ a {
     transform: translate(-50%, -50%); }
 
 .user {
-  padding: 0 18px;
   cursor: pointer;
   position: relative; }
 
 .user-name {
   font-size: 16px;
-  color: #333;
-  position: relative;
-  padding-right: 18px; }
-
-.caret {
-  border-top: 7px solid #333;
-  border-left: 5px solid transparent;
-  border-right: 5px solid transparent;
-  position: absolute;
-  top: 6px;
-  right: 0; }
+  color: #333; }
+  .user-name::after {
+    content: "\e909";
+    font-family: icomoon;
+    font-size: 15px; }
 
 .user-list {
   position: absolute;
@@ -317,11 +305,13 @@ a {
 .small-form .line + .line {
   border-top: 1px solid #eee; }
 .small-form .label {
-  width: 70px; }
+  width: 70px;
+  font-size: 12px; }
 .small-form .labeled {
   text-align: right;
   padding-left: 5px;
-  color: #888; }
+  color: #888;
+  font-size: 13px; }
 
 .ratio-4-3 {
   padding-top: 56%;

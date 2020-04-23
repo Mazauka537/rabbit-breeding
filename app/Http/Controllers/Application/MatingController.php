@@ -64,8 +64,10 @@ class MatingController extends Controller
                 $errors[] = 'Дата окрола не может быть раньше даты случки';
         }
 
-        if (!empty($errors))
+        if (!empty($errors)) {
+            $request->flash();
             return back()->withErrors($errors);
+        }
 
         $mating = new Mating();
         $mating->user_id = Auth::id();
@@ -115,8 +117,9 @@ class MatingController extends Controller
                 $errors[] = 'Дата окрола не может быть раньше даты случки';
         }
 
-        if (!empty($errors))
+        if (!empty($errors)) {
             return back()->withErrors($errors);
+        }
 
         $mating->save();
 

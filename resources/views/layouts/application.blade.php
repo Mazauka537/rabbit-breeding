@@ -15,8 +15,7 @@
     <header class="header" id="header">
         <div class="container">
             <div class="header__inner">
-                <div class="left clearfix">
-                    <div class="menu-btn"></div>
+                <div class="left">
                     <div class="logo">
                         <a href="#">
                             <img src="{{ asset('images/logo-long.png') }}" alt="logo">
@@ -27,7 +26,6 @@
                     <div class="user">
                         <a class="user-name" id="user-name">
                             {{ \Illuminate\Support\Facades\Auth::user()->name }}
-                            <span class="caret"></span>
                         </a>
                         <ul class="user-list none-height">
                             <li>
