@@ -11,13 +11,16 @@
 |
 */
 
+use Illuminate\Support\Facades\Auth;
+
 Route::get('/', function () {
-    return view('welcome');
+    if (Auth::check())
+        return redirect(route('rabbits'));
+    else
+        return redirect(route('login'));
 });
 
 Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
 
 Route::group(['middleware' => 'auth', 'namespace' => 'Application', 'prefix' => 'application'], function () {
     Route::get('rabbits', 'RabbitController@getRabbits')->name('rabbits');

@@ -181,6 +181,15 @@ a {
     border: none;
 }
 
+.auth-menu {
+    display: flex;
+    justify-content: right;
+
+    .nav-item {
+        padding-left: 15px;
+    }
+}
+
 //content//
 
 .content {
@@ -857,6 +866,7 @@ a {
     border-radius: 3px;
     position: relative;
     overflow: hidden;
+    border: 1px solid #eee;
 }
 
 .form {
@@ -887,6 +897,14 @@ a {
     }
 }
 
+.form-link {
+    padding: 25px 0 0 0 !important;
+
+    a {
+        color: #444;
+    }
+}
+
 input, select, textarea, option, button, .input-label {
     font-family: 'Roboto', sans-serif;
     font-size: 14px;
@@ -909,6 +927,19 @@ input, select, textarea, option, button, .input-label {
         cursor: pointer;
         color: #FFF;
     }
+
+    &[type="checkbox"] {
+        text-align: left;
+        width: 20px;
+        height: 20px;
+    }
+}
+
+label {
+    display: inline-block;
+    padding-top: 2px;
+    padding-left: 4px;
+    vertical-align: top;
 }
 
 .text-center {

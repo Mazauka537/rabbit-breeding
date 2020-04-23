@@ -129,6 +129,12 @@ a {
   padding-bottom: 0;
   border: none; }
 
+.auth-menu {
+  display: flex;
+  justify-content: right; }
+  .auth-menu .nav-item {
+    padding-left: 15px; }
+
 .content__inner {
   height: 100%;
   overflow: hidden;
@@ -575,7 +581,8 @@ a {
   margin: 30px auto;
   border-radius: 3px;
   position: relative;
-  overflow: hidden; }
+  overflow: hidden;
+  border: 1px solid #eee; }
 
 .form .head {
   font-size: 20px;
@@ -593,6 +600,11 @@ a {
     margin-bottom: 5px; }
 .form .label {
   padding: 6px 0; }
+
+.form-link {
+  padding: 25px 0 0 0 !important; }
+  .form-link a {
+    color: #444; }
 
 input, select, textarea, option, button, .input-label {
   font-family: 'Roboto', sans-serif;
@@ -612,6 +624,16 @@ input, select, textarea, option, button, .input-label {
     border: none;
     cursor: pointer;
     color: #FFF; }
+  input[type="checkbox"], select[type="checkbox"], textarea[type="checkbox"], option[type="checkbox"], button[type="checkbox"], .input-label[type="checkbox"] {
+    text-align: left;
+    width: 20px;
+    height: 20px; }
+
+label {
+  display: inline-block;
+  padding-top: 2px;
+  padding-left: 4px;
+  vertical-align: top; }
 
 .text-center {
   text-align: center; }
