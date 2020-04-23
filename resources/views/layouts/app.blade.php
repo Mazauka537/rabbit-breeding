@@ -82,6 +82,7 @@
 <script src="{{ asset('assets/js/jquery-3.4.1.min.js') }}"></script>
 <script src="{{ asset('assets/js/jquery.scrollbar.min.js') }}"></script>
 <script src="{{ asset('application/js/scrolls.js') }}"></script>
+<script src="{{ asset('application/js/alerts.js') }}"></script>
 
 </body>
 </html>

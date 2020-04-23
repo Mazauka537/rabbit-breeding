@@ -31,8 +31,25 @@
         </div>
     </div>
 
-    @if (session('status'))
-        {{ session('status') }}
-    @endif
+    <div class="alerts">
+        @if(count($errors->all()) != 0)
+            <div class="alert alert-error">
+                <button class="alert-close-button"></button>
+                <div class="alert__inner">
+                    <ul>
+                        @foreach($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            </div>
+        @endif
+        @if (session('status'))
+            <div class="alert alert-success">
+                <button class="alert-close-button"></button>
+                На вашу почту было отправлено письмо для восстановления пароля.
+            </div>
+        @endif
+    </div>
 
 @endsection

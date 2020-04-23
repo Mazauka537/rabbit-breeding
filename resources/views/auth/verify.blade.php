@@ -1,24 +1,33 @@
 @extends('layouts.app')
 
-@section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Verify Your Email Address') }}</div>
+@section('title', 'Подтверждение e-mail')
 
-                <div class="card-body">
+@section('content')
+
+    <div class="modal-window__inner scrollbar-macosx">
+        <div class="form__wrapper" id="edit-item-form">
+            <form action="{{ route('login') }}" class="form" method="post">
+                @csrf
+                <div class="head">
+                    Подтверждение e-mail
+                </div>
+
+                <div class="body">
                     @if (session('resent'))
-                        <div class="alert alert-success" role="alert">
-                            {{ __('A fresh verification link has been sent to your email address.') }}
+                        <div class="alert alert-success alert-full">
+                            На указанный e-mail адрес было отправлено проверочное письмо.
                         </div>
                     @endif
-
-                    {{ __('Before proceeding, please check your email for a verification link.') }}
-                    {{ __('If you did not receive the email') }}, <a href="{{ route('verification.resend') }}">{{ __('click here to request another') }}</a>.
+                    <div class="pt-20 verify-text">
+                        Прежде чем продолжить, пожалуйста, проверьте свою электронную почту на наличие проверочного письма.
+                        Если письмо не было получено, <a class="underline" href="{{ /*route('verification.resend')*/'login'}}">нажмите здесь, чтобы отправить его повторно</a>.
+                    </div>
                 </div>
-            </div>
+            </form>
         </div>
     </div>
-</div>
+
+
+{{-- {{ route('verification.resend') }} --}}
+
 @endsection

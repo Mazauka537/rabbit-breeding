@@ -673,11 +673,12 @@ textarea {
 
 .alert {
   background: #FFF;
-  box-shadow: 0 0 4px #999;
+  box-shadow: 0 0 4px -2px #999;
+  border: 1px solid transparent;
   color: #333;
-  font-size: 14px;
+  font-size: 13px;
   max-width: 300px;
-  padding: 12px 20px 12px 12px;
+  padding: 12px 20px 12px 15px;
   position: relative;
   border-radius: 5px;
   margin-top: 10px; }
@@ -686,8 +687,8 @@ textarea {
   border: none;
   background: none;
   position: absolute;
-  top: 0;
-  right: 0;
+  top: -2px;
+  right: -2px;
   width: 20px;
   height: 20px;
   padding: 0; }
@@ -695,8 +696,8 @@ textarea {
     content: "";
     display: block;
     position: absolute;
-    height: 2px;
-    width: 12px;
+    height: 1.5px;
+    width: 10px;
     left: 50%;
     top: 50%;
     background: #444;
@@ -708,13 +709,31 @@ textarea {
   .alert-close-button:hover::before, .alert-close-button:hover::after {
     background: #000; }
 
+.alert-full {
+  max-width: 100%;
+  width: 100%; }
+
 .alert-error {
-  background: #ffc3cb;
-  color: red; }
+  color: #871f28;
+  background-color: #f8d7da;
+  border-color: #f5c6cb; }
   .alert-error .alert-close-button::before, .alert-error .alert-close-button::after {
-    background: red; }
+    background: #871f28; }
   .alert-error .alert-close-button:hover::before, .alert-error .alert-close-button:hover::after {
     background: darkred; }
+
+.alert-success {
+  color: #155724;
+  background-color: #d4edda;
+  border-color: #c3e6cb; }
+
+.underline {
+  text-decoration: underline; }
+
+.verify-text {
+  font-size: 14px; }
+  .verify-text a {
+    font-size: 14px; }
 
 .pt-20 {
   padding-top: 20px !important; }
