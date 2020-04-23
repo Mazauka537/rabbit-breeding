@@ -15,7 +15,7 @@
 
 </head>
 <body>
-<div id="app">
+<div class="app">
 
     <header class="header" id="header">
         <div class="container">
@@ -78,6 +78,10 @@
     </div>
 
 </div>
+
+<script src="{{ asset('assets/js/jquery-3.4.1.min.js') }}"></script>
+<script src="{{ asset('assets/js/jquery.scrollbar.min.js') }}"></script>
+<script src="{{ asset('application/js/scrolls.js') }}"></script>
 
 </body>
 </html>
