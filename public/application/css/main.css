@@ -134,6 +134,10 @@ a {
   justify-content: right; }
   .auth-menu .nav-item {
     padding-left: 15px; }
+    .auth-menu .nav-item a {
+      color: #fff; }
+      .auth-menu .nav-item a:hover {
+        color: #eee; }
 
 .content__inner {
   height: 100%;
@@ -602,9 +606,11 @@ a {
   padding: 6px 0; }
 
 .form-link {
-  padding: 25px 0 0 0 !important; }
+  padding-top: 0 !important;
+  margin-top: -3px; }
   .form-link a {
-    color: #444; }
+    color: #555;
+    font-size: 12px; }
 
 input, select, textarea, option, button, .input-label {
   font-family: 'Roboto', sans-serif;
