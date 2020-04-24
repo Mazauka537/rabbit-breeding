@@ -1007,6 +1007,11 @@ textarea {
     position: relative;
     border-radius: 5px;
     margin-top: 10px;
+
+    ul {
+        list-style: disc;
+        padding-left: 10px;
+    }
 }
 
 .alert-close-button {

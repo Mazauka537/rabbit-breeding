@@ -310,7 +310,7 @@
 
         </div>
 
-        <div class="alerts">
+        <div class="alerts animated bounceInUp">
             @if(count($errors->all()) != 0)
                 <div class="alert alert-error">
                     <button class="alert-close-button"></button>

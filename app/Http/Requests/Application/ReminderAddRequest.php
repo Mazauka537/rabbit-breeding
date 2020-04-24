@@ -34,11 +34,11 @@ class ReminderAddRequest extends FormRequest
     public function messages()
     {
         return [
-            'required' => 'Поле :attribute обязательно для заполнения',
-            'max' => 'Длина поля :attribute не должна превышать :max символа',
-            'rabbit.integer' => 'В поле :attribute выбрано не существующее значение',
-            'exists' => 'В поле :attribute выбрано не существующее значение',
-            'date' => 'Значение поля :attribute должно быть датой',
+            'required' => 'Поле :attribute обязательно для заполнения.',
+            'max' => 'Длина поля :attribute не должна превышать :max символа.',
+            'rabbit.integer' => 'В поле :attribute выбрано не существующее значение.',
+            'exists' => 'В поле :attribute выбрано не существующее значение.',
+            'date' => 'Значение поля :attribute должно быть датой.',
         ];
     }
 

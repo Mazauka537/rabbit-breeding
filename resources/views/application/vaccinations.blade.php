@@ -22,7 +22,7 @@
                                         Название*:
                                     </div>
                                     <div class="labeled">
-                                        <input type="text" name="name" value="{{ old('name') }}">
+                                        <input type="text" name="name" value="{{ old('name') }}" required>
                                     </div>
                                 </div>
                                 <div class="line">
@@ -30,7 +30,7 @@
                                         Кролик*:
                                     </div>
                                     <div class="labeled">
-                                        <select name="rabbit">
+                                        <select name="rabbit" required>
                                             <option value=""></option>
                                             @foreach($rabbits as $rabbit)
                                                 <option
@@ -87,7 +87,7 @@
                                         Название*:
                                     </div>
                                     <div class="labeled">
-                                        <input type="text" name="name" value="">
+                                        <input type="text" name="name" value="" required>
                                     </div>
                                 </div>
                                 <div class="line">
@@ -95,7 +95,7 @@
                                         Кролик*:
                                     </div>
                                     <div class="labeled">
-                                        <select name="rabbit">
+                                        <select name="rabbit" required>
                                             <option value=""></option>
                                             @foreach($rabbits as $rabbit)
                                                 <option value="{{ $rabbit->id }}">
@@ -229,7 +229,7 @@
 
         </div>
 
-        <div class="alerts">
+        <div class="alerts animated bounceInUp">
             @if(count($errors->all()) != 0)
                 <div class="alert alert-error">
                     <button class="alert-close-button"></button>

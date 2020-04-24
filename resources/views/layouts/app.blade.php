@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="{{ asset('application/fonts/style.css') }}">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('assets/css/jquery.scrollbar.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/animate.min.css') }}">
     <link rel="stylesheet" href="{{ asset('application/css/main.css') }}">
     <title>@yield('title')</title>
 

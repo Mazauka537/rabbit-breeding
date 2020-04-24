@@ -22,7 +22,7 @@
                                         Дата*:
                                     </div>
                                     <div class="labeled">
-                                        <input type="date" name="date" value="{{ old('date') }}">
+                                        <input type="date" name="date" value="{{ old('date') }}" required>
                                     </div>
                                 </div>
                                 <div class="line">
@@ -32,7 +32,7 @@
                                     <div class="labeled">
                                         <textarea name="text"
                                                   placeholder="Опишите ваши планы на выбранную дату"
-                                                  maxlength="255">{{ old('text') }}</textarea>
+                                                  maxlength="255" required>{{ old('text') }}</textarea>
                                     </div>
                                 </div>
                                 <div class="line">
@@ -79,7 +79,7 @@
                                         Дата*:
                                     </div>
                                     <div class="labeled">
-                                        <input type="date" name="date">
+                                        <input type="date" name="date" required>
                                     </div>
                                 </div>
                                 <div class="line">
@@ -89,7 +89,7 @@
                                     <div class="labeled">
                                         <textarea name="text"
                                                   placeholder="Опишите ваши планы на выбранную дату"
-                                                  maxlength="255"></textarea>
+                                                  maxlength="255" required></textarea>
                                     </div>
                                 </div>
                                 <div class="line">
@@ -214,7 +214,7 @@
 
         </div>
 
-        <div class="alerts">
+        <div class="alerts animated bounceInUp">
             @if(count($errors->all()) != 0)
                 <div class="alert alert-error">
                     <button class="alert-close-button"></button>

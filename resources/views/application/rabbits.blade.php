@@ -20,13 +20,13 @@
                                 <div class="line">
                                     <div class="label">Имя*:</div>
                                     <div class="labeled">
-                                        <input type="text" name="name" placeholder="Имя кролика" value="{{ old('name') }}">
+                                        <input type="text" name="name" placeholder="Имя кролика" value="{{ old('name') }}" required>
                                     </div>
                                 </div>
                                 <div class="line">
                                     <div class="label">Пол*:</div>
                                     <div class="labeled">
-                                        <select name="gender" id="inp-rabbit-gender">
+                                        <select name="gender" id="inp-rabbit-gender" required>
                                             <option value=""></option>
                                             <option value="m" @if(old('gender') == 'm') {{ "selected" }} @endif>М
                                             </option>
@@ -158,7 +158,7 @@
 
         </div>
 
-        <div class="alerts">
+        <div class="alerts animated bounceInUp">
             @if(count($errors->all()) != 0)
                 <div class="alert alert-error">
                     <button class="alert-close-button"></button>

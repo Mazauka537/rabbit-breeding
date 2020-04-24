@@ -32,8 +32,8 @@ class RabbitEditPhotoRequest extends FormRequest
     public function messages()
     {
         return [
-            'required' => 'Поле :attribute обязательно для заполнения',
-            'image' => ':attribute должно иметь формат png, jpeg или gif',
+            'required' => 'Поле :attribute обязательно для заполнения.',
+            'image' => ':attribute должно иметь формат png, jpeg или gif.',
         ];
     }
 

@@ -682,6 +682,9 @@ textarea {
   position: relative;
   border-radius: 5px;
   margin-top: 10px; }
+  .alert ul {
+    list-style: disc;
+    padding-left: 10px; }
 
 .alert-close-button {
   border: none;

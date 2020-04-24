@@ -197,7 +197,7 @@
                                         Название*:
                                     </div>
                                     <div class="labeled">
-                                        <input type="text" name="name" value="{{ old('name') }}">
+                                        <input type="text" name="name" value="{{ old('name') }}" required>
                                     </div>
                                 </div>
                                 <div class="line">
@@ -246,7 +246,7 @@
                                         Название*:
                                     </div>
                                     <div class="labeled">
-                                        <input type="text" name="name" value="">
+                                        <input type="text" name="name" value="" required>
                                     </div>
                                 </div>
                                 <div class="line">
@@ -254,7 +254,7 @@
                                         Кролик*:
                                     </div>
                                     <div class="labeled">
-                                        <select name="rabbit">
+                                        <select name="rabbit" required>
                                             <option value=""></option>
                                             @foreach($rabbits as $r)
                                                 <option value="{{ $r->id }}">
@@ -453,16 +453,16 @@
                                     @csrf
                                     <div class="center-form">
                                         <div class="line">
-                                            <div class="label">Имя:</div>
+                                            <div class="label">Имя*:</div>
                                             <div class="labeled">
                                                 <input type="text" name="name" placeholder="Имя кролика"
-                                                       value="{{ $rabbit->name }}">
+                                                       value="{{ $rabbit->name }}" required>
                                             </div>
                                         </div>
                                         <div class="line">
-                                            <div class="label">Пол:</div>
+                                            <div class="label">Пол*:</div>
                                             <div class="labeled">
-                                                <select name="gender" id="inp-rabbit-gender">
+                                                <select name="gender" id="inp-rabbit-gender" required>
                                                     <option value=""></option>
                                                     <option
                                                         value="f" @if($rabbit->gender == 'f') {{ 'selected' }} @endif>
@@ -752,7 +752,7 @@
             </div>
         </div>
 
-        <div class="alerts">
+        <div class="alerts animated bounceInUp">
             @if(count($errors->all()) != 0)
                 <div class="alert alert-error">
                     <button class="alert-close-button"></button>

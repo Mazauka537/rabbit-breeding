@@ -33,8 +33,8 @@ class BreedAddRequest extends FormRequest
     public function messages()
     {
         return [
-            'required' => 'Поле :attribute обязательно для заполнения',
-            'max' => 'Длина поля :attribute не должна превышать :max символа',
+            'required' => 'Поле :attribute обязательно для заполнения.',
+            'max' => 'Длина поля :attribute не должна превышать :max символа.',
         ];
     }
 
