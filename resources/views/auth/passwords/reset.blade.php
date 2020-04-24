@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Reset')
+@section('title', 'Восстановление пароля')
 
 @section('content')
     <div class="modal-window__inner scrollbar-macosx">
@@ -44,4 +44,18 @@
         </div>
     </div>
 
+    <div class="alerts">
+        @if(count($errors->all()) != 0)
+            <div class="alert alert-error">
+                <button class="alert-close-button"></button>
+                <div class="alert__inner">
+                    <ul>
+                        @foreach($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            </div>
+        @endif
+    </div>
 @endsection

@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Reset Password')
+@section('title', 'Восстановление пароля')
 
 @section('content')
     <div class="modal-window__inner scrollbar-macosx">
