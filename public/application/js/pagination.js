@@ -43,6 +43,18 @@ class Pagination {
     getLeftPaginationSection() {
         let firstButton = this.getPageButton('div', '<<', 1);
         let prevButton = this.getPageButton('div', '<', this.currentPage - 1);
+
+        if (this.currentPage == 1) {
+            firstButton.classList.add('disabled');
+            prevButton.classList.add('disabled');
+            firstButton.addEventListener('click', function (e) {
+                e.preventDefault();
+            });
+            prevButton.addEventListener('click', function (e) {
+                e.preventDefault();
+            });
+        }
+
         let leftSection = this.getSidePaginationButtons(firstButton, prevButton);
         leftSection.classList.add('left-pagination-buttons');
         return leftSection;
@@ -68,6 +80,11 @@ class Pagination {
             if (i > this.currentPage)
                 farNum = i - this.currentPage;
 
+            if (i == this.currentPage)
+                btn.addEventListener('click', function (e) {
+                    e.preventDefault();
+                });
+
             btn.classList.add('page-button-' + farNum);
 
 
@@ -81,6 +98,18 @@ class Pagination {
     getRightPaginationSection() {
         let lastButton = this.getPageButton('div', '>>', this.lastPage);
         let nextButton = this.getPageButton('div', '>', +this.currentPage + 1);
+
+        if (this.currentPage == this.lastPage) {
+            lastButton.classList.add('disabled');
+            nextButton.classList.add('disabled');
+            lastButton.addEventListener('click', function (e) {
+                e.preventDefault();
+            });
+            nextButton.addEventListener('click', function (e) {
+                e.preventDefault();
+            });
+        }
+
         let rightSection = this.getSidePaginationButtons(nextButton, lastButton);
         rightSection.classList.add('right-pagination-buttons');
         return rightSection;
@@ -101,10 +130,15 @@ class Pagination {
         let link = document.createElement('a');
         link.innerHTML = text;
 
+        let regex = /page=([0-9])*/;
         let href = document.location.href.toString();
-        // console.log(href);
-        href.replace(/page=[0-9]*/i, 'page=' + pageNum);
-        // console.log(href, pageNum);
+
+        if (regex.exec(href))
+            href = href.replace(/page=([0-9])*/, 'page=' + pageNum);
+        else if (document.location.search == '')
+            href += '?page=' + pageNum;
+        else
+            href += '&page=' + pageNum;
 
         link.href = href;
 

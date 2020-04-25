@@ -30,7 +30,7 @@ class MatingController extends Controller
 
     function getMatings(Request $request)
     {
-        $perPage = 1;
+        $perPage = 6;
         $pageCount = ceil(Auth::user()->matings()->count() / $perPage);
 
         $validator = Validator::make($request->all(), [
@@ -39,6 +39,10 @@ class MatingController extends Controller
 
         if ($validator->fails()) {
             return redirect(route('matings'));
+        }
+
+        if (!$request->has('page')) {
+            $request->page = 1;
         }
 
         $matings = Auth::user()

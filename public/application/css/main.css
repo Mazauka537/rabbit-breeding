@@ -195,7 +195,7 @@ a {
 
 .items {
   margin: 0px auto;
-  border: 1px solid #eee;
+  border: 1px solid #e8e8e8;
   border-radius: 5px;
   overflow: hidden; }
 
@@ -213,7 +213,7 @@ a {
   z-index: 11;
   background: #fff;
   border-radius: 5px;
-  border-top: 1px solid #eee; }
+  border-top: 1px solid #e8e8e8; }
 
 .item {
   position: relative; }
@@ -313,7 +313,7 @@ a {
   padding-left: 8px; }
 
 .small-form .line + .line {
-  border-top: 1px solid #eee; }
+  border-top: 1px solid #e8e8e8; }
 .small-form .label {
   width: 70px;
   font-size: 12px; }
@@ -433,7 +433,7 @@ a {
     display: flex;
     justify-content: space-between;
     font-size: 20px;
-    border-bottom: 1px solid #EEE;
+    border-bottom: 1px solid #e8e8e8;
     padding-bottom: 5px; }
     .rabbit-container .head .name {
       max-width: 250px;
@@ -466,7 +466,7 @@ a {
 .wrapper {
   padding: 10px;
   margin: 0 5px 10px 5px;
-  border: 1px solid #EEE;
+  border: 1px solid #e8e8e8;
   background: #FFF;
   border-radius: 5px; }
 
@@ -586,11 +586,11 @@ a {
   border-radius: 3px;
   position: relative;
   overflow: hidden;
-  border: 1px solid #eee; }
+  border: 1px solid #e8e8e8; }
 
 .form .head {
   font-size: 20px;
-  border-bottom: 1px solid #EEE;
+  border-bottom: 1px solid #e8e8e8;
   padding: 20px 40px 15px 20px;
   background: #FAFBFC;
   overflow: hidden;
@@ -800,14 +800,18 @@ textarea {
   padding: 0 1px; }
   .page-button a {
     display: block;
-    border: 1px solid #eee;
+    border: 1px solid #e8e8e8;
     border-radius: 3px;
     background: #fff;
     padding: 6px 10px;
     font-size: 14px;
     color: #444; }
     .page-button a:hover {
-      background: #eee;
-      border-color: #d3d9de; }
+      border-color: #d2d2d2; }
+  .page-button-0 a, .page-button.disabled a {
+    background: #f6f6f6;
+    cursor: default; }
+    .page-button-0 a:hover, .page-button.disabled a:hover {
+      border-color: #e8e8e8; }
 
 /*# sourceMappingURL=main.css.map */

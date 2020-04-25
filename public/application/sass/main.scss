@@ -5,7 +5,7 @@ $color4: #20cb00;
 $male-color: skyblue;
 $female-color: pink;
 $sidebar-width: 180px;
-$main-border: 1px solid #eee;
+$main-border: 1px solid #e8e8e8;
 
 
 * {
@@ -289,7 +289,7 @@ a {
 
 .items {
     margin: 0px auto;
-    border: 1px solid #eee;
+    border: $main-border;
     border-radius: 5px;
     overflow: hidden;
 }
@@ -309,7 +309,7 @@ a {
     z-index: 11;
     background: #fff;
     border-radius: 5px;
-    border-top: 1px solid #eee;
+    border-top: $main-border;
 }
 
 .item {
@@ -487,7 +487,7 @@ a {
 
 .small-form {
     .line + .line {
-        border-top: 1px solid #eee;
+        border-top: $main-border;
     }
 
     .label {
@@ -666,7 +666,7 @@ a {
         display: flex;
         justify-content: space-between;
         font-size: 20px;
-        border-bottom: 1px solid #EEE;
+        border-bottom: $main-border;
         padding-bottom: 5px;
 
         .name {
@@ -715,7 +715,7 @@ a {
 .wrapper {
     padding: 10px;
     margin: 0 5px 10px 5px;
-    border: 1px solid #EEE;
+    border: $main-border;
     background: #FFF;
     border-radius: 5px;
 }
@@ -878,13 +878,13 @@ a {
     border-radius: 3px;
     position: relative;
     overflow: hidden;
-    border: 1px solid #eee;
+    border: $main-border;
 }
 
 .form {
     .head {
         font-size: 20px;
-        border-bottom: 1px solid #EEE;
+        border-bottom: $main-border;
         padding: 20px 40px 15px 20px;
         background: #FAFBFC;
         overflow: hidden;
@@ -1117,7 +1117,7 @@ textarea {
 .filter {
     width: 45%;
     border-radius: 5px;
-    //border: 1px solid #eee;
+    //border: $main-border;
     //background: #fff;
     //padding: 10px;
 
@@ -1190,7 +1190,7 @@ textarea {
 
     a {
         display: block;
-        border: 1px solid #eee;
+        border: $main-border;
         border-radius: 3px;
         background: #fff;
         padding: 6px 10px;
@@ -1198,8 +1198,19 @@ textarea {
         color: #444;
 
         &:hover {
-            background: #eee;
-            border-color: #d3d9de;
+            border-color: #d2d2d2;
+        }
+    }
+
+    &-0, &.disabled {
+
+        a {
+            background: #f6f6f6;
+            cursor: default;
+
+            &:hover {
+                border-color: #e8e8e8;
+            }
         }
     }
 }
