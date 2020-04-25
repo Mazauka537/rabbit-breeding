@@ -62,4 +62,3 @@ for (let i = 0; i < alertButtons.length; i++) {
 function closeAlert() {
     this.closest('.alert').remove();
 }
-

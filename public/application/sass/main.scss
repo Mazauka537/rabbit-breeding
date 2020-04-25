@@ -5,6 +5,7 @@ $color4: #20cb00;
 $male-color: skyblue;
 $female-color: pink;
 $sidebar-width: 180px;
+$main-border: 1px solid #eee;
 
 
 * {
@@ -1086,6 +1087,7 @@ textarea {
 
 .verify-text {
     font-size: 14px;
+
     a {
         font-size: 14px;
     }
@@ -1102,3 +1104,104 @@ textarea {
 .mw-270 {
     max-width: 270px !important;
 }
+
+//items-top//
+
+.items-top {
+    margin-bottom: 10px;
+    display: flex;
+}
+
+//filter//
+
+.filter {
+    width: 45%;
+    border-radius: 5px;
+    //border: 1px solid #eee;
+    //background: #fff;
+    //padding: 10px;
+
+    input, select, textarea, option, button, .input-label {
+        max-width: 100%;
+    }
+}
+
+.filter__inner {
+    display: flex;
+}
+
+.filter-field {
+    flex-grow: 1;
+    display: flex;
+}
+
+.filter-field + .filter-field {
+    padding-left: 40px;
+}
+
+.filter-label {
+    padding: 6px 5px;
+    font-size: 14px;
+    color: #666;
+    white-space: nowrap;
+}
+
+.filter-labeled {
+    flex-grow: 1;
+}
+
+//pagination//
+
+.pagination__wrapper {
+    width: 55%;
+    padding-left: 10px;
+}
+
+.pagination {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    width: 100%;
+    height: 100%;
+}
+
+.side-pagination-buttons {
+    display: flex;
+}
+
+.left-pagination-buttons {
+    .page-button:first-child {
+        margin-left: 0;
+    }
+}
+
+.right-pagination-buttons {
+    .page-button:last-child {
+        margin-right: 0;
+    }
+}
+
+.middle-pagination-buttons {
+    display: flex;
+}
+
+.page-button {
+    padding: 0 1px;
+
+    a {
+        display: block;
+        border: 1px solid #eee;
+        border-radius: 3px;
+        background: #fff;
+        padding: 6px 10px;
+        font-size: 14px;
+        color: #444;
+
+        &:hover {
+            background: #eee;
+            border-color: #d3d9de;
+        }
+    }
+}
+
+

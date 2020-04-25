@@ -60,19 +60,22 @@
                                 <div class="line">
                                     <div class="label">Рождено:</div>
                                     <div class="labeled">
-                                        <input type="number" name="child_count" placeholder="Общее кол-во крольчат" value="{{ old('child_count') }}">
+                                        <input type="number" name="child_count" placeholder="Общее кол-во крольчат"
+                                               value="{{ old('child_count') }}">
                                     </div>
                                 </div>
                                 <div class="line">
                                     <div class="label">Выжило:</div>
                                     <div class="labeled">
-                                        <input type="number" name="alive_count" placeholder="Кол-во выживших крольчат" value="{{ old('alive_count') }}">
+                                        <input type="number" name="alive_count" placeholder="Кол-во выживших крольчат"
+                                               value="{{ old('alive_count') }}">
                                     </div>
                                 </div>
                                 <div class="line">
                                     <div class="label">Примечания</div>
                                     <div class="labeled">
-                                        <textarea name="desc" maxlength="255" placeholder="Дополнительная информация">{{ old('desc') }}</textarea>
+                                        <textarea name="desc" maxlength="255"
+                                                  placeholder="Дополнительная информация">{{ old('desc') }}</textarea>
                                     </div>
                                 </div>
                                 <div class="line">
@@ -143,19 +146,22 @@
                                 <div class="line">
                                     <div class="label">Рождено:</div>
                                     <div class="labeled">
-                                        <input type="number" name="child_count" placeholder="Общее кол-во крольчат" value="">
+                                        <input type="number" name="child_count" placeholder="Общее кол-во крольчат"
+                                               value="">
                                     </div>
                                 </div>
                                 <div class="line">
                                     <div class="label">Выжило:</div>
                                     <div class="labeled">
-                                        <input type="number" name="alive_count" placeholder="Кол-во выживших крольчат" value="">
+                                        <input type="number" name="alive_count" placeholder="Кол-во выживших крольчат"
+                                               value="">
                                     </div>
                                 </div>
                                 <div class="line">
                                     <div class="label">Примечания:</div>
                                     <div class="labeled">
-                                        <textarea name="desc" maxlength="255" placeholder="Дополнительная информация:"></textarea>
+                                        <textarea name="desc" maxlength="255"
+                                                  placeholder="Дополнительная информация:"></textarea>
                                     </div>
                                 </div>
                                 <div class="line">
@@ -197,8 +203,35 @@
             <button id="btn-show-add-item-form"></button>
         </div>
 
-        <div class="items">
+        <div class="items-top">
+            <div class="filter">
+                <div class="filter__inner">
+                    <div class="filter-field">
+                        <div class="filter-label">
+                            Сортировать по:
+                        </div>
+                        <div class="filter-labeled">
+                            <select name="sort_by">
+                                <option value=""></option>
+                                <option value="">Дате случки</option>
+                                <option value="">Дате окрола</option>
+                                <option value="">Имени самки</option>
+                                <option value="">Имени самца</option>
+                                <option value="">Количеству рожденных</option>
+                                <option value="">Количеству выживших</option>
+                                <option value="">Примечанию</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
+            <div class="pagination__wrapper" id="pagination" data-last-page="{{ $pageCount }}">
+
+            </div>
+        </div>
+
+        <div class="items">
             @foreach($matings as $mating)
                 <div class="item__wrapper">
                     <div class="item" data-id="{{ $mating->id }}" data-female_id="{{ $mating->female->id ?? ''}}"

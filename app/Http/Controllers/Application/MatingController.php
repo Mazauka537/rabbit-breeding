@@ -7,6 +7,7 @@ use App\Mating;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Validator;
 
 class MatingController extends Controller
 {
@@ -27,9 +28,25 @@ class MatingController extends Controller
         return null;
     }
 
-    function getMatings()
+    function getMatings(Request $request)
     {
-        $matings = Auth::user()->matings()->with(['female', 'male'])->get();
+        $perPage = 1;
+        $pageCount = ceil(Auth::user()->matings()->count() / $perPage);
+
+        $validator = Validator::make($request->all(), [
+            'page' => 'nullable|integer|min:1|max:' . $pageCount,
+        ]);
+
+        if ($validator->fails()) {
+            return redirect(route('matings'));
+        }
+
+        $matings = Auth::user()
+            ->matings()
+            ->with(['female', 'male'])
+            ->offset($perPage * abs($request->page - 1))
+            ->limit($perPage)
+            ->get();
 
         $rabbits = Auth::user()->rabbits;
 
@@ -37,7 +54,7 @@ class MatingController extends Controller
             $rabbit->status_value = $this->setRabbitStatus($rabbit->status);
         }
 
-        return view('application.matings', compact(['matings', 'rabbits']));
+        return view('application.matings', compact(['matings', 'rabbits', 'pageCount']));
     }
 
     function addMating(MatingAddRequest $request)

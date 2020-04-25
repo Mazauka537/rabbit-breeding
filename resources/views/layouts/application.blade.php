@@ -121,5 +121,6 @@
 <script src="{{ asset('assets/js/jquery-3.4.1.min.js') }}"></script>
 <script src="{{ asset('assets/js/jquery.scrollbar.min.js') }}"></script>
 <script src="{{ asset('application/js/main.js') }}"></script>
+<script src="{{ asset('application/js/pagination.js') }}"></script>
 </body>
 </html>
