@@ -28,9 +28,26 @@ class MatingController extends Controller
         return null;
     }
 
+    private function getThemePath() {
+        $theme = Auth::user()->theme;
+        if (!empty($theme)) {
+            $themes = json_decode(file_get_contents('application/themes.json'));
+
+            foreach ($themes as $key => $value) {
+                if ($key == $theme) {
+                    $theme = $value->path;
+                    break;
+                }
+            }
+        }
+
+        return $theme;
+    }
+
     function getMatings(Request $request)
     {
-        $perPage = 6;
+        $perPage = Auth::user()->pagination;
+
         $pageCount = ceil(Auth::user()->matings()->count() / $perPage);
 
         $validator = Validator::make($request->all(), [
@@ -40,6 +57,8 @@ class MatingController extends Controller
         if ($validator->fails()) {
             return redirect(route('matings'));
         }
+
+        $theme = $this->getThemePath();
 
         if (!$request->has('page')) {
             $request->page = 1;
@@ -58,7 +77,7 @@ class MatingController extends Controller
             $rabbit->status_value = $this->setRabbitStatus($rabbit->status);
         }
 
-        return view('application.matings', compact(['matings', 'rabbits', 'pageCount']));
+        return view('application.matings', compact(['matings', 'rabbits', 'pageCount', 'theme']));
     }
 
     function addMating(MatingAddRequest $request)

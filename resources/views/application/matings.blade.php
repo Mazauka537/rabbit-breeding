@@ -226,7 +226,7 @@
                 </div>
             </div>
 
-            <div class="pagination__wrapper" id="pagination" data-last-page="{{ $pageCount }}">
+            <div class="pagination__wrapper" id="pagination" data-last-page="{{ $pageCount ?? 1 }}">
 
             </div>
         </div>

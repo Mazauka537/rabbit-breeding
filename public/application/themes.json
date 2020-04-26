@@ -1,0 +1,10 @@
+{
+    "theme-1": {
+        "path": "application/css/themes/theme-1.css",
+        "color": "#ee7700"
+    },
+    "theme-2": {
+        "path": "application/css/themes/theme-2.css",
+        "color": "#ee0077"
+    }
+}

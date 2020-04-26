@@ -760,6 +760,59 @@ a {
     }
 }
 
+//settings//
+
+.settings__wrapper {
+    margin: 0 0 10px 0;
+
+    form {
+        max-width: 500px;
+        margin: 0 auto;
+        padding: 20px 0 10px 0;
+
+        .line:last-child {
+            padding-top: 20px;
+        }
+    }
+
+    .head {
+        font-size: 20px;
+        border-bottom: $main-border;
+        padding: 5px 10px 15px 10px;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+    }
+}
+
+.theme-input {
+    max-width: 300px;
+    width: 100%;
+    background: #fff;
+    border-radius: 3px;
+
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.theme-item__wrapper {
+    padding: 5px;
+    width: 48px;
+    height: 48px;
+}
+
+.theme-item {
+    background: #000;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+}
+
+.selected-theme {
+    border: 2px solid #fff;
+}
+
 //add button//
 
 .add-button {

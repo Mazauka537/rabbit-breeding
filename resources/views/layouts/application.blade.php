@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="{{ asset('assets/css/jquery.scrollbar.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/animate.min.css') }}">
     <link rel="stylesheet" href="{{ asset('application/css/main.css') }}">
+    <link rel="stylesheet" href="{{ asset($theme ?? '') }}">
     <title>@yield('title')</title>
 </head>
 <body>
@@ -30,7 +31,7 @@
                         </a>
                         <ul class="user-list none-height">
                             <li>
-                                <a href="#">настройки</a>
+                                <a href="{{ route('settings') }}">настройки</a>
                             </li>
                             <li>
                                 <a href="{{ route('logout') }}"
