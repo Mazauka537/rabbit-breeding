@@ -99,7 +99,7 @@ a {
 
 .user-name {
   font-size: 16px;
-  color: #333; }
+  color: #fff; }
   .user-name::after {
     content: "\e909";
     font-family: icomoon;
@@ -688,7 +688,6 @@ label {
   text-align: center; }
 
 button {
-  background: #A3F06C;
   border: none;
   cursor: pointer;
   color: #FFF; }

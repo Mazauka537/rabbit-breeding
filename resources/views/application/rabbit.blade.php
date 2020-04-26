@@ -388,8 +388,8 @@
                                 <div class="status">{{ $rabbit->status_value ?? '' }}</div>
                             </div>
                             <div class="buttons" id="head-buttons">
-                                <button id="show-edit-fields-btn">Редактировать</button>
-                                <button id="show-delete-modal-btn">Удалить</button>
+                                <button id="show-edit-fields-btn" type="button">Редактировать</button>
+                                <button id="show-delete-modal-btn" type="button">Удалить</button>
                             </div>
                         </div>
 
