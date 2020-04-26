@@ -852,4 +852,7 @@ textarea {
     .page-button-0 a:hover, .page-button.disabled a:hover {
       border-color: #e8e8e8; }
 
+.scrollbar-macosx > .scroll-element .scroll-bar {
+  background-color: #85878a; }
+
 /*# sourceMappingURL=main.css.map */

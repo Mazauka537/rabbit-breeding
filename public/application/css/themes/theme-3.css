@@ -1,0 +1,12 @@
+.header {
+  background: #4135FF; }
+
+.add-button button {
+  background: #4135FF; }
+  .add-button button:hover {
+    background: #3524f5; }
+
+input[type="submit"], input[type="button"], select[type="submit"], select[type="button"], textarea[type="submit"], textarea[type="button"], option[type="submit"], option[type="button"], button[type="submit"], button[type="button"], .input-label[type="submit"], .input-label[type="button"] {
+  background: #5e77ff; }
+
+/*# sourceMappingURL=theme-3.css.map */

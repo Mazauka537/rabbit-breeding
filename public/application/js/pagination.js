@@ -1,9 +1,11 @@
 class Pagination {
 
-    paginationBlock;
-    currentPage;
-    lastPage;
-    middleSectionSize = 3;
+    constructor() {
+        this.paginationBlock;
+        this.currentPage;
+        this.lastPage;
+        this.middleSectionSize = 3;
+    }
 
     getPage() {
         let regexp = /page=([^&]+)/i;
@@ -44,7 +46,7 @@ class Pagination {
         let firstButton = this.getPageButton('div', '<<', 1);
         let prevButton = this.getPageButton('div', '<', this.currentPage - 1);
 
-        if (this.currentPage <= 1) {
+        if (+this.currentPage <= 1) {
             firstButton.classList.add('disabled');
             prevButton.classList.add('disabled');
             firstButton.addEventListener('click', function (e) {
@@ -99,7 +101,7 @@ class Pagination {
         let lastButton = this.getPageButton('div', '>>', this.lastPage);
         let nextButton = this.getPageButton('div', '>', +this.currentPage + 1);
 
-        if (this.currentPage >= this.lastPage) {
+        if (+this.currentPage >= +this.lastPage) {
             lastButton.classList.add('disabled');
             nextButton.classList.add('disabled');
             lastButton.addEventListener('click', function (e) {

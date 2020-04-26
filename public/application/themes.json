@@ -6,5 +6,9 @@
     "theme-2": {
         "path": "application/css/themes/theme-2.css",
         "color": "#E73A98"
+    },
+    "theme-3": {
+        "path": "application/css/themes/theme-3.css",
+        "color": "#4135FF"
     }
 }

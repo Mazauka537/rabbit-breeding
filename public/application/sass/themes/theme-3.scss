@@ -1,0 +1,23 @@
+$color1: #5e77ff;
+$color2: #4135FF;
+$color3: #3524f5;
+
+.header {
+    background: $color2;
+}
+
+.add-button {
+    button {
+        background: $color2;
+
+        &:hover {
+            background: $color3;
+        }
+    }
+}
+
+input, select, textarea, option, button, .input-label {
+    &[type="submit"], &[type="button"] {
+        background: $color1;
+    }
+}
