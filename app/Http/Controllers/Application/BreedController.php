@@ -10,11 +10,30 @@ use Illuminate\Support\Facades\Auth;
 
 class BreedController extends Controller
 {
+    private function getThemePath()
+    {
+        $theme = Auth::user()->theme;
+        if (!empty($theme)) {
+            $themes = json_decode(file_get_contents('application/themes.json'));
+
+            foreach ($themes as $key => $value) {
+                if ($key == $theme) {
+                    $theme = $value->path;
+                    break;
+                }
+            }
+        }
+
+        return $theme;
+    }
+
     function getBreeds()
     {
         $breeds = Auth::user()->breeds()->with('rabbits')->get();
 
-        return view('application.breeds', ['breeds' => $breeds]);
+        $theme = $this->getThemePath();
+
+        return view('application.breeds', compact(['breeds', 'theme']));
     }
 
     function addBreed(BreedAddRequest $request)

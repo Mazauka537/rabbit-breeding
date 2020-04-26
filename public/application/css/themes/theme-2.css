@@ -1,15 +1,15 @@
 .header {
-  background: #FF8300; }
+  background: #E73A98; }
 
 .add-button button {
-  background: #FF8300; }
+  background: #E73A98; }
   .add-button button:hover {
-    background: #ff6f00; }
+    background: #CE0071; }
 
 input[type="submit"], input[type="button"], select[type="submit"], select[type="button"], textarea[type="submit"], textarea[type="button"], option[type="submit"], option[type="button"], button[type="submit"], button[type="button"], .input-label[type="submit"], .input-label[type="button"] {
-  background: #FFA240; }
+  background: #E768AD; }
 
 button {
-  background: #FFA240; }
+  background: #E768AD; }
 
-/*# sourceMappingURL=theme-1.css.map */
+/*# sourceMappingURL=theme-2.css.map */

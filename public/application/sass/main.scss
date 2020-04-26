@@ -1,7 +1,6 @@
 $color1: #A3F06C;
-$color2: #87F03C;
-$color3: #5DE100;
-$color4: #20cb00;
+$color2: #5DE100;
+$color3: #20cb00;
 $male-color: skyblue;
 $female-color: pink;
 $sidebar-width: 180px;
@@ -81,7 +80,7 @@ a {
 //header//
 
 .header {
-    background: $color3;
+    background: $color2;
     box-shadow: 0 0 8px #444;
     flex-shrink: 0;
     z-index: 1000;
@@ -823,7 +822,7 @@ a {
 
     button {
         border: none;
-        background: $color3;
+        background: $color2;
         border-radius: 50%;
         width: 55px;
         height: 55px;
@@ -849,7 +848,7 @@ a {
         }
 
         &:hover {
-            background: $color4;
+            background: $color3;
 
             &::before, &::after {
                 background: #eee;

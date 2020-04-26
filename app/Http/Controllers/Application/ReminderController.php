@@ -10,12 +10,30 @@ use Illuminate\Support\Facades\Auth;
 
 class ReminderController extends Controller
 {
+    private function getThemePath()
+    {
+        $theme = Auth::user()->theme;
+        if (!empty($theme)) {
+            $themes = json_decode(file_get_contents('application/themes.json'));
+
+            foreach ($themes as $key => $value) {
+                if ($key == $theme) {
+                    $theme = $value->path;
+                    break;
+                }
+            }
+        }
+
+        return $theme;
+    }
+
     function getReminders()
     {
         $reminders = Auth::user()->reminders()->orderBy('date')->with('rabbit')->get();
         $rabbits = Auth::user()->rabbits;
+        $theme = $this->getThemePath();
 
-        return view('application.reminders', compact(['reminders', 'rabbits']));
+        return view('application.reminders', compact(['reminders', 'rabbits', 'theme']));
     }
 
     function addReminder(ReminderAddRequest $request)

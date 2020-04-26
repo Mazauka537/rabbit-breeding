@@ -10,17 +10,34 @@ use Illuminate\Support\Facades\Auth;
 
 class VaccinationController extends Controller
 {
+    private function getThemePath()
+    {
+        $theme = Auth::user()->theme;
+        if (!empty($theme)) {
+            $themes = json_decode(file_get_contents('application/themes.json'));
+
+            foreach ($themes as $key => $value) {
+                if ($key == $theme) {
+                    $theme = $value->path;
+                    break;
+                }
+            }
+        }
+
+        return $theme;
+    }
+
     function getVaccinations()
     {
         $vaccinations = Auth::user()->vaccinations()->with('rabbit')->get();
         $rabbits = Auth::user()->rabbits;
+        $theme = $this->getThemePath();
 
-        return view('application.vaccinations', compact('vaccinations', 'rabbits'));
+        return view('application.vaccinations', compact(['vaccinations', 'rabbits', 'theme']));
     }
 
     function addVaccination(VaccinationAddRequest $request)
     {
-
         $vaccination = new Vaccination();
 
         $vaccination->user_id = Auth::id();
@@ -34,7 +51,8 @@ class VaccinationController extends Controller
         return back();
     }
 
-    function editVaccination(VaccinationAddRequest $request, $id) {
+    function editVaccination(VaccinationAddRequest $request, $id)
+    {
 
         $vaccination = Auth::user()->vaccinations()->findOrFail($id);
 
@@ -48,7 +66,8 @@ class VaccinationController extends Controller
         return back();
     }
 
-    function deleteVaccination($id) {
+    function deleteVaccination($id)
+    {
         $vaccination = Auth::user()->vaccinations()->findOrFail($id);
 
         $vaccination->delete();

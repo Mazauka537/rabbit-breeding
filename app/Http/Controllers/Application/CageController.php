@@ -10,11 +10,30 @@ use Illuminate\Support\Facades\Auth;
 
 class CageController extends Controller
 {
+    private function getThemePath()
+    {
+        $theme = Auth::user()->theme;
+        if (!empty($theme)) {
+            $themes = json_decode(file_get_contents('application/themes.json'));
+
+            foreach ($themes as $key => $value) {
+                if ($key == $theme) {
+                    $theme = $value->path;
+                    break;
+                }
+            }
+        }
+
+        return $theme;
+    }
+
     function getCages()
     {
         $cages = Auth::user()->cages()->with('rabbits')->get();
 
-        return view('application.cages', ['cages' => $cages]);
+        $theme = $this->getThemePath();
+
+        return view('application.cages', compact(['cages', 'theme']));
     }
 
     function addCage(CageAddRequest $request)

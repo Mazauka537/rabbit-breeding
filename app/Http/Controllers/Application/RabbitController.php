@@ -12,6 +12,23 @@ use Illuminate\Support\Facades\Storage;
 
 class RabbitController extends Controller
 {
+    private function getThemePath()
+    {
+        $theme = Auth::user()->theme;
+        if (!empty($theme)) {
+            $themes = json_decode(file_get_contents('application/themes.json'));
+
+            foreach ($themes as $key => $value) {
+                if ($key == $theme) {
+                    $theme = $value->path;
+                    break;
+                }
+            }
+        }
+
+        return $theme;
+    }
+
     private function findItemById($arr, $id)
     {
         $result = false;
@@ -90,7 +107,9 @@ class RabbitController extends Controller
             $rabbit->breed_name = ($breed = $this->findItemById($breeds, $rabbit->breed_id)) ? $breed->name : null;
             $rabbit->status_value = $this->setRabbitStatus($rabbit->status);
         }
-        return view('application.rabbits', compact(['rabbits', 'cages', 'breeds']));
+        $theme = $this->getThemePath();
+
+        return view('application.rabbits', compact(['rabbits', 'cages', 'breeds', 'theme']));
     }
 
     function getRabbit($id)
@@ -126,7 +145,9 @@ class RabbitController extends Controller
         $rabbit->child_count = $child_count;
         $rabbit->alive_count = $alive_count;
 
-        return view('application.rabbit', compact(['rabbit', 'rabbits', 'cages', 'breeds', 'matings', 'vaccinations']));
+        $theme = $this->getThemePath();
+
+        return view('application.rabbit', compact(['rabbit', 'rabbits', 'cages', 'breeds', 'matings', 'vaccinations', 'theme']));
     }
 
     function addRabbit(RabbitAddRequest $request)
