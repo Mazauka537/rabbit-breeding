@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Application;
 
 use App\Http\Requests\Application\MatingAddRequest;
+use App\Http\Requests\Application\MatingsGetRequest;
 use App\Mating;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -44,36 +45,16 @@ class MatingController extends Controller
         return $theme;
     }
 
-    function getMatings(Request $request)
+    function getMatings(MatingsGetRequest $request)
     {
         $perPage = Auth::user()->pagination;
-
         $pageCount = ceil(Auth::user()->matings()->count() / $perPage);
 
-        $validator = Validator::make($request->all(), [
-            'page' => 'nullable|integer|min:1|max:' . $pageCount,
-            'sortby' => 'nullable|string|in:date,date_birth,female_name,male_name,child_count,alive_count,desc',
-        ], [
-            'integer' => 'Значение поля :attribute должно быть числом',
-            'min' => 'Минимальная страница - :min',
-            'max' => 'Максимальная страница - :max',
-            'in' => 'Неизвестный параметр сортировки',
-        ]);
-
-        if ($validator->fails()) {
-            return redirect(route('matings'))->withErrors($validator->errors());
-        }
+        if (!$request->has('page')) $request->page = 1;
+        if (!$request->has('sortby')) $request->sortby = 'date';
+        $sortby = $request->sortby;
 
         $theme = $this->getThemePath();
-
-        if (!$request->has('page')) {
-            $request->page = 1;
-        }
-
-        if (!$request->has('sortby')) {
-            $request->sortby = 'date';
-        }
-        $sortby = $request->sortby;
 
         $matings = Auth::user()
             ->matings()
