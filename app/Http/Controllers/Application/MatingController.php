@@ -67,6 +67,7 @@ class MatingController extends Controller
         $matings = Auth::user()
             ->matings()
             ->with(['female', 'male'])
+  //          ->orderByDesc($request->sortby ?? 'created_at')
             ->offset($perPage * abs($request->page - 1))
             ->limit($perPage)
             ->get();

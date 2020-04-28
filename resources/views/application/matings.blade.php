@@ -211,15 +211,15 @@
                             Сортировать по:
                         </div>
                         <div class="filter-labeled">
-                            <select name="sort_by">
+                            <select name="sort_by" class="sort-inp">
                                 <option value=""></option>
-                                <option value="">Дате случки</option>
-                                <option value="">Дате окрола</option>
-                                <option value="">Имени самки</option>
-                                <option value="">Имени самца</option>
-                                <option value="">Количеству рожденных</option>
-                                <option value="">Количеству выживших</option>
-                                <option value="">Примечанию</option>
+                                <option value="date">Дате случки</option>
+                                <option value="date_birth">Дате окрола</option>
+                                <option value="female">Имени самки</option>
+                                <option value="male">Имени самца</option>
+                                <option value="child_count">Количеству рожденных</option>
+                                <option value="alive_count">Количеству выживших</option>
+                                <option value="desc">Примечанию</option>
                             </select>
                         </div>
                     </div>
