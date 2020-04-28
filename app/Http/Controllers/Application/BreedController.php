@@ -8,6 +8,7 @@ use App\Http\Requests\Application\BreedsGetRequest;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 
 class BreedController extends Controller
 {
@@ -59,6 +60,8 @@ class BreedController extends Controller
 
         $breed->save();
 
+        session()->flash('message', ['Новая порода успешно добавлена.']);
+
         return redirect(route('breeds'));
     }
 
@@ -71,6 +74,8 @@ class BreedController extends Controller
 
         $breed->save();
 
+        session()->flash('message', ['Порода "' . $breed->name . '" успешно изменена.']);
+
         return redirect(route('breeds'));
     }
 
@@ -81,6 +86,8 @@ class BreedController extends Controller
         $breed->rabbits()->update(['breed_id' => null]);
 
         $breed->delete();
+
+        session()->flash('message', ['Порода "' . $breed->name . '" успешно удалена.']);
 
         return redirect(route('breeds'));
     }
