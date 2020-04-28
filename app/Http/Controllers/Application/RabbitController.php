@@ -200,6 +200,8 @@ class RabbitController extends Controller
 
         $rabbit->save();
 
+        session()->flash('message', ['Новый кролик успешно добавлен.']);
+
         return redirect(route('rabbits'));
     }
 
@@ -231,6 +233,8 @@ class RabbitController extends Controller
 
         $result = $rabbit->save();
 
+        session()->flash('message', ['Кролик успешно изменен.']);
+
         return back();
     }
 
@@ -248,6 +252,8 @@ class RabbitController extends Controller
         $rabbit->reminders()->update(['rabbit_id' => null]);
 
         $rabbit->delete();
+
+        session()->flash('message', ['Кролик "' . $rabbit->name . '" успешно удален.']);
 
         return redirect(route('rabbits'));
     }
@@ -272,6 +278,8 @@ class RabbitController extends Controller
 
         $rabbit->save();
 
+        session()->flash('message', ['Фото успешно изменено.']);
+
         return back();
     }
 
@@ -283,6 +291,8 @@ class RabbitController extends Controller
 
         $rabbit->photo = null;
         $rabbit->save();
+
+        session()->flash('message', ['Фото успешно удалено.']);
 
         return back();
     }

@@ -115,6 +115,8 @@ class MatingController extends Controller
         $mating->desc = $request->desc;
         $mating->save();
 
+        session()->flash('message', ['Новая случка успешно добавлена.']);
+
         return back();
     }
 
@@ -158,6 +160,8 @@ class MatingController extends Controller
 
         $mating->save();
 
+        session()->flash('message', ['Случка успешно изменена.']);
+
         return back();
     }
 
@@ -166,6 +170,8 @@ class MatingController extends Controller
         $mating = Auth::user()->matings()->findOrFail($id);
 
         $mating->delete();
+
+        session()->flash('message', ['Случка успешно удалена.']);
 
         return back();
     }

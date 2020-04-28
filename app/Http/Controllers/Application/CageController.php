@@ -59,6 +59,8 @@ class CageController extends Controller
 
         $cage->save();
 
+        session()->flash('message', ['Новая клетка успешно добавлена.']);
+
         return redirect(route('cages'));
     }
 
@@ -71,6 +73,8 @@ class CageController extends Controller
 
         $cage->save();
 
+        session()->flash('message', ['Клетка успешно изменена.']);
+
         return redirect(route('cages'));
     }
 
@@ -81,6 +85,8 @@ class CageController extends Controller
         $cage->rabbits()->update(['cage_id' => null]);
 
         $cage->delete();
+
+        session()->flash('message', ['Клетка "' . $cage->name . '" успешно удалена.']);
 
         return redirect(route('cages'));
     }

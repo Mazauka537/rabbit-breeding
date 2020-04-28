@@ -62,6 +62,8 @@ class VaccinationController extends Controller
 
         $vaccination->save();
 
+        session()->flash('message', ['Новая вакцинация успешно добавлена.']);
+
         return back();
     }
 
@@ -77,6 +79,8 @@ class VaccinationController extends Controller
 
         $vaccination->save();
 
+        session()->flash('message', ['Вакцинация успешно изменена.']);
+
         return back();
     }
 
@@ -85,6 +89,8 @@ class VaccinationController extends Controller
         $vaccination = Auth::user()->vaccinations()->findOrFail($id);
 
         $vaccination->delete();
+
+        session()->flash('message', ['Вакциная "' . $vaccination->name . '" успешно удалена.']);
 
         return back();
     }

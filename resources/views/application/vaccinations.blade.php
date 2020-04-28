@@ -260,20 +260,7 @@
             @endif
         </div>
 
-        <div class="alerts animated bounceInUp">
-            @if(count($errors->all()) != 0)
-                <div class="alert alert-error">
-                    <button class="alert-close-button"></button>
-                    <div class="alert__inner">
-                        <ul>
-                            @foreach($errors->all() as $error)
-                                <li>{{ $error }}</li>
-                            @endforeach
-                        </ul>
-                    </div>
-                </div>
-            @endif
-        </div>
+        @component('application.components.alerts') @endcomponent
 
         <script src="{{ asset('application/js/modal-add-item.js') }}"></script>
         <script src="{{ asset('application/js/edit-item-vaccination.js') }}"></script>

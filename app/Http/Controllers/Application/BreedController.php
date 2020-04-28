@@ -74,7 +74,7 @@ class BreedController extends Controller
 
         $breed->save();
 
-        session()->flash('message', ['Порода "' . $breed->name . '" успешно изменена.']);
+        session()->flash('message', ['Порода успешно изменена.']);
 
         return redirect(route('breeds'));
     }

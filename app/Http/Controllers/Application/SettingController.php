@@ -54,6 +54,8 @@ class SettingController extends Controller
 
         $user->save();
 
+        session()->flash('message', ['Настройки сохранены.']);
+
         return back();
     }
 }

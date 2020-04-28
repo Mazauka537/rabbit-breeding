@@ -47,6 +47,8 @@ class ReminderController extends Controller
 
         $reminder->save();
 
+        session()->flash('message', ['Новое напоминание успешно добавлено.']);
+
         return back();
     }
 
@@ -60,6 +62,8 @@ class ReminderController extends Controller
 
         $reminder->save();
 
+        session()->flash('message', ['Напоминание успешно изменено.']);
+
         return back();
     }
 
@@ -68,6 +72,8 @@ class ReminderController extends Controller
         $reminder = Auth::user()->reminders()->findOrFail($id);
 
         $reminder->delete();
+
+        session()->flash('message', ['Напоминание успешно удалено.']);
 
         return back();
     }
