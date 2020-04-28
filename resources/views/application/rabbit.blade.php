@@ -568,8 +568,8 @@
                             @foreach($matings as $mating)
                                 <div class="item__wrapper">
                                     <div class="item" data-id="{{ $mating->id }}"
-                                         data-female_id="{{ $mating->female->id ?? ''}}"
-                                         data-male_id="{{ $mating->male->id ?? ''}}">
+                                         data-female_id="{{ $mating->female_id ?? ''}}"
+                                         data-male_id="{{ $mating->male_id ?? ''}}">
                                         <div class="item-buttons">
                                             <button class="ico-btn edit-btn edit-mating-btn"></button>
                                             <button class="ico-btn delete-btn delete-mating-btn"></button>
@@ -577,11 +577,11 @@
                                         <div class="item__head">
                                             <div class="item__name">
                                 <span class="female">
-                                    {{ $mating->female->name ?? '(неизвестно)' }}
+                                    {{ $mating->female_name ?? '(неизвестно)' }}
                                 </span>
                                                 +
                                                 <span class="male">
-                                    {{ $mating->male->name ?? '(неизвестно)' }}
+                                    {{ $mating->male_name ?? '(неизвестно)' }}
                                 </span>
                                             </div>
                                             <div class="item-buttons">
@@ -600,7 +600,7 @@
                                                         @if(!empty($mating->female_id))
                                                             <a class="female"
                                                                href="{{ route('rabbit', $mating->female_id) }}">
-                                                                {{ $mating->female->name }}
+                                                                {{ $mating->female_name }}
                                                             </a>
                                                         @else
                                                             <span class="female">
@@ -617,7 +617,7 @@
                                                         @if(!empty($mating->male_id))
                                                             <a class="male"
                                                                href="{{ route('rabbit', $mating->male_id) }}">
-                                                                {{ $mating->male->name }}
+                                                                {{ $mating->male_name }}
                                                             </a>
                                                         @else
                                                             <span class="male">

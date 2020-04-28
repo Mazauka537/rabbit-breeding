@@ -212,14 +212,13 @@
                         </div>
                         <div class="filter-labeled">
                             <select name="sort_by" class="sort-inp">
-                                <option value=""></option>
-                                <option value="date">Дате случки</option>
-                                <option value="date_birth">Дате окрола</option>
-                                <option value="female">Имени самки</option>
-                                <option value="male">Имени самца</option>
-                                <option value="child_count">Количеству рожденных</option>
-                                <option value="alive_count">Количеству выживших</option>
-                                <option value="desc">Примечанию</option>
+                                <option value="date" @if($sortby == 'date') {{ 'selected' }} @endif>Дате случки</option>
+                                <option value="date_birth" @if($sortby == 'date_birth') {{ 'selected' }} @endif>Дате окрола</option>
+                                <option value="female_name" @if($sortby == 'female_name') {{ 'selected' }} @endif>Имени самки</option>
+                                <option value="male_name" @if($sortby == 'male_name') {{ 'selected' }} @endif>Имени самца</option>
+                                <option value="child_count" @if($sortby == 'child_count') {{ 'selected' }} @endif>Количеству рожденных</option>
+                                <option value="alive_count" @if($sortby == 'alive_count') {{ 'selected' }} @endif>Количеству выживших</option>
+                                <option value="desc" @if($sortby == 'desc') {{ 'selected' }} @endif>Примечанию</option>
                             </select>
                         </div>
                     </div>
@@ -234,16 +233,16 @@
         <div class="items">
             @foreach($matings as $mating)
                 <div class="item__wrapper">
-                    <div class="item" data-id="{{ $mating->id }}" data-female_id="{{ $mating->female->id ?? ''}}"
-                         data-male_id="{{ $mating->male->id ?? ''}}">
+                    <div class="item" data-id="{{ $mating->id }}" data-female_id="{{ $mating->female_id ?? ''}}"
+                         data-male_id="{{ $mating->male_id ?? ''}}">
                         <div class="item__head">
                             <div class="item__name">
                                 <span class="female">
-                                    {{ $mating->female->name ?? '(неизвестно)' }}
+                                    {{ $mating->female_name ?? '(неизвестно)' }}
                                 </span>
                                 +
                                 <span class="male">
-                                    {{ $mating->male->name ?? '(неизвестно)' }}
+                                    {{ $mating->male_name ?? '(неизвестно)' }}
                                 </span>
                             </div>
                             <div class="item-buttons">
@@ -261,7 +260,7 @@
                                     <div class="labeled">
                                         @if(!empty($mating->female_id))
                                             <a class="female" href="{{ route('rabbit', $mating->female_id) }}">
-                                                {{ $mating->female->name }}
+                                                {{ $mating->female_name }}
                                             </a>
                                         @else
                                             <span class="female">
@@ -277,7 +276,7 @@
                                     <div class="labeled">
                                         @if(!empty($mating->male_id))
                                             <a class="male" href="{{ route('rabbit', $mating->male_id) }}">
-                                                {{ $mating->male->name }}
+                                                {{ $mating->male_name }}
                                             </a>
                                         @else
                                             <span class="male">

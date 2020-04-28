@@ -52,10 +52,16 @@ class MatingController extends Controller
 
         $validator = Validator::make($request->all(), [
             'page' => 'nullable|integer|min:1|max:' . $pageCount,
+            'sortby' => 'nullable|string|in:date,date_birth,female_name,male_name,child_count,alive_count,desc',
+        ], [
+            'integer' => 'Значение поля :attribute должно быть числом',
+            'min' => 'Минимальная страница - :min',
+            'max' => 'Максимальная страница - :max',
+            'in' => 'Неизвестный параметр сортировки',
         ]);
 
         if ($validator->fails()) {
-            return redirect(route('matings'));
+            return redirect(route('matings'))->withErrors($validator->errors());
         }
 
         $theme = $this->getThemePath();
@@ -64,10 +70,17 @@ class MatingController extends Controller
             $request->page = 1;
         }
 
+        if (!$request->has('sortby')) {
+            $request->sortby = 'date';
+        }
+        $sortby = $request->sortby;
+
         $matings = Auth::user()
             ->matings()
-            ->with(['female', 'male'])
-  //          ->orderByDesc($request->sortby ?? 'created_at')
+            ->leftJoin('rabbits as female_rabbits', 'matings.female_id', '=', 'female_rabbits.id')
+            ->leftJoin('rabbits as male_rabbits', 'matings.male_id', '=', 'male_rabbits.id')
+            ->select('matings.*', 'female_rabbits.name as female_name', 'male_rabbits.name as male_name')
+            ->orderByDesc($sortby)
             ->offset($perPage * abs($request->page - 1))
             ->limit($perPage)
             ->get();
@@ -78,7 +91,7 @@ class MatingController extends Controller
             $rabbit->status_value = $this->setRabbitStatus($rabbit->status);
         }
 
-        return view('application.matings', compact(['matings', 'rabbits', 'pageCount', 'theme']));
+        return view('application.matings', compact(['matings', 'rabbits', 'pageCount', 'theme', 'sortby']));
     }
 
     function addMating(MatingAddRequest $request)

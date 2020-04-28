@@ -17,7 +17,7 @@
                     <div class="line">
                         <div class="label">Записей на странице:</div>
                         <div class="labeled">
-                            <input type="number" name="pagination" min="0" max="200" value="{{ $user->pagination }}">
+                            <input type="number" name="pagination" min="1" max="200" value="{{ $user->pagination }}">
                         </div>
                     </div>
                     <div class="line">
