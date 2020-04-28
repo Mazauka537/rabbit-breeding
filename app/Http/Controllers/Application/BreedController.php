@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Application;
 
 use App\Breed;
 use App\Http\Requests\Application\BreedAddRequest;
+use App\Http\Requests\Application\BreedsGetRequest;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
@@ -27,13 +28,25 @@ class BreedController extends Controller
         return $theme;
     }
 
-    function getBreeds()
+    function getBreeds(BreedsGetRequest $request)
     {
-        $breeds = Auth::user()->breeds()->with('rabbits')->get();
+        $perPage = Auth::user()->pagination;
+        $pageCount = ceil(Auth::user()->breeds()->count() / $perPage);
+
+        if (!$request->has('page')) $request->page = 1;
+        if (!$request->has('sortby')) $request->sortby = 'created_at';
+        $sortby = $request->sortby;
+
+        $breeds = Auth::user()->breeds()
+            ->with('rabbits')
+            ->orderByDesc($sortby)
+            ->offset($perPage * abs($request->page - 1))
+            ->limit($perPage)
+            ->get();
 
         $theme = $this->getThemePath();
 
-        return view('application.breeds', compact(['breeds', 'theme']));
+        return view('application.breeds', compact(['breeds', 'theme', 'pageCount', 'sortby']));
     }
 
     function addBreed(BreedAddRequest $request)

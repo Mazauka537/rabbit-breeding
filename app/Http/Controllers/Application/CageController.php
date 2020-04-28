@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Application;
 
 use App\Cage;
 use App\Http\Requests\Application\CageAddRequest;
+use App\Http\Requests\Application\CagesGetRequest;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
@@ -27,13 +28,25 @@ class CageController extends Controller
         return $theme;
     }
 
-    function getCages()
+    function getCages(CagesGetRequest $request)
     {
-        $cages = Auth::user()->cages()->with('rabbits')->get();
+        $perPage = Auth::user()->pagination;
+        $pageCount = ceil(Auth::user()->cages()->count() / $perPage);
+
+        if (!$request->has('page')) $request->page = 1;
+        if (!$request->has('sortby')) $request->sortby = 'created_at';
+        $sortby = $request->sortby;
+
+        $cages = Auth::user()->cages()
+            ->with('rabbits')
+            ->orderByDesc($sortby)
+            ->offset($perPage * abs($request->page - 1))
+            ->limit($perPage)
+            ->get();
 
         $theme = $this->getThemePath();
 
-        return view('application.cages', compact(['cages', 'theme']));
+        return view('application.cages', compact(['cages', 'theme', 'pageCount', 'sortby']));
     }
 
     function addCage(CageAddRequest $request)
