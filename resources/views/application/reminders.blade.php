@@ -146,72 +146,76 @@
         </div>
 
         <div class="items overflow-v">
-
-            @foreach($reminders as $key => $reminder)
-                <div class="item__wrapper">
-                    @if($key != 0 && $reminder->date != $reminders[$key - 1]->date || $key == 0)
-                        <div class="item__date">
-                            @if($reminder->date == date('Y-m-d'))
-                                {{ 'сегодня' }}
-                            @elseif($reminder->date == date('Y-m-d', time() - 3600 * 24))
-                                {{ 'вчера' }}
-                            @elseif($reminder->date == date('Y-m-d', time() + 3600 * 24))
-                                {{ 'завтра' }}
-                            @else
-                                {{ date("d.m.Y", strtotime($reminder->date)) }}
-                            @endif
-                        </div>
-                    @endif
-                    <div class="item" data-id="{{ $reminder->id }}" data-rabbit_id="{{ $reminder->rabbit_id }}">
-                        <div class="item__head">
-                            <div class="item__name">
-                                {{ $reminder->text }}
+            @if(!empty($reminders->all()))
+                @foreach($reminders as $key => $reminder)
+                    <div class="item__wrapper">
+                        @if($key != 0 && $reminder->date != $reminders[$key - 1]->date || $key == 0)
+                            <div class="item__date">
+                                @if($reminder->date == date('Y-m-d'))
+                                    {{ 'сегодня' }}
+                                @elseif($reminder->date == date('Y-m-d', time() - 3600 * 24))
+                                    {{ 'вчера' }}
+                                @elseif($reminder->date == date('Y-m-d', time() + 3600 * 24))
+                                    {{ 'завтра' }}
+                                @else
+                                    {{ date("d.m.Y", strtotime($reminder->date)) }}
+                                @endif
                             </div>
-                            <div class="item-buttons">
-                                <button class="ico-btn edit-btn edit-reminder-btn"></button>
-                                <button class="ico-btn delete-btn delete-reminder-btn"></button>
-                                <span class="ico-btn caret-btn"></span>
+                        @endif
+                        <div class="item" data-id="{{ $reminder->id }}" data-rabbit_id="{{ $reminder->rabbit_id }}">
+                            <div class="item__head">
+                                <div class="item__name">
+                                    {{ $reminder->text }}
+                                </div>
+                                <div class="item-buttons">
+                                    <button class="ico-btn edit-btn edit-reminder-btn"></button>
+                                    <button class="ico-btn delete-btn delete-reminder-btn"></button>
+                                    <span class="ico-btn caret-btn"></span>
+                                </div>
                             </div>
-                        </div>
-                        <div class="item__body">
-                            <div class="left-form">
-                                <div class="line">
-                                    <div class="label">
-                                        Дата:
+                            <div class="item__body">
+                                <div class="left-form">
+                                    <div class="line">
+                                        <div class="label">
+                                            Дата:
+                                        </div>
+                                        <div class="labeled" id="reminder-item-date" data-date="{{ $reminder->date }}">
+                                            {{ date("d.m.Y", strtotime($reminder->date)) }}
+                                        </div>
                                     </div>
-                                    <div class="labeled" id="reminder-item-date" data-date="{{ $reminder->date }}">
-                                        {{ date("d.m.Y", strtotime($reminder->date)) }}
+                                    <div class="line">
+                                        <div class="label">
+                                            Текст:
+                                        </div>
+                                        <div class="labeled">
+                                            {{ $reminder->text }}
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="line">
-                                    <div class="label">
-                                        Текст:
-                                    </div>
-                                    <div class="labeled">
-                                        {{ $reminder->text }}
-                                    </div>
-                                </div>
-                                <div class="line">
-                                    <div class="label">
-                                        Кролик:
-                                    </div>
-                                    <div class="labeled">
-                                        @if(!empty($reminder->rabbit))
-                                            <a href="{{ route('rabbit', $reminder->rabbit->id) }}"
-                                               class="@if($reminder->rabbit->gender == 'f') {{ 'female' }} @else {{ 'male' }} @endif">
-                                                {{ $reminder->rabbit->name }}
-                                            </a>
-                                        @else
-                                            {{ '(нет)' }}
-                                        @endif
+                                    <div class="line">
+                                        <div class="label">
+                                            Кролик:
+                                        </div>
+                                        <div class="labeled">
+                                            @if(!empty($reminder->rabbit))
+                                                <a href="{{ route('rabbit', $reminder->rabbit->id) }}"
+                                                   class="@if($reminder->rabbit->gender == 'f') {{ 'female' }} @else {{ 'male' }} @endif">
+                                                    {{ $reminder->rabbit->name }}
+                                                </a>
+                                            @else
+                                                {{ '(нет)' }}
+                                            @endif
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
+                @endforeach
+            @else
+                <div class="none-items">
+                    {{ '(Пусто)' }}
                 </div>
-            @endforeach
-
+            @endif
         </div>
 
         <div class="alerts animated bounceInUp">

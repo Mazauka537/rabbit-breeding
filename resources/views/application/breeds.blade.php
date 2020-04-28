@@ -20,13 +20,15 @@
                                 <div class="line">
                                     <div class="label">Название*:</div>
                                     <div class="labeled">
-                                        <input type="text" name="name" placeholder="Название породы" value="{{ old('name') }}" required>
+                                        <input type="text" name="name" placeholder="Название породы"
+                                               value="{{ old('name') }}" required>
                                     </div>
                                 </div>
                                 <div class="line">
                                     <div class="label">Описание:</div>
                                     <div class="labeled">
-                                        <textarea name="desc" maxlength="255" placeholder="Дополнительная информация о данной породе">{{ old('desc') }}</textarea>
+                                        <textarea name="desc" maxlength="255"
+                                                  placeholder="Дополнительная информация о данной породе">{{ old('desc') }}</textarea>
                                     </div>
                                 </div>
                                 <div class="line">
@@ -63,7 +65,8 @@
                                 <div class="line">
                                     <div class="label">Описание:</div>
                                     <div class="labeled">
-                                        <textarea name="desc" maxlength="255" placeholder="Дополнительная информация о данной породе"></textarea>
+                                        <textarea name="desc" maxlength="255"
+                                                  placeholder="Дополнительная информация о данной породе"></textarea>
                                     </div>
                                 </div>
                                 <div class="line">
@@ -114,7 +117,9 @@
                         </div>
                         <div class="filter-labeled">
                             <select name="sort_by" class="sort-inp">
-                                <option value="created_at" @if($sortby == 'created_at') {{ 'selected' }} @endif>Дате добавления</option>
+                                <option value="created_at" @if($sortby == 'created_at') {{ 'selected' }} @endif>Дате
+                                    добавления
+                                </option>
                                 <option value="name" @if($sortby == 'name') {{ 'selected' }} @endif>Названию</option>
                                 <option value="desc" @if($sortby == 'desc') {{ 'selected' }} @endif>Описанию</option>
                             </select>
@@ -129,63 +134,68 @@
         </div>
 
         <div class="items">
-            @foreach($breeds as $breed)
-                <div class="item__wrapper">
-                    <div class="item" data-id="{{ $breed->id }}">
-                        <div class="item__head">
-                            <div class="item__name">
-                                {{ $breed->name }}
-                            </div>
-                            <div class="item-buttons">
-                                <button class="ico-btn edit-btn"></button>
-                                <button class="ico-btn delete-btn"></button>
-                                <span class="ico-btn caret-btn"></span>
-                            </div>
-                        </div>
-                        <div class="item__body">
-                            <div class="left-form">
-                                <div class="line">
-                                    <div class="label">
-                                        Название:
-                                    </div>
-                                    <div class="labeled">
-                                        {{ $breed->name }}
-                                    </div>
+            @if(!empty($breeds->all()))
+                @foreach($breeds as $breed)
+                    <div class="item__wrapper">
+                        <div class="item" data-id="{{ $breed->id }}">
+                            <div class="item__head">
+                                <div class="item__name">
+                                    {{ $breed->name }}
                                 </div>
-                                <div class="line">
-                                    <div class="label">
-                                        Кролики:
-                                    </div>
-                                    <div class="labeled">
-                                        @if(count($breed->rabbits) != 0)
-                                            @foreach($breed->rabbits as $key => $rabbit)
-                                                <a href="{{ route('rabbit', $rabbit->id) }}"
-                                                   class="@if($rabbit->gender == 'f') {{ 'female' }} @elseif($rabbit->gender == 'm') {{ 'male' }} @endif">
-                                                    {{ $rabbit->name }}
-                                                </a>
-                                                @if($key != count($breed->rabbits) - 1)
-                                                    {{ ',' }}
-                                                @endif
-                                            @endforeach
-                                        @else
-                                            {{ '(нет кроликов)' }}
-                                        @endif
-                                    </div>
+                                <div class="item-buttons">
+                                    <button class="ico-btn edit-btn"></button>
+                                    <button class="ico-btn delete-btn"></button>
+                                    <span class="ico-btn caret-btn"></span>
                                 </div>
-                                <div class="line">
-                                    <div class="label">
-                                        Описание:
+                            </div>
+                            <div class="item__body">
+                                <div class="left-form">
+                                    <div class="line">
+                                        <div class="label">
+                                            Название:
+                                        </div>
+                                        <div class="labeled">
+                                            {{ $breed->name }}
+                                        </div>
                                     </div>
-                                    <div class="labeled"  id="desc">
-                                        {{ $breed->desc ?? '(нет описания)' }}
+                                    <div class="line">
+                                        <div class="label">
+                                            Кролики:
+                                        </div>
+                                        <div class="labeled">
+                                            @if(count($breed->rabbits) != 0)
+                                                @foreach($breed->rabbits as $key => $rabbit)
+                                                    <a href="{{ route('rabbit', $rabbit->id) }}"
+                                                       class="@if($rabbit->gender == 'f') {{ 'female' }} @elseif($rabbit->gender == 'm') {{ 'male' }} @endif">
+                                                        {{ $rabbit->name }}
+                                                    </a>
+                                                    @if($key != count($breed->rabbits) - 1)
+                                                        {{ ',' }}
+                                                    @endif
+                                                @endforeach
+                                            @else
+                                                {{ '(нет кроликов)' }}
+                                            @endif
+                                        </div>
+                                    </div>
+                                    <div class="line">
+                                        <div class="label">
+                                            Описание:
+                                        </div>
+                                        <div class="labeled" id="desc">
+                                            {{ $breed->desc ?? '(нет описания)' }}
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
+                @endforeach
+            @else
+                <div class="none-items">
+                    {{ '(Пусто)' }}
                 </div>
-            @endforeach
-
+            @endif
         </div>
 
         <div class="alerts animated bounceInUp">

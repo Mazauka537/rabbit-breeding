@@ -213,11 +213,21 @@
                         <div class="filter-labeled">
                             <select name="sort_by" class="sort-inp">
                                 <option value="date" @if($sortby == 'date') {{ 'selected' }} @endif>Дате случки</option>
-                                <option value="date_birth" @if($sortby == 'date_birth') {{ 'selected' }} @endif>Дате окрола</option>
-                                <option value="female_name" @if($sortby == 'female_name') {{ 'selected' }} @endif>Имени самки</option>
-                                <option value="male_name" @if($sortby == 'male_name') {{ 'selected' }} @endif>Имени самца</option>
-                                <option value="child_count" @if($sortby == 'child_count') {{ 'selected' }} @endif>Количеству рожденных</option>
-                                <option value="alive_count" @if($sortby == 'alive_count') {{ 'selected' }} @endif>Количеству выживших</option>
+                                <option value="date_birth" @if($sortby == 'date_birth') {{ 'selected' }} @endif>Дате
+                                    окрола
+                                </option>
+                                <option value="female_name" @if($sortby == 'female_name') {{ 'selected' }} @endif>Имени
+                                    самки
+                                </option>
+                                <option value="male_name" @if($sortby == 'male_name') {{ 'selected' }} @endif>Имени
+                                    самца
+                                </option>
+                                <option value="child_count" @if($sortby == 'child_count') {{ 'selected' }} @endif>
+                                    Количеству рожденных
+                                </option>
+                                <option value="alive_count" @if($sortby == 'alive_count') {{ 'selected' }} @endif>
+                                    Количеству выживших
+                                </option>
                                 <option value="desc" @if($sortby == 'desc') {{ 'selected' }} @endif>Примечанию</option>
                             </select>
                         </div>
@@ -231,115 +241,121 @@
         </div>
 
         <div class="items">
-            @foreach($matings as $mating)
-                <div class="item__wrapper">
-                    <div class="item" data-id="{{ $mating->id }}" data-female_id="{{ $mating->female_id ?? ''}}"
-                         data-male_id="{{ $mating->male_id ?? ''}}">
-                        <div class="item__head">
-                            <div class="item__name">
+            @if(!empty($matings->all()))
+                @foreach($matings as $mating)
+                    <div class="item__wrapper">
+                        <div class="item" data-id="{{ $mating->id }}" data-female_id="{{ $mating->female_id ?? ''}}"
+                             data-male_id="{{ $mating->male_id ?? ''}}">
+                            <div class="item__head">
+                                <div class="item__name">
                                 <span class="female">
                                     {{ $mating->female_name ?? '(неизвестно)' }}
                                 </span>
-                                +
-                                <span class="male">
+                                    +
+                                    <span class="male">
                                     {{ $mating->male_name ?? '(неизвестно)' }}
                                 </span>
+                                </div>
+                                <div class="item-buttons">
+                                    <button class="ico-btn edit-btn edit-mating-btn"></button>
+                                    <button class="ico-btn delete-btn delete-mating-btn"></button>
+                                    <span class="ico-btn caret-btn"></span>
+                                </div>
                             </div>
-                            <div class="item-buttons">
-                                <button class="ico-btn edit-btn edit-mating-btn"></button>
-                                <button class="ico-btn delete-btn delete-mating-btn"></button>
-                                <span class="ico-btn caret-btn"></span>
-                            </div>
-                        </div>
-                        <div class="item__body">
-                            <div class="left-form">
-                                <div class="line">
-                                    <div class="label">
-                                        Самка:
-                                    </div>
-                                    <div class="labeled">
-                                        @if(!empty($mating->female_id))
-                                            <a class="female" href="{{ route('rabbit', $mating->female_id) }}">
-                                                {{ $mating->female_name }}
-                                            </a>
-                                        @else
-                                            <span class="female">
+                            <div class="item__body">
+                                <div class="left-form">
+                                    <div class="line">
+                                        <div class="label">
+                                            Самка:
+                                        </div>
+                                        <div class="labeled">
+                                            @if(!empty($mating->female_id))
+                                                <a class="female" href="{{ route('rabbit', $mating->female_id) }}">
+                                                    {{ $mating->female_name }}
+                                                </a>
+                                            @else
+                                                <span class="female">
                                             (неизвестно)
                                             </span>
-                                        @endif
+                                            @endif
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="line">
-                                    <div class="label">
-                                        Самец:
-                                    </div>
-                                    <div class="labeled">
-                                        @if(!empty($mating->male_id))
-                                            <a class="male" href="{{ route('rabbit', $mating->male_id) }}">
-                                                {{ $mating->male_name }}
-                                            </a>
-                                        @else
-                                            <span class="male">
+                                    <div class="line">
+                                        <div class="label">
+                                            Самец:
+                                        </div>
+                                        <div class="labeled">
+                                            @if(!empty($mating->male_id))
+                                                <a class="male" href="{{ route('rabbit', $mating->male_id) }}">
+                                                    {{ $mating->male_name }}
+                                                </a>
+                                            @else
+                                                <span class="male">
                                             (неизвестно)
                                             </span>
-                                        @endif
+                                            @endif
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="line">
-                                    <div class="label">
-                                        Дата случки:
+                                    <div class="line">
+                                        <div class="label">
+                                            Дата случки:
+                                        </div>
+                                        <div class="labeled" id="mating-item-date"
+                                             data-date="{{ $mating->date ?? '' }}">
+                                            @if(!empty($mating->date))
+                                                {{ date("d.m.Y", strtotime($mating->date)) }}
+                                            @else
+                                                {{ '(неизвестно)' }}
+                                            @endif
+                                        </div>
                                     </div>
-                                    <div class="labeled" id="mating-item-date" data-date="{{ $mating->date ?? '' }}">
-                                        @if(!empty($mating->date))
-                                            {{ date("d.m.Y", strtotime($mating->date)) }}
-                                        @else
-                                            {{ '(неизвестно)' }}
-                                        @endif
+                                    <div class="line">
+                                        <div class="label">
+                                            Дата окрола:
+                                        </div>
+                                        <div class="labeled" id="mating-item-date_birth"
+                                             data-date_birth="{{ $mating->date_birth ?? '' }}">
+                                            @if(!empty($mating->date_birth))
+                                                {{ date("d.m.Y", strtotime($mating->date_birth)) }}
+                                            @else
+                                                {{ '(неизвестно)' }}
+                                            @endif
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="line">
-                                    <div class="label">
-                                        Дата окрола:
+                                    <div class="line">
+                                        <div class="label">
+                                            Рождено:
+                                        </div>
+                                        <div class="labeled" id="mating-item-child_count">
+                                            {{ $mating->child_count ?? '(неизвестно)' }}
+                                        </div>
                                     </div>
-                                    <div class="labeled" id="mating-item-date_birth"
-                                         data-date_birth="{{ $mating->date_birth ?? '' }}">
-                                        @if(!empty($mating->date_birth))
-                                            {{ date("d.m.Y", strtotime($mating->date_birth)) }}
-                                        @else
-                                            {{ '(неизвестно)' }}
-                                        @endif
+                                    <div class="line">
+                                        <div class="label">
+                                            Выжило:
+                                        </div>
+                                        <div class="labeled" id="mating-item-alive_count">
+                                            {{ $mating->alive_count ?? '(неизвестно)' }}
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="line">
-                                    <div class="label">
-                                        Рождено:
-                                    </div>
-                                    <div class="labeled" id="mating-item-child_count">
-                                        {{ $mating->child_count ?? '(неизвестно)' }}
-                                    </div>
-                                </div>
-                                <div class="line">
-                                    <div class="label">
-                                        Выжило:
-                                    </div>
-                                    <div class="labeled" id="mating-item-alive_count">
-                                        {{ $mating->alive_count ?? '(неизвестно)' }}
-                                    </div>
-                                </div>
-                                <div class="line">
-                                    <div class="label">
-                                        Примечания:
-                                    </div>
-                                    <div class="labeled" id="mating-item-desc">
-                                        {{ $mating->desc ?? '(нет)' }}
+                                    <div class="line">
+                                        <div class="label">
+                                            Примечания:
+                                        </div>
+                                        <div class="labeled" id="mating-item-desc">
+                                            {{ $mating->desc ?? '(нет)' }}
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
+                @endforeach
+            @else
+                <div class="none-items">
+                    {{ '(Пусто)' }}
                 </div>
-            @endforeach
-
+            @endif
         </div>
 
         <div class="alerts animated bounceInUp">

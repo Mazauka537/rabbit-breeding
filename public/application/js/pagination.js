@@ -26,8 +26,6 @@ class Pagination {
         this.currentPage = this.getPage();
         this.lastPage = this.paginationBlock.dataset.lastPage;
 
-        console.log(this.currentPage, this.lastPage);
-
         this.paginationBlock.append(this.getPagination());
     }
 

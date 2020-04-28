@@ -170,7 +170,9 @@
                         <div class="filter-labeled">
                             <select name="sort_by" class="sort-inp">
                                 <option value="date" @if($sortby == 'date') {{ 'selected' }} @endif>Дате</option>
-                                <option value="rabbit_name" @if($sortby == 'rabbit_name') {{ 'selected' }} @endif>Кроликам</option>
+                                <option value="rabbit_name" @if($sortby == 'rabbit_name') {{ 'selected' }} @endif>
+                                    Кроликам
+                                </option>
                                 <option value="name" @if($sortby == 'name') {{ 'selected' }} @endif>Названию</option>
                                 <option value="desc" @if($sortby == 'desc') {{ 'selected' }} @endif>Примечаниям</option>
                             </select>
@@ -185,72 +187,77 @@
         </div>
 
         <div class="items">
-
-            @foreach($vaccinations as $vaccination)
-                <div class="item__wrapper">
-                    <div class="item" data-id="{{ $vaccination->id }}" data-rabbit_id="{{ $vaccination->rabbit_id }}">
-                        <div class="item__head item__head-hovered">
-                            <div class="item__name">
-                                {{ $vaccination->name }}
-                            </div>
-                            <div class="item__name-2">
-                                {{ $vaccination->rabbit_name }}
-                            </div>
-                            <div class="item-buttons">
-                                <button class="ico-btn edit-btn edit-vaccination-btn"></button>
-                                <button class="ico-btn delete-btn delete-vaccination-btn"></button>
-                                <span class="ico-btn caret-btn"></span>
-                            </div>
-                        </div>
-                        <div class="item__body">
-                            <div class="left-form">
-                                <div class="line">
-                                    <div class="label">
-                                        Название:
-                                    </div>
-                                    <div class="labeled">
-                                        {{ $vaccination->name }}
-                                    </div>
+            @if(!empty($vaccinations->all()))
+                @foreach($vaccinations as $vaccination)
+                    <div class="item__wrapper">
+                        <div class="item" data-id="{{ $vaccination->id }}"
+                             data-rabbit_id="{{ $vaccination->rabbit_id }}">
+                            <div class="item__head item__head-hovered">
+                                <div class="item__name">
+                                    {{ $vaccination->name }}
                                 </div>
-                                <div class="line">
-                                    <div class="label">
-                                        Кролик:
-                                    </div>
-                                    <div class="labeled" id="vaccination-item-rabbit"
-                                         data-rabbit_id="{{ $vaccination->rabbit_id }}">
-                                        <a href="{{ route('rabbit', $vaccination->rabbit_id) }}"
-                                           class="@if($vaccination->rabbit_gender == "f") {{ 'female' }} @else {{ 'male' }} @endif">
-                                            {{ $vaccination->rabbit_name }}
-                                        </a>
-                                    </div>
+                                <div class="item__name-2">
+                                    {{ $vaccination->rabbit_name }}
                                 </div>
-                                <div class="line">
-                                    <div class="label">
-                                        Дата:
-                                    </div>
-                                    <div class="labeled" id="vaccination-item-date"
-                                         data-date="{{ $vaccination->date ?? '' }}">
-                                        @if(!empty($vaccination->date))
-                                            {{ date("d.m.Y", strtotime($vaccination->date)) }}
-                                        @else
-                                            {{ '(неизвестно)' }}
-                                        @endif
-                                    </div>
+                                <div class="item-buttons">
+                                    <button class="ico-btn edit-btn edit-vaccination-btn"></button>
+                                    <button class="ico-btn delete-btn delete-vaccination-btn"></button>
+                                    <span class="ico-btn caret-btn"></span>
                                 </div>
-                                <div class="line">
-                                    <div class="label">
-                                        Примечания:
+                            </div>
+                            <div class="item__body">
+                                <div class="left-form">
+                                    <div class="line">
+                                        <div class="label">
+                                            Название:
+                                        </div>
+                                        <div class="labeled">
+                                            {{ $vaccination->name }}
+                                        </div>
                                     </div>
-                                    <div class="labeled" id="vaccination-item-desc">
-                                        {{ $vaccination->desc ?? '(нет)' }}
+                                    <div class="line">
+                                        <div class="label">
+                                            Кролик:
+                                        </div>
+                                        <div class="labeled" id="vaccination-item-rabbit"
+                                             data-rabbit_id="{{ $vaccination->rabbit_id }}">
+                                            <a href="{{ route('rabbit', $vaccination->rabbit_id) }}"
+                                               class="@if($vaccination->rabbit_gender == "f") {{ 'female' }} @else {{ 'male' }} @endif">
+                                                {{ $vaccination->rabbit_name }}
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="line">
+                                        <div class="label">
+                                            Дата:
+                                        </div>
+                                        <div class="labeled" id="vaccination-item-date"
+                                             data-date="{{ $vaccination->date ?? '' }}">
+                                            @if(!empty($vaccination->date))
+                                                {{ date("d.m.Y", strtotime($vaccination->date)) }}
+                                            @else
+                                                {{ '(неизвестно)' }}
+                                            @endif
+                                        </div>
+                                    </div>
+                                    <div class="line">
+                                        <div class="label">
+                                            Примечания:
+                                        </div>
+                                        <div class="labeled" id="vaccination-item-desc">
+                                            {{ $vaccination->desc ?? '(нет)' }}
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
+                @endforeach
+            @else
+                <div class="none-items">
+                    {{ '(Пусто)' }}
                 </div>
-            @endforeach
-
+            @endif
         </div>
 
         <div class="alerts animated bounceInUp">

@@ -20,7 +20,8 @@
                                 <div class="line">
                                     <div class="label">Имя*:</div>
                                     <div class="labeled">
-                                        <input type="text" name="name" placeholder="Имя кролика" value="{{ old('name') }}" required>
+                                        <input type="text" name="name" placeholder="Имя кролика"
+                                               value="{{ old('name') }}" required>
                                     </div>
                                 </div>
                                 <div class="line">
@@ -40,7 +41,8 @@
                                         Статус:
                                     </div>
                                     <div class="labeled">
-                                        <select name="status" class="select-status" @if(old('gender') != 'f') {{ 'disabled' }} @endif>
+                                        <select name="status"
+                                                class="select-status" @if(old('gender') != 'f') {{ 'disabled' }} @endif>
                                             <option value="young">Молодняк</option>
                                             <option value="ready" selected>Готова к спариванию</option>
                                             <option value="pregnant">Беременная</option>
@@ -92,7 +94,8 @@
                                 <div class="line">
                                     <div class="label">Описание:</div>
                                     <div class="labeled">
-                                        <textarea name="desc" maxlength="255" placeholder="Дополнительная информация о кролике">{{ old('desc') }}</textarea>
+                                        <textarea name="desc" maxlength="255"
+                                                  placeholder="Дополнительная информация о кролике">{{ old('desc') }}</textarea>
                                     </div>
                                 </div>
                                 <div class="line">
@@ -121,12 +124,18 @@
                         </div>
                         <div class="filter-labeled">
                             <select name="sort_by" class="sort-inp">
-                                <option value="created_at" @if($sortby == 'created_at') {{ 'selected' }} @endif>Дате добавления</option>
-                                <option value="breed_name" @if($sortby == 'breed_name') {{ 'selected' }} @endif>Породе</option>
-                                <option value="cage_name" @if($sortby == 'cage_name') {{ 'selected' }} @endif>Клеткам</option>
+                                <option value="created_at" @if($sortby == 'created_at') {{ 'selected' }} @endif>Дате
+                                    добавления
+                                </option>
+                                <option value="breed_name" @if($sortby == 'breed_name') {{ 'selected' }} @endif>Породе
+                                </option>
+                                <option value="cage_name" @if($sortby == 'cage_name') {{ 'selected' }} @endif>Клеткам
+                                </option>
                                 <option value="name" @if($sortby == 'name') {{ 'selected' }} @endif>Имени</option>
                                 <option value="gender" @if($sortby == 'gender') {{ 'selected' }} @endif>Полу</option>
-                                <option value="birthday" @if($sortby == 'birthday') {{ 'selected' }} @endif>Дате рождения</option>
+                                <option value="birthday" @if($sortby == 'birthday') {{ 'selected' }} @endif>Дате
+                                    рождения
+                                </option>
                                 <option value="status" @if($sortby == 'status') {{ 'selected' }} @endif>Статусу</option>
                                 <option value="desc" @if($sortby == 'desc') {{ 'selected' }} @endif>Описанию</option>
                             </select>
@@ -141,48 +150,55 @@
         </div>
 
         <div class="items">
-            @foreach($rabbits as $rabbit)
-                <div class="item__wrapper">
-                    <a href="{{ route('rabbit', $rabbit->id) }}" class="item">
-                        <div class="ratio ratio-4-3">
-                            <div class="item__inner ratio__inner"
-                            @if($rabbit->photo != null)
-                                {{ 'style=background-image:url(' . asset('storage/' . $rabbit->photo) . ');background-size:cover' }}
-                                @endif
-                            >
-                                <div class="item-filter">
-                                    <div class="info">
-                                        @if(!empty($rabbit->status_value))
-                                            <div class="status txt-clip icon-power">{{ $rabbit->status_value }}</div>
-                                        @endif
-                                        @if(!empty($rabbit->birthday))
-                                            <div
-                                                class="birthday txt-clip icon-calendar">{{ date("d.m.Y", strtotime($rabbit->birthday)) }}</div>
-                                        @endif
-                                        @if(!empty($rabbit->breed_name))
-                                            <div class="breed txt-clip icon-pawprint">{{ $rabbit->breed_name }}</div>
-                                        @endif
+            @if(!empty($rabbits->all()))
+                @foreach($rabbits as $rabbit)
+                    <div class="item__wrapper">
+                        <a href="{{ route('rabbit', $rabbit->id) }}" class="item">
+                            <div class="ratio ratio-4-3">
+                                <div class="item__inner ratio__inner"
+                                @if($rabbit->photo != null)
+                                    {{ 'style=background-image:url(' . asset('storage/' . $rabbit->photo) . ');background-size:cover' }}
+                                    @endif
+                                >
+                                    <div class="item-filter">
+                                        <div class="info">
+                                            @if(!empty($rabbit->status_value))
+                                                <div
+                                                    class="status txt-clip icon-power">{{ $rabbit->status_value }}</div>
+                                            @endif
+                                            @if(!empty($rabbit->birthday))
+                                                <div
+                                                    class="birthday txt-clip icon-calendar">{{ date("d.m.Y", strtotime($rabbit->birthday)) }}</div>
+                                            @endif
+                                            @if(!empty($rabbit->breed_name))
+                                                <div
+                                                    class="breed txt-clip icon-pawprint">{{ $rabbit->breed_name }}</div>
+                                            @endif
+                                        </div>
+                                    </div>
+                                    <div class="item-desc">
+                                        {{ $rabbit->desc ?? "(нет описания)" }}
+                                    </div>
+                                    <div
+                                        class="h-gender @if($rabbit->gender == 'f') {{ 'female' }} @else {{ 'male' }} @endif">
+                                        ♥
                                     </div>
                                 </div>
-                                <div class="item-desc">
-                                    {{ $rabbit->desc ?? "(нет описания)" }}
-                                </div>
-                                <div
-                                    class="h-gender @if($rabbit->gender == 'f') {{ 'female' }} @else {{ 'male' }} @endif">
-                                    ♥
-                                </div>
                             </div>
-                        </div>
-                        <div class="item__footer">
-                            <div class="name txt-clip">
-                                {{ $rabbit->name }}
+                            <div class="item__footer">
+                                <div class="name txt-clip">
+                                    {{ $rabbit->name }}
+                                </div>
+                                <span class="show-desc-btn ico-info"></span>
                             </div>
-                            <span class="show-desc-btn ico-info"></span>
-                        </div>
-                    </a>
+                        </a>
+                    </div>
+                @endforeach
+            @else
+                <div class="none-items">
+                    {{ '(Пусто)' }}
                 </div>
-            @endforeach
-
+            @endif
         </div>
 
         <div class="alerts animated bounceInUp">
