@@ -1,6 +1,6 @@
 @extends('layouts.application')
 
-@section('title', 'reminders')
+@section('title', 'Напоминания - ' . config('app.name'))
 
 @section('main')
     <div class="main__inner">

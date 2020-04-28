@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Подтверждение e-mail')
+@section('title', 'Подтверждение e-mail - ' . config('app.name'))
 
 @section('content')
 

@@ -1,6 +1,6 @@
 @extends('layouts.application')
 
-@section('title', 'vaccinations')
+@section('title', 'Вакцинации - ' . config('app.name'))
 
 @section('main')
     <div class="main__inner">

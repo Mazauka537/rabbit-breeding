@@ -1,6 +1,6 @@
 @extends('layouts.application')
 
-@section('title', 'rabbit')
+@section('title', 'Кролик '. $rabbit->name .' - ' . config('app.name'))
 
 @section('main')
     <div class="main__inner">
