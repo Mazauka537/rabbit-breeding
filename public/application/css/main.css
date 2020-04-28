@@ -443,6 +443,9 @@ a {
     .rabbit-container .head .status {
       font-size: 13px;
       color: #999; }
+    .rabbit-container .head.small-head {
+      font-size: 14px;
+      padding-bottom: 10px; }
   .rabbit-container .body {
     padding-top: 5px; }
   .rabbit-container .body-form {

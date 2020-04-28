@@ -2,13 +2,29 @@
 
 namespace App;
 
+use App\Mail\PasswordResetLink;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Support\Facades\Mail;
 
 class User extends Authenticatable
 {
     use Notifiable;
+
+    /**
+     * Отправка уведомления о сбросе пароля.
+     *
+     * @param  string  $token
+     * @return void
+     */
+    public function sendPasswordResetNotification($token)
+    {
+        $user = $this;
+        Mail::send('mails.passwordResetLink', ['token' => $token, 'email' => $user->email], function ($m) use ($user) {
+            $m->to($user->email, $user->name)->subject('Сброс пароля - Rabbit-breeding');
+        });
+    }
 
     /**
      * The attributes that are mass assignable.

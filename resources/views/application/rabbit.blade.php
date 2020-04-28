@@ -332,6 +332,9 @@
                     </div>
                 </div>
                 <div class="some-info__wrapper wrapper">
+                    <div class="head small-head">
+                        Доп. информация
+                    </div>
                     <div class="some-info small-form">
                         <div class="line">
                             <div class="label">
