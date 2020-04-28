@@ -160,6 +160,30 @@
             <button id="btn-show-add-item-form"></button>
         </div>
 
+        <div class="items-top">
+            <div class="filter">
+                <div class="filter__inner">
+                    <div class="filter-field">
+                        <div class="filter-label">
+                            Сортировать по:
+                        </div>
+                        <div class="filter-labeled">
+                            <select name="sort_by" class="sort-inp">
+                                <option value="date" @if($sortby == 'date') {{ 'selected' }} @endif>Дате</option>
+                                <option value="rabbit_name" @if($sortby == 'rabbit_name') {{ 'selected' }} @endif>Кроликам</option>
+                                <option value="name" @if($sortby == 'name') {{ 'selected' }} @endif>Названию</option>
+                                <option value="desc" @if($sortby == 'desc') {{ 'selected' }} @endif>Примечаниям</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pagination__wrapper" id="pagination" data-last-page="{{ $pageCount ?? 1 }}">
+
+            </div>
+        </div>
+
         <div class="items">
 
             @foreach($vaccinations as $vaccination)
@@ -170,7 +194,7 @@
                                 {{ $vaccination->name }}
                             </div>
                             <div class="item__name-2">
-                                {{ $vaccination->rabbit->name }}
+                                {{ $vaccination->rabbit_name }}
                             </div>
                             <div class="item-buttons">
                                 <button class="ico-btn edit-btn edit-vaccination-btn"></button>
@@ -193,10 +217,10 @@
                                         Кролик:
                                     </div>
                                     <div class="labeled" id="vaccination-item-rabbit"
-                                         data-rabbit_id="{{ $vaccination->rabbit->id }}">
-                                        <a href="{{ route('rabbit', $vaccination->rabbit->id) }}"
-                                           class="@if($vaccination->rabbit->gender == "f") {{ 'female' }} @else {{ 'male' }} @endif">
-                                            {{ $vaccination->rabbit->name }}
+                                         data-rabbit_id="{{ $vaccination->rabbit_id }}">
+                                        <a href="{{ route('rabbit', $vaccination->rabbit_id) }}"
+                                           class="@if($vaccination->rabbit_gender == "f") {{ 'female' }} @else {{ 'male' }} @endif">
+                                            {{ $vaccination->rabbit_name }}
                                         </a>
                                     </div>
                                 </div>

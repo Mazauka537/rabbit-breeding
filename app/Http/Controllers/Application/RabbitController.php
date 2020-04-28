@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Application;
 
 use App\Http\Requests\Application\RabbitAddRequest;
 use App\Http\Requests\Application\RabbitEditPhotoRequest;
+use App\Http\Requests\Application\RabbitsGetRequest;
 use App\Rabbit;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -98,18 +99,33 @@ class RabbitController extends Controller
         return floor($date_diff / (60 * 60 * 24));
     }
 
-    function getRabbits()
+    function getRabbits(RabbitsGetRequest $request)
     {
+        $perPage = Auth::user()->pagination;
+        $pageCount = ceil(Auth::user()->rabbits()->count() / $perPage);
+
+        if (!$request->has('page')) $request->page = 1;
+        if (!$request->has('sortby')) $request->sortby = 'created_at';
+        $sortby = $request->sortby;
+
+        $rabbits = Auth::user()->rabbits()
+            ->leftJoin('cages', 'rabbits.cage_id', '=', 'cages.id')
+            ->leftJoin('breeds', 'rabbits.breed_id', '=', 'breeds.id')
+            ->select('rabbits.*', 'cages.name as cage_name', 'breeds.name as breed_name')
+            ->orderByDesc($sortby)
+            ->offset($perPage * abs($request->page - 1))
+            ->limit($perPage)
+            ->get();
+
         $cages = Auth::user()->cages;
         $breeds = Auth::user()->breeds;
-        $rabbits = Auth::user()->rabbits;
         foreach ($rabbits as $rabbit) {
-            $rabbit->breed_name = ($breed = $this->findItemById($breeds, $rabbit->breed_id)) ? $breed->name : null;
+//            $rabbit->breed_name = ($breed = $this->findItemById($breeds, $rabbit->breed_id)) ? $breed->name : null;
             $rabbit->status_value = $this->setRabbitStatus($rabbit->status);
         }
         $theme = $this->getThemePath();
 
-        return view('application.rabbits', compact(['rabbits', 'cages', 'breeds', 'theme']));
+        return view('application.rabbits', compact(['rabbits', 'cages', 'breeds', 'theme', 'pageCount', 'sortby']));
     }
 
     function getRabbit($id)

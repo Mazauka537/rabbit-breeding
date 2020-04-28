@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Application;
 
 use App\Http\Requests\Application\VaccinationAddRequest;
+use App\Http\Requests\Application\VaccinationGetRequest;
 use App\Vaccination;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -27,13 +28,26 @@ class VaccinationController extends Controller
         return $theme;
     }
 
-    function getVaccinations()
+    function getVaccinations(VaccinationGetRequest $request)
     {
-        $vaccinations = Auth::user()->vaccinations()->with('rabbit')->get();
+        $perPage = Auth::user()->pagination;
+        $pageCount = ceil(Auth::user()->vaccinations()->count() / $perPage);
+
+        if (!$request->has('page')) $request->page = 1;
+        if (!$request->has('sortby')) $request->sortby = 'date';
+        $sortby = $request->sortby;
+
+        $vaccinations = Auth::user()->vaccinations()
+            ->leftJoin('rabbits', 'vaccinations.rabbit_id', '=', 'rabbits.id')
+            ->select('vaccinations.*', 'rabbits.name as rabbit_name', 'rabbits.gender as rabbit_gender')
+            ->orderByDesc($sortby)
+            ->offset($perPage * abs($request->page - 1))
+            ->limit($perPage)
+            ->get();
         $rabbits = Auth::user()->rabbits;
         $theme = $this->getThemePath();
 
-        return view('application.vaccinations', compact(['vaccinations', 'rabbits', 'theme']));
+        return view('application.vaccinations', compact(['vaccinations', 'rabbits', 'theme', 'pageCount', 'sortby']));
     }
 
     function addVaccination(VaccinationAddRequest $request)

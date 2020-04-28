@@ -112,8 +112,35 @@
             <button id="btn-show-add-item-form"></button>
         </div>
 
-        <div class="items">
+        <div class="items-top">
+            <div class="filter">
+                <div class="filter__inner">
+                    <div class="filter-field">
+                        <div class="filter-label">
+                            Сортировать по:
+                        </div>
+                        <div class="filter-labeled">
+                            <select name="sort_by" class="sort-inp">
+                                <option value="created_at" @if($sortby == 'created_at') {{ 'selected' }} @endif>Дате добавления</option>
+                                <option value="breed_name" @if($sortby == 'breed_name') {{ 'selected' }} @endif>Породе</option>
+                                <option value="cage_name" @if($sortby == 'cage_name') {{ 'selected' }} @endif>Клеткам</option>
+                                <option value="name" @if($sortby == 'name') {{ 'selected' }} @endif>Имени</option>
+                                <option value="gender" @if($sortby == 'gender') {{ 'selected' }} @endif>Полу</option>
+                                <option value="birthday" @if($sortby == 'birthday') {{ 'selected' }} @endif>Дате рождения</option>
+                                <option value="status" @if($sortby == 'status') {{ 'selected' }} @endif>Статусу</option>
+                                <option value="desc" @if($sortby == 'desc') {{ 'selected' }} @endif>Описанию</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
+            <div class="pagination__wrapper" id="pagination" data-last-page="{{ $pageCount ?? 1 }}">
+
+            </div>
+        </div>
+
+        <div class="items">
             @foreach($rabbits as $rabbit)
                 <div class="item__wrapper">
                     <a href="{{ route('rabbit', $rabbit->id) }}" class="item">
