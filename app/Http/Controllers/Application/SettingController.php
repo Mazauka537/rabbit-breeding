@@ -43,12 +43,26 @@ class SettingController extends Controller
         $themeList = implode(',', $themeList);
 
         $this->validate($request, [
+            'name' => 'required|string|max:255',
             'pagination' => 'required|integer|min:1|max:200',
             'theme' => 'required|string|in:default,' . $themeList,
+        ], [
+            'theme.required' => 'Выпрана несуществующая тема.',
+            'required' => 'Поле :attribute обязательно для заполнения.',
+            'integer' => 'Значение поля :attribute должно быть числом.',
+            'name.max' => 'Длина поля :attribute не должна превышать :max символов.',
+            'pagination.max' => 'Максимальное значение поля :attribute - :min.',
+            'min' => 'Минимальное значение поля :attribute - :min.',
+            'theme.in' => 'Выпрана несуществующая тема.',
+        ], [
+            'name' => '"Ваше имя"',
+            'pagination' => '"Записей на странице"',
+            'theme' => '"Тема"',
         ]);
 
         $user = Auth::user();
 
+        $user->name = $request->name;
         $user->pagination = $request->pagination;
         $user->theme = $request->theme;
 

@@ -96,12 +96,12 @@
                                         <span>Напоминания</span>
                                     </a>
                                 </li>
-                                <li>
+                               <!-- <li>
                                     <a href="{{ route('reports') }}">
                                         <span class="icon icon-statistics"></span>
                                         <span>Отчеты</span>
                                     </a>
-                                </li>
+                                </li> -->
                             </ul>
                         </nav>
                     </div>

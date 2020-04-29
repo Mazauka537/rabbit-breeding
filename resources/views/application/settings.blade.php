@@ -15,9 +15,15 @@
                 <input type="hidden" name="theme" id="theme-name-inp" value="{{ $user->theme }}">
                 <div class="center-form">
                     <div class="line">
+                        <div class="label">Ваше имя:</div>
+                        <div class="labeled">
+                            <input type="text" name="name" value="{{ $user->name }}" required>
+                        </div>
+                    </div>
+                    <div class="line">
                         <div class="label">Записей на странице:</div>
                         <div class="labeled">
-                            <input type="number" name="pagination" min="1" max="200" value="{{ $user->pagination }}">
+                            <input type="number" name="pagination" min="1" max="200" value="{{ $user->pagination }}" required>
                         </div>
                     </div>
                     <div class="line">
