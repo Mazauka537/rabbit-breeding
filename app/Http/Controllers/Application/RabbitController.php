@@ -136,7 +136,7 @@ class RabbitController extends Controller
 
         $rabbit = ($r = $this->findItemById($rabbits, $id)) ? $r : null;
         if ($rabbit == null || $rabbit->user_id != Auth::id())
-            return response(view('errors.404'), 404);
+            return response('', 404);
 
         $matings = $rabbit->matings()
             ->leftJoin('rabbits as female_rabbits', 'matings.female_id', '=', 'female_rabbits.id')

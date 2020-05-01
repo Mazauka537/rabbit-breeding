@@ -29,8 +29,8 @@ class MatingAddRequest extends FormRequest
             'male' => 'nullable|integer|exists:rabbits,id,user_id,' . Auth::id() . '|exists:rabbits,id,gender,m',
             'date' => 'nullable|date',
             'birth_date' => 'nullable|date',
-            'child_count' => 'nullable|integer',
-            'alive_count' => 'nullable|integer',
+            'child_count' => 'nullable|integer|min:0',
+            'alive_count' => 'nullable|integer|min:0',
             'desc' => 'nullable|string|max:255',
         ];
     }
@@ -45,6 +45,7 @@ class MatingAddRequest extends FormRequest
             'exists' => 'В поле :attribute выбрано не существующее значение.',
             'date' => 'Значение поля :attribute должно быть датой.',
             'integer' => 'Значение поля :attribute должно быть числом.',
+            'min' => 'Значение поля :attribute не может быть отрицательным',
         ];
     }
 

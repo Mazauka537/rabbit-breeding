@@ -15,7 +15,7 @@ class MatingController extends Controller
     private function setRabbitStatus($status)
     {
         switch ($status) {
-            case 'yong':
+            case 'young':
                 return 'Молодняк';
             case 'ready':
                 return 'Готова к спариванию';
