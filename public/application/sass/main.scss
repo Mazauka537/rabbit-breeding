@@ -1286,4 +1286,39 @@ textarea {
     background-color: #85878a;
 }
 
+//media//
 
+@media screen and (max-width: 920px) {
+    .rabbit-container {
+        display: block;
+
+        .left {
+            display: flex;
+            max-width: 100%;
+
+            .photo__wrapper {
+                max-width: 200px;
+                width: 100%;
+                flex-shrink: 0;
+            }
+
+            .some-info__wrapper {
+                flex-grow: 1;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 890px) {
+    .item__name, .item__name-2 {
+        max-width: 330px;
+    }
+}
+
+@media screen and (max-width: 720px) {
+
+}
+
+@media screen and (max-width: 680px) {
+    //TODO: hide side nav panel and show the burger button in header that will be show side nav panel
+}
