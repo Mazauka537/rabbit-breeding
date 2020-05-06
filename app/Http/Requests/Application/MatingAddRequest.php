@@ -25,9 +25,9 @@ class MatingAddRequest extends FormRequest
     public function rules()
     {
         return [
-            'female' => 'nullable|integer|exists:rabbits,id,user_id,' . Auth::id() . '|exists:rabbits,id,gender,f',
+            'female' => 'required|integer|exists:rabbits,id,user_id,' . Auth::id() . '|exists:rabbits,id,gender,f',
             'male' => 'nullable|integer|exists:rabbits,id,user_id,' . Auth::id() . '|exists:rabbits,id,gender,m',
-            'date' => 'nullable|date',
+            'date' => 'required|date',
             'birth_date' => 'nullable|date',
             'child_count' => 'nullable|integer|min:0',
             'alive_count' => 'nullable|integer|min:0',

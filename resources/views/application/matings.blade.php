@@ -18,9 +18,9 @@
                         <div class="body">
                             <div class="center-form">
                                 <div class="line">
-                                    <div class="label">Самка:</div>
+                                    <div class="label">Самка*:</div>
                                     <div class="labeled">
-                                        <select name="female">
+                                        <select name="female" required>
                                             <option value="">не известно</option>
                                             @foreach($rabbits as $rabbit)
                                                 @if($rabbit->gender == 'f')
@@ -46,9 +46,10 @@
                                     </div>
                                 </div>
                                 <div class="line">
-                                    <div class="label">Дата случки:</div>
+                                    <div class="label">Дата случки*:</div>
                                     <div class="labeled">
-                                        <input type="date" name="date" value="{{ old('date') }}">
+                                        <input type="date" name="date"
+                                               value="{{ old('date') ?? date("Y-m-d", time()) }}" required>
                                     </div>
                                 </div>
                                 <div class="line">
@@ -76,6 +77,15 @@
                                     <div class="labeled">
                                         <textarea name="desc" maxlength="255"
                                                   placeholder="Дополнительная информация">{{ old('desc') }}</textarea>
+                                    </div>
+                                </div>
+                                <div class="line">
+                                    <div class="label"></div>
+                                    <div class="labeled">
+                                        <input type="checkbox" name="notify" id="notify-inp">
+                                        <label for="notify-inp">
+                                                Добавить <a href="{{ route('settings') }}" style="text-decoration: underline">стандартные напоминания</a>?
+                                        </label>
                                     </div>
                                 </div>
                                 <div class="line">
