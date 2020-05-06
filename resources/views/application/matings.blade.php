@@ -114,9 +114,9 @@
                         <div class="body">
                             <div class="center-form">
                                 <div class="line">
-                                    <div class="label">Самка:</div>
+                                    <div class="label">Самка*:</div>
                                     <div class="labeled">
-                                        <select name="female">
+                                        <select name="female" required>
                                             <option value="">неизвестно</option>
                                             @foreach($rabbits as $rabbit)
                                                 @if($rabbit->gender == 'f')
@@ -142,9 +142,9 @@
                                     </div>
                                 </div>
                                 <div class="line">
-                                    <div class="label">Дата случки:</div>
+                                    <div class="label">Дата случки*:</div>
                                     <div class="labeled">
-                                        <input type="date" name="date" value="">
+                                        <input type="date" name="date" value="" required>
                                     </div>
                                 </div>
                                 <div class="line">
