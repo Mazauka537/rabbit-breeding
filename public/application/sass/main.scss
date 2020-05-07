@@ -318,7 +318,7 @@ a {
 .item-buttons {
     position: absolute;
     top: 6px;
-    right: 15px;
+    right: 10px;
     width: 100px;
 }
 
@@ -452,6 +452,8 @@ a {
         font-size: 14px;
         color: #555;
         position: relative;
+        text-overflow: ellipsis;
+        max-width: 600px;
     }
 
     a {
@@ -787,10 +789,6 @@ a {
         max-width: 500px;
         margin: 0 auto;
         padding: 20px 0 10px 0;
-
-        .line:last-child {
-            padding-top: 20px;
-        }
     }
 
     .head {
@@ -800,6 +798,10 @@ a {
         overflow: hidden;
         white-space: nowrap;
         text-overflow: ellipsis;
+    }
+
+    .input-label {
+        padding-right: 60px;
     }
 }
 
@@ -1027,12 +1029,24 @@ label {
     vertical-align: top;
 }
 
-.text-center {
-    text-align: center;
+.input-label {
+    position: relative;
+
+    .item-buttons {
+        font-size: 0;
+        right: 0;
+        width: auto;
+    }
+
+    .ico-btn {
+        font-size: 14px;
+        height: 100%;
+        width: 30px;
+        border-left: 1px solid #d3d9de;
+    }
 }
 
-.input-label {
-    display: inline-block;
+.text-center {
     text-align: center;
 }
 

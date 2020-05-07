@@ -29,8 +29,9 @@ class SettingController extends Controller
         $user = Auth::user();
         $theme = $this->getThemePath();
         $themes = json_decode(file_get_contents('application/themes.json'));
+        $defaultNotifies = $user->defaultNotifies()->orderBy('days')->get();
 
-        return view('application.settings', compact(['user', 'theme', 'themes']));
+        return view('application.settings', compact(['user', 'theme', 'themes', 'defaultNotifies']));
     }
 
     public function saveSettings(Request $request) {
@@ -72,9 +73,5 @@ class SettingController extends Controller
         session()->flash('message', ['Настройки сохранены.']);
 
         return back();
-    }
-
-    public function addDefaultMatingNotify(DefaultMatingNotifyAddRequest $request) {
-
     }
 }

@@ -54,7 +54,7 @@
                                 <div class="line">
                                     <div class="label">Фото:</div>
                                     <div class="labeled">
-                                        <label class="input-label txt-clip" for="photo-input-add">
+                                        <label class="input-label txt-clip text-center" for="photo-input-add">
                                             Выберите файл
                                         </label>
                                         <input type="file" name="photo" id="photo-input-add" style="display: none"

@@ -15,7 +15,7 @@ class User extends Authenticatable
     /**
      * Отправка уведомления о сбросе пароля.
      *
-     * @param  string  $token
+     * @param string $token
      * @return void
      */
     public function sendPasswordResetNotification($token)
@@ -81,5 +81,10 @@ class User extends Authenticatable
     public function reminders()
     {
         return $this->hasMany('App\Reminder');
+    }
+
+    public function defaultNotifies()
+    {
+        return $this->hasMany('App\DefaultNotify');
     }
 }

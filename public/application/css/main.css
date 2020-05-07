@@ -221,7 +221,7 @@ a {
 .item-buttons {
   position: absolute;
   top: 6px;
-  right: 15px;
+  right: 10px;
   width: 100px; }
 
 .ico-btn {
@@ -308,7 +308,9 @@ a {
   overflow: hidden;
   font-size: 14px;
   color: #555;
-  position: relative; }
+  position: relative;
+  text-overflow: ellipsis;
+  max-width: 600px; }
 .left-form a, .center-form a, .small-form a {
   font-size: 14px; }
   .left-form a:hover, .center-form a:hover, .small-form a:hover {
@@ -518,8 +520,6 @@ a {
     max-width: 500px;
     margin: 0 auto;
     padding: 20px 0 10px 0; }
-    .settings__wrapper .form .line:last-child {
-      padding-top: 20px; }
   .settings__wrapper .head {
     font-size: 20px;
     border-bottom: 1px solid #e8e8e8;
@@ -527,6 +527,8 @@ a {
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis; }
+  .settings__wrapper .input-label {
+    padding-right: 60px; }
 
 .theme-input {
   max-width: 300px;
@@ -694,11 +696,19 @@ label {
   padding-left: 4px;
   vertical-align: top; }
 
-.text-center {
-  text-align: center; }
-
 .input-label {
-  display: inline-block;
+  position: relative; }
+  .input-label .item-buttons {
+    font-size: 0;
+    right: 0;
+    width: auto; }
+  .input-label .ico-btn {
+    font-size: 14px;
+    height: 100%;
+    width: 30px;
+    border-left: 1px solid #d3d9de; }
+
+.text-center {
   text-align: center; }
 
 button {
