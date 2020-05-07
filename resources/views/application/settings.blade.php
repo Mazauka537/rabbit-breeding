@@ -126,6 +126,14 @@
                                    required>
                         </div>
                     </div>
+                    <div class="line checkbox-line">
+                        <div class="label">
+                        </div>
+                        <div class="labeled">
+                            <input id="auto_mating_notify_inp" type="checkbox" name="auto_mating_reminders" @if($user->auto_mating_reminders) {{ 'checked' }} @endif>
+                            <label for="auto_mating_notify_inp">Автоматически помечать поле для добавления стандартных напоминаний</label>
+                        </div>
+                    </div>
                     <div class="line">
                         <div class="label">Тема:</div>
                         <div class="labeled">

@@ -49,7 +49,8 @@ class MatingController extends Controller
 
     function getMatings(MatingsGetRequest $request)
     {
-        $perPage = Auth::user()->pagination;
+        $user = Auth::user();
+        $perPage = $user->pagination;
         $pageCount = ceil(Auth::user()->matings()->count() / $perPage);
 
         if (!$request->has('page')) $request->page = 1;
@@ -74,7 +75,7 @@ class MatingController extends Controller
             $rabbit->status_value = $this->setRabbitStatus($rabbit->status);
         }
 
-        return view('application.matings', compact(['matings', 'rabbits', 'pageCount', 'theme', 'sortby']));
+        return view('application.matings', compact(['matings', 'rabbits', 'pageCount', 'theme', 'sortby', 'user']));
     }
 
     function addMating(MatingAddRequest $request)

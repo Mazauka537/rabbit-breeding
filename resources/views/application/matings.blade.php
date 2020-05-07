@@ -82,7 +82,7 @@
                                 <div class="line">
                                     <div class="label"></div>
                                     <div class="labeled">
-                                        <input type="checkbox" name="notify" id="notify-inp">
+                                        <input type="checkbox" name="notify" id="notify-inp" @if($user->auto_mating_reminders) {{ 'checked' }} @endif>
                                         <label for="notify-inp">
                                                 Добавить <a href="{{ route('settings') }}" style="text-decoration: underline">стандартные напоминания</a>?
                                         </label>

@@ -456,6 +456,29 @@ a {
         max-width: 600px;
     }
 
+    .checkbox-line {
+
+        .label {
+
+        }
+
+        .labeled {
+            font-size: 13px;
+            color: #999;
+
+            input {
+
+            }
+
+            label {
+                display: inline;
+                line-height: 20px;
+                padding-top: 0;
+                padding-left: 2px;
+            }
+        }
+    }
+
     a {
         font-size: 14px;
 

@@ -311,6 +311,14 @@ a {
   position: relative;
   text-overflow: ellipsis;
   max-width: 600px; }
+.left-form .checkbox-line .labeled, .center-form .checkbox-line .labeled, .small-form .checkbox-line .labeled {
+  font-size: 13px;
+  color: #999; }
+  .left-form .checkbox-line .labeled label, .center-form .checkbox-line .labeled label, .small-form .checkbox-line .labeled label {
+    display: inline;
+    line-height: 20px;
+    padding-top: 0;
+    padding-left: 2px; }
 .left-form a, .center-form a, .small-form a {
   font-size: 14px; }
   .left-form a:hover, .center-form a:hover, .small-form a:hover {

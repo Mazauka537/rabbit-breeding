@@ -67,6 +67,7 @@ class SettingController extends Controller
         $user->name = $request->name;
         $user->pagination = $request->pagination;
         $user->theme = $request->theme;
+        $user->auto_mating_reminders = $request->auto_mating_reminders ? true : false;
 
         $user->save();
 
