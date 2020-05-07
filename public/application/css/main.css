@@ -514,11 +514,11 @@ a {
 
 .settings__wrapper {
   margin: 0 0 10px 0; }
-  .settings__wrapper form {
+  .settings__wrapper .form {
     max-width: 500px;
     margin: 0 auto;
     padding: 20px 0 10px 0; }
-    .settings__wrapper form .line:last-child {
+    .settings__wrapper .form .line:last-child {
       padding-top: 20px; }
   .settings__wrapper .head {
     font-size: 20px;

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Application;
 
+use App\Http\Requests\Application\DefaultMatingNotifyAddRequest;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
@@ -71,5 +72,9 @@ class SettingController extends Controller
         session()->flash('message', ['Настройки сохранены.']);
 
         return back();
+    }
+
+    public function addDefaultMatingNotify(DefaultMatingNotifyAddRequest $request) {
+
     }
 }

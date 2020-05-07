@@ -58,6 +58,7 @@ Route::group(['middleware' => 'auth', 'namespace' => 'Application', 'prefix' => 
 
     Route::get('settings', 'SettingController@getSettings')->name('settings');
     Route::post('settings/save', 'SettingController@saveSettings')->name('saveSettings');
+    Route::post('settings/default-mating-notify/add', 'SettingController@addDefaultMatingNotify')->name('addDefaultMatingNotify');
 
     Route::get('reports', 'ReportController@getReports')->name('reports');
 
