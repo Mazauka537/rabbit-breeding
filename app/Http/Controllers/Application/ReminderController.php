@@ -29,7 +29,7 @@ class ReminderController extends Controller
 
     function getReminders()
     {
-        $reminders = Auth::user()->reminders()->orderBy('date')->with('rabbit')->get();
+        $reminders = Auth::user()->reminders()->orderByDesc('date')->with('rabbit')->get();
         $rabbits = Auth::user()->rabbits;
         $theme = $this->getThemePath();
 

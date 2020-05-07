@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers\Application;
 
+use App\DefaultNotify;
 use App\Http\Requests\Application\MatingAddRequest;
 use App\Http\Requests\Application\MatingsGetRequest;
 use App\Mating;
+use App\Reminder;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
@@ -78,16 +80,7 @@ class MatingController extends Controller
     function addMating(MatingAddRequest $request)
     {
         $errors = [];
-
-        if (empty($request->female)
-            && empty($request->male)
-            && empty($request->date)
-            && empty($request->birth_date)
-            && empty($request->child_count)
-            && empty($request->alive_count)
-            && empty($request->desc)) {
-            $errors[] = '-_-';
-        }
+        $messages = [];
 
         if (!empty($request->child_count) && !empty($request->alive_count)) {
             if ($request->child_count < $request->alive_count)
@@ -115,7 +108,24 @@ class MatingController extends Controller
         $mating->desc = $request->desc;
         $mating->save();
 
-        session()->flash('message', ['Новая случка успешно добавлена.']);
+        $messages[] = 'Новая случка успешно добавлена.';
+
+        if ($request->notify) {
+            $notifiesData = [];
+            $defaultNotifies = Auth::user()->defaultNotifies;
+            foreach ($defaultNotifies as $dnotify) {
+                $notifiesData[] = [
+                    'user_id' => Auth::id(),
+                    'text' => $dnotify->text,
+                    'date' => date('Y-m-d', $dnotify->days * 60 * 60 * 24 + time()),
+                    'rabbit_id' => $request->female,
+                ];
+            }
+            Reminder::insert($notifiesData);
+            $messages[] = 'Напоминания успешно добавлены.';
+        }
+
+        session()->flash('message', $messages);
 
         return back();
     }
