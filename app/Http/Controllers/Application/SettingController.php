@@ -44,10 +44,13 @@ class SettingController extends Controller
 
         $themeList = implode(',', $themeList);
 
+//        dd($request);
+
         $this->validate($request, [
             'name' => 'required|string|max:255',
             'pagination' => 'required|integer|min:1|max:200',
             'theme' => 'required|string|in:default,' . $themeList,
+            'days_for_delete_reminders' => 'required_if:auto_delete_reminders,on|integer|min:1|max:30000',
         ], [
             'theme.required' => 'Выпрана несуществующая тема.',
             'required' => 'Поле :attribute обязательно для заполнения.',
@@ -56,10 +59,13 @@ class SettingController extends Controller
             'pagination.max' => 'Максимальное значение поля :attribute - :min.',
             'min' => 'Минимальное значение поля :attribute - :min.',
             'theme.in' => 'Выпрана несуществующая тема.',
+            'required_if' => 'Поле :attribute обязательно для заполнения.',
+            'max' => 'Максимальное значение поля :attribute - :max',
         ], [
             'name' => '"Ваше имя"',
             'pagination' => '"Записей на странице"',
             'theme' => '"Тема"',
+            'days_for_delete_reminders' => '"Удалять через (дней)"',
         ]);
 
         $user = Auth::user();
@@ -68,6 +74,8 @@ class SettingController extends Controller
         $user->pagination = $request->pagination;
         $user->theme = $request->theme;
         $user->auto_mating_reminders = $request->auto_mating_reminders ? true : false;
+        $user->days_for_delete_reminders = $request->days_for_delete_reminders ?? 0;
+        $user->delete_only_checked_reminders = $request->delete_only_checked_reminders ? true : false;
 
         $user->save();
 

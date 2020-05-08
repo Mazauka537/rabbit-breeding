@@ -335,7 +335,7 @@ a {
   max-width: 600px; }
 .left-form .checkbox-line .labeled, .center-form .checkbox-line .labeled, .small-form .checkbox-line .labeled {
   font-size: 13px;
-  color: #999; }
+  color: #777; }
   .left-form .checkbox-line .labeled label, .center-form .checkbox-line .labeled label, .small-form .checkbox-line .labeled label {
     display: inline;
     line-height: 20px;
@@ -494,7 +494,7 @@ a {
   .rabbit-container .body-form {
     display: none; }
     .rabbit-container .body-form .label {
-      padding: 6px 0; }
+      padding: 7px 0; }
   .rabbit-container .buttons {
     padding-left: 15px;
     white-space: nowrap;
@@ -582,6 +582,15 @@ a {
 
 .selected-theme {
   border: 2px solid #fff; }
+
+.auto-delete-reminder.disabled .label {
+  color: #ccc; }
+.auto-delete-reminder.disabled .labeled {
+  color: #ccc; }
+  .auto-delete-reminder.disabled .labeled input {
+    color: #ccc; }
+    .auto-delete-reminder.disabled .labeled input::placeholder {
+      color: #ccc; }
 
 .add-button {
   position: fixed;
@@ -688,7 +697,7 @@ a {
   .form .edit-photo-body .input-label {
     margin-bottom: 5px; }
 .form .label {
-  padding: 6px 0; }
+  padding: 7px 0; }
 
 .form-link {
   padding-top: 0 !important;

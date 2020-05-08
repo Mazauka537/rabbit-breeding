@@ -164,7 +164,7 @@
                                     {{ $reminder->text }}
                                 </div>
                                 <div class="item-buttons">
-                                    <button class="ico-btn check-btn @if($reminder->checked) {{ 'check-btn-checked' }} @endif"></button>
+                                    <button class="ico-btn check-btn @if($reminder->checked) {{ 'check-btn-checked' }} @endif" title="пометить как выполненное"></button>
                                     <button class="ico-btn edit-btn edit-reminder-btn"></button>
                                     <button class="ico-btn delete-btn delete-reminder-btn"></button>
                                     <span class="ico-btn caret-btn"></span>

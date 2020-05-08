@@ -66,7 +66,8 @@
                                 <div class="line">
                                     <div class="label">Текст*:</div>
                                     <div class="labeled">
-                                        <textarea name="text" placeholder="Текст напоминания" required maxlength="255"></textarea>
+                                        <textarea name="text" placeholder="Текст напоминания" required
+                                                  maxlength="255"></textarea>
                                     </div>
                                 </div>
                                 <div class="line">
@@ -130,8 +131,39 @@
                         <div class="label">
                         </div>
                         <div class="labeled">
-                            <input id="auto_mating_notify_inp" type="checkbox" name="auto_mating_reminders" @if($user->auto_mating_reminders) {{ 'checked' }} @endif>
-                            <label for="auto_mating_notify_inp">Автоматически помечать поле для добавления стандартных напоминаний</label>
+                            <input id="auto_mating_reminders_inp" type="checkbox"
+                                   name="auto_mating_reminders" @if($user->auto_mating_reminders) {{ 'checked' }} @endif>
+                            <label for="auto_mating_reminders_inp">Автоматически помечать поле для добавления
+                                стандартных напоминаний</label>
+                        </div>
+                    </div>
+                    <div class="line checkbox-line">
+                        <div class="label">
+                        </div>
+                        <div class="labeled">
+                            <input id="auto_delete_reminders_inp" name="auto_delete_reminders"
+                                   type="checkbox" @if($user->days_for_delete_reminders != 0) {{ 'checked' }} @endif>
+                            <label for="auto_delete_reminders_inp">Автоматически удалять старые напоминания</label>
+                        </div>
+                    </div>
+                    <div class="line checkbox-line auto-delete-reminder disabled">
+                        <div class="label">
+                        </div>
+                        <div class="labeled">
+                            <input id="delete_only_checked_reminders_inp" name="delete_only_checked_reminders"
+                                   type="checkbox" @if($user->delete_only_checked_reminders) {{ 'checked' }} @endif>
+                            <label for="delete_only_checked_reminders_inp">Удалять только выполненные
+                                напоминания</label>
+                        </div>
+                    </div>
+                    <div class="line auto-delete-reminder disabled">
+                        <div class="label">
+                            Удалять через (дней):
+                        </div>
+                        <div class="labeled">
+                            <input type="number" min="1" max="30000" required name="days_for_delete_reminders"
+                                   placeholder="кол-во дней"
+                                   value="@if($user->days_for_delete_reminders != 0){{ $user->days_for_delete_reminders }}@endif">
                         </div>
                     </div>
                     <div class="line">
@@ -209,4 +241,5 @@
     </div>
     <script src="{{ asset('application/js/themes.js') }}"></script>
     <script src="{{ asset('application/js/default-mating-notify.js') }}"></script>
+    <script src="{{ asset('application/js/auto-delete-reminders.js') }}"></script>
 @endsection
