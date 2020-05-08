@@ -319,7 +319,7 @@ a {
     position: absolute;
     top: 6px;
     right: 10px;
-    width: 100px;
+    //width: 100px;
 }
 
 .ico-btn {
@@ -331,6 +331,7 @@ a {
     padding: 0;
     text-align: center;
     display: inline-block;
+    vertical-align: middle;
 
     &::before {
         font-family: icomoon;
@@ -349,6 +350,7 @@ a {
     }
 
     &.caret-btn {
+        margin-top: -1px;
         &::before {
             content: "\e909";
         }
@@ -360,6 +362,40 @@ a {
             color: #444;
             font-size: 18px;
         }
+    }
+
+    &.check-btn {
+        margin-top: 1px;
+        &::before {
+            content: "\ea53";
+        }
+
+        &.check-btn-checked {
+            &::before {
+                content: "\ea52";
+            }
+        }
+
+        &.check-btn-load {
+            animation: rotation 1s infinite linear;
+            position: relative;
+            &::before {
+                content: "\e97b";
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+            }
+        }
+    }
+}
+
+@keyframes rotation {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
     }
 }
 

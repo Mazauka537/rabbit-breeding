@@ -77,4 +77,18 @@ class ReminderController extends Controller
 
         return back();
     }
+
+    function checkReminder($id) {
+        $reminder = Auth::user()->reminders()->findOrFail($id);
+        $reminder->checked = true;
+        $reminder->save();
+        return response('+');
+    }
+
+    function uncheckReminder($id) {
+        $reminder = Auth::user()->reminders()->findOrFail($id);
+        $reminder->checked = false;
+        $reminder->save();
+        return response('+');
+    }
 }

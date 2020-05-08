@@ -1,10 +1,10 @@
 @font-face {
   font-family: 'icomoon';
-  src:  url('icomoon.eot?tm5x49');
-  src:  url('icomoon.eot?tm5x49#iefix') format('embedded-opentype'),
-    url('icomoon.ttf?tm5x49') format('truetype'),
-    url('icomoon.woff?tm5x49') format('woff'),
-    url('icomoon.svg?tm5x49#icomoon') format('svg');
+  src:  url('icomoon.eot?1uyb0z');
+  src:  url('icomoon.eot?1uyb0z#iefix') format('embedded-opentype'),
+    url('icomoon.ttf?1uyb0z') format('truetype'),
+    url('icomoon.woff?1uyb0z') format('woff'),
+    url('icomoon.svg?1uyb0z#icomoon') format('svg');
   font-weight: normal;
   font-style: normal;
   font-display: block;
@@ -61,6 +61,9 @@
 .icon-calendar:before {
   content: "\e953";
 }
+.icon-spinner2:before {
+  content: "\e97b";
+}
 .icon-bin:before {
   content: "\e9ac";
 }
@@ -72,4 +75,13 @@
 }
 .icon-info:before {
   content: "\ea0c";
+}
+.icon-checkmark:before {
+  content: "\ea10";
+}
+.icon-checkbox-checked:before {
+  content: "\ea52";
+}
+.icon-checkbox-unchecked:before {
+  content: "\ea53";
 }

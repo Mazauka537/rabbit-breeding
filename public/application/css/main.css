@@ -221,8 +221,7 @@ a {
 .item-buttons {
   position: absolute;
   top: 6px;
-  right: 10px;
-  width: 100px; }
+  right: 10px; }
 
 .ico-btn {
   background: none;
@@ -232,20 +231,43 @@ a {
   width: 30px;
   padding: 0;
   text-align: center;
-  display: inline-block; }
+  display: inline-block;
+  vertical-align: middle; }
   .ico-btn::before {
     font-family: icomoon; }
   .ico-btn.edit-btn::before {
     content: "\e908"; }
   .ico-btn.delete-btn::before {
     content: "\e9ac"; }
-  .ico-btn.caret-btn::before {
-    content: "\e909"; }
+  .ico-btn.caret-btn {
+    margin-top: -1px; }
+    .ico-btn.caret-btn::before {
+      content: "\e909"; }
   .ico-btn.plus-btn::before {
     content: "\ea0a";
     color: #444;
     font-size: 18px; }
+  .ico-btn.check-btn {
+    margin-top: 1px; }
+    .ico-btn.check-btn::before {
+      content: "\ea53"; }
+    .ico-btn.check-btn.check-btn-checked::before {
+      content: "\ea52"; }
+    .ico-btn.check-btn.check-btn-load {
+      animation: rotation 1s infinite linear;
+      position: relative; }
+      .ico-btn.check-btn.check-btn-load::before {
+        content: "\e97b";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%); }
 
+@keyframes rotation {
+  from {
+    transform: rotate(0deg); }
+  to {
+    transform: rotate(360deg); } }
 .item__head {
   padding: 10px 15px;
   background: #fff;

@@ -153,10 +153,6 @@
                             <div class="item__date">
                                 @if($reminder->date == date('Y-m-d'))
                                     {{ 'сегодня' }}
-                                @elseif($reminder->date == date('Y-m-d', time() - 3600 * 24))
-                                    {{ 'вчера' }}
-                                @elseif($reminder->date == date('Y-m-d', time() + 3600 * 24))
-                                    {{ 'завтра' }}
                                 @else
                                     {{ date("d.m.Y", strtotime($reminder->date)) }}
                                 @endif
@@ -168,6 +164,7 @@
                                     {{ $reminder->text }}
                                 </div>
                                 <div class="item-buttons">
+                                    <button class="ico-btn check-btn @if($reminder->checked) {{ 'check-btn-checked' }} @endif"></button>
                                     <button class="ico-btn edit-btn edit-reminder-btn"></button>
                                     <button class="ico-btn delete-btn delete-reminder-btn"></button>
                                     <span class="ico-btn caret-btn"></span>
@@ -223,5 +220,6 @@
         <script src="{{ asset('application/js/modal-add-item.js') }}"></script>
         <script src="{{ asset('application/js/edit-item-reminder.js') }}"></script>
         <script src="{{ asset('application/js/delete-item-reminder.js') }}"></script>
+        <script src="{{ asset('application/js/check-reminder.js') }}"></script>
     </div>
 @endsection
