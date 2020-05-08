@@ -4,9 +4,11 @@ namespace App\Http\Controllers\Application;
 
 use App\Http\Requests\Application\ReminderAddRequest;
 use App\Reminder;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use function Sodium\add;
 
 class ReminderController extends Controller
 {
@@ -27,9 +29,26 @@ class ReminderController extends Controller
         return $theme;
     }
 
+    private function todayFirst($reminders)
+    {
+        $result = new Collection();
+        foreach ($reminders as $reminder) {
+            if ($reminder->date == date('Y-m-d')) {
+                $result[] = $reminder;
+            }
+        }
+        foreach ($reminders as $reminder) {
+            if ($reminder->date != date('Y-m-d')) {
+                $result[] = $reminder;
+            }
+        }
+        return $result;
+    }
+
     function getReminders()
     {
         $reminders = Auth::user()->reminders()->orderByDesc('date')->with('rabbit')->get();
+        $reminders = $this->todayFirst($reminders);
         $rabbits = Auth::user()->rabbits;
         $theme = $this->getThemePath();
 
@@ -78,14 +97,16 @@ class ReminderController extends Controller
         return back();
     }
 
-    function checkReminder($id) {
+    function checkReminder($id)
+    {
         $reminder = Auth::user()->reminders()->findOrFail($id);
         $reminder->checked = true;
         $reminder->save();
         return response('+');
     }
 
-    function uncheckReminder($id) {
+    function uncheckReminder($id)
+    {
         $reminder = Auth::user()->reminders()->findOrFail($id);
         $reminder->checked = false;
         $reminder->save();
