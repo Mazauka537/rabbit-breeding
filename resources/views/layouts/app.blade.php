@@ -23,7 +23,7 @@
             <div class="header__inner">
                 <div class="left">
                     <div class="logo">
-                        <a href="#">
+                        <a href="{{ route('rabbits') }}">
                             <img src="{{ asset('images/logo-long.png') }}" alt="logo">
                         </a>
                     </div>

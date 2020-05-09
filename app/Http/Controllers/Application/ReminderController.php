@@ -47,6 +47,19 @@ class ReminderController extends Controller
 
     function getReminders()
     {
+        $user = Auth::user();
+        if ($user->days_for_delete_reminders != 0) {
+            if ($user->delete_only_checked_reminders) {
+                $user->reminders()
+                    ->where('checked', true)
+                    ->whereDate('date', '<=', date('Y-m-d', time() - $user->days_for_delete_reminders * 3600 * 24))
+                    ->delete();
+            } else {
+                $user->reminders()
+                    ->whereDate('date', '<=', date('Y-m-d', time() - $user->days_for_delete_reminders * 3600 * 24))
+                    ->delete();
+            }
+        }
         $reminders = Auth::user()->reminders()->orderByDesc('date')->with('rabbit')->get();
         $reminders = $this->todayFirst($reminders);
         $rabbits = Auth::user()->rabbits;
@@ -113,7 +126,8 @@ class ReminderController extends Controller
         return response('+');
     }
 
-    function getTodayCount() {
+    function getTodayCount()
+    {
         $count = Auth::user()->reminders()->where('date', date('Y-m-d'))->where('checked', false)->count();
         return response($count);
     }
