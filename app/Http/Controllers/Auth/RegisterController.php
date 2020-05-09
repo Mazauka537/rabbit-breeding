@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\DefaultNotify;
 use App\User;
 use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
@@ -22,6 +24,37 @@ class RegisterController extends Controller
     */
 
     use RegistersUsers;
+
+    /**
+     * The user has been registered.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  mixed  $user
+     * @return mixed
+     */
+    protected function registered(Request $request, $user)
+    {
+        $defaultReminders = [
+            [
+                'user_id' => $user->id,
+                'days' => '7',
+                'text' => 'Контрольная случка',
+            ], [
+                'user_id' => $user->id,
+                'days' => '15',
+                'text' => 'Проверка беременности',
+            ], [
+                'user_id' => $user->id,
+                'days' => '25',
+                'text' => 'Выставление маточника',
+            ], [
+                'user_id' => $user->id,
+                'days' => '45',
+                'text' => 'Повторная случка',
+            ]
+        ];
+        DefaultNotify::insert($defaultReminders);
+    }
 
     /**
      * Where to redirect users after registration.
