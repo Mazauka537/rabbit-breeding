@@ -8,5 +8,10 @@
 
 input[type="submit"], input[type="button"], select[type="submit"], select[type="button"], textarea[type="submit"], textarea[type="button"], option[type="submit"], option[type="button"], button[type="submit"], button[type="button"], .input-label[type="submit"], .input-label[type="button"] {
   background: #E768AD; }
+  input[type="submit"]:hover, input[type="button"]:hover, select[type="submit"]:hover, select[type="button"]:hover, textarea[type="submit"]:hover, textarea[type="button"]:hover, option[type="submit"]:hover, option[type="button"]:hover, button[type="submit"]:hover, button[type="button"]:hover, .input-label[type="submit"]:hover, .input-label[type="button"]:hover {
+    background: #e759af; }
+
+.icon .notify_counter {
+  background: #e759af; }
 
 /*# sourceMappingURL=theme-2.css.map */

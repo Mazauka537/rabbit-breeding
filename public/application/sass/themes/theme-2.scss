@@ -1,6 +1,7 @@
 $color1: #E768AD;
 $color2: #E73A98;
 $color3: #CE0071;
+$color4: #e759af;
 
 .header {
     background: $color2;
@@ -19,5 +20,15 @@ $color3: #CE0071;
 input, select, textarea, option, button, .input-label {
     &[type="submit"], &[type="button"] {
         background: $color1;
+
+        &:hover {
+            background: $color4;
+        }
+    }
+}
+
+.icon {
+    .notify_counter {
+        background: $color4;
     }
 }
