@@ -196,11 +196,11 @@
 
         <div class="wrapper settings__wrapper">
             <div class="head">
-                Стандартные напоминания
+                Стандартные напоминания при случке
             </div>
             <div class="form">
                 <div class="center-form">
-                    @if(!empty($defaultNotifies))
+                    @if(count($defaultNotifies) != 0)
                         @foreach($defaultNotifies as $dnotify)
                             <div class="line" data-id="{{ $dnotify->id }}">
                                 <div class="label">
@@ -224,7 +224,14 @@
                             </div>
                         @endforeach
                     @else
-
+                        <div class="line">
+                            <div class="label"></div>
+                            <div class="labeled">
+                                <div class="input-label text-center" style="padding-right: 9px">
+                                    (Пусто)
+                                </div>
+                            </div>
+                        </div>
                     @endif
                     <div class="line">
                         <div class="label"></div>

@@ -114,21 +114,25 @@ class MatingController extends Controller
         if ($request->notify) {
             $notifiesData = [];
             $defaultNotifies = Auth::user()->defaultNotifies;
-            foreach ($defaultNotifies as $dnotify) {
-                $notifiesData[] = [
-                    'user_id' => Auth::id(),
-                    'text' => $dnotify->text,
-                    'date' => date('Y-m-d', $dnotify->days * 60 * 60 * 24 + time()),
-                    'rabbit_id' => $request->female,
-                ];
+            if (count($defaultNotifies) != 0) {
+                foreach ($defaultNotifies as $dnotify) {
+                    $notifiesData[] = [
+                        'user_id' => Auth::id(),
+                        'text' => $dnotify->text,
+                        'date' => date('Y-m-d', $dnotify->days * 60 * 60 * 24 + time()),
+                        'rabbit_id' => $request->female,
+                    ];
+                }
+                Reminder::insert($notifiesData);
+                $messages[] = 'Напоминания успешно добавлены.';
+            } else {
+                $errors[] = 'Стандартные напоминания не назначены. Вы можете назначить их в настройках.';
             }
-            Reminder::insert($notifiesData);
-            $messages[] = 'Напоминания успешно добавлены.';
         }
 
         session()->flash('message', $messages);
 
-        return back();
+        return back()->withErrors($errors);
     }
 
     function editMating(MatingAddRequest $request, $id)

@@ -16,7 +16,6 @@ function getTodayReminders() {
                 div.innerHTML = data;
                 icoLinkReminder.append(div);
             }
-            console.log(data);
         }
     });
 }
