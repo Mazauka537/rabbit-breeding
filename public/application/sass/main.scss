@@ -372,6 +372,7 @@ a {
 
     &.caret-btn {
         margin-top: -1px;
+
         &::before {
             content: "\e909";
         }
@@ -387,6 +388,7 @@ a {
 
     &.check-btn {
         margin-top: 1px;
+
         &::before {
             content: "\ea53";
         }
@@ -400,6 +402,7 @@ a {
         &.check-btn-load {
             animation: rotation 1s infinite linear;
             position: relative;
+
             &::before {
                 content: "\e97b";
                 position: absolute;
@@ -480,6 +483,7 @@ a {
 
 //left-center-form//
 
+$label-width: 120px;
 .left-form, .center-form, .small-form {
 
     .line {
@@ -498,14 +502,14 @@ a {
 
     .label {
         float: left;
-        width: 120px;
+        width: $label-width;
         font-size: 13px;
         color: #999;
         min-height: 5px;
     }
 
     .labeled {
-        overflow: hidden;
+        margin-left: $label-width;
         font-size: 14px;
         color: #555;
         position: relative;
@@ -569,6 +573,7 @@ a {
     }
 
     .labeled {
+        margin-left: 140px;
         padding-left: 8px;
     }
 }
@@ -586,6 +591,7 @@ a {
     }
 
     .labeled {
+        margin-left: 70px;
         text-align: right;
         padding-left: 5px;
         color: #888;
@@ -818,6 +824,31 @@ a {
     border: $main-border;
     background: #FFF;
     border-radius: 5px;
+
+    .head {
+        position: relative;
+
+        .explain {
+            height: auto;
+            vertical-align: middle;
+            position: relative;
+
+            .explain-box {
+                width: 270px;
+                top: 15px;
+            }
+
+            &:hover {
+                .explain-box {
+                    display: block;
+                }
+            }
+
+            &::before {
+                color: #333;
+            }
+        }
+    }
 }
 
 .photo {
@@ -875,9 +906,6 @@ a {
         font-size: 20px;
         border-bottom: $main-border;
         padding: 5px 10px 15px 10px;
-        overflow: hidden;
-        white-space: nowrap;
-        text-overflow: ellipsis;
     }
 
     .input-label {
@@ -919,12 +947,28 @@ a {
         .label {
             color: #ccc;
         }
+
         .labeled {
             color: #ccc;
 
             input {
                 color: #ccc;
+
                 &::placeholder {
+                    color: #ccc;
+                }
+            }
+
+            .explain {
+
+                &:hover {
+                    & ~ .explain-box {
+                        display: none;
+                    }
+                }
+
+                &::before {
+                    cursor: default;
                     color: #ccc;
                 }
             }
@@ -1167,6 +1211,52 @@ textarea {
 
 [disabled] {
     color: #aaa;
+}
+
+//explain//
+
+.explain {
+    display: inline-block;
+    height: 30px;
+    width: 20px;
+    vertical-align: bottom;
+    position: relative;
+
+    &::before {
+        content: "\e90b";
+        font-family: icomoon;
+        font-size: 18px;
+        position: absolute;
+        top: 50%;
+        left: 0;
+        transform: translateY(-50%);
+        cursor: pointer;
+        color: #999;
+    }
+
+    &:hover {
+
+        & ~ .explain-box {
+            display: block;
+        }
+    }
+}
+
+.explain-box {
+    position: absolute;
+    top: 28px;
+    background: #fff;
+    box-shadow: 0 0 5px -2px #666;
+    padding: 10px;
+    border-radius: 5px;
+    max-width: 270px;
+    width: 100%;
+    transition: all 1s ease 1s;
+    display: none;
+    color: #666;
+    font-size: 13px;
+    right: 0;
+    z-index: 1;
 }
 
 //show//

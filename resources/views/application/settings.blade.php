@@ -112,7 +112,7 @@
             <form action="{{ route('saveSettings', $user->id) }}" method="post"
                   enctype="multipart/form-data" class="form">
                 @csrf
-                <input type="hidden" name="theme" id="theme-name-inp" value="{{ $user->theme }}">
+                <input type="hidden" name="theme" id="theme-name-inp" value="{{ $user->theme ?? 'default' }}">
                 <div class="center-form">
                     <div class="line">
                         <div class="label">Ваше имя:</div>
@@ -164,6 +164,10 @@
                             <input type="number" min="1" max="30000" required name="days_for_delete_reminders"
                                    placeholder="кол-во дней"
                                    value="@if($user->days_for_delete_reminders != 0){{ $user->days_for_delete_reminders }}@endif">
+                            <span class="explain"></span>
+                            <span class="explain-box">
+                                Число дней через которое напоминания будут автоматически удаляться.<br>К примеру, если напоминание назначено на 15 августа, а значение данного поля равно 6, то напоминание будет удалено 21 августа.
+                            </span>
                         </div>
                     </div>
                     <div class="line">
@@ -194,9 +198,14 @@
             </form>
         </div>
 
-        <div class="wrapper settings__wrapper">
+        <div class="wrapper settings__wrapper" id="default_reminders">
             <div class="head">
-                Стандартные напоминания при случке
+                Стандартные напоминания
+                <span class="explain">
+                    <span class="explain-box">
+                        Напоминания, добавляемые автоматически при добавлении случки.
+                    </span>
+                </span>
             </div>
             <div class="form">
                 <div class="center-form">

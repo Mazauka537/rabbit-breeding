@@ -44,15 +44,13 @@ class SettingController extends Controller
 
         $themeList = implode(',', $themeList);
 
-//        dd($request);
-
         $this->validate($request, [
             'name' => 'required|string|max:255',
             'pagination' => 'required|integer|min:1|max:200',
             'theme' => 'required|string|in:default,' . $themeList,
             'days_for_delete_reminders' => 'required_if:auto_delete_reminders,on|integer|min:1|max:30000',
         ], [
-            'theme.required' => 'Выпрана несуществующая тема.',
+            'theme.required' => 'Выбрана несуществующая тема.',
             'required' => 'Поле :attribute обязательно для заполнения.',
             'integer' => 'Значение поля :attribute должно быть числом.',
             'name.max' => 'Длина поля :attribute не должна превышать :max символов.',
