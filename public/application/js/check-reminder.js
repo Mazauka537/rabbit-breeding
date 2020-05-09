@@ -24,6 +24,7 @@ function checkReminder(e) {
                     switchToChecked(inp);
                 else
                     switchToUnchecked(inp);
+                getTodayReminders();
             },
             error: function (data) {
                 switchToUnchecked(inp);
@@ -44,6 +45,7 @@ function checkReminder(e) {
                     switchToUnchecked(inp);
                 else
                     switchToChecked(inp);
+                getTodayReminders();
             },
             error: function (data) {
                 switchToChecked(inp);

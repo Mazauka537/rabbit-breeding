@@ -164,10 +164,26 @@ a {
     .aside__inner .nav li a span {
       vertical-align: middle; }
 
-.icon::before {
-  font-family: 'icomoon';
-  font-size: 24px;
-  padding-right: 15px; }
+.icon {
+  position: relative; }
+  .icon .notify_counter {
+    position: absolute;
+    border-radius: 1000px;
+    border: 1.2px solid #f6f6f6;
+    color: #fff;
+    background: #5DE100;
+    height: 17px;
+    min-width: 17px;
+    font-family: sans-serif;
+    font-size: 12px;
+    padding: 1px 4px;
+    top: -18px;
+    left: 15px;
+    text-align: center; }
+  .icon::before {
+    font-family: 'icomoon';
+    font-size: 24px;
+    padding-right: 15px; }
 
 .main {
   height: 100%;

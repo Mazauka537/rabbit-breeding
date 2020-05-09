@@ -57,6 +57,7 @@ Route::group(['middleware' => 'auth', 'namespace' => 'Application', 'prefix' => 
     Route::post('reminder/delete/{id}', 'ReminderController@deleteReminder')->where('id', '[0-9]+')->name('deleteReminder');
     Route::post('reminder/{id}/check', 'ReminderController@checkReminder')->where('id', '[0-9]+')->name('checkReminder');
     Route::post('reminder/{id}/uncheck', 'ReminderController@uncheckReminder')->where('id', '[0-9]+')->name('uncheckReminder');
+    Route::post('reminder/get-today-count', 'ReminderController@getTodayCount')->name('getTodayCount');
 
     Route::get('settings', 'SettingController@getSettings')->name('settings');
     Route::post('settings/save', 'SettingController@saveSettings')->name('saveSettings');

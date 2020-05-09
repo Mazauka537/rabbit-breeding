@@ -112,4 +112,9 @@ class ReminderController extends Controller
         $reminder->save();
         return response('+');
     }
+
+    function getTodayCount() {
+        $count = Auth::user()->reminders()->where('date', date('Y-m-d'))->where('checked', false)->count();
+        return response($count);
+    }
 }

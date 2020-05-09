@@ -92,7 +92,7 @@
                                 </li>
                                 <li>
                                     <a href="{{ route('reminders') }}">
-                                        <span class="icon icon-bell"></span>
+                                        <span class="icon icon-bell" id="ico-link-reminders"></span>
                                         <span>Напоминания</span>
                                     </a>
                                 </li>
@@ -118,5 +118,6 @@
 <script src="{{ asset('application/js/main.js') }}"></script>
 <script src="{{ asset('application/js/pagination.js') }}"></script>
 <script src="{{ asset('application/js/sorting.js') }}"></script>
+<script src="{{ asset('application/js/get-today-reminders.js') }}"></script>
 </body>
 </html>
