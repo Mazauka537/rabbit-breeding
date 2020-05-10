@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class UpdateRabbitsTable3 extends Migration
+class UpdateCagesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,8 @@ class UpdateRabbitsTable3 extends Migration
      */
     public function up()
     {
-        Schema::table('rabbits', function (Blueprint $table) {
-            $table->string('status', 32)->nullable()->default(null)->change();
+        Schema::table('cages', function (Blueprint $table) {
+            $table->unsignedBigInteger('cage_group_id')->nullable()->after('desc');
         });
     }
 
@@ -25,8 +25,8 @@ class UpdateRabbitsTable3 extends Migration
      */
     public function down()
     {
-        Schema::table('rabbits', function (Blueprint $table) {
-            $table->string('status', 32)->default('none')->change();
+        Schema::table('cages', function (Blueprint $table) {
+            $table->dropColumn('cage_group_id');
         });
     }
 }

@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\Application;
 
 use App\Cage;
+use App\CageGroup;
 use App\Http\Requests\Application\CageAddRequest;
+use App\Http\Requests\Application\CageGroupAddRequest;
 use App\Http\Requests\Application\CagesGetRequest;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -38,6 +40,7 @@ class CageController extends Controller
         $sortby = $request->sortby;
 
         $cages = Auth::user()->cages()
+            ->where('cage_group_id', null)
             ->with('rabbits')
             ->orderByDesc($sortby)
             ->offset($perPage * abs($request->page - 1))
@@ -46,7 +49,9 @@ class CageController extends Controller
 
         $theme = $this->getThemePath();
 
-        return view('application.cages', compact(['cages', 'theme', 'pageCount', 'sortby']));
+        $cageGroups = Auth::user()->cageGroups()->with('cages.rabbits')->with('rabbits')->get();
+
+        return view('application.cages', compact(['cages', 'theme', 'pageCount', 'sortby', 'cageGroups']));
     }
 
     function addCage(CageAddRequest $request)
@@ -56,6 +61,7 @@ class CageController extends Controller
         $cage->name = $request->name;
         $cage->desc = $request->desc;
         $cage->user_id = Auth::id();
+        $cage->cage_group_id = $request->group ?? null;
 
         $cage->save();
 
@@ -64,18 +70,48 @@ class CageController extends Controller
         return redirect(route('cages'));
     }
 
+    function addCageGroup(CageGroupAddRequest $request)
+    {
+        $cageGroup = new CageGroup();
+
+        $cageGroup->name = $request->name;
+        $cageGroup->desc = $request->desc;
+        $cageGroup->user_id = Auth::id();
+
+        $cageGroup->save();
+
+        session()->flash('message', ['Новая группа клеток успешно добавлена.']);
+
+        return back();
+    }
+
     function editCage(CageAddRequest $request, $id)
     {
         $cage = Auth::user()->cages()->findOrFail($id);
 
         $cage->name = $request->name;
         $cage->desc = $request->desc;
+        $cage->cage_group_id = $request->group ?? null;
 
         $cage->save();
 
         session()->flash('message', ['Клетка успешно изменена.']);
 
-        return redirect(route('cages'));
+        return back();
+    }
+
+    function editCageGroup(CageGroupAddRequest $request, $id)
+    {
+        $cageGroup = Auth::user()->cageGroups()->findOrFail($id);
+
+        $cageGroup->name = $request->name;
+        $cageGroup->desc = $request->desc;
+
+        $cageGroup->save();
+
+        session()->flash('message', ['Группа клеток успешно изменена.']);
+
+        return back();
     }
 
     function deleteCage($id)
@@ -88,6 +124,19 @@ class CageController extends Controller
 
         session()->flash('message', ['Клетка "' . $cage->name . '" успешно удалена.']);
 
-        return redirect(route('cages'));
+        return back();
+    }
+
+    function deleteCageGroup($id)
+    {
+        $cageGroup = Auth::user()->cageGroups()->findOrFail($id);
+
+        $cageGroup->rabbits()->update(['cage_id' => null]);
+
+        $cageGroup->delete();
+
+        session()->flash('message', ['Группа клеток "' . $cageGroup->name . '" успешно удалена.']);
+
+        return back();
     }
 }

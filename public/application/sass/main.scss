@@ -394,6 +394,12 @@ a {
         }
     }
 
+    &.small-plus-btn {
+        &::before {
+            content: "\ea0a";
+        }
+    }
+
     &.check-btn {
         margin-top: 1px;
 
@@ -465,11 +471,20 @@ a {
     border-top: none;
 }
 
+.inner-item__wrapper:first-child .item__head {
+    border-top: none !important;
+}
+
+.inner-item__wrapper .item__head {
+    border-top: 1px solid #f1f1f1 !important;
+    font-size: 14px;
+}
+
 .item__body {
     display: none;
     padding: 10px 15px;
     background: #f9f9f9;
-    box-shadow: inset 0 0 6px -3px #555;
+    box-shadow: inset 0 0 6px -5px #333;
 }
 
 .none-items {
@@ -1377,6 +1392,10 @@ textarea {
 
 .pt-20 {
     padding-top: 20px !important;
+}
+
+.pb-10 {
+    padding-bottom: 10px !important;
 }
 
 //mw-270//

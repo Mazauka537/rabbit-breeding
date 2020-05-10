@@ -87,4 +87,9 @@ class User extends Authenticatable
     {
         return $this->hasMany('App\DefaultNotify');
     }
+
+    public function cageGroups()
+    {
+        return $this->hasMany('App\CageGroup');
+    }
 }

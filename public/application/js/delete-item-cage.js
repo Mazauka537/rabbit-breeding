@@ -1,21 +1,21 @@
-let deleteButtons = document.getElementsByClassName('delete-btn');
+let deleteCageButtons = document.getElementsByClassName('delete-cage-btn');
 
-for (let i = 0; i < deleteButtons.length; i++) {
-    deleteButtons[i].addEventListener('click', showDeleteItemModal);
+for (let i = 0; i < deleteCageButtons.length; i++) {
+    deleteCageButtons[i].addEventListener('click', showDeleteCageModal);
 }
 
-document.getElementById('modal-delete-item-form').addEventListener('click', hideDeleteItemModal);
-document.getElementById('delete-item-form').onclick = function (e) {
+document.getElementById('modal-delete-cage-form').addEventListener('click', hideDeleteCageModal);
+document.getElementById('delete-cage-form').onclick = function (e) {
     e.stopPropagation();
 }
-document.getElementById('btn-close-delete-item-form').addEventListener('click', hideDeleteItemModal);
-document.getElementById('canсel-delete-cage').addEventListener('click', hideDeleteItemModal);
+document.getElementById('btn-close-delete-cage-form').addEventListener('click', hideDeleteCageModal);
+document.getElementById('canсel-delete-cage').addEventListener('click', hideDeleteCageModal);
 
-function showDeleteItemModal(e) {
+function showDeleteCageModal(e) {
     e.stopPropagation();
 
     let item = this.closest('.item');
-    let modal = document.getElementById('modal-delete-item-form');
+    let modal = document.getElementById('modal-delete-cage-form');
     let form = modal.querySelector('form');
 
     modal.querySelector('#cage-name-delete').innerHTML = item.querySelector('.item__name').innerHTML.trim();
@@ -28,6 +28,6 @@ function showDeleteItemModal(e) {
     modal.classList.add('show');
 }
 
-function hideDeleteItemModal() {
-    document.getElementById('modal-delete-item-form').classList.remove('show');
+function hideDeleteCageModal() {
+    document.getElementById('modal-delete-cage-form').classList.remove('show');
 }

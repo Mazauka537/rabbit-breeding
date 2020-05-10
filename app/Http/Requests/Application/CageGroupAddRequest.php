@@ -5,7 +5,7 @@ namespace App\Http\Requests\Application;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Auth;
 
-class CageAddRequest extends FormRequest
+class CageGroupAddRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -26,8 +26,7 @@ class CageAddRequest extends FormRequest
     {
         return [
             'name' => 'required|string|max:64',
-            'desc' => 'nullable|string|max:255',
-            'group' => 'nullable|integer|exists:cage_groups,id,user_id,' . Auth::id(),
+            'desc' => 'nullable|string|max:255'
         ];
     }
 
@@ -36,8 +35,6 @@ class CageAddRequest extends FormRequest
         return [
             'required' => 'Поле :attribute обязательно для заполнения.',
             'max' => 'Длина поля :attribute не должна превышать :max символа.',
-            'group.integer' => 'Такой группы не существует.',
-            'group.exists' => 'Такой группы не существует.',
         ];
     }
 

@@ -35,6 +35,9 @@ Route::group(['middleware' => 'auth', 'namespace' => 'Application', 'prefix' => 
     Route::post('cage/add', 'CageController@addCage')->name('addCage');
     Route::post('cage/edit/{id}', 'CageController@editCage')->where('id', '[0-9]+')->name('editCage');
     Route::post('cage/delete/{id}', 'CageController@deleteCage')->where('id', '[0-9]+')->name('deleteCage');
+    Route::post('cageGroup/add', 'CageController@addCageGroup')->name('addCageGroup');
+    Route::post('cageGroup/edit/{id}', 'CageController@editCageGroup')->where('id', '[0-9]+')->name('editCageGroup');
+    Route::post('cageGroup/delete/{id}', 'CageController@deleteCageGroup')->where('id', '[0-9]+')->name('deleteCageGroup');
 
     Route::get('breeds', 'BreedController@getBreeds')->name('breeds');
     Route::post('breed/add', 'BreedController@addBreed')->name('addBreed');
