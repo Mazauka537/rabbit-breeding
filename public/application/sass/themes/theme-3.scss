@@ -32,3 +32,9 @@ input, select, textarea, option, button, .input-label {
         background: $color4;
     }
 }
+
+.item__date {
+    &.today {
+        color: $color2;
+    }
+}

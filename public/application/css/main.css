@@ -230,6 +230,10 @@ a {
   background: #fff;
   border-radius: 5px;
   border-top: 1px solid #e8e8e8; }
+  .item__date.past {
+    color: #ef9b9b; }
+  .item__date.today {
+    color: #5DE100; }
 
 .item {
   position: relative; }

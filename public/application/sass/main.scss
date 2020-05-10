@@ -330,6 +330,14 @@ a {
     background: #fff;
     border-radius: 5px;
     border-top: $main-border;
+
+    &.past {
+        color: #ef9b9b;
+    }
+
+    &.today {
+        color: $color2;
+    }
 }
 
 .item {

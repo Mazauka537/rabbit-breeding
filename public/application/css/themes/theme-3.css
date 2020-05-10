@@ -14,4 +14,7 @@ input[type="submit"], input[type="button"], select[type="submit"], select[type="
 .icon .notify_counter {
   background: #3e68ff; }
 
+.item__date.today {
+  color: #4135FF; }
+
 /*# sourceMappingURL=theme-3.css.map */

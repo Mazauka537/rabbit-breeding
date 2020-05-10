@@ -150,7 +150,11 @@
                 @foreach($reminders as $key => $reminder)
                     <div class="item__wrapper">
                         @if($key != 0 && $reminder->date != $reminders[$key - 1]->date || $key == 0)
-                            <div class="item__date">
+                            <div class="item__date @if(strtotime($reminder->date) < strtotime(date('Y-m-d')))
+                                {{ 'past' }}
+                                @elseif($reminder->date == date('Y-m-d'))
+                                {{ 'today' }}
+                                @endif">
                                 @if($reminder->date == date('Y-m-d'))
                                     {{ 'сегодня' }}
                                 @else
@@ -164,7 +168,9 @@
                                     {{ $reminder->text }}
                                 </div>
                                 <div class="item-buttons">
-                                    <button class="ico-btn check-btn @if($reminder->checked) {{ 'check-btn-checked' }} @endif" title="пометить как выполненное"></button>
+                                    <button
+                                        class="ico-btn check-btn @if($reminder->checked) {{ 'check-btn-checked' }} @endif"
+                                        title="пометить как выполненное"></button>
                                     <button class="ico-btn edit-btn edit-reminder-btn"></button>
                                     <button class="ico-btn delete-btn delete-reminder-btn"></button>
                                     <span class="ico-btn caret-btn"></span>
