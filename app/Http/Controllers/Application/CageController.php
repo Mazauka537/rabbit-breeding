@@ -39,6 +39,8 @@ class CageController extends Controller
         if (!$request->has('sortby')) $request->sortby = 'created_at';
         $sortby = $request->sortby;
 
+        $cageGroups = Auth::user()->cageGroups()->with('cages.rabbits')->with('rabbits')->get();
+
         $cages = Auth::user()->cages()
             ->where('cage_group_id', null)
             ->with('rabbits')
@@ -49,7 +51,6 @@ class CageController extends Controller
 
         $theme = $this->getThemePath();
 
-        $cageGroups = Auth::user()->cageGroups()->with('cages.rabbits')->with('rabbits')->get();
 
         return view('application.cages', compact(['cages', 'theme', 'pageCount', 'sortby', 'cageGroups']));
     }

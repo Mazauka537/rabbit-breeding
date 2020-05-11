@@ -287,7 +287,7 @@
                     <div class="item__wrapper">
                         <div class="item" data-id="{{ $cageGroup->id }}">
                             <div class="item__head">
-                                <div class="item__name">
+                                <div class="item__name item-icon ico-cage-group">
                                     {{ $cageGroup->name }}
                                 </div>
                                 <div class="item-buttons">
@@ -334,6 +334,10 @@
                                                 {{ '(нет кроликов)' }}
                                             @endif
                                         </div>
+                                    </div>
+                                    <div class="line">
+                                        <div class="label">Клетки:</div>
+                                        <div class="labeled"></div>
                                     </div>
                                 </div>
                                 <div class="items">
@@ -408,7 +412,7 @@
                     <div class="item__wrapper">
                         <div class="item" data-id="{{ $cage->id }}">
                             <div class="item__head">
-                                <div class="item__name">
+                                <div class="item__name item-icon ico-cage">
                                     {{ $cage->name }}
                                 </div>
                                 <div class="item-buttons">

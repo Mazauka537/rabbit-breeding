@@ -496,6 +496,30 @@ a {
     padding: 7px;
 }
 
+.item-icon {
+    position: relative;
+    padding-left: 30px;
+
+    &::before {
+        display: block;
+        font-family: icomoon;
+        position: absolute;
+        left: 0;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+
+    &.ico-cage-group::before {
+        content: "\e90c";
+        font-size: 20px;
+    }
+
+    &.ico-cage::before {
+        left: 1.5px;
+        content: "\e901";
+    }
+}
+
 //txt-clip//
 
 .txt-clip {
