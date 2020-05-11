@@ -117,7 +117,7 @@ class RabbitController extends Controller
             ->limit($perPage)
             ->get();
 
-        $cages = Auth::user()->cages;
+        $cages = Auth::user()->cages()->with('cageGroup')->orderByDesc('cage_group_id')->get();
         $breeds = Auth::user()->breeds;
         foreach ($rabbits as $rabbit) {
 //            $rabbit->breed_name = ($breed = $this->findItemById($breeds, $rabbit->breed_id)) ? $breed->name : null;
@@ -130,7 +130,7 @@ class RabbitController extends Controller
 
     function getRabbit($id)
     {
-        $cages = Auth::user()->cages;
+        $cages = Auth::user()->cages()->with('cageGroup')->orderByDesc('cage_group_id')->get();
         $breeds = Auth::user()->breeds;
         $rabbits = Auth::user()->rabbits;
 

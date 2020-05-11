@@ -80,7 +80,13 @@
                                             <option value=""></option>
                                             @foreach($cages as $cage)
                                                 <option
-                                                    value="{{ $cage->id }}" @if($cage->id == old('cage')) {{ 'selected' }} @endif>{{ $cage->name }}</option>
+                                                    value="{{ $cage->id }}" @if($cage->id == old('cage')) {{ 'selected' }} @endif>
+                                                    @if(!empty($cage->cageGroup))
+                                                        {{ $cage->cageGroup->name . ' → ' . $cage->name }}
+                                                    @else
+                                                        {{ $cage->name }}
+                                                    @endif
+                                                </option>
                                             @endforeach
                                         </select>
                                     </div>

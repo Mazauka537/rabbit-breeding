@@ -435,7 +435,15 @@
                                         <div class="label">Клетка:</div>
                                         <div class="labeled">
                                             <div class="labeled__inner">
-                                                {{ $rabbit->cage->name ?? '(нет)' }}
+                                                @if(!empty($rabbit->cage))
+                                                    @if(!empty($rabbit->cage->cageGroup))
+                                                        {{ $rabbit->cage->cageGroup->name . ' → ' . $rabbit->cage->name }}
+                                                    @else
+                                                        {{ $rabbit->cage->name }}
+                                                    @endif
+                                                @else
+                                                    {{ '(нет)' }}
+                                                @endif
                                             </div>
                                         </div>
                                     </div>
@@ -534,7 +542,13 @@
                                                     <option value=""></option>
                                                     @foreach($cages as $cage)
                                                         <option
-                                                            value="{{ $cage->id }}" @if($cage->id == $rabbit->cage_id) {{ 'selected' }} @endif>{{ $cage->name }}</option>
+                                                            value="{{ $cage->id }}" @if($cage->id == $rabbit->cage_id) {{ 'selected' }} @endif>
+                                                            @if(!empty($cage->cageGroup))
+                                                                {{ $cage->cageGroup->name . ' → ' . $cage->name }}
+                                                            @else
+                                                                {{ $cage->name }}
+                                                            @endif
+                                                        </option>
                                                     @endforeach
                                                 </select>
                                             </div>
