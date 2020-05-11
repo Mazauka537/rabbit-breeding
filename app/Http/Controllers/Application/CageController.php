@@ -44,14 +44,6 @@ class CageController extends Controller
         if (!$request->has('sortby')) $request->sortby = 'name';
         $sortby = $request->sortby;
 
-//        $cageGroups = Auth::user()->cageGroups()
-//            ->with('cages.rabbits')
-//            ->orderBy($sortby)
-//            ->with('rabbits')
-//            ->offset($perPage * abs($request->page - 1))
-//            ->limit($perPage)
-//            ->get();
-
         $cageGroupsAll = Auth::user()->cageGroups()
             ->with('cages.rabbits')
             ->with('rabbits')
@@ -73,14 +65,21 @@ class CageController extends Controller
                 ->where('cage_group_id', null)
                 ->with('rabbits')
                 ->orderBy($sortby)
-                ->offset( (abs($request->page - 1) * $perPage) - $cageGroupCount )
+                ->offset((abs($request->page - 1) * $perPage) - $cageGroupCount)
                 ->limit($perPage - count($cageGroups))
                 ->get();
         }
 
         $theme = $this->getThemePath();
 
-        return view('application.cages', compact(['cages', 'theme', 'pageCount', 'sortby', 'cageGroups', 'cageGroupsAll']));
+        $pagination = [];
+        $pagination['pageCount'] = $pageCount;
+        $pagination['currentPage'] = $request->page;
+        $pagination['route'] = route('cages');
+        $pagination['arguments'] = '&sortby=' . $sortby;
+        $pagination['size'] = 3;
+
+        return view('application.cages', compact(['cages', 'theme', 'pagination', 'sortby', 'cageGroups', 'cageGroupsAll']));
     }
 
     function addCage(CageAddRequest $request)

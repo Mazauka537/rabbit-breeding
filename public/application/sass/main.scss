@@ -1516,7 +1516,7 @@ textarea {
         border: $main-border;
         border-radius: 3px;
         background: #fff;
-        padding: 6px 10px;
+        padding: 6px 7px;
         font-size: 14px;
         color: #444;
 
@@ -1534,6 +1534,18 @@ textarea {
             &:hover {
                 border-color: #e8e8e8;
             }
+        }
+    }
+}
+
+.page-overflow {
+
+    a {
+        padding: 6px 3px;
+        cursor: default;
+
+        &:hover {
+            border-color: #e8e8e8;
         }
     }
 }

@@ -1004,7 +1004,7 @@ textarea {
     border: 1px solid #e8e8e8;
     border-radius: 3px;
     background: #fff;
-    padding: 6px 10px;
+    padding: 6px 7px;
     font-size: 14px;
     color: #444; }
     .page-button a:hover {
@@ -1014,6 +1014,12 @@ textarea {
     cursor: default; }
     .page-button-0 a:hover, .page-button.disabled a:hover {
       border-color: #e8e8e8; }
+
+.page-overflow a {
+  padding: 6px 3px;
+  cursor: default; }
+  .page-overflow a:hover {
+    border-color: #e8e8e8; }
 
 .scrollbar-macosx > .scroll-element .scroll-bar {
   background-color: #85878a; }
