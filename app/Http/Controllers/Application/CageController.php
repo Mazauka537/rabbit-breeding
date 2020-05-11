@@ -7,6 +7,7 @@ use App\CageGroup;
 use App\Http\Requests\Application\CageAddRequest;
 use App\Http\Requests\Application\CageGroupAddRequest;
 use App\Http\Requests\Application\CagesGetRequest;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
@@ -33,26 +34,53 @@ class CageController extends Controller
     function getCages(CagesGetRequest $request)
     {
         $perPage = Auth::user()->pagination;
-        $pageCount = ceil(Auth::user()->cages()->count() / $perPage);
+
+        $cageCount = Auth::user()->cages()->where('cage_group_id', null)->count();
+        $cageGroupCount = Auth::user()->cageGroups()->count();
+
+        $pageCount = ceil(($cageCount + $cageGroupCount) / $perPage);
 
         if (!$request->has('page')) $request->page = 1;
-        if (!$request->has('sortby')) $request->sortby = 'created_at';
+        if (!$request->has('sortby')) $request->sortby = 'name';
         $sortby = $request->sortby;
 
-        $cageGroups = Auth::user()->cageGroups()->with('cages.rabbits')->with('rabbits')->get();
+//        $cageGroups = Auth::user()->cageGroups()
+//            ->with('cages.rabbits')
+//            ->orderBy($sortby)
+//            ->with('rabbits')
+//            ->offset($perPage * abs($request->page - 1))
+//            ->limit($perPage)
+//            ->get();
 
-        $cages = Auth::user()->cages()
-            ->where('cage_group_id', null)
+        $cageGroupsAll = Auth::user()->cageGroups()
+            ->with('cages.rabbits')
             ->with('rabbits')
-            ->orderByDesc($sortby)
-            ->offset($perPage * abs($request->page - 1))
-            ->limit($perPage)
+            ->orderBy($sortby)
             ->get();
+
+        $cageGroups = new Collection();
+        for ($i = $perPage * abs($request->page - 1); $i < $perPage * abs($request->page - 1) + $perPage; $i++) {
+            if ($i < count($cageGroupsAll))
+                $cageGroups[] = $cageGroupsAll[$i];
+            else
+                break;
+        }
+
+        $cages = new Collection();
+
+        if (count($cageGroups) < $perPage) {
+            $cages = Auth::user()->cages()
+                ->where('cage_group_id', null)
+                ->with('rabbits')
+                ->orderBy($sortby)
+                ->offset( (abs($request->page - 1) * $perPage) - $cageGroupCount )
+                ->limit($perPage - count($cageGroups))
+                ->get();
+        }
 
         $theme = $this->getThemePath();
 
-
-        return view('application.cages', compact(['cages', 'theme', 'pageCount', 'sortby', 'cageGroups']));
+        return view('application.cages', compact(['cages', 'theme', 'pageCount', 'sortby', 'cageGroups', 'cageGroupsAll']));
     }
 
     function addCage(CageAddRequest $request)

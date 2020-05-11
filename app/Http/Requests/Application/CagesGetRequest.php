@@ -28,7 +28,12 @@ class CagesGetRequest extends FormRequest
     {
         $perPage = Auth::user()->pagination;
 
-        $pageCount = ceil(Auth::user()->cages()->count() / $perPage);
+        $cageCount = Auth::user()->cages()->count();
+        $cageGroupCount = Auth::user()->cageGroups()->count();
+
+        $pageCount = ceil(($cageCount + $cageGroupCount) / $perPage);
+
+//        $pageCount = ceil(Auth::user()->cages()->count() / $perPage);
 
         return [
             'page' => 'nullable|integer|min:1|max:' . $pageCount,

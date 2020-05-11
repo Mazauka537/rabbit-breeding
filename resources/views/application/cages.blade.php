@@ -60,7 +60,7 @@
                                     <div class="labeled">
                                         <select name="group">
                                             <option value="">(нет)</option>
-                                            @foreach($cageGroups as $cageGroup)
+                                            @foreach($cageGroupsAll as $cageGroup)
                                                 <option value="{{ $cageGroup->id }}">{{ $cageGroup->name }}</option>
                                             @endforeach
                                         </select>
@@ -149,7 +149,7 @@
                                     <div class="labeled">
                                         <select name="group">
                                             <option value="">(нет)</option>
-                                            @foreach($cageGroups as $cageGroup)
+                                            @foreach($cageGroupsAll as $cageGroup)
                                                 <option value="{{ $cageGroup->id }}">{{ $cageGroup->name }}</option>
                                             @endforeach
                                         </select>
