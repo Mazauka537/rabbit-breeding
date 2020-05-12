@@ -21,13 +21,13 @@
                                     <div class="label">Название*:</div>
                                     <div class="labeled">
                                         <input type="text" name="name" placeholder="Название породы"
-                                               value="{{ old('name') }}" required>
+                                               value="{{ old('name') }}" required maxlength="64">
                                     </div>
                                 </div>
                                 <div class="line">
                                     <div class="label">Описание:</div>
                                     <div class="labeled">
-                                        <textarea name="desc" maxlength="255"
+                                        <textarea name="desc" maxlength="1024"
                                                   placeholder="Дополнительная информация о данной породе">{{ old('desc') }}</textarea>
                                     </div>
                                 </div>
@@ -59,13 +59,13 @@
                                 <div class="line">
                                     <div class="label">Название*:</div>
                                     <div class="labeled">
-                                        <input type="text" name="name" placeholder="Название породы" value="" required>
+                                        <input type="text" name="name" placeholder="Название породы" value="" required maxlength="64">
                                     </div>
                                 </div>
                                 <div class="line">
                                     <div class="label">Описание:</div>
                                     <div class="labeled">
-                                        <textarea name="desc" maxlength="255"
+                                        <textarea name="desc" maxlength="1024"
                                                   placeholder="Дополнительная информация о данной породе"></textarea>
                                     </div>
                                 </div>

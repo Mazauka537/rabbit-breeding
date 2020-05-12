@@ -197,7 +197,7 @@
                                         Название*:
                                     </div>
                                     <div class="labeled">
-                                        <input type="text" name="name" value="{{ old('name') }}" required>
+                                        <input type="text" name="name" value="{{ old('name') }}" required maxlength="64">
                                     </div>
                                 </div>
                                 <div class="line">
@@ -246,7 +246,7 @@
                                         Название*:
                                     </div>
                                     <div class="labeled">
-                                        <input type="text" name="name" value="" required>
+                                        <input type="text" name="name" value="" required maxlength="64">
                                     </div>
                                 </div>
                                 <div class="line">
@@ -467,7 +467,7 @@
                                             <div class="label">Имя*:</div>
                                             <div class="labeled">
                                                 <input type="text" name="name" placeholder="Имя кролика"
-                                                       value="{{ $rabbit->name }}" required>
+                                                       value="{{ $rabbit->name }}" required maxlength="64">
                                             </div>
                                         </div>
                                         <div class="line">
@@ -556,7 +556,7 @@
                                         <div class="line">
                                             <div class="label">Описание:</div>
                                             <div class="labeled">
-                                                <textarea name="desc" maxlength="255"
+                                                <textarea name="desc" maxlength="1024"
                                                           placeholder="Дополнительная информация о кролике">{{ $rabbit->desc ?? '' }}</textarea>
                                             </div>
                                         </div>

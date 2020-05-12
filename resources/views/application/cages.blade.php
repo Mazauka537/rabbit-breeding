@@ -45,13 +45,13 @@
                                     <div class="label">Название*:</div>
                                     <div class="labeled">
                                         <input type="text" name="name" placeholder="Название или номер клетки"
-                                               value="{{ old('name') }}" required>
+                                               value="{{ old('name') }}" required maxlength="64">
                                     </div>
                                 </div>
                                 <div class="line">
                                     <div class="label">Описание:</div>
                                     <div class="labeled">
-                                        <textarea name="desc" maxlength="255"
+                                        <textarea name="desc" maxlength="1024"
                                                   placeholder="Дополнительная информация о данной клетке">{{ old('desc') }}</textarea>
                                     </div>
                                 </div>
@@ -95,13 +95,13 @@
                                     <div class="label">Название*:</div>
                                     <div class="labeled">
                                         <input type="text" name="name" placeholder="Название или группы"
-                                               value="{{ old('name') }}" required>
+                                               value="{{ old('name') }}" required maxlength="64">
                                     </div>
                                 </div>
                                 <div class="line">
                                     <div class="label">Описание:</div>
                                     <div class="labeled">
-                                        <textarea name="desc" maxlength="255"
+                                        <textarea name="desc" maxlength="1024"
                                                   placeholder="Дополнительная информация о данной группе клеток">{{ old('desc') }}</textarea>
                                     </div>
                                 </div>
@@ -134,13 +134,13 @@
                                     <div class="label">Название*:</div>
                                     <div class="labeled">
                                         <input type="text" name="name" placeholder="Название или номер клетки" value=""
-                                               required>
+                                               required maxlength="64">
                                     </div>
                                 </div>
                                 <div class="line">
                                     <div class="label">Описание:</div>
                                     <div class="labeled">
-                                        <textarea name="desc" maxlength="255"
+                                        <textarea name="desc" maxlength="1024"
                                                   placeholder="Дополнительная информация о данной клетке"></textarea>
                                     </div>
                                 </div>
@@ -184,13 +184,13 @@
                                     <div class="label">Название*:</div>
                                     <div class="labeled">
                                         <input type="text" name="name" placeholder="Название группы" value=""
-                                               required>
+                                               required maxlength="64">
                                     </div>
                                 </div>
                                 <div class="line">
                                     <div class="label">Описание:</div>
                                     <div class="labeled">
-                                        <textarea name="desc" maxlength="255"
+                                        <textarea name="desc" maxlength="1024"
                                                   placeholder="Дополнительная информация о данной группе клеток"></textarea>
                                     </div>
                                 </div>

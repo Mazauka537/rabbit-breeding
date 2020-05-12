@@ -26,7 +26,7 @@ class BreedAddRequest extends FormRequest
     {
         return [
             'name' => 'required|string|max:64',
-            'desc' => 'nullable|string|max:255'
+            'desc' => 'nullable|string|max:1024'
         ];
     }
 

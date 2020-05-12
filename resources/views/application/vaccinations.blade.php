@@ -22,7 +22,7 @@
                                         Название*:
                                     </div>
                                     <div class="labeled">
-                                        <input type="text" name="name" value="{{ old('name') }}" required>
+                                        <input type="text" name="name" value="{{ old('name') }}" required maxlength="64">
                                     </div>
                                 </div>
                                 <div class="line">
@@ -87,7 +87,7 @@
                                         Название*:
                                     </div>
                                     <div class="labeled">
-                                        <input type="text" name="name" value="" required>
+                                        <input type="text" name="name" value="" required maxlength="64">
                                     </div>
                                 </div>
                                 <div class="line">

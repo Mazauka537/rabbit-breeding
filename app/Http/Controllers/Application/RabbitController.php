@@ -214,17 +214,6 @@ class RabbitController extends Controller
 
     function editRabbit(RabbitAddRequest $request, $id)
     {
-        $this->validate($request, [
-            'name' => 'required|string|max:64',
-            'gender' => 'required|in:f,m',
-            'status' => 'required_if:gender,f|in:young,ready,pregnant,lactation,rest',
-            'photo' => 'nullable|image',
-            'breed' => 'nullable|integer|exists:breeds,id,user_id,' . Auth::id(),
-            'cage' => 'nullable|integer|exists:cages,id,user_id,' . Auth::id(),
-            'birthday' => 'nullable|date',
-            'desc' => 'nullable|string|max:255',
-        ]);
-
         $rabbit = Auth::user()->rabbits()->findOrFail($id);
 
         $rabbit->name = $request->name;

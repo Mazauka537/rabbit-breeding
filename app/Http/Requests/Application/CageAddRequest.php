@@ -26,7 +26,7 @@ class CageAddRequest extends FormRequest
     {
         return [
             'name' => 'required|string|max:64',
-            'desc' => 'nullable|string|max:255',
+            'desc' => 'nullable|string|max:1024',
             'group' => 'nullable|integer|exists:cage_groups,id,user_id,' . Auth::id(),
         ];
     }

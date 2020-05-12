@@ -32,7 +32,7 @@ class RabbitAddRequest extends FormRequest
             'breed' => 'nullable|integer|exists:breeds,id,user_id,' . Auth::id(),
             'cage' => 'nullable|integer|exists:cages,id,user_id,' . Auth::id(),
             'birthday' => 'nullable|date',
-            'desc' => 'nullable|string|max:255',
+            'desc' => 'nullable|string|max:1024',
         ];
     }
 
