@@ -404,9 +404,9 @@
                                         <div class="labeled">
                                             <div class="labeled__inner">
                                                 @if($rabbit->gender == 'f')
-                                                    <span class="female">{{ 'Женский' }}</span>
+                                                    <span class="female">{{ 'Самка' }}</span>
                                                 @else
-                                                    <span class="male">{{ 'Мужской' }}</span>
+                                                    <span class="male">{{ 'Самец' }}</span>
                                                 @endif
                                             </div>
                                         </div>
@@ -477,11 +477,11 @@
                                                     <option value=""></option>
                                                     <option
                                                         value="f" @if($rabbit->gender == 'f') {{ 'selected' }} @endif>
-                                                        Ж
+                                                        Самка
                                                     </option>
                                                     <option
                                                         value="m" @if($rabbit->gender == 'm') {{ 'selected' }} @endif>
-                                                        М
+                                                        Самец
                                                     </option>
                                                 </select>
                                             </div>

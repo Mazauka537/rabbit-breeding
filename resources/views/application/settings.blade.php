@@ -21,14 +21,14 @@
                                     <div class="label">Дни*:</div>
                                     <div class="labeled">
                                         <input type="number" name="days" value="{{ old('days') }}"
-                                               placeholder="Через сколько дней напомнить?" required maxlength="255">
+                                               placeholder="Через сколько дней напомнить?" required>
                                     </div>
                                 </div>
                                 <div class="line">
                                     <div class="label">Текст*:</div>
                                     <div class="labeled">
                                         <textarea name="text" placeholder="Текст напоминания"
-                                                  required>{{ old('text') }}</textarea>
+                                                  required maxlength="255">{{ old('text') }}</textarea>
                                     </div>
                                 </div>
                                 <div class="line">
@@ -117,13 +117,13 @@
                     <div class="line">
                         <div class="label">Ваше имя:</div>
                         <div class="labeled">
-                            <input type="text" name="name" value="{{ $user->name }}" required>
+                            <input type="text" name="name" value="{{ $user->name }}" required maxlength="64">
                         </div>
                     </div>
                     <div class="line">
                         <div class="label">Записей на странице:</div>
                         <div class="labeled">
-                            <input type="number" name="pagination" min="1" max="200" value="{{ $user->pagination }}"
+                            <input type="number" name="pagination" min="1" max="90" value="{{ $user->pagination }}"
                                    required>
                         </div>
                     </div>

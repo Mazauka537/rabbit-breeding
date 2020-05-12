@@ -29,9 +29,9 @@
                                     <div class="labeled">
                                         <select name="gender" id="inp-rabbit-gender" required>
                                             <option value=""></option>
-                                            <option value="m" @if(old('gender') == 'm') {{ "selected" }} @endif>М
+                                            <option value="m" @if(old('gender') == 'm') {{ "selected" }} @endif>Самец
                                             </option>
-                                            <option value="f" @if(old('gender') == 'f') {{ "selected" }} @endif>Ж
+                                            <option value="f" @if(old('gender') == 'f') {{ "selected" }} @endif>Самка
                                             </option>
                                         </select>
                                     </div>

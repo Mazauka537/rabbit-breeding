@@ -26,7 +26,7 @@
                 </div>
                 <div class="right">
                     <div class="user">
-                        <a class="user-name" id="user-name">
+                        <a class="user-name txt-clip" id="user-name">
                             {{ \Illuminate\Support\Facades\Auth::user()->name }}
                         </a>
                         <ul class="user-list none-height">
