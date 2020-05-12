@@ -26,12 +26,8 @@ class MatingsGetRequest extends FormRequest
      */
     public function rules()
     {
-        $perPage = Auth::user()->pagination;
-
-        $pageCount = ceil(Auth::user()->matings()->count() / $perPage);
-
         return [
-            'page' => 'nullable|integer|min:1|max:' . $pageCount,
+            'page' => 'nullable|integer|min:1',
             'sortby' => 'nullable|string|in:date,date_birth,female_name,male_name,child_count,alive_count,desc',
         ];
     }
@@ -41,7 +37,6 @@ class MatingsGetRequest extends FormRequest
         return [
             'integer' => 'Значение параметра :attribute должно быть числом',
             'min' => 'Минимальная страница - :min',
-            'max' => 'Максимальная страница - :max',
             'in' => 'Неизвестный параметр сортировки',
         ];
     }

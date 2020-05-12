@@ -1,4 +1,4 @@
-<div class="pagination__wrapper" id="pagination" data-last-page="{{ $pageCount ?? 1 }}">
+<div class="pagination__wrapper">
     <div class="pagination">
 
         <div class="side-pagination-buttons">

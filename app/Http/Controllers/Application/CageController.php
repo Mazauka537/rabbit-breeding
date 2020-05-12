@@ -41,6 +41,7 @@ class CageController extends Controller
         $pageCount = ceil(($cageCount + $cageGroupCount) / $perPage);
 
         if (!$request->has('page')) $request->page = 1;
+        if ($request->page > $pageCount) return back()->withErrors(['Страница ' . $request->page . ' не найдена.']);
         if (!$request->has('sortby')) $request->sortby = 'name';
         $sortby = $request->sortby;
 
@@ -77,7 +78,7 @@ class CageController extends Controller
         $pagination['currentPage'] = $request->page;
         $pagination['route'] = route('cages');
         $pagination['arguments'] = '&sortby=' . $sortby;
-        $pagination['size'] = 3;
+        $pagination['size'] = config('app.pagination_size');
 
         return view('application.cages', compact(['cages', 'theme', 'pagination', 'sortby', 'cageGroups', 'cageGroupsAll']));
     }

@@ -26,15 +26,8 @@ class CagesGetRequest extends FormRequest
      */
     public function rules()
     {
-        $perPage = Auth::user()->pagination;
-
-        $cageCount = Auth::user()->cages()->where('cage_group_id', null)->count();
-        $cageGroupCount = Auth::user()->cageGroups()->count();
-
-        $pageCount = ceil(($cageCount + $cageGroupCount) / $perPage);
-
         return [
-            'page' => 'nullable|integer|min:1|max:' . $pageCount,
+            'page' => 'nullable|integer|min:1',
             'sortby' => 'nullable|string|in:created_at,name,desc',
         ];
     }
@@ -44,7 +37,6 @@ class CagesGetRequest extends FormRequest
         return [
             'integer' => 'Значение параметра :attribute должно быть числом',
             'min' => 'Минимальная страница - :min',
-            'max' => 'Максимальная страница - :max',
             'in' => 'Неизвестный параметр сортировки',
         ];
     }

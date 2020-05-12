@@ -54,6 +54,7 @@ class MatingController extends Controller
         $pageCount = ceil(Auth::user()->matings()->count() / $perPage);
 
         if (!$request->has('page')) $request->page = 1;
+        if ($request->page > $pageCount) return back()->withErrors(['Страница ' . $request->page . ' не найдена.']);
         if (!$request->has('sortby')) $request->sortby = 'date';
         $sortby = $request->sortby;
 
@@ -75,7 +76,14 @@ class MatingController extends Controller
             $rabbit->status_value = $this->setRabbitStatus($rabbit->status);
         }
 
-        return view('application.matings', compact(['matings', 'rabbits', 'pageCount', 'theme', 'sortby', 'user']));
+        $pagination = [];
+        $pagination['pageCount'] = $pageCount;
+        $pagination['currentPage'] = $request->page;
+        $pagination['route'] = route('matings');
+        $pagination['arguments'] = '&sortby=' . $sortby;
+        $pagination['size'] = config('app.pagination_size');
+
+        return view('application.matings', compact(['matings', 'rabbits', 'pagination', 'theme', 'sortby', 'user']));
     }
 
     function addMating(MatingAddRequest $request)

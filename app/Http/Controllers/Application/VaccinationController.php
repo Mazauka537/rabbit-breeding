@@ -34,6 +34,7 @@ class VaccinationController extends Controller
         $pageCount = ceil(Auth::user()->vaccinations()->count() / $perPage);
 
         if (!$request->has('page')) $request->page = 1;
+        if ($request->page > $pageCount) return back()->withErrors(['Страница ' . $request->page . ' не найдена.']);
         if (!$request->has('sortby')) $request->sortby = 'date';
         $sortby = $request->sortby;
 
@@ -47,7 +48,14 @@ class VaccinationController extends Controller
         $rabbits = Auth::user()->rabbits;
         $theme = $this->getThemePath();
 
-        return view('application.vaccinations', compact(['vaccinations', 'rabbits', 'theme', 'pageCount', 'sortby']));
+        $pagination = [];
+        $pagination['pageCount'] = $pageCount;
+        $pagination['currentPage'] = $request->page;
+        $pagination['route'] = route('vaccinations');
+        $pagination['arguments'] = '&sortby=' . $sortby;
+        $pagination['size'] = config('app.pagination_size');
+
+        return view('application.vaccinations', compact(['vaccinations', 'rabbits', 'theme', 'pagination', 'sortby']));
     }
 
     function addVaccination(VaccinationAddRequest $request)

@@ -26,12 +26,8 @@ class BreedsGetRequest extends FormRequest
      */
     public function rules()
     {
-        $perPage = Auth::user()->pagination;
-
-        $pageCount = ceil(Auth::user()->breeds()->count() / $perPage);
-
         return [
-            'page' => 'nullable|integer|min:1|max:' . $pageCount,
+            'page' => 'nullable|integer|min:1',
             'sortby' => 'nullable|string|in:created_at,name,desc',
         ];
     }
@@ -41,7 +37,6 @@ class BreedsGetRequest extends FormRequest
         return [
             'integer' => 'Значение параметра :attribute должно быть числом',
             'min' => 'Минимальная страница - :min',
-            'max' => 'Максимальная страница - :max',
             'in' => 'Неизвестный параметр сортировки',
         ];
     }

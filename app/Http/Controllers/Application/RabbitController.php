@@ -105,14 +105,15 @@ class RabbitController extends Controller
         $pageCount = ceil(Auth::user()->rabbits()->count() / $perPage);
 
         if (!$request->has('page')) $request->page = 1;
-        if (!$request->has('sortby')) $request->sortby = 'created_at';
+        if ($request->page > $pageCount) return back()->withErrors(['Страница ' . $request->page . ' не найдена.']);
+        if (!$request->has('sortby')) $request->sortby = 'name';
         $sortby = $request->sortby;
 
         $rabbits = Auth::user()->rabbits()
             ->leftJoin('cages', 'rabbits.cage_id', '=', 'cages.id')
             ->leftJoin('breeds', 'rabbits.breed_id', '=', 'breeds.id')
             ->select('rabbits.*', 'cages.name as cage_name', 'breeds.name as breed_name')
-            ->orderByDesc($sortby)
+            ->orderBy($sortby)
             ->offset($perPage * abs($request->page - 1))
             ->limit($perPage)
             ->get();
@@ -120,12 +121,18 @@ class RabbitController extends Controller
         $cages = Auth::user()->cages()->with('cageGroup')->orderByDesc('cage_group_id')->get();
         $breeds = Auth::user()->breeds;
         foreach ($rabbits as $rabbit) {
-//            $rabbit->breed_name = ($breed = $this->findItemById($breeds, $rabbit->breed_id)) ? $breed->name : null;
             $rabbit->status_value = $this->setRabbitStatus($rabbit->status);
         }
         $theme = $this->getThemePath();
 
-        return view('application.rabbits', compact(['rabbits', 'cages', 'breeds', 'theme', 'pageCount', 'sortby']));
+        $pagination = [];
+        $pagination['pageCount'] = $pageCount;
+        $pagination['currentPage'] = $request->page;
+        $pagination['route'] = route('rabbits');
+        $pagination['arguments'] = '&sortby=' . $sortby;
+        $pagination['size'] = config('app.pagination_size');
+
+        return view('application.rabbits', compact(['rabbits', 'cages', 'breeds', 'theme', 'pagination', 'sortby']));
     }
 
     function getRabbit($id)

@@ -35,7 +35,8 @@ class BreedController extends Controller
         $pageCount = ceil(Auth::user()->breeds()->count() / $perPage);
 
         if (!$request->has('page')) $request->page = 1;
-        if (!$request->has('sortby')) $request->sortby = 'created_at';
+        if ($request->page > $pageCount) return back()->withErrors(['Страница ' . $request->page . ' не найдена.']);
+        if (!$request->has('sortby')) $request->sortby = 'name';
         $sortby = $request->sortby;
 
         $breeds = Auth::user()->breeds()
@@ -47,7 +48,14 @@ class BreedController extends Controller
 
         $theme = $this->getThemePath();
 
-        return view('application.breeds', compact(['breeds', 'theme', 'pageCount', 'sortby']));
+        $pagination = [];
+        $pagination['pageCount'] = $pageCount;
+        $pagination['currentPage'] = $request->page;
+        $pagination['route'] = route('breeds');
+        $pagination['arguments'] = '&sortby=' . $sortby;
+        $pagination['size'] = config('app.pagination_size');
+
+        return view('application.breeds', compact(['breeds', 'theme', 'pagination', 'sortby']));
     }
 
     function addBreed(BreedAddRequest $request)
