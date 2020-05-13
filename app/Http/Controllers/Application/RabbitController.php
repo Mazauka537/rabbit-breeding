@@ -9,6 +9,7 @@ use App\Rabbit;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 
 class RabbitController extends Controller
@@ -110,11 +111,17 @@ class RabbitController extends Controller
         if (!$request->has('sortby')) $request->sortby = 'name';
         $sortby = $request->sortby;
 
+        $sortbyA = 'rabbits.' . $sortby;
+        if ($sortby == 'breed_name')
+            $sortbyA = 'breeds.name';
+        if ($sortby == 'cage_name')
+            $sortbyA = 'cages.name';
+
         $rabbits = Auth::user()->rabbits()
             ->leftJoin('cages', 'rabbits.cage_id', '=', 'cages.id')
             ->leftJoin('breeds', 'rabbits.breed_id', '=', 'breeds.id')
             ->select('rabbits.*', 'cages.name as cage_name', 'breeds.name as breed_name')
-            ->orderBy($sortby)
+            ->orderBy(DB::raw('ISNULL('.$sortbyA.'), '.$sortbyA), 'ASC')
             ->offset($perPage * abs($request->page - 1))
             ->limit($perPage)
             ->get();

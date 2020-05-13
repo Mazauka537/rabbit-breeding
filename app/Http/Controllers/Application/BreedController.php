@@ -8,6 +8,7 @@ use App\Http\Requests\Application\BreedsGetRequest;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
 
 class BreedController extends Controller
@@ -40,9 +41,11 @@ class BreedController extends Controller
         if (!$request->has('sortby')) $request->sortby = 'name';
         $sortby = $request->sortby;
 
+        $sortbyA = 'breeds.' . $sortby;
+
         $breeds = Auth::user()->breeds()
             ->with('rabbits')
-            ->orderBy($sortby)
+            ->orderBy(DB::raw('ISNULL(' . $sortbyA . '), ' . $sortbyA), 'ASC')
             ->offset($perPage * abs($request->page - 1))
             ->limit($perPage)
             ->get();
@@ -71,7 +74,7 @@ class BreedController extends Controller
 
         session()->flash('message', ['Новая порода успешно добавлена.']);
 
-        return redirect(route('breeds'));
+        return back();
     }
 
     function editBreed(BreedAddRequest $request, $id)
@@ -85,7 +88,7 @@ class BreedController extends Controller
 
         session()->flash('message', ['Порода успешно изменена.']);
 
-        return redirect(route('breeds'));
+        return back();
     }
 
     function deleteBreed($id)
