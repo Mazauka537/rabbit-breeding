@@ -113,9 +113,9 @@ class RabbitController extends Controller
 
         $sortbyA = 'rabbits.' . $sortby;
         if ($sortby == 'breed_name')
-            $sortbyA = 'breeds.name';
+            $sortbyA = 'breed_name';
         if ($sortby == 'cage_name')
-            $sortbyA = 'cages.name';
+            $sortbyA = 'cage_name';
 
         $rabbits = Auth::user()->rabbits()
             ->leftJoin('cages', 'rabbits.cage_id', '=', 'cages.id')

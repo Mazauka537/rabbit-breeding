@@ -171,7 +171,7 @@
                                     <div class="label">Примечания:</div>
                                     <div class="labeled">
                                         <textarea name="desc" maxlength="255"
-                                                  placeholder="Дополнительная информация:"></textarea>
+                                                  placeholder="Дополнительная информация"></textarea>
                                     </div>
                                 </div>
                                 <div class="line">

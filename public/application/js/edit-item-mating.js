@@ -36,6 +36,9 @@ function showEditItemModal(e) {
     form.elements.alive_count.value = item.querySelector('#mating-item-alive_count').innerHTML.trim();
     form.elements.desc.value = item.querySelector('#mating-item-desc').innerHTML.trim();
 
+    if (form.elements.desc.value === '(нет)')
+        form.elements.desc.value = '';
+
     let action = form.action.split('/');
     action[action.length - 1] = item.dataset.id;
     form.action = action.join('/');

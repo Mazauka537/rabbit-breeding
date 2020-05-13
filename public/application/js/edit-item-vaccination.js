@@ -29,6 +29,9 @@ function showEditVaccinationModal(e) {
     form.elements.date.value = item.querySelector('#vaccination-item-date').dataset.date.trim();
     form.elements.desc.value = item.querySelector('#vaccination-item-desc').innerHTML.trim();
 
+    if (form.elements.desc.value === '(нет)')
+        form.elements.desc.value = '';
+
     let action = form.action.split('/');
     action[action.length - 1] = item.dataset.id;
     form.action = action.join('/');

@@ -21,6 +21,9 @@ function showEditCageGroupModal(e) {
     form.elements.name.value = item.querySelector('.item__name').innerHTML.trim();
     form.elements.desc.value = item.querySelector('#desc').innerHTML.trim();
 
+    if (form.elements.desc.value === '(нет описания)')
+        form.elements.desc.value = '';
+
     let action = form.action.split('/');
     action[action.length - 1] = item.dataset.id;
     form.action = action.join('/');

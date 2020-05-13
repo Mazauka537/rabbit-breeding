@@ -10,6 +10,7 @@ use App\Reminder;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
 
 class MatingController extends Controller
@@ -59,6 +60,12 @@ class MatingController extends Controller
         if (!$request->has('sortby')) $request->sortby = 'date';
         $sortby = $request->sortby;
 
+        $sortbyA = 'matings.' . $sortby;
+        if ($sortby == 'female_name')
+            $sortbyA = 'female_rabbits.name';
+        if ($sortby == 'male_name')
+            $sortbyA = 'male_rabbits.name';
+
         $theme = $this->getThemePath();
 
         $matings = Auth::user()
@@ -66,7 +73,7 @@ class MatingController extends Controller
             ->leftJoin('rabbits as female_rabbits', 'matings.female_id', '=', 'female_rabbits.id')
             ->leftJoin('rabbits as male_rabbits', 'matings.male_id', '=', 'male_rabbits.id')
             ->select('matings.*', 'female_rabbits.name as female_name', 'male_rabbits.name as male_name')
-            ->orderByDesc($sortby)
+            ->orderBy(DB::raw('ISNULL('.$sortbyA.'), '.$sortbyA), 'ASC')
             ->offset($perPage * abs($request->page - 1))
             ->limit($perPage)
             ->get();

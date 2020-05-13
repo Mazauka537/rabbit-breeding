@@ -21,6 +21,9 @@ function showEditCageModal(e) {
     form.elements.name.value = item.querySelector('.item__name').innerHTML.trim();
     form.elements.desc.value = item.querySelector('#desc').innerHTML.trim();
 
+    if (form.elements.desc.value === '(нет описания)')
+        form.elements.desc.value = '';
+
     if (item.dataset.groupId)
         for (let i = 0; i < form.elements.group.options.length; i++) {
             if (form.elements.group.options[i].value == item.dataset.groupId) {

@@ -8,6 +8,7 @@ use App\Vaccination;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class VaccinationController extends Controller
 {
@@ -39,10 +40,14 @@ class VaccinationController extends Controller
         if (!$request->has('sortby')) $request->sortby = 'date';
         $sortby = $request->sortby;
 
+        $sortbyA = 'vaccinations.' . $sortby;
+        if ($sortby == 'rabbit_name')
+            $sortbyA = 'rabbit_name';
+
         $vaccinations = Auth::user()->vaccinations()
             ->leftJoin('rabbits', 'vaccinations.rabbit_id', '=', 'rabbits.id')
             ->select('vaccinations.*', 'rabbits.name as rabbit_name', 'rabbits.gender as rabbit_gender')
-            ->orderByDesc($sortby)
+            ->orderBy(DB::raw('ISNULL(' . $sortbyA . '), ' . $sortbyA), 'ASC')
             ->offset($perPage * abs($request->page - 1))
             ->limit($perPage)
             ->get();
