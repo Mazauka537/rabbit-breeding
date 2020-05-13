@@ -3,13 +3,13 @@
 
         <div class="side-pagination-buttons">
             <div class="page-button @if($pagination['currentPage'] <= 1){{ 'disabled' }}@endif">
-                <a @if($pagination['currentPage'] > 1){{ 'href=' . $pagination['route'] . '?page=1' . $pagination['arguments'] }}@endif><<</a>
+                <a @if($pagination['currentPage'] > 1){{ 'href=' . $pagination['route'] . '?page=1' . $pagination['arguments'] }}@endif title="первая страница"><<</a>
             </div>
             <div class="page-button @if($pagination['currentPage'] <= 1){{ 'disabled' }}@endif">
                 @if($pagination['currentPage'] <= 1)
-                    <a><</a>
+                    <a title="предыдущая страница"><</a>
                 @else
-                    <a href="{{ $pagination['route'] . '?page=' . ($pagination['currentPage'] - 1) . $pagination['arguments'] }}"><</a>
+                    <a title="предыдущая страница" href="{{ $pagination['route'] . '?page=' . ($pagination['currentPage'] - 1) . $pagination['arguments'] }}"><</a>
                 @endif
             </div>
         </div>
@@ -47,13 +47,13 @@
         <div class="side-pagination-buttons">
             <div class="page-button @if($pagination['currentPage'] >= $pagination['pageCount']){{ 'disabled' }}@endif">
                 @if($pagination['currentPage'] >= $pagination['pageCount'])
-                    <a>></a>
+                    <a title="следующая страница">></a>
                 @else
-                    <a href="{{ $pagination['route'] . '?page=' . ($pagination['currentPage'] + 1) . $pagination['arguments'] }}">></a>
+                    <a title="следующая страница" href="{{ $pagination['route'] . '?page=' . ($pagination['currentPage'] + 1) . $pagination['arguments'] }}">></a>
                 @endif
             </div>
             <div class="page-button @if($pagination['currentPage'] >= $pagination['pageCount']){{ 'disabled' }}@endif">
-                <a @if($pagination['currentPage'] < $pagination['pageCount']){{ 'href=' . $pagination['route'] . '?page=' . $pagination['pageCount'] . $pagination['arguments'] }}@endif>>></a>
+                <a title="последняя страница" @if($pagination['currentPage'] < $pagination['pageCount']){{ 'href=' . $pagination['route'] . '?page=' . $pagination['pageCount'] . $pagination['arguments'] }}@endif>>></a>
             </div>
         </div>
 

@@ -32,6 +32,7 @@ class VaccinationController extends Controller
     {
         $perPage = Auth::user()->pagination;
         $pageCount = ceil(Auth::user()->vaccinations()->count() / $perPage);
+        if ($pageCount == 0) $pageCount = 1;
 
         if (!$request->has('page')) $request->page = 1;
         if ($request->page > $pageCount) return back()->withErrors(['Страница ' . $request->page . ' не найдена.']);

@@ -387,8 +387,8 @@
 
                         <div class="head">
                             <div>
-                                <div class="name">{{ $rabbit->name }}</div>
-                                <div class="status">{{ $rabbit->status_value ?? '' }}</div>
+                                <div class="name" title="имя кролика">{{ $rabbit->name }}</div>
+                                <div class="status" title="статус кролика">{{ $rabbit->status_value ?? '' }}</div>
                             </div>
                             <div class="buttons" id="head-buttons">
                                 <button id="show-edit-fields-btn" type="button">Редактировать</button>
@@ -598,9 +598,9 @@
                                 </span>
                                             </div>
                                             <div class="item-buttons">
-                                                <button class="ico-btn edit-btn edit-mating-btn"></button>
-                                                <button class="ico-btn delete-btn delete-mating-btn"></button>
-                                                <span class="ico-btn caret-btn"></span>
+                                                <button class="ico-btn edit-btn edit-mating-btn" title="редактировать случку"></button>
+                                                <button class="ico-btn delete-btn delete-mating-btn" title="удалить случку"></button>
+                                                <span class="ico-btn caret-btn" title="показать подробности"></span>
                                             </div>
                                         </div>
                                         <div class="item__body">
@@ -704,7 +704,7 @@
 
                         <div class="head">
                             Вакцинации
-                            <span class="ico-btn plus-btn" id="add-vaccination-btn"></span>
+                            <span class="ico-btn plus-btn" id="add-vaccination-btn" title="добавить вакцинацию"></span>
                         </div>
 
                         <div class="body">
@@ -717,9 +717,9 @@
                                                 {{ $vaccination->name }}
                                             </div>
                                             <div class="item-buttons">
-                                                <button class="ico-btn edit-btn edit-vaccination-btn"></button>
-                                                <button class="ico-btn delete-btn delete-vaccination-btn"></button>
-                                                <span class="ico-btn caret-btn"></span>
+                                                <button class="ico-btn edit-btn edit-vaccination-btn" title="редактировать вакцинацию"></button>
+                                                <button class="ico-btn delete-btn delete-vaccination-btn" title="удалить вакцинацию"></button>
+                                                <span class="ico-btn caret-btn" title="показать подробности"></span>
                                             </div>
                                         </div>
                                         <div class="item__body">

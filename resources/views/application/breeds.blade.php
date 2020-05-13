@@ -105,7 +105,7 @@
         </div>
 
         <div class="add-button">
-            <button id="btn-show-add-item-form"></button>
+            <button id="btn-show-add-item-form" title="добавить породу"></button>
         </div>
 
         <div class="items-top">
@@ -141,9 +141,9 @@
                                     {{ $breed->name }}
                                 </div>
                                 <div class="item-buttons">
-                                    <button class="ico-btn edit-btn"></button>
-                                    <button class="ico-btn delete-btn"></button>
-                                    <span class="ico-btn caret-btn"></span>
+                                    <button class="ico-btn edit-btn" title="редактировать"></button>
+                                    <button class="ico-btn delete-btn" title="удалить"></button>
+                                    <span class="ico-btn caret-btn" title="показать подробности"></span>
                                 </div>
                             </div>
                             <div class="item__body">
@@ -190,7 +190,7 @@
                     </div>
                 @endforeach
             @else
-                <div class="none-items">
+                <div class="none-items" title="Вы не добавили ни одной породы">
                     {{ '(Пусто)' }}
                 </div>
             @endif

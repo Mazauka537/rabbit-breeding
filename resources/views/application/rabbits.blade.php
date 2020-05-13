@@ -118,7 +118,7 @@
         </div>
 
         <div class="add-button">
-            <button id="btn-show-add-item-form"></button>
+            <button id="btn-show-add-item-form" title="добавить кролика"></button>
         </div>
 
         <div class="items-top">
@@ -168,15 +168,15 @@
                                         <div class="info">
                                             @if(!empty($rabbit->status_value))
                                                 <div
-                                                    class="status txt-clip icon-power">{{ $rabbit->status_value }}</div>
+                                                    class="status txt-clip icon-power" title="статус кролика">{{ $rabbit->status_value }}</div>
                                             @endif
                                             @if(!empty($rabbit->birthday))
                                                 <div
-                                                    class="birthday txt-clip icon-calendar">{{ date("d.m.Y", strtotime($rabbit->birthday)) }}</div>
+                                                    class="birthday txt-clip icon-calendar" title="дата рождения кролика">{{ date("d.m.Y", strtotime($rabbit->birthday)) }}</div>
                                             @endif
                                             @if(!empty($rabbit->breed_name))
                                                 <div
-                                                    class="breed txt-clip icon-pawprint">{{ $rabbit->breed_name }}</div>
+                                                    class="breed txt-clip icon-pawprint" title="порода кролика">{{ $rabbit->breed_name }}</div>
                                             @endif
                                         </div>
                                     </div>
@@ -184,22 +184,22 @@
                                         {{ $rabbit->desc ?? "(нет описания)" }}
                                     </div>
                                     <div
-                                        class="h-gender @if($rabbit->gender == 'f') {{ 'female' }} @else {{ 'male' }} @endif">
+                                        class="h-gender @if($rabbit->gender == 'f') {{ 'female' }} @else {{ 'male' }} @endif" title="пол кролика">
                                         ♥
                                     </div>
                                 </div>
                             </div>
                             <div class="item__footer">
-                                <div class="name txt-clip">
+                                <div class="name txt-clip" title="имя кролика">
                                     {{ $rabbit->name }}
                                 </div>
-                                <span class="show-desc-btn ico-info"></span>
+                                <span class="show-desc-btn ico-info" title="показать описание кролика"></span>
                             </div>
                         </a>
                     </div>
                 @endforeach
             @else
-                <div class="none-items">
+                <div class="none-items" title="Вы не добавили ни одного кролика">
                     {{ '(Пусто)' }}
                 </div>
             @endif

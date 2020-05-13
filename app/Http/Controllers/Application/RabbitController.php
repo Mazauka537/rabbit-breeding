@@ -103,6 +103,7 @@ class RabbitController extends Controller
     {
         $perPage = Auth::user()->pagination;
         $pageCount = ceil(Auth::user()->rabbits()->count() / $perPage);
+        if ($pageCount == 0) $pageCount = 1;
 
         if (!$request->has('page')) $request->page = 1;
         if ($request->page > $pageCount) return back()->withErrors(['Страница ' . $request->page . ' не найдена.']);
@@ -246,6 +247,10 @@ class RabbitController extends Controller
         $rabbit->vaccinations()->delete();
 
         $rabbit->reminders()->update(['rabbit_id' => null]);
+
+        if (!empty($rabbit->photo)) {
+
+        }
 
         $rabbit->delete();
 

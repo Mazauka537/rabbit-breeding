@@ -17,4 +17,7 @@ input[type="submit"], input[type="button"], select[type="submit"], select[type="
 .item__date.today {
   color: #E73A98; }
 
+.aside__inner .nav li a.active .icon {
+  text-shadow: 0 0 12px #E768AD; }
+
 /*# sourceMappingURL=theme-2.css.map */

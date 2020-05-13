@@ -61,37 +61,37 @@
                         <nav class="nav">
                             <ul>
                                 <li>
-                                    <a href="{{ route('rabbits') }}">
+                                    <a href="{{ route('rabbits') }}" @if(\Illuminate\Support\Facades\Route::currentRouteName() == 'rabbits'){{ 'class=active' }}@endif>
                                         <span class="icon icon-rabbit"></span>
                                         <span>Кролики</span>
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="{{ route('breeds') }}">
+                                    <a href="{{ route('breeds') }}" @if(\Illuminate\Support\Facades\Route::currentRouteName() == 'breeds'){{ 'class=active' }}@endif>
                                         <span class="icon icon-pawprint"></span>
                                         <span>Породы</span>
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="{{ route('cages') }}">
+                                    <a href="{{ route('cages') }}" @if(\Illuminate\Support\Facades\Route::currentRouteName() == 'cages'){{ 'class=active' }}@endif>
                                         <span class="icon icon-bird-cage"></span>
                                         <span>Клетки</span>
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="{{ route('matings') }}">
+                                    <a href="{{ route('matings') }}" @if(\Illuminate\Support\Facades\Route::currentRouteName() == 'matings'){{ 'class=active' }}@endif>
                                         <span class="icon icon-heart"></span>
                                         <span>Случки</span>
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="{{ route('vaccinations') }}">
+                                    <a href="{{ route('vaccinations') }}" @if(\Illuminate\Support\Facades\Route::currentRouteName() == 'vaccinations'){{ 'class=active' }}@endif>
                                         <span class="icon icon-syringe"></span>
                                         <span>Вакцинации</span>
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="{{ route('reminders') }}">
+                                    <a href="{{ route('reminders') }}" @if(\Illuminate\Support\Facades\Route::currentRouteName() == 'reminders'){{ 'class=active' }}@endif>
                                         <span class="icon icon-bell" id="ico-link-reminders"></span>
                                         <span>Напоминания</span>
                                     </a>

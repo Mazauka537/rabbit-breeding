@@ -142,7 +142,7 @@
         </div>
 
         <div class="add-button">
-            <button id="btn-show-add-item-form"></button>
+            <button id="btn-show-add-item-form" title="добавить напоминание"></button>
         </div>
 
         <div class="items overflow-v">
@@ -171,9 +171,9 @@
                                     <button
                                         class="ico-btn check-btn @if($reminder->checked) {{ 'check-btn-checked' }} @endif"
                                         title="пометить как выполненное"></button>
-                                    <button class="ico-btn edit-btn edit-reminder-btn"></button>
-                                    <button class="ico-btn delete-btn delete-reminder-btn"></button>
-                                    <span class="ico-btn caret-btn"></span>
+                                    <button class="ico-btn edit-btn edit-reminder-btn" title="редактировать"></button>
+                                    <button class="ico-btn delete-btn delete-reminder-btn" title="удалить"></button>
+                                    <span class="ico-btn caret-btn" title="показать подробности"></span>
                                 </div>
                             </div>
                             <div class="item__body">

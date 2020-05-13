@@ -33,6 +33,7 @@ class BreedController extends Controller
     {
         $perPage = Auth::user()->pagination;
         $pageCount = ceil(Auth::user()->breeds()->count() / $perPage);
+        if ($pageCount == 0) $pageCount = 1;
 
         if (!$request->has('page')) $request->page = 1;
         if ($request->page > $pageCount) return back()->withErrors(['Страница ' . $request->page . ' не найдена.']);
@@ -41,7 +42,7 @@ class BreedController extends Controller
 
         $breeds = Auth::user()->breeds()
             ->with('rabbits')
-            ->orderByDesc($sortby)
+            ->orderBy($sortby)
             ->offset($perPage * abs($request->page - 1))
             ->limit($perPage)
             ->get();

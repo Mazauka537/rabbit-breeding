@@ -253,7 +253,7 @@
         </div>
 
         <div class="add-button">
-            <button id="btn-show-add-item-form"></button>
+            <button id="btn-show-add-item-form" title="добавить клетку"></button>
         </div>
 
         <div class="items-top">
@@ -289,10 +289,10 @@
                                     {{ $cageGroup->name }}
                                 </div>
                                 <div class="item-buttons">
-                                    <button class="ico-btn small-plus-btn" title="Добавить навую клетку в группу"></button>
-                                    <button class="ico-btn edit-btn edit-cage-group-btn"></button>
-                                    <button class="ico-btn delete-btn delete-cage-group-btn"></button>
-                                    <span class="ico-btn caret-btn"></span>
+                                    <button class="ico-btn small-plus-btn" title="добавить навую клетку в группу"></button>
+                                    <button class="ico-btn edit-btn edit-cage-group-btn" title="редактировать группу"></button>
+                                    <button class="ico-btn delete-btn delete-cage-group-btn" title="удалить группу"></button>
+                                    <span class="ico-btn caret-btn" title="показать подробности"></span>
                                 </div>
                             </div>
                             <div class="item__body">
@@ -348,9 +348,9 @@
                                                             {{ $cgCage->name }}
                                                         </div>
                                                         <div class="item-buttons">
-                                                            <button class="ico-btn edit-btn edit-cage-btn"></button>
-                                                            <button class="ico-btn delete-btn delete-cage-btn"></button>
-                                                            <span class="ico-btn caret-btn"></span>
+                                                            <button class="ico-btn edit-btn edit-cage-btn" title="редактировать клетку"></button>
+                                                            <button class="ico-btn delete-btn delete-cage-btn" title="удалить клетку"></button>
+                                                            <span class="ico-btn caret-btn" title="показать подробности"></span>
                                                         </div>
                                                     </div>
                                                     <div class="item__body">
@@ -414,9 +414,9 @@
                                     {{ $cage->name }}
                                 </div>
                                 <div class="item-buttons">
-                                    <button class="ico-btn edit-btn edit-cage-btn"></button>
-                                    <button class="ico-btn delete-btn delete-cage-btn"></button>
-                                    <span class="ico-btn caret-btn"></span>
+                                    <button class="ico-btn edit-btn edit-cage-btn" title="редактировать клетку"></button>
+                                    <button class="ico-btn delete-btn delete-cage-btn" title="удалить клетку"></button>
+                                    <span class="ico-btn caret-btn" title="показать подробности"></span>
                                 </div>
                             </div>
                             <div class="item__body">
@@ -463,7 +463,7 @@
                     </div>
                 @endforeach
             @else
-                <div class="none-items">
+                <div class="none-items" title="Вы не добавили ни одной клетки или группы клеток">
                     {{ '(Пусто)' }}
                 </div>
             @endif

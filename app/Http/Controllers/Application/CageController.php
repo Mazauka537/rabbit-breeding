@@ -39,6 +39,7 @@ class CageController extends Controller
         $cageGroupCount = Auth::user()->cageGroups()->count();
 
         $pageCount = ceil(($cageCount + $cageGroupCount) / $perPage);
+        if ($pageCount == 0) $pageCount = 1;
 
         if (!$request->has('page')) $request->page = 1;
         if ($request->page > $pageCount) return back()->withErrors(['Страница ' . $request->page . ' не найдена.']);

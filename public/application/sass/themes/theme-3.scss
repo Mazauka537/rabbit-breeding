@@ -38,3 +38,17 @@ input, select, textarea, option, button, .input-label {
         color: $color2;
     }
 }
+
+.aside__inner {
+    .nav {
+        li {
+            a {
+                &.active {
+                    .icon {
+                        text-shadow: 0 0 12px $color1;
+                    }
+                }
+            }
+        }
+    }
+}

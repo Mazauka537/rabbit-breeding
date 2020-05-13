@@ -164,10 +164,12 @@ a {
     display: block;
     padding: 10px;
     font-weight: 500;
-    color: #444; }
+    color: #444;
+    transition: all 0.3s; }
     .aside__inner .nav li a:hover {
-      color: #000;
-      font-size: 110%; }
+      padding-left: 20px; }
+    .aside__inner .nav li a.active .icon {
+      text-shadow: 0 0 12px #87f041; }
     .aside__inner .nav li a span {
       vertical-align: middle; }
 

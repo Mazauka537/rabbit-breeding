@@ -225,8 +225,8 @@
                                             {{ $dnotify->text }}
                                         </span>
                                         <div class="item-buttons">
-                                            <button class="ico-btn edit-btn edit-notify-btn"></button>
-                                            <button class="ico-btn delete-btn delete-notify-btn"></button>
+                                            <button class="ico-btn edit-btn edit-notify-btn" title="редактировать"></button>
+                                            <button class="ico-btn delete-btn delete-notify-btn" title="удалить"></button>
                                         </div>
                                     </div>
                                 </div>

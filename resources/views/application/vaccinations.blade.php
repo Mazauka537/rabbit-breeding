@@ -157,7 +157,7 @@
         </div>
 
         <div class="add-button">
-            <button id="btn-show-add-item-form"></button>
+            <button id="btn-show-add-item-form" title="добавить вакцинацию"></button>
         </div>
 
         <div class="items-top">
@@ -198,9 +198,9 @@
                                     {{ $vaccination->rabbit_name }}
                                 </div>
                                 <div class="item-buttons">
-                                    <button class="ico-btn edit-btn edit-vaccination-btn"></button>
-                                    <button class="ico-btn delete-btn delete-vaccination-btn"></button>
-                                    <span class="ico-btn caret-btn"></span>
+                                    <button class="ico-btn edit-btn edit-vaccination-btn" title="редактировать"></button>
+                                    <button class="ico-btn delete-btn delete-vaccination-btn" title="удалить"></button>
+                                    <span class="ico-btn caret-btn" title="показать подробности"></span>
                                 </div>
                             </div>
                             <div class="item__body">
@@ -252,7 +252,7 @@
                     </div>
                 @endforeach
             @else
-                <div class="none-items">
+                <div class="none-items" title="Вы не добавили ни одной вакцинации">
                     {{ '(Пусто)' }}
                 </div>
             @endif
