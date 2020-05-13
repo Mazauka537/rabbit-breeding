@@ -1038,7 +1038,8 @@ textarea {
     display: block; }
     .rabbit-container .left {
       display: flex;
-      max-width: 100%; }
+      max-width: 100%;
+      align-items: center; }
       .rabbit-container .left .photo__wrapper {
         max-width: 200px;
         width: 100%;

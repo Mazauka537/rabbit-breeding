@@ -249,7 +249,7 @@ class RabbitController extends Controller
         $rabbit->reminders()->update(['rabbit_id' => null]);
 
         if (!empty($rabbit->photo)) {
-
+            Storage::disk('public')->delete($rabbit->photo);
         }
 
         $rabbit->delete();
