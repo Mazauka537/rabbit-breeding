@@ -61,6 +61,14 @@ class VaccinationController extends Controller
 
     function addVaccination(VaccinationAddRequest $request)
     {
+        if (!empty($request->date)) {
+            $rabbit = Auth::user()->rabbits()->findOrFail($request->rabbit);
+            if (strtotime($rabbit->birthday) > strtotime($request->date)) {
+                $request->flash();
+                return back()->withErrors(['Дата вакцинации не может быть раньше даты рождения кролика.']);
+            }
+        }
+
         $vaccination = new Vaccination();
 
         $vaccination->user_id = Auth::id();
@@ -78,6 +86,12 @@ class VaccinationController extends Controller
 
     function editVaccination(VaccinationAddRequest $request, $id)
     {
+        if (!empty($request->date)) {
+            $rabbit = Auth::user()->rabbits()->findOrFail($request->rabbit);
+            if (strtotime($rabbit->birthday) > strtotime($request->date)) {
+                return back()->withErrors(['Дата вакцинации не может быть раньше даты рождения кролика.']);
+            }
+        }
 
         $vaccination = Auth::user()->vaccinations()->findOrFail($id);
 

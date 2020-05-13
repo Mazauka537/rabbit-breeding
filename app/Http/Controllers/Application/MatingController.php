@@ -92,6 +92,18 @@ class MatingController extends Controller
         $errors = [];
         $messages = [];
 
+        if (!empty($request->date)) {
+            $female = Auth::user()->rabbits()->findOrFail($request->female);
+            $male = $female;
+            if (!empty($request->male)) {
+                $male = Auth::user()->rabbits()->findOrFail($request->male);
+            }
+            if (strtotime($female->birthday) > strtotime($request->date) || strtotime($male->birthday) > strtotime($request->date)) {
+                $request->flash();
+                return back()->withErrors(['Дата случки не может быть раньше даты рождения кролика.']);
+            }
+        }
+
         if (!empty($request->child_count) && !empty($request->alive_count)) {
             if ($request->child_count < $request->alive_count)
                 $errors[] = 'Число выживших крольчат не может превышать число рожденных';
@@ -148,16 +160,6 @@ class MatingController extends Controller
     {
         $errors = [];
 
-        if (empty($request->female)
-            && empty($request->male)
-            && empty($request->date)
-            && empty($request->birth_date)
-            && empty($request->child_count)
-            && empty($request->alive_count)
-            && (empty($request->desc) || $request->desc == '(нет)')) {
-            return $this->error('Должны быть хоть какие-нибудь данные');
-        }
-
         $mating = Auth::user()->matings()->findOrFail($id);
 
         $mating->female_id = $request->female;
@@ -167,6 +169,18 @@ class MatingController extends Controller
         $mating->child_count = $request->child_count;
         $mating->alive_count = $request->alive_count;
         $mating->desc = $request->desc;
+
+        if (!empty($mating->date)) {
+            $female = Auth::user()->rabbits()->findOrFail($mating->female_id);
+            $male = $female;
+            if (!empty($mating->male_id)) {
+                $male = Auth::user()->rabbits()->findOrFail($mating->male_id);
+            }
+            if (strtotime($female->birthday) > strtotime($mating->date) || strtotime($male->birthday) > strtotime($mating->date)) {
+                $request->flash();
+                return back()->withErrors(['Дата случки не может быть раньше даты рождения кролика.']);
+            }
+        }
 
         if (!empty($mating->child_count) && !empty($mating->alive_count)) {
             if ($mating->child_count < $mating->alive_count)
