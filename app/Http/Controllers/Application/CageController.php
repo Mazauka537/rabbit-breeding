@@ -153,8 +153,6 @@ class CageController extends Controller
     {
         $cage = Auth::user()->cages()->findOrFail($id);
 
-        $cage->rabbits()->update(['cage_id' => null]);
-
         $cage->delete();
 
         session()->flash('message', ['Клетка "' . $cage->name . '" успешно удалена.']);
@@ -165,8 +163,6 @@ class CageController extends Controller
     function deleteCageGroup($id)
     {
         $cageGroup = Auth::user()->cageGroups()->findOrFail($id);
-
-        $cageGroup->rabbits()->update(['cage_id' => null]);
 
         $cageGroup->delete();
 

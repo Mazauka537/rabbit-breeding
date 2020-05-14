@@ -6,6 +6,7 @@ use App\Http\Requests\Application\DefaultMatingNotifyAddRequest;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class SettingController extends Controller
 {
@@ -80,5 +81,13 @@ class SettingController extends Controller
         session()->flash('message', ['Настройки сохранены.']);
 
         return back();
+    }
+
+    public function deleteUser() {
+        $user = Auth::user();
+        Storage::disk('public')->deleteDirectory('application/images/' . $user->id);
+        Auth::logout();
+        $user->delete();
+        return redirect(route('login'));
     }
 }

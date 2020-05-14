@@ -95,8 +95,6 @@ class BreedController extends Controller
     {
         $breed = Auth::user()->breeds()->findOrFail($id);
 
-        $breed->rabbits()->update(['breed_id' => null]);
-
         $breed->delete();
 
         session()->flash('message', ['Порода "' . $breed->name . '" успешно удалена.']);

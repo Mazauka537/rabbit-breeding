@@ -246,14 +246,7 @@ class RabbitController extends Controller
     {
         $rabbit = Auth::user()->rabbits()->findOrFail($id);
 
-        if ($rabbit->gender == 'f')
-            $rabbit->matings()->update(['female_id' => null]);
-        else
-            $rabbit->matings()->update(['male_id' => null]);
-
         $rabbit->vaccinations()->delete();
-
-        $rabbit->reminders()->update(['rabbit_id' => null]);
 
         if (!empty($rabbit->photo)) {
             Storage::disk('public')->delete($rabbit->photo);

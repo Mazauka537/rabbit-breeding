@@ -68,6 +68,8 @@ Route::group(['middleware' => 'auth', 'namespace' => 'Application', 'prefix' => 
     Route::post('settings/default-mating-notify/add', 'DefaultNotifyController@addDefaultMatingNotify')->name('addDefaultMatingNotify');
     Route::post('settings/default-mating-notify/edit/{id}', 'DefaultNotifyController@editDefaultMatingNotify')->name('editDefaultMatingNotify');
     Route::post('settings/default-mating-notify/delete/{id}', 'DefaultNotifyController@deleteDefaultMatingNotify')->name('deleteDefaultMatingNotify');
+
+//    Route::post('delete', 'SettingController@deleteUser')->name('deleteUser');
 });
 
 //DB::listen(function($query) {
