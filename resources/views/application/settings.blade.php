@@ -1,6 +1,6 @@
 @extends('layouts.application')
 
-@section('title', 'Настройки - ' . config('app.name'))
+@section('title', 'Настройки | ' . config('app.name'))
 
 @section('main')
     <div class="main__inner">

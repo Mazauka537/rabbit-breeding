@@ -160,7 +160,7 @@ class RabbitController extends Controller
             ->orderByDesc('date')
             ->get();
 
-        $vaccinations = $rabbit->vaccinations;
+        $vaccinations = $rabbit->vaccinations()->orderByDesc('date')->get();
 
         $rabbit->breed = $this->findItemById($breeds, $rabbit->breed_id) ?? '(нет)';
         $rabbit->cage = $this->findItemById($cages, $rabbit->cage_id) ?? '(нет)';

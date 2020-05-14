@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Регистрация на сайте - ' . config('app.name'))
+@section('title', 'Регистрация на сайте | ' . config('app.name'))
 
 @section('content')
     <div class="modal-window__inner scrollbar-macosx">

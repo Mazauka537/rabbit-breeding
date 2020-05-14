@@ -1,6 +1,6 @@
 @extends('layouts.application')
 
-@section('title', 'Кролики - ' . config('app.name'))
+@section('title', 'Кролики | ' . config('app.name'))
 
 @section('main')
     <div class="main__inner rabbits-page">
