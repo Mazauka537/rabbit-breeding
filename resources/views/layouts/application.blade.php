@@ -69,38 +69,38 @@
                             <ul>
                                 <li>
                                     <a href="{{ route('rabbits') }}" @if(\Illuminate\Support\Facades\Route::currentRouteName() == 'rabbits'){{ 'class=active' }}@endif>
-                                        <span class="icon icon-rabbit"></span>
-                                        <span>Кролики</span>
+                                        <span class="icon icon-rabbit" title="Кролики"></span>
+                                        <span class="link-text">Кролики</span>
                                     </a>
                                 </li>
                                 <li>
                                     <a href="{{ route('breeds') }}" @if(\Illuminate\Support\Facades\Route::currentRouteName() == 'breeds'){{ 'class=active' }}@endif>
-                                        <span class="icon icon-pawprint"></span>
-                                        <span>Породы</span>
+                                        <span class="icon icon-pawprint" title="Породы"></span>
+                                        <span class="link-text">Породы</span>
                                     </a>
                                 </li>
                                 <li>
                                     <a href="{{ route('cages') }}" @if(\Illuminate\Support\Facades\Route::currentRouteName() == 'cages'){{ 'class=active' }}@endif>
-                                        <span class="icon icon-bird-cage"></span>
-                                        <span>Клетки</span>
+                                        <span class="icon icon-bird-cage" title="Клетки"></span>
+                                        <span class="link-text">Клетки</span>
                                     </a>
                                 </li>
                                 <li>
                                     <a href="{{ route('matings') }}" @if(\Illuminate\Support\Facades\Route::currentRouteName() == 'matings'){{ 'class=active' }}@endif>
-                                        <span class="icon icon-heart"></span>
-                                        <span>Случки</span>
+                                        <span class="icon icon-heart" title="Случки"></span>
+                                        <span class="link-text">Случки</span>
                                     </a>
                                 </li>
                                 <li>
                                     <a href="{{ route('vaccinations') }}" @if(\Illuminate\Support\Facades\Route::currentRouteName() == 'vaccinations'){{ 'class=active' }}@endif>
-                                        <span class="icon icon-syringe"></span>
-                                        <span>Вакцинации</span>
+                                        <span class="icon icon-syringe" title="Вакцинации"></span>
+                                        <span class="link-text">Вакцинации</span>
                                     </a>
                                 </li>
                                 <li>
                                     <a href="{{ route('reminders') }}" @if(\Illuminate\Support\Facades\Route::currentRouteName() == 'reminders'){{ 'class=active' }}@endif>
-                                        <span class="icon icon-bell" id="ico-link-reminders"></span>
-                                        <span>Напоминания</span>
+                                        <span class="icon icon-bell" id="ico-link-reminders" title="Напоминания"></span>
+                                        <span class="link-text">Напоминания</span>
                                     </a>
                                 </li>
                             </ul>
@@ -123,7 +123,6 @@
 <script src="{{ asset('assets/js/jquery-3.4.1.min.js') }}"></script>
 <script src="{{ asset('assets/js/jquery.scrollbar.min.js') }}"></script>
 <script src="{{ asset('application/js/main.js') }}"></script>
-{{--<script src="{{ asset('application/js/pagination.js') }}"></script>--}}
 <script src="{{ asset('application/js/sorting.js') }}"></script>
 <script src="{{ asset('application/js/get-today-reminders.js') }}"></script>
 </body>

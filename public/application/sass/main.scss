@@ -250,6 +250,7 @@ a {
     overflow: hidden;
     display: flex;
     padding: 20px 0;
+    position: relative;
 }
 
 //aside//
@@ -1634,9 +1635,81 @@ textarea {
 }
 
 @media screen and (max-width: 720px) {
-
+    .rabbit-container {
+        .item__name, .item__name-2 {
+            max-width: 300px;
+        }
+    }
 }
 
 @media screen and (max-width: 680px) {
-    //TODO: hide side nav panel and show the burger button in header that will be show side nav panel
+    .alerts {
+        bottom: 60px;
+        left: 10px;
+    }
+
+    .content {
+        margin-bottom: 50px;
+    }
+
+    .aside {
+        position: fixed;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        height: auto;
+        z-index: 99999;
+        overflow: visible;
+
+        .link-text {
+            display: none;
+        }
+    }
+
+    .aside__inner {
+        height: auto;
+
+        .nav {
+            background: #fff;
+            box-shadow: 0 0 9px -6px #444;
+
+            ul {
+                display: flex;
+                justify-content: space-around;
+                align-items: center;
+
+                li {
+                    a {
+                        padding: 13px;
+
+                        &:hover {
+                            padding-left: 13px;
+                        }
+
+                        .icon {
+                            &::before {
+                                padding-right: 0;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .main {
+        margin-left: 0px;
+    }
+
+    .main__inner {
+        padding-left: 0;
+    }
+
+    .add-button {
+        bottom: 70px;
+    }
+}
+
+@media screen and (max-width: 420px) {
+
 }

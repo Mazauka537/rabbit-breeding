@@ -172,7 +172,8 @@ a {
   height: 100%;
   overflow: hidden;
   display: flex;
-  padding: 20px 0; }
+  padding: 20px 0;
+  position: relative; }
 
 .aside {
   height: 100%;
@@ -1071,5 +1072,51 @@ textarea {
 @media screen and (max-width: 890px) {
   .item__name, .item__name-2 {
     max-width: 330px; } }
+@media screen and (max-width: 720px) {
+  .rabbit-container .item__name, .rabbit-container .item__name-2 {
+    max-width: 300px; } }
+@media screen and (max-width: 680px) {
+  .alerts {
+    bottom: 60px;
+    left: 10px; }
+
+  .content {
+    margin-bottom: 50px; }
+
+  .aside {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: auto;
+    z-index: 99999;
+    overflow: visible; }
+    .aside .link-text {
+      display: none; }
+
+  .aside__inner {
+    height: auto; }
+    .aside__inner .nav {
+      background: #fff;
+      box-shadow: 0 0 9px -6px #444; }
+      .aside__inner .nav ul {
+        display: flex;
+        justify-content: space-around;
+        align-items: center; }
+        .aside__inner .nav ul li a {
+          padding: 13px; }
+          .aside__inner .nav ul li a:hover {
+            padding-left: 13px; }
+          .aside__inner .nav ul li a .icon::before {
+            padding-right: 0; }
+
+  .main {
+    margin-left: 0px; }
+
+  .main__inner {
+    padding-left: 0; }
+
+  .add-button {
+    bottom: 70px; } }
 
 /*# sourceMappingURL=main.css.map */
