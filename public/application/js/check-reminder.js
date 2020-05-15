@@ -7,6 +7,7 @@ for (let i = 0; i < checkReminderButtons.length; i++) {
 function checkReminder(e) {
     e.stopPropagation();
     let item = this.closest('.item');
+    let state = item.querySelector('.checked-state');
     let inp = this;
 
     if (!this.classList.contains('check-btn-checked')) {
@@ -17,17 +18,22 @@ function checkReminder(e) {
                 _token: document.querySelector('input[name="_token"]').value
             },
             beforeSend: function () {
-                switchToLoad(inp);
+                switchToLoad(inp, state);
             },
             success: function (data) {
-                if (data == '+')
-                    switchToChecked(inp);
-                else
-                    switchToUnchecked(inp);
+                if (data == '+') {
+                    switchToChecked(inp, state);
+                    inp.querySelector('.ico-btn-text').innerHTML = 'Убрать пометку о выпонении';
+                }
+                else {
+                    switchToUnchecked(inp, state);
+                    inp.querySelector('.ico-btn-text').innerHTML = 'Пометить как выполненное';
+                }
                 getTodayReminders();
             },
             error: function (data) {
-                switchToUnchecked(inp);
+                switchToUnchecked(inp, state);
+                inp.querySelector('.ico-btn-text').innerHTML = 'Пометить как выполненное';
             },
         });
     } else {
@@ -38,33 +44,44 @@ function checkReminder(e) {
                 _token: document.querySelector('input[name="_token"]').value
             },
             beforeSend: function () {
-                switchToLoad(inp);
+                switchToLoad(inp, state);
             },
             success: function (data) {
-                if (data == '+')
-                    switchToUnchecked(inp);
-                else
-                    switchToChecked(inp);
+                if (data == '+') {
+                    switchToUnchecked(inp, state);
+                    inp.querySelector('.ico-btn-text').innerHTML = 'Пометить как выполненное';
+                }
+                else {
+                    switchToChecked(inp, state);
+                    inp.querySelector('.ico-btn-text').innerHTML = 'Убрать пометку о выпонении';
+                }
                 getTodayReminders();
             },
             error: function (data) {
-                switchToChecked(inp);
+                switchToChecked(inp, state);
+                inp.querySelector('.ico-btn-text').innerHTML = 'Убрать пометку о выпонении';
             },
         });
     }
 }
 
-function switchToLoad(inp) {
+function switchToLoad(inp, state) {
     inp.classList.remove('check-btn-checked');
     inp.classList.add('check-btn-load');
+    state.classList.remove('checked');
+    state.classList.add('loading');
 }
 
-function switchToChecked(inp) {
+function switchToChecked(inp, state) {
     inp.classList.remove('check-btn-load');
     inp.classList.add('check-btn-checked');
+    state.classList.remove('loading');
+    state.classList.add('checked');
 }
 
-function switchToUnchecked(inp) {
+function switchToUnchecked(inp, state) {
     inp.classList.remove('check-btn-checked');
     inp.classList.remove('check-btn-load');
+    state.classList.remove('loading');
+    state.classList.remove('checked');
 }

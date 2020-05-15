@@ -249,7 +249,7 @@ a {
     height: 100%;
     overflow: hidden;
     display: flex;
-    padding: 20px 0;
+    padding: 20px 0 60px 0;
     position: relative;
 }
 
@@ -392,11 +392,23 @@ a {
     position: relative;
 }
 
+.item-buttons-show-btn {
+    display: none;
+    position: absolute;
+    top: 6px;
+    right: 10px;
+}
+
+.ico-btn-text {
+    display: none;
+    white-space: nowrap;
+    font-size: 14px;
+}
+
 .item-buttons {
     position: absolute;
     top: 6px;
     right: 10px;
-    //width: 100px;
 }
 
 .ico-btn {
@@ -412,6 +424,12 @@ a {
 
     &::before {
         font-family: icomoon;
+    }
+
+    &.show-buttons-btn {
+        &::before {
+            content: "\e90a";
+        }
     }
 
     &.edit-btn {
@@ -490,6 +508,7 @@ a {
     background: #fff;
     border-top: 1px solid #f1f1f1;
     cursor: pointer;
+    position: relative;
 }
 
 .item__head-hovered {
@@ -565,6 +584,35 @@ a {
     &.ico-cage::before {
         left: 1.5px;
         content: "\e901";
+    }
+}
+
+.checked-state {
+    display: none;
+    position: absolute;
+    top: 4.7px;
+    right: 23px;
+    height: 30px;
+    width: 30px;
+    line-height: 30px;
+    text-align: center;
+
+    &.checked {
+        &::before {
+            font-family: icomoon;
+            content: "\e90d";
+            vertical-align: middle;
+        }
+    }
+
+    &.loading {
+        animation: rotation 1s infinite linear;
+
+        &::before {
+            font-family: icomoon;
+            content: "\e97b";
+            vertical-align: middle;
+        }
     }
 }
 
@@ -1711,5 +1759,68 @@ textarea {
 }
 
 @media screen and (max-width: 420px) {
+    .item-buttons-show-btn {
+        display: block;
+    }
 
+    .ico-btn-text {
+        display: inline;
+    }
+
+    .ico-btn {
+        display: block;
+        width: auto;
+    }
+
+    .item-buttons {
+        display: none;
+        right: 30px;
+        top: 5px;
+        z-index: 1000;
+        border: $main-border;
+        border-radius: 5px;
+        background: #fff;
+
+        &.show {
+            display: block;
+        }
+
+        .ico-btn + .ico-btn {
+            border-top: $main-border;
+        }
+
+        .ico-btn {
+            display: block;
+            width: 100%;
+            text-align: left;
+            background: #fff;
+            padding: 7px 10px;
+
+            &.caret-btn {
+                display: none;
+            }
+
+            &::before {
+                display: none;
+            }
+        }
+    }
+
+    .items .item__wrapper:last-child {
+        .item-buttons {
+            top: auto;
+            bottom: 5px;
+        }
+    }
+
+    .items .item__wrapper:first-child {
+        .item-buttons {
+            top: 5px;
+            bottom: auto;
+        }
+    }
+
+    .checked-state {
+        display: block;
+    }
 }

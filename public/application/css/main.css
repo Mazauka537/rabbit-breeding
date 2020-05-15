@@ -172,7 +172,7 @@ a {
   height: 100%;
   overflow: hidden;
   display: flex;
-  padding: 20px 0;
+  padding: 20px 0 60px 0;
   position: relative; }
 
 .aside {
@@ -270,6 +270,17 @@ a {
 .item {
   position: relative; }
 
+.item-buttons-show-btn {
+  display: none;
+  position: absolute;
+  top: 6px;
+  right: 10px; }
+
+.ico-btn-text {
+  display: none;
+  white-space: nowrap;
+  font-size: 14px; }
+
 .item-buttons {
   position: absolute;
   top: 6px;
@@ -287,6 +298,8 @@ a {
   vertical-align: middle; }
   .ico-btn::before {
     font-family: icomoon; }
+  .ico-btn.show-buttons-btn::before {
+    content: "\e90a"; }
   .ico-btn.edit-btn::before {
     content: "\e908"; }
   .ico-btn.delete-btn::before {
@@ -326,7 +339,8 @@ a {
   padding: 10px 15px;
   background: #fff;
   border-top: 1px solid #f1f1f1;
-  cursor: pointer; }
+  cursor: pointer;
+  position: relative; }
 
 .item__head-hovered:hover .item__name {
   display: none; }
@@ -382,6 +396,26 @@ a {
   .item-icon.ico-cage::before {
     left: 1.5px;
     content: "\e901"; }
+
+.checked-state {
+  display: none;
+  position: absolute;
+  top: 4.7px;
+  right: 23px;
+  height: 30px;
+  width: 30px;
+  line-height: 30px;
+  text-align: center; }
+  .checked-state.checked::before {
+    font-family: icomoon;
+    content: "\e90d";
+    vertical-align: middle; }
+  .checked-state.loading {
+    animation: rotation 1s infinite linear; }
+    .checked-state.loading::before {
+      font-family: icomoon;
+      content: "\e97b";
+      vertical-align: middle; }
 
 .txt-clip {
   white-space: nowrap;
@@ -1118,5 +1152,49 @@ textarea {
 
   .add-button {
     bottom: 70px; } }
+@media screen and (max-width: 420px) {
+  .item-buttons-show-btn {
+    display: block; }
+
+  .ico-btn-text {
+    display: inline; }
+
+  .ico-btn {
+    display: block;
+    width: auto; }
+
+  .item-buttons {
+    display: none;
+    right: 30px;
+    top: 5px;
+    z-index: 1000;
+    border: 1px solid #e8e8e8;
+    border-radius: 5px;
+    background: #fff; }
+    .item-buttons.show {
+      display: block; }
+    .item-buttons .ico-btn + .ico-btn {
+      border-top: 1px solid #e8e8e8; }
+    .item-buttons .ico-btn {
+      display: block;
+      width: 100%;
+      text-align: left;
+      background: #fff;
+      padding: 7px 10px; }
+      .item-buttons .ico-btn.caret-btn {
+        display: none; }
+      .item-buttons .ico-btn::before {
+        display: none; }
+
+  .items .item__wrapper:last-child .item-buttons {
+    top: auto;
+    bottom: 5px; }
+
+  .items .item__wrapper:first-child .item-buttons {
+    top: 5px;
+    bottom: auto; }
+
+  .checked-state {
+    display: block; } }
 
 /*# sourceMappingURL=main.css.map */

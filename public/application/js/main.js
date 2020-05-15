@@ -14,19 +14,18 @@ function showItemDesc(e) {
 }
 
 //выбор фото
-$('#photo-input-add').change(function() {
+$('#photo-input-add').change(function () {
     if ($(this).val() != '')
         $(this).prev().text($(this)[0].files[0].name);
     else
         $(this).prev().text('Выберите файл');
 });
 
-$('#photo-input-edit').change(function() {
+$('#photo-input-edit').change(function () {
     if ($(this).val() != '') {
         $(this).prev().text($(this)[0].files[0].name);
         this.parentElement.querySelector('input[type="submit"]').disabled = false;
-    }
-    else {
+    } else {
         $(this).prev().text('Выберите файл');
         this.parentElement.querySelector('input[type="submit"]').disabled = true;
     }
@@ -43,6 +42,16 @@ function toggleUserList(e) {
 
 document.onclick = function () {
     document.getElementById('user-name').nextElementSibling.classList.add('none-height');
+
+    hideAllItemButtons();
+}
+
+function hideAllItemButtons(b = null) {
+    let itemButtons = document.getElementsByClassName('item-buttons');
+    for (let i = 0; i < itemButtons.length; i++) {
+        if (itemButtons[i] != b)
+            itemButtons[i].classList.remove('show');
+    }
 }
 
 //items toggle body
@@ -50,6 +59,7 @@ let itemHeads = document.getElementsByClassName('item__head');
 for (let i = 0; i < itemHeads.length; i++) {
     itemHeads[i].onclick = toggleItemBody;
 }
+
 function toggleItemBody() {
     $(this).next().slideToggle();
 }
@@ -59,6 +69,30 @@ let alertButtons = document.getElementsByClassName('alert-close-button');
 for (let i = 0; i < alertButtons.length; i++) {
     alertButtons[i].addEventListener('click', closeAlert);
 }
+
 function closeAlert() {
     this.closest('.alert').remove();
+}
+
+//item-buttons
+let showItemButtonsBtns = document.getElementsByClassName('item-buttons-show-btn');
+for (let i = 0; i < showItemButtonsBtns.length; i++) {
+    showItemButtonsBtns[i].addEventListener('click', toggleItemButtons);
+}
+
+let allIcoBtnsInItemButton = document.querySelectorAll('.item-buttons .ico-btn');
+
+for (let i = 0; i < allIcoBtnsInItemButton.length; i++) {
+    allIcoBtnsInItemButton[i].addEventListener('click', hideItemButtons);
+}
+
+function hideItemButtons() {
+    this.closest('.item').querySelector('.item-buttons').classList.remove('show');
+}
+
+function toggleItemButtons(e) {
+    e.stopPropagation();
+    let b = this.closest('.item__head').querySelector('.item-buttons');
+    b.classList.toggle('show');
+    hideAllItemButtons(b);
 }

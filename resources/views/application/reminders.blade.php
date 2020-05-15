@@ -151,10 +151,10 @@
                     <div class="item__wrapper">
                         @if($key != 0 && $reminder->date != $reminders[$key - 1]->date || $key == 0)
                             <div class="item__date @if(strtotime($reminder->date) < strtotime(date('Y-m-d')))
-                                {{ 'past' }}
-                                @elseif($reminder->date == date('Y-m-d'))
-                                {{ 'today' }}
-                                @endif">
+                            {{ 'past' }}
+                            @elseif($reminder->date == date('Y-m-d'))
+                            {{ 'today' }}
+                            @endif">
                                 @if($reminder->date == date('Y-m-d'))
                                     {{ 'сегодня' }}
                                 @else
@@ -162,18 +162,37 @@
                                 @endif
                             </div>
                         @endif
-                        <div class="item" data-id="{{ $reminder->id }}" data-rabbit_id="{{ $reminder->rabbit_id }}">
+                        <div class="item" data-id="{{ $reminder->id }}"
+                             data-rabbit_id="{{ $reminder->rabbit_id }}">
                             <div class="item__head">
                                 <div class="item__name">
                                     {{ $reminder->text }}
                                 </div>
+                                <div class="checked-state @if($reminder->checked) {{ 'checked' }} @endif"></div>
+                                <div class="item-buttons-show-btn">
+                                    <button class="ico-btn show-buttons-btn"></button>
+                                </div>
                                 <div class="item-buttons">
                                     <button
                                         class="ico-btn check-btn @if($reminder->checked) {{ 'check-btn-checked' }} @endif"
-                                        title="пометить как выполненное"></button>
-                                    <button class="ico-btn edit-btn edit-reminder-btn" title="редактировать"></button>
-                                    <button class="ico-btn delete-btn delete-reminder-btn" title="удалить"></button>
-                                    <span class="ico-btn caret-btn" title="показать подробности"></span>
+                                        title="пометить как выполненное">
+                                        <span class="ico-btn-text">
+                                            @if(!$reminder->checked)
+                                                {{ 'Пометить как выполненное' }}
+                                            @else
+                                                {{ 'Убрать пометку о выполнении' }}
+                                            @endif
+                                        </span>
+                                    </button>
+                                    <button class="ico-btn edit-btn edit-reminder-btn" title="редактировать">
+                                        <span class="ico-btn-text">Редактировать</span>
+                                    </button>
+                                    <button class="ico-btn delete-btn delete-reminder-btn" title="удалить">
+                                        <span class="ico-btn-text">Удалить</span>
+                                    </button>
+                                    <button class="ico-btn caret-btn" title="показать подробности">
+                                        <span class="ico-btn-text">Показать подробности</span>
+                                    </button>
                                 </div>
                             </div>
                             <div class="item__body">
