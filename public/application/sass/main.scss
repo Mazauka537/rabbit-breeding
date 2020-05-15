@@ -96,12 +96,46 @@ a {
     height: 100%;
 
     .left {
+        display: none;
+    }
+
+    .middle {
 
     }
 
     .right {
 
     }
+}
+
+.burger-btn {
+    position: relative;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+
+    span {
+        position: absolute;
+        width: 25px;
+        left: 50%;
+        transform: translateX(-50%);
+        height: 3px;
+        background: #fff;
+    }
+
+    .burg-top {
+        top: 5px;
+    }
+
+    .burg-middle {
+        top: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    .burg-bottom {
+        bottom: 5px;
+    }
+
 }
 
 .logo {

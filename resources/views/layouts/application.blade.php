@@ -18,6 +18,13 @@
         <div class="container">
             <div class="header__inner">
                 <div class="left">
+                    <div class="burger-btn" id="burger-btn-1">
+                        <span class="burg-top"></span>
+                        <span class="burg-middle"></span>
+                        <span class="burg-bottom"></span>
+                    </div>
+                </div>
+                <div class="middle">
                     <div class="logo">
                         <a href="{{ route('rabbits') }}">
                             <img src="{{ asset('images/logo-long.png') }}" alt="logo">

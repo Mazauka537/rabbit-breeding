@@ -69,6 +69,28 @@ a {
   justify-content: space-between;
   align-items: center;
   height: 100%; }
+  .header__inner .left {
+    display: none; }
+
+.burger-btn {
+  position: relative;
+  width: 30px;
+  height: 30px;
+  cursor: pointer; }
+  .burger-btn span {
+    position: absolute;
+    width: 25px;
+    left: 50%;
+    transform: translateX(-50%);
+    height: 3px;
+    background: #fff; }
+  .burger-btn .burg-top {
+    top: 5px; }
+  .burger-btn .burg-middle {
+    top: 50%;
+    transform: translate(-50%, -50%); }
+  .burger-btn .burg-bottom {
+    bottom: 5px; }
 
 .logo a {
   vertical-align: middle;
