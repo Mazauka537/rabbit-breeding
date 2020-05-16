@@ -1103,9 +1103,9 @@ textarea {
         flex-shrink: 0; }
       .rabbit-container .left .some-info__wrapper {
         flex-grow: 1; } }
-@media screen and (max-width: 890px) {
+@media screen and (max-width: 910px) {
   .item__name, .item__name-2 {
-    max-width: 330px; } }
+    max-width: 240px; } }
 @media screen and (max-width: 720px) {
   .rabbit-container .item__name, .rabbit-container .item__name-2 {
     max-width: 300px; } }
@@ -1195,6 +1195,9 @@ textarea {
     bottom: auto; }
 
   .checked-state {
-    display: block; } }
+    display: block; }
+
+  .item__name, .item__name-2 {
+    max-width: 220px; } }
 
 /*# sourceMappingURL=main.css.map */

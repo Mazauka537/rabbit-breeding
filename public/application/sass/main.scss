@@ -1676,9 +1676,9 @@ textarea {
     }
 }
 
-@media screen and (max-width: 890px) {
+@media screen and (max-width: 910px) {
     .item__name, .item__name-2 {
-        max-width: 330px;
+        max-width: 240px;
     }
 }
 
@@ -1822,5 +1822,9 @@ textarea {
 
     .checked-state {
         display: block;
+    }
+
+    .item__name, .item__name-2 {
+        max-width: 220px;
     }
 }
