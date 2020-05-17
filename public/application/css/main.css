@@ -870,10 +870,12 @@ label {
 
 .input-label {
   position: relative; }
-  .input-label .item-buttons {
+  .input-label .item-buttons-v2 {
     font-size: 0;
+    width: auto;
+    position: absolute;
     right: 0;
-    width: auto; }
+    top: 6px; }
   .input-label .ico-btn {
     font-size: 14px;
     height: 100%;
@@ -1137,7 +1139,13 @@ textarea {
     width: 260px;
     margin-left: 120px; }
   .rabbit-container .head .name {
-    max-width: 190px; } }
+    max-width: 190px; }
+
+  .settings__wrapper input, .settings__wrapper select, .settings__wrapper textarea, .settings__wrapper option, .settings__wrapper button, .settings__wrapper .input-label {
+    max-width: 240px; }
+
+  .theme-input {
+    max-width: 240px; } }
 @media screen and (max-width: 680px) {
   .rabbit-container .info .center-form .label {
     width: 120px; }
@@ -1236,6 +1244,21 @@ textarea {
   input, select, textarea, option, button, .input-label {
     max-width: 100%; }
 
+  .settings__wrapper input, .settings__wrapper select, .settings__wrapper textarea, .settings__wrapper option, .settings__wrapper button, .settings__wrapper .input-label {
+    max-width: 100%; }
+  .settings__wrapper .head {
+    font-size: 16px;
+    padding-left: 0; }
+
+  .explain-box {
+    right: -35px; }
+
+  #explain-1 {
+    display: none; }
+
+  .theme-input {
+    max-width: 100%; }
+
   .left-form .line, .center-form .line, .small-form .line {
     padding: 3px 0; }
   .left-form .label, .center-form .label, .small-form .label {
@@ -1297,6 +1320,9 @@ textarea {
         display: none; }
       .item-buttons .ico-btn::before {
         display: none; }
+
+  .item-buttons-v2 .ico-btn {
+    display: inline; }
 
   .items .item__wrapper:last-child .item-buttons {
     top: auto;

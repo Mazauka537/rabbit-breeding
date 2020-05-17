@@ -1329,10 +1329,12 @@ label {
 .input-label {
     position: relative;
 
-    .item-buttons {
+    .item-buttons-v2 {
         font-size: 0;
-        right: 0;
         width: auto;
+        position: absolute;
+        right: 0;
+        top: 6px;
     }
 
     .ico-btn {
@@ -1746,6 +1748,15 @@ textarea {
             }
         }
     }
+
+    .settings__wrapper {
+        input, select, textarea, option, button, .input-label {
+            max-width: 240px;
+        }
+    }
+    .theme-input {
+        max-width: 240px;
+    }
 }
 
 @media screen and (max-width: 680px) {
@@ -1928,7 +1939,24 @@ textarea {
     input, select, textarea, option, button, .input-label {
         max-width: 100%;
     }
-
+    .settings__wrapper {
+        input, select, textarea, option, button, .input-label {
+            max-width: 100%;
+        }
+        .head {
+            font-size: 16px;
+            padding-left: 0;
+        }
+    }
+    .explain-box {
+        right: -35px;
+    }
+    #explain-1 {
+        display: none;
+    }
+    .theme-input {
+        max-width: 100%;
+    }
     .left-form, .center-form, .small-form {
         .line {
             padding: 3px 0;
@@ -2023,6 +2051,12 @@ textarea {
             &::before {
                 display: none;
             }
+        }
+    }
+
+    .item-buttons-v2 {
+        .ico-btn {
+            display: inline;
         }
     }
 

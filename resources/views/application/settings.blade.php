@@ -164,7 +164,7 @@
                             <input type="number" min="1" max="30000" required name="days_for_delete_reminders"
                                    placeholder="кол-во дней"
                                    value="@if($user->days_for_delete_reminders != 0){{ $user->days_for_delete_reminders }}@endif">
-                            <span class="explain"></span>
+                            <span class="explain" id="explain-1"></span>
                             <span class="explain-box">
                                 Число дней через которое напоминания будут автоматически удаляться.<br>К примеру, если напоминание назначено на 15 августа, а значение данного поля равно 6, то напоминание будет удалено 21 августа.
                             </span>
@@ -224,7 +224,7 @@
                                         <span class="notify-text">
                                             {{ $dnotify->text }}
                                         </span>
-                                        <div class="item-buttons">
+                                        <div class="item-buttons-v2">
                                             <button class="ico-btn edit-btn edit-notify-btn" title="редактировать"></button>
                                             <button class="ico-btn delete-btn delete-notify-btn" title="удалить"></button>
                                         </div>
