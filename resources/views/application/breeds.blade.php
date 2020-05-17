@@ -140,9 +140,16 @@
                                 <div class="item__name">
                                     {{ $breed->name }}
                                 </div>
+                                <div class="item-buttons-show-btn">
+                                    <button class="ico-btn show-buttons-btn"></button>
+                                </div>
                                 <div class="item-buttons">
-                                    <button class="ico-btn edit-btn" title="редактировать"></button>
-                                    <button class="ico-btn delete-btn" title="удалить"></button>
+                                    <button class="ico-btn edit-btn" title="редактировать">
+                                        <span class="ico-btn-text">Редактировать</span>
+                                    </button>
+                                    <button class="ico-btn delete-btn" title="удалить">
+                                        <span class="ico-btn-text">Удалить</span>
+                                    </button>
                                     <span class="ico-btn caret-btn" title="показать подробности"></span>
                                 </div>
                             </div>

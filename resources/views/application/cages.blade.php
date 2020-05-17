@@ -288,10 +288,19 @@
                                 <div class="item__name item-icon ico-cage-group">
                                     {{ $cageGroup->name }}
                                 </div>
+                                <div class="item-buttons-show-btn">
+                                    <button class="ico-btn show-buttons-btn"></button>
+                                </div>
                                 <div class="item-buttons">
-                                    <button class="ico-btn small-plus-btn" title="добавить навую клетку в группу"></button>
-                                    <button class="ico-btn edit-btn edit-cage-group-btn" title="редактировать группу"></button>
-                                    <button class="ico-btn delete-btn delete-cage-group-btn" title="удалить группу"></button>
+                                    <button class="ico-btn small-plus-btn" title="добавить новую клетку в группу">
+                                        <span class="ico-btn-text">Добавить новую клетку в группу</span>
+                                    </button>
+                                    <button class="ico-btn edit-btn edit-cage-group-btn" title="редактировать группу">
+                                        <span class="ico-btn-text">Редактировать группу</span>
+                                    </button>
+                                    <button class="ico-btn delete-btn delete-cage-group-btn" title="удалить группу">
+                                        <span class="ico-btn-text">Удалить группу</span>
+                                    </button>
                                     <span class="ico-btn caret-btn" title="показать подробности"></span>
                                 </div>
                             </div>
@@ -347,9 +356,16 @@
                                                         <div class="item__name">
                                                             {{ $cgCage->name }}
                                                         </div>
+                                                        <div class="item-buttons-show-btn">
+                                                            <button class="ico-btn show-buttons-btn"></button>
+                                                        </div>
                                                         <div class="item-buttons">
-                                                            <button class="ico-btn edit-btn edit-cage-btn" title="редактировать клетку"></button>
-                                                            <button class="ico-btn delete-btn delete-cage-btn" title="удалить клетку"></button>
+                                                            <button class="ico-btn edit-btn edit-cage-btn" title="редактировать клетку">
+                                                                <span class="ico-btn-text">Редактировать клетку</span>
+                                                            </button>
+                                                            <button class="ico-btn delete-btn delete-cage-btn" title="удалить клетку">
+                                                                <span class="ico-btn-text">Удалить клетку</span>
+                                                            </button>
                                                             <span class="ico-btn caret-btn" title="показать подробности"></span>
                                                         </div>
                                                     </div>
@@ -413,9 +429,16 @@
                                 <div class="item__name item-icon ico-cage">
                                     {{ $cage->name }}
                                 </div>
+                                <div class="item-buttons-show-btn">
+                                    <button class="ico-btn show-buttons-btn"></button>
+                                </div>
                                 <div class="item-buttons">
-                                    <button class="ico-btn edit-btn edit-cage-btn" title="редактировать клетку"></button>
-                                    <button class="ico-btn delete-btn delete-cage-btn" title="удалить клетку"></button>
+                                    <button class="ico-btn edit-btn edit-cage-btn" title="редактировать клетку">
+                                        <span class="ico-btn-text">Редактировать клетку</span>
+                                    </button>
+                                    <button class="ico-btn delete-btn delete-cage-btn" title="удалить клетку">
+                                        <span class="ico-btn-text">Удалить клетку</span>
+                                    </button>
                                     <span class="ico-btn caret-btn" title="показать подробности"></span>
                                 </div>
                             </div>

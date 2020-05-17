@@ -264,9 +264,16 @@
                                     {{ $mating->male_name ?? '(неизвестно)' }}
                                 </span>
                                 </div>
+                                <div class="item-buttons-show-btn">
+                                    <button class="ico-btn show-buttons-btn"></button>
+                                </div>
                                 <div class="item-buttons">
-                                    <button class="ico-btn edit-btn edit-mating-btn" title="редактировать"></button>
-                                    <button class="ico-btn delete-btn delete-mating-btn" title="удалить"></button>
+                                    <button class="ico-btn edit-btn edit-mating-btn" title="редактировать">
+                                        <span class="ico-btn-text">Редактировать</span>
+                                    </button>
+                                    <button class="ico-btn delete-btn delete-mating-btn" title="удалить">
+                                        <span class="ico-btn-text">Удалить</span>
+                                    </button>
                                     <span class="ico-btn caret-btn" title="показать подробности"></span>
                                 </div>
                             </div>
