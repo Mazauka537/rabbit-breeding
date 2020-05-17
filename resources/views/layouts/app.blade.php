@@ -21,7 +21,7 @@
     <header class="header" id="header">
         <div class="container">
             <div class="header__inner">
-                <div class="left">
+                <div class="middle">
                     <div class="logo">
                         <a href="{{ route('rabbits') }}">
                             <img src="{{ asset('images/logo-long.png') }}" alt="logo">

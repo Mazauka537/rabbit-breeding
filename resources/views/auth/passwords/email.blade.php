@@ -22,7 +22,7 @@
                         <div class="line pt-20">
                             <div class="label"></div>
                             <div class="labeled">
-                                <input type="submit" value="Отправить ссылку для сброса пароля">
+                                <input type="submit" value="Отправить ссылку для сброса пароля" style="font-size: 12px">
                             </div>
                         </div>
                     </div>
