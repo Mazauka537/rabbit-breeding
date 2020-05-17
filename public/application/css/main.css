@@ -578,6 +578,9 @@ a {
 
 .rabbit-container {
   display: flex; }
+  .rabbit-container .info .center-form {
+    max-width: 500px;
+    margin: 0 auto; }
   .rabbit-container .item__name {
     max-width: 340px; }
   .rabbit-container .left {
@@ -592,7 +595,7 @@ a {
     border-bottom: 1px solid #e8e8e8;
     padding-bottom: 5px; }
     .rabbit-container .head .name {
-      max-width: 250px;
+      max-width: 220px;
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis; }
@@ -1089,6 +1092,9 @@ textarea {
 .scrollbar-macosx > .scroll-element .scroll-bar {
   background-color: #85878a; }
 
+@media screen and (max-width: 960px) {
+  .page-button-3 {
+    display: none; } }
 @media screen and (max-width: 920px) {
   .rabbit-container {
     display: block; }
@@ -1105,10 +1111,40 @@ textarea {
 @media screen and (max-width: 910px) {
   .item__name, .item__name-2 {
     max-width: 240px; } }
+@media screen and (max-width: 860px) {
+  .rabbits-page .item__wrapper {
+    width: 50%; } }
+@media screen and (max-width: 835px) {
+  .page-button-3 {
+    display: block; }
+
+  .items-top {
+    display: block; }
+
+  .filter {
+    width: 100%;
+    margin-bottom: 10px; }
+
+  .pagination__wrapper {
+    width: 100%;
+    padding-left: 0; } }
 @media screen and (max-width: 720px) {
   .rabbit-container .item__name, .rabbit-container .item__name-2 {
-    max-width: 300px; } }
+    max-width: 300px; }
+  .rabbit-container .info .center-form .label {
+    width: 120px; }
+  .rabbit-container .info .center-form .labeled {
+    width: 260px;
+    margin-left: 120px; }
+  .rabbit-container .head .name {
+    max-width: 190px; } }
 @media screen and (max-width: 680px) {
+  .rabbit-container .info .center-form .label {
+    width: 120px; }
+  .rabbit-container .info .center-form .labeled {
+    width: 300px;
+    margin-left: 120px; }
+
   .alerts {
     bottom: 60px;
     left: 10px; }
@@ -1151,7 +1187,84 @@ textarea {
 
   .add-button {
     bottom: 70px; } }
+@media screen and (max-width: 560px) {
+  .rabbit-container .info .head {
+    display: block; }
+    .rabbit-container .info .head .name {
+      max-width: 100%; }
+  .rabbit-container .info .buttons {
+    padding-left: 0; } }
+@media screen and (max-width: 530px) {
+  input, select, textarea, option, button, .input-label {
+    max-width: 240px; }
+
+  .rabbit-container .item__name, .rabbit-container .item__name-2 {
+    max-width: 190px; } }
+@media screen and (max-width: 485px) {
+  .rabbits-page .item__wrapper {
+    width: 80%;
+    margin: 0 auto;
+    float: none;
+    padding: 10px 0px 5px 0px; }
+  .rabbits-page .item__inner .item-filter .info {
+    font-size: 22px; }
+    .rabbits-page .item__inner .item-filter .info .status, .rabbits-page .item__inner .item-filter .info .birthday, .rabbits-page .item__inner .item-filter .info .breed {
+      max-width: 240px; }
+
+  .rabbit-container .left {
+    display: block; }
+    .rabbit-container .left .some-info__wrapper {
+      display: none; }
+    .rabbit-container .left .photo__wrapper {
+      max-width: 100%;
+      width: auto;
+      max-height: 220px; }
+  .rabbit-container .info .center-form .label {
+    float: none;
+    text-align: left; }
+  .rabbit-container .info .center-form .labeled {
+    margin-left: 0;
+    width: 100%;
+    padding-left: 0; }
+
+  .photo img {
+    max-height: 190px; }
+
+  .user-name {
+    max-width: 200px; }
+
+  input, select, textarea, option, button, .input-label {
+    max-width: 100%; }
+
+  .left-form .line, .center-form .line, .small-form .line {
+    padding: 3px 0; }
+  .left-form .label, .center-form .label, .small-form .label {
+    float: none;
+    text-align: left; }
+  .left-form .labeled, .center-form .labeled, .small-form .labeled {
+    margin-left: 0;
+    width: 100%;
+    padding-left: 0; }
+
+  .left-form .label {
+    width: auto;
+    padding-right: 10px;
+    float: left; }
+
+  .form .label {
+    padding: 3px 0; }
+  .form .head {
+    font-size: 16px;
+    padding-left: 15px; }
+  .form .body {
+    padding-bottom: 15px; }
+
+  .delete-form-buttons {
+    margin-bottom: 0; } }
 @media screen and (max-width: 420px) {
+  .delete-form-buttons {
+    text-align: center; }
+
   .item-buttons-show-btn {
     display: block; }
 
@@ -1197,6 +1310,18 @@ textarea {
     display: block; }
 
   .item__name, .item__name-2 {
-    max-width: 220px; } }
+    max-width: 220px; }
+
+  .page-button-3 {
+    display: none; }
+
+  .user-name {
+    max-width: 140px; } }
+@media screen and (max-width: 360px) {
+  .next-prev-page-button {
+    display: none; }
+
+  .rabbits-page .item__wrapper {
+    width: 100%; } }
 
 /*# sourceMappingURL=main.css.map */

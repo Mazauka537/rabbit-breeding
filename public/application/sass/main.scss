@@ -893,6 +893,13 @@ $label-width: 120px;
 .rabbit-container {
     display: flex;
 
+    .info {
+        .center-form {
+            max-width: 500px;
+            margin: 0 auto;
+        }
+    }
+
     .item__name {
         max-width: 340px;
     }
@@ -914,7 +921,7 @@ $label-width: 120px;
         padding-bottom: 5px;
 
         .name {
-            max-width: 250px;
+            max-width: 220px;
             white-space: nowrap;
             overflow: hidden;
             text-overflow: ellipsis;
@@ -1654,6 +1661,13 @@ textarea {
 
 //media//
 
+@media screen and (max-width: 960px) {
+    .page-button-3 {
+        display: none;
+    }
+}
+
+
 @media screen and (max-width: 920px) {
     .rabbit-container {
         display: block;
@@ -1682,15 +1696,74 @@ textarea {
     }
 }
 
+@media screen and (max-width: 860px) {
+    .rabbits-page {
+        .item__wrapper {
+            width: 50%;
+        }
+    }
+}
+
+@media screen and (max-width: 835px) {
+    .page-button-3 {
+        display: block;
+    }
+    .items-top {
+        display: block;
+    }
+    .filter {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+    .pagination__wrapper {
+        width: 100%;
+        padding-left: 0;
+    }
+}
+
 @media screen and (max-width: 720px) {
     .rabbit-container {
         .item__name, .item__name-2 {
             max-width: 300px;
         }
+
+        .info {
+            .center-form {
+                .label {
+                    width: 120px;
+                }
+
+                .labeled {
+                    width: 260px;
+                    margin-left: 120px;
+                }
+            }
+        }
+
+        .head {
+            .name {
+                max-width: 190px;
+            }
+        }
     }
 }
 
 @media screen and (max-width: 680px) {
+    .rabbit-container {
+        .info {
+            .center-form {
+                .label {
+                    width: 120px;
+                }
+
+                .labeled {
+                    width: 300px;
+                    margin-left: 120px;
+                }
+            }
+        }
+    }
+
     .alerts {
         bottom: 60px;
         left: 10px;
@@ -1758,7 +1831,154 @@ textarea {
     }
 }
 
+@media screen and (max-width: 560px) {
+    .rabbit-container {
+        .info {
+            .head {
+                display: block;
+
+                .name {
+                    max-width: 100%;
+                }
+            }
+
+            .buttons {
+                padding-left: 0;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 530px) {
+    input, select, textarea, option, button, .input-label {
+        max-width: 240px;
+    }
+
+
+    .rabbit-container {
+
+        .item__name, .item__name-2 {
+            max-width: 190px;
+        }
+    }
+}
+
+@media screen and (max-width: 485px) {
+    .rabbits-page {
+        .item__wrapper {
+            width: 80%;
+            margin: 0 auto;
+            float: none;
+            padding: 10px 0px 5px 0px;
+        }
+
+        .item__inner {
+            .item-filter {
+                .info {
+                    font-size: 22px;
+
+                    .status, .birthday, .breed {
+                        max-width: 240px;
+                    }
+                }
+            }
+        }
+    }
+
+    .rabbit-container {
+        .left {
+            display: block;
+
+            .some-info__wrapper {
+                display: none;
+            }
+
+            .photo__wrapper {
+                max-width: 100%;
+                width: auto;
+                max-height: 220px;
+            }
+        }
+
+        .info {
+            .center-form {
+                .label {
+                    float: none;
+                    text-align: left;
+                }
+
+                .labeled {
+                    margin-left: 0;
+                    width: 100%;
+                    padding-left: 0;
+                }
+            }
+        }
+    }
+
+    .photo {
+        img {
+            max-height: 190px;
+        }
+    }
+
+    .user-name {
+        max-width: 200px;
+    }
+    input, select, textarea, option, button, .input-label {
+        max-width: 100%;
+    }
+
+    .left-form, .center-form, .small-form {
+        .line {
+            padding: 3px 0;
+        }
+
+        .label {
+            float: none;
+            text-align: left;
+        }
+
+        .labeled {
+            margin-left: 0;
+            width: 100%;
+            padding-left: 0;
+        }
+    }
+
+    .left-form {
+        .label {
+            width: auto;
+            padding-right: 10px;
+            float: left;
+        }
+    }
+
+    .form {
+        .label {
+            padding: 3px 0;
+        }
+
+        .head {
+            font-size: 16px;
+            padding-left: 15px;
+        }
+
+        .body {
+            padding-bottom: 15px;
+        }
+    }
+
+    .delete-form-buttons {
+        margin-bottom: 0;
+    }
+}
+
 @media screen and (max-width: 420px) {
+    .delete-form-buttons {
+        text-align: center;
+    }
+
     .item-buttons-show-btn {
         display: block;
     }
@@ -1826,5 +2046,24 @@ textarea {
 
     .item__name, .item__name-2 {
         max-width: 220px;
+    }
+
+    .page-button-3 {
+        display: none;
+    }
+
+    .user-name {
+        max-width: 140px;
+    }
+}
+
+@media screen and (max-width: 360px) {
+    .next-prev-page-button {
+        display: none;
+    }
+    .rabbits-page {
+        .item__wrapper {
+            width: 100%;
+        }
     }
 }

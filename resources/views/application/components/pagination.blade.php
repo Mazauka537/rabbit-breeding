@@ -5,7 +5,7 @@
             <div class="page-button @if($pagination['currentPage'] <= 1){{ 'disabled' }}@endif">
                 <a @if($pagination['currentPage'] > 1){{ 'href=' . $pagination['route'] . '?page=1' . $pagination['arguments'] }}@endif title="первая страница"><<</a>
             </div>
-            <div class="page-button @if($pagination['currentPage'] <= 1){{ 'disabled' }}@endif">
+            <div class="page-button next-prev-page-button @if($pagination['currentPage'] <= 1){{ 'disabled' }}@endif">
                 @if($pagination['currentPage'] <= 1)
                     <a title="предыдущая страница"><</a>
                 @else
@@ -45,7 +45,7 @@
         </ul>
 
         <div class="side-pagination-buttons">
-            <div class="page-button @if($pagination['currentPage'] >= $pagination['pageCount']){{ 'disabled' }}@endif">
+            <div class="page-button next-prev-page-button @if($pagination['currentPage'] >= $pagination['pageCount']){{ 'disabled' }}@endif">
                 @if($pagination['currentPage'] >= $pagination['pageCount'])
                     <a title="следующая страница">></a>
                 @else
