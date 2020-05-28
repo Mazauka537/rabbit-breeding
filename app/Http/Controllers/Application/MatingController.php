@@ -6,6 +6,7 @@ use App\DefaultNotify;
 use App\Http\Requests\Application\MatingAddRequest;
 use App\Http\Requests\Application\MatingsGetRequest;
 use App\Mating;
+use App\Rabbit;
 use App\Reminder;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -32,7 +33,8 @@ class MatingController extends Controller
         return null;
     }
 
-    private function getThemePath() {
+    private function getThemePath()
+    {
         $theme = Auth::user()->theme;
         if (!empty($theme)) {
             $themes = json_decode(file_get_contents('application/themes.json'));
@@ -73,7 +75,7 @@ class MatingController extends Controller
             ->leftJoin('rabbits as female_rabbits', 'matings.female_id', '=', 'female_rabbits.id')
             ->leftJoin('rabbits as male_rabbits', 'matings.male_id', '=', 'male_rabbits.id')
             ->select('matings.*', 'female_rabbits.name as female_name', 'male_rabbits.name as male_name')
-            ->orderBy(DB::raw('ISNULL('.$sortbyA.'), '.$sortbyA), 'ASC')
+            ->orderBy(DB::raw('ISNULL(' . $sortbyA . '), ' . $sortbyA), 'ASC')
             ->offset($perPage * abs($request->page - 1))
             ->limit($perPage)
             ->get();
@@ -155,6 +157,13 @@ class MatingController extends Controller
                 $messages[] = 'Напоминания успешно добавлены.';
             } else {
                 $errors[] = 'Стандартные напоминания не назначены. Вы можете назначить их в настройках.';
+            }
+        }
+
+        if (Auth::user()->auto_changing_status) {
+            if (empty($mating->date_birth) && strtotime($mating->date) > time() - 3600 * 24 * 35) {
+                Rabbit::where('id', $mating->female_id)->update(['status' => 'pregnant']);
+                $messages[] = 'Статус самки изменен на "беременна".';
             }
         }
 

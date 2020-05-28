@@ -128,6 +128,16 @@
                         </div>
                     </div>
                     <div class="line checkbox-line">
+                        <div class="label"></div>
+                        <div class="labeled">
+                            <input id="auto_changing_status_inp" type="checkbox"
+                                   name="auto_changing_status" @if($user->auto_changing_status) {{ 'checked' }} @endif>
+                            <label for="auto_changing_status_inp">
+                                Автоматически изменять статус после добавления новой случки
+                            </label>
+                        </div>
+                    </div>
+                    <div class="line checkbox-line">
                         <div class="label">
                         </div>
                         <div class="labeled">
@@ -225,8 +235,10 @@
                                             {{ $dnotify->text }}
                                         </span>
                                         <div class="item-buttons-v2">
-                                            <button class="ico-btn edit-btn edit-notify-btn" title="редактировать"></button>
-                                            <button class="ico-btn delete-btn delete-notify-btn" title="удалить"></button>
+                                            <button class="ico-btn edit-btn edit-notify-btn"
+                                                    title="редактировать"></button>
+                                            <button class="ico-btn delete-btn delete-notify-btn"
+                                                    title="удалить"></button>
                                         </div>
                                     </div>
                                 </div>

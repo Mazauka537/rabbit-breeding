@@ -73,6 +73,7 @@ class SettingController extends Controller
         $user->pagination = $request->pagination;
         $user->theme = $request->theme;
         $user->auto_mating_reminders = $request->auto_mating_reminders ? true : false;
+        $user->auto_changing_status = $request->auto_changing_status ? true : false;
         $user->days_for_delete_reminders = $request->days_for_delete_reminders ?? 0;
         $user->delete_only_checked_reminders = $request->delete_only_checked_reminders ? true : false;
 
