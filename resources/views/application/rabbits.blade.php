@@ -185,7 +185,6 @@
                                     </div>
                                     <div
                                         class="h-gender @if($rabbit->gender == 'f') {{ 'female' }} @else {{ 'male' }} @endif" title="пол кролика">
-                                        ♥
                                     </div>
                                 </div>
                             </div>

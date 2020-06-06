@@ -867,8 +867,23 @@ $label-width: 120px;
 
     .h-gender {
         position: absolute;
-        top: 0px;
-        right: 4px;
+        top: 1px;
+        right: 2px;
+        font-size: 18px;
+
+        &.female {
+            &::before {
+                content: "\e90f";
+                font-family: icomoon;
+            }
+        }
+
+        &.male {
+            &::before {
+                content: "\e90e";
+                font-family: icomoon;
+            }
+        }
     }
 
     .item__footer {
@@ -2098,6 +2113,13 @@ textarea {
     .rabbits-page {
         .item__wrapper {
             width: 100%;
+        }
+        .item__inner {
+            .item-filter {
+                .info {
+
+                }
+            }
         }
     }
 }

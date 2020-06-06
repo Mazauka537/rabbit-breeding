@@ -562,8 +562,15 @@ a {
           margin-right: 5px; }
 .rabbits-page .h-gender {
   position: absolute;
-  top: 0px;
-  right: 4px; }
+  top: 1px;
+  right: 2px;
+  font-size: 18px; }
+  .rabbits-page .h-gender.female::before {
+    content: "\e90f";
+    font-family: icomoon; }
+  .rabbits-page .h-gender.male::before {
+    content: "\e90e";
+    font-family: icomoon; }
 .rabbits-page .item__footer {
   padding: 3px 1px 5px 0;
   color: #333;
