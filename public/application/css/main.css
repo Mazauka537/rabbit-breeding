@@ -772,7 +772,8 @@ a {
   z-index: 1000;
   display: none;
   overflow: hidden;
-  padding: 10px; }
+  padding: 10px;
+  padding-bottom: 70px; }
 
 .modal-window__inner {
   padding: 10px;
