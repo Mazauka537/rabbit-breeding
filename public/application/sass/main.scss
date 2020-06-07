@@ -1198,12 +1198,12 @@ $label-width: 120px;
     z-index: 1000;
     display: none;
     overflow: hidden;
-    padding: 10px;
-    padding-bottom: 70px;
+    padding: 0 10px 50px 10px;
 }
 
 .modal-window__inner {
     padding: 10px;
+    padding-bottom: 0;
     height: 100%;
     overflow: hidden;
 }
@@ -1256,7 +1256,7 @@ $label-width: 120px;
 .form__wrapper {
     background: #fff;
     max-width: 540px;
-    margin: 30px auto;
+    margin: 45px auto;
     border-radius: 3px;
     position: relative;
     overflow: hidden;
@@ -1800,6 +1800,10 @@ textarea {
         margin-bottom: 50px;
     }
 
+    .content__inner {
+        padding: 20px 0 220px 0;
+    }
+
     .aside {
         position: fixed;
         left: 0;
@@ -2109,6 +2113,11 @@ textarea {
 
     .user-name {
         max-width: 140px;
+    }
+
+    .alert {
+        max-width: 220px;
+        padding: 10px 20px 10px 12px;
     }
 }
 
