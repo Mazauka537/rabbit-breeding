@@ -249,7 +249,7 @@ a {
     height: 100%;
     overflow: hidden;
     display: flex;
-    padding: 20px 0 60px 0;
+    padding: 20px 0 120px 0;
     position: relative;
 }
 
@@ -2049,10 +2049,11 @@ textarea {
         }
 
         .ico-btn + .ico-btn {
-            border-top: $main-border;
+            //border-top: $main-border;
         }
 
         .ico-btn {
+            height: auto;
             display: block;
             width: 100%;
             text-align: left;
@@ -2065,6 +2066,10 @@ textarea {
 
             &::before {
                 display: none;
+            }
+
+            &:hover {
+                background: #eee;
             }
         }
     }
@@ -2113,13 +2118,6 @@ textarea {
     .rabbits-page {
         .item__wrapper {
             width: 100%;
-        }
-        .item__inner {
-            .item-filter {
-                .info {
-
-                }
-            }
         }
     }
 }

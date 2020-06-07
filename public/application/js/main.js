@@ -102,7 +102,4 @@ window.addEventListener('resize',function () {
     let container = document.getElementById('container');
     let header = document.getElementById('header');
     container.style.maxHeight = document.body.offsetHeight - header.offsetHeight + 'px';
-    console.log(container.style.maxHeight);
-    console.log(container.offsetHeight, document.body.offsetHeight);
-
 });

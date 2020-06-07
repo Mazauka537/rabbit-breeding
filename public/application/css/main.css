@@ -172,7 +172,7 @@ a {
   height: 100%;
   overflow: hidden;
   display: flex;
-  padding: 20px 0 60px 0;
+  padding: 20px 0 120px 0;
   position: relative; }
 
 .aside {
@@ -1315,9 +1315,8 @@ textarea {
     background: #fff; }
     .item-buttons.show {
       display: block; }
-    .item-buttons .ico-btn + .ico-btn {
-      border-top: 1px solid #e8e8e8; }
     .item-buttons .ico-btn {
+      height: auto;
       display: block;
       width: 100%;
       text-align: left;
@@ -1327,6 +1326,8 @@ textarea {
         display: none; }
       .item-buttons .ico-btn::before {
         display: none; }
+      .item-buttons .ico-btn:hover {
+        background: #eee; }
 
   .item-buttons-v2 .ico-btn {
     display: inline; }
