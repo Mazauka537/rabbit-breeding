@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="{{ asset('images/favicon.png') }}" type="image/png">
     <link rel="stylesheet" href="{{ asset('application/fonts/style.css') }}">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('assets/css/jquery.scrollbar.css') }}">
@@ -39,14 +40,14 @@
                         </a>
                         <ul class="user-list none-height">
                             <li>
-                                <a href="{{ route('settings') }}">настройки</a>
+                                <a href="{{ route('settings') }}">Настройки</a>
                             </li>
                             <li>
                                 <a href="{{ route('logout') }}"
                                    onclick="event.preventDefault();
                                document.getElementById('logout-form').submit();"
                                 >
-                                    выход
+                                    Выход
                                 </a>
                             </li>
                         </ul>
